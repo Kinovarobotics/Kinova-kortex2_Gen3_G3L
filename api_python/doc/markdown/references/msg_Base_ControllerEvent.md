@@ -1,0 +1,20 @@
+# Message ControllerEvent
+
+This page describes the Python Kinova.Api.Base.ControllerEvent message.
+
+## Overview / Purpose
+
+Identifies a controller event
+
+## Class members
+
+ **Member variables** 
+
+|Member name|Data type|Description|
+|-----------|---------|-----------|
+|input\_type|int|Type of controller input that caused the event\_identifier|
+|behavior|int|Controller behavior that occured|
+|input\_identifier|int|Controller input that caused the event|
+
+**Parent topic:** [Base](../references/summary_Base.md)
+

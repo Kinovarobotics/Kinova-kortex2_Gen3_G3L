@@ -1,0 +1,54 @@
+# Message MapEvent
+
+This page describes the C++ Kinova::Api::Base::MapEvent message.
+
+## Overview / Purpose
+
+Defines a map event
+
+## Class members
+
+ **Member variables** 
+
+|Member name|Data type|Description|
+|-----------|---------|-----------|
+|safety\_event|oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#)|Mapped safety event \(future\)|
+|gpio\_event|oneof:events [GpioEvent](msg_Base_GpioEvent.md#)|Mapped GPIO event \(future\)|
+|controller\_event|oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#)|Mapped controller event|
+|name|string|Map event friendly name|
+
+ **Methods** 
+
+The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+
+|Method name|Return type|Input type|Description|
+|-----------|-----------|----------|-----------|
+|has\_safety\_event\(\) const|void|void|Returns the current value of the field if oneof case is kSafety\_event. Otherwise, returns oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#)::default\_instance\(\)|
+|safety\_event\(\) const|const oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#)&|void|Returns the current value of the field if oneof case is kSafety\_event|
+|mutable\_safety\_event\(\)|oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#)\*|void|If any other oneof field in the same oneof is set, calls clear\_events\(\). Sets the oneof case to kSafety\_event and returns a pointer to the mutable oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#) object that stores the field's value. If the oneof case was not kSafety\_event prior to the call, then the returned oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#) will have none of its fields set \(i.e. it will be identical to a newly-allocated oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#)\). After calling this, has\_safety\_event\(\) will return true, safety\_event\(\) will return a reference to the same instance of oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#) and events\_case\(\) will return kSafety\_event|
+|clear\_safety\_event\(\)|void|void|Nothing will be changed if the oneof case is not kSafety\_event. If the oneof case equals kSafety\_event, frees the field and clears the oneof case. has\_safety\_event\(\) will return false, safety\_event\(\) will return the default value and events\_case\(\) will return EVENTS\_NOT\_SET.|
+|set\_allocated\_safety\_event\(\)|void|oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#)\*|Calls clear\_events\(\). If the oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#) pointer is not NULL: Sets the oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#) object to the field and sets the oneof case to kSafety\_event. The message takes ownership of the allocated oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#) object, has\_safety\_event\(\) will return true and events\_case\(\) will return kSafety\_event. If the pointer is NULL, has\_safety\_event\(\) will return false and events\_case\(\) will return EVENTS\_NOT\_SET. \(The behavior is like calling clear\_events\(\)\)|
+|release\_safety\_event\(\)|oneof:events [SafetyEvent](msg_Base_SafetyEvent.md#)\*|void|Returns NULL if oneof case is not kSafety\_event. If the oneof case is kSafety\_event, clears the oneof case, releases the ownership of the field and returns the pointer of the events object. After calling this, caller takes the ownership of the allocated events object, has\_safety\_event\(\) will return false, safety\_event\(\) will return the default value and events\_case\(\) will return EVENTS\_NOT\_SET.|
+|has\_gpio\_event\(\) const|void|void|Returns the current value of the field if oneof case is kGpio\_event. Otherwise, returns oneof:events [GpioEvent](msg_Base_GpioEvent.md#)::default\_instance\(\)|
+|gpio\_event\(\) const|const oneof:events [GpioEvent](msg_Base_GpioEvent.md#)&|void|Returns the current value of the field if oneof case is kGpio\_event|
+|mutable\_gpio\_event\(\)|oneof:events [GpioEvent](msg_Base_GpioEvent.md#)\*|void|If any other oneof field in the same oneof is set, calls clear\_events\(\). Sets the oneof case to kGpio\_event and returns a pointer to the mutable oneof:events [GpioEvent](msg_Base_GpioEvent.md#) object that stores the field's value. If the oneof case was not kGpio\_event prior to the call, then the returned oneof:events [GpioEvent](msg_Base_GpioEvent.md#) will have none of its fields set \(i.e. it will be identical to a newly-allocated oneof:events [GpioEvent](msg_Base_GpioEvent.md#)\). After calling this, has\_gpio\_event\(\) will return true, gpio\_event\(\) will return a reference to the same instance of oneof:events [GpioEvent](msg_Base_GpioEvent.md#) and events\_case\(\) will return kGpio\_event|
+|clear\_gpio\_event\(\)|void|void|Nothing will be changed if the oneof case is not kGpio\_event. If the oneof case equals kGpio\_event, frees the field and clears the oneof case. has\_gpio\_event\(\) will return false, gpio\_event\(\) will return the default value and events\_case\(\) will return EVENTS\_NOT\_SET.|
+|set\_allocated\_gpio\_event\(\)|void|oneof:events [GpioEvent](msg_Base_GpioEvent.md#)\*|Calls clear\_events\(\). If the oneof:events [GpioEvent](msg_Base_GpioEvent.md#) pointer is not NULL: Sets the oneof:events [GpioEvent](msg_Base_GpioEvent.md#) object to the field and sets the oneof case to kGpio\_event. The message takes ownership of the allocated oneof:events [GpioEvent](msg_Base_GpioEvent.md#) object, has\_gpio\_event\(\) will return true and events\_case\(\) will return kGpio\_event. If the pointer is NULL, has\_gpio\_event\(\) will return false and events\_case\(\) will return EVENTS\_NOT\_SET. \(The behavior is like calling clear\_events\(\)\)|
+|release\_gpio\_event\(\)|oneof:events [GpioEvent](msg_Base_GpioEvent.md#)\*|void|Returns NULL if oneof case is not kGpio\_event. If the oneof case is kGpio\_event, clears the oneof case, releases the ownership of the field and returns the pointer of the events object. After calling this, caller takes the ownership of the allocated events object, has\_gpio\_event\(\) will return false, gpio\_event\(\) will return the default value and events\_case\(\) will return EVENTS\_NOT\_SET.|
+|has\_controller\_event\(\) const|void|void|Returns the current value of the field if oneof case is kController\_event. Otherwise, returns oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#)::default\_instance\(\)|
+|controller\_event\(\) const|const oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#)&|void|Returns the current value of the field if oneof case is kController\_event|
+|mutable\_controller\_event\(\)|oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#)\*|void|If any other oneof field in the same oneof is set, calls clear\_events\(\). Sets the oneof case to kController\_event and returns a pointer to the mutable oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#) object that stores the field's value. If the oneof case was not kController\_event prior to the call, then the returned oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#) will have none of its fields set \(i.e. it will be identical to a newly-allocated oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#)\). After calling this, has\_controller\_event\(\) will return true, controller\_event\(\) will return a reference to the same instance of oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#) and events\_case\(\) will return kController\_event|
+|clear\_controller\_event\(\)|void|void|Nothing will be changed if the oneof case is not kController\_event. If the oneof case equals kController\_event, frees the field and clears the oneof case. has\_controller\_event\(\) will return false, controller\_event\(\) will return the default value and events\_case\(\) will return EVENTS\_NOT\_SET.|
+|set\_allocated\_controller\_event\(\)|void|oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#)\*|Calls clear\_events\(\). If the oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#) pointer is not NULL: Sets the oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#) object to the field and sets the oneof case to kController\_event. The message takes ownership of the allocated oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#) object, has\_controller\_event\(\) will return true and events\_case\(\) will return kController\_event. If the pointer is NULL, has\_controller\_event\(\) will return false and events\_case\(\) will return EVENTS\_NOT\_SET. \(The behavior is like calling clear\_events\(\)\)|
+|release\_controller\_event\(\)|oneof:events [ControllerEvent](msg_Base_ControllerEvent.md#)\*|void|Returns NULL if oneof case is not kController\_event. If the oneof case is kController\_event, clears the oneof case, releases the ownership of the field and returns the pointer of the events object. After calling this, caller takes the ownership of the allocated events object, has\_controller\_event\(\) will return false, controller\_event\(\) will return the default value and events\_case\(\) will return EVENTS\_NOT\_SET.|
+|name\(\)|const string&|void|Returns the current value of name. If name is not set, returns the empty string/empty bytes.|
+|set\_name\(\)|void|const string&|Sets the value of name. After calling this, name\(\) will return a copy of value.|
+|set\_name\(\)|void|string&&|\(C++11 and beyond\): Sets the value of name, moving from the passed string. After calling this, name\(\) will return a copy of value.|
+|set\_name\(\)|void|const char\*|Sets the value of name using a C-style null-terminated string. After calling this, name\(\) will return a copy of value.|
+|mutable\_name\(\)|string \*|void|Returns a pointer to the mutable string object that stores name's value. If the field was not set prior to the call, then the returned string will be empty. After calling this, name\(\) will return whatever value is written into the given string.|
+|clear\_name\(\)|void|void|Clears the value of name. After calling this, name\(\) will return the empty string/empty bytes.|
+|set\_allocated\_name\(\)|void|string\*|Sets the string object to the field and frees the previous field value if it exists. If the string pointer is not NULL, the message takes ownership of the allocated string object. The message is free to delete the allocated string object at any time, so references to the object may be invalidated. Otherwise, if the value is NULL, the behavior is the same as calling clear\_name\(\).|
+|release\_name\(\)|string \*|void|Releases the ownership of name and returns the pointer of the string object. After calling this, caller takes the ownership of the allocated string object and name\(\) will return the empty string/empty bytes.|
+
+**Parent topic:** [Base](../references/summary_Base.md)
+
