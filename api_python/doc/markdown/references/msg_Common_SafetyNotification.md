@@ -13,7 +13,7 @@ Message that contains a Safety event
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |safety\_handle| [SafetyHandle](msg_Common_SafetyHandle.md#)|Safety handle|
-|value|int|New safety status|
+|value| [SafetyStatusValue](enm_Common_SafetyStatusValue.md#)|New safety status|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the safety event|
 |connection| [Connection](msg_Common_Connection.md#)|Connection that caused the safety event|

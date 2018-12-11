@@ -12,7 +12,7 @@ Message that contains a robot event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|event|uint32|Robot event type|
+|event| [RobotEvent](enm_Base_RobotEvent.md#)|Robot event type|
 |handle| [DeviceHandle](msg_Common_DeviceHandle.md#)|Identifier of the hardware device connected or disconnected|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the robot event to occur|
@@ -20,12 +20,12 @@ Message that contains a robot event
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|event\(\) const|uint32|void|Returns the current value of event. If the event is not set, returns 0.|
-|set\_event\(\)|void|uint32|Sets the value of event. After calling this, event\(\) will return value.|
+|event\(\) const| [RobotEvent](enm_Base_RobotEvent.md#)|void|Returns the current value of event. If the event is not set, returns 0.|
+|set\_event\(\)|void| [RobotEvent](enm_Base_RobotEvent.md#)|Sets the value of event. After calling this, event\(\) will return value.|
 |clear\_event\(\)|void|void|Clears the value of event. After calling this, event\(\) will return the empty string/empty bytes.|
 |has\_handle\(\) const|bool|void|Returns true if handle is set.|
 |handle\(\)|const [DeviceHandle](msg_Common_DeviceHandle.md#)&|void|Returns the current value of handle. If handle is not set, returns a [DeviceHandle](msg_Common_DeviceHandle.md#) with none of its fields set \(possibly handle::default\_instance\(\)\).|

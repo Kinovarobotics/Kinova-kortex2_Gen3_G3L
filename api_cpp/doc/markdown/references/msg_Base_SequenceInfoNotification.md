@@ -12,23 +12,23 @@ Message that contains a sequence information event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|event\_identifier|uint32|Sequence event type|
+|event\_identifier| [EventIdSequenceInfoNotification](enm_Base_EventIdSequenceInfoNotification.md#)|Sequence event type|
 |sequence\_handle| [SequenceHandle](msg_Base_SequenceHandle.md#)|Handle of the sequence that this event refers to|
 |task\_index|uint32|Task index|
 |group\_identifier|uint32|Specifies the order in which this task must be executed|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the sequence event|
-|abort\_details|uint32|Details if event\_identifier is equal to ABORT|
+|abort\_details| [SubErrorCodes](enm_Api_SubErrorCodes.md#)|Details if event\_identifier is equal to ABORT|
 |connection| [Connection](msg_Common_Connection.md#)|Connection that caused the sequence event|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|event\_identifier\(\) const|uint32|void|Returns the current value of event\_identifier. If the event\_identifier is not set, returns 0.|
-|set\_event\_identifier\(\)|void|uint32|Sets the value of event\_identifier. After calling this, event\_identifier\(\) will return value.|
+|event\_identifier\(\) const| [EventIdSequenceInfoNotification](enm_Base_EventIdSequenceInfoNotification.md#)|void|Returns the current value of event\_identifier. If the event\_identifier is not set, returns 0.|
+|set\_event\_identifier\(\)|void| [EventIdSequenceInfoNotification](enm_Base_EventIdSequenceInfoNotification.md#)|Sets the value of event\_identifier. After calling this, event\_identifier\(\) will return value.|
 |clear\_event\_identifier\(\)|void|void|Clears the value of event\_identifier. After calling this, event\_identifier\(\) will return the empty string/empty bytes.|
 |has\_sequence\_handle\(\) const|bool|void|Returns true if sequence\_handle is set.|
 |sequence\_handle\(\)|const [SequenceHandle](msg_Base_SequenceHandle.md#)&|void|Returns the current value of sequence\_handle. If sequence\_handle is not set, returns a [SequenceHandle](msg_Base_SequenceHandle.md#) with none of its fields set \(possibly sequence\_handle::default\_instance\(\)\).|
@@ -54,8 +54,8 @@ The methods listed below are some of the most commonly used. Please refer to Goo
 |clear\_user\_handle\(\)|void|void|Clears the value of the field. After calling this, has\_user\_handle\(\) will return false and user\_handle\(\) will return the default value.|
 |set\_allocated\_user\_handle\(\)|void| [UserProfileHandle](msg_Common_UserProfileHandle.md#) \*|Sets the [UserProfileHandle](msg_Common_UserProfileHandle.md#) object to the field and frees the previous field value if it exists. If the [UserProfileHandle](msg_Common_UserProfileHandle.md#) pointer is not NULL, the message takes ownership of the allocated [UserProfileHandle](msg_Common_UserProfileHandle.md#) object and has\_ [UserProfileHandle](msg_Common_UserProfileHandle.md#)\(\) will return true. Otherwise, if the user\_handle is NULL, the behavior is the same as calling clear\_user\_handle\(\).|
 |release\_user\_handle\(\)| [UserProfileHandle](msg_Common_UserProfileHandle.md#) \*|void|Releases the ownership of the field and returns the pointer of the [UserProfileHandle](msg_Common_UserProfileHandle.md#) object. After calling this, caller takes the ownership of the allocated [UserProfileHandle](msg_Common_UserProfileHandle.md#) object, has\_user\_handle\(\) will return false, and user\_handle\(\) will return the default value.|
-|abort\_details\(\) const|uint32|void|Returns the current value of abort\_details. If the abort\_details is not set, returns 0.|
-|set\_abort\_details\(\)|void|uint32|Sets the value of abort\_details. After calling this, abort\_details\(\) will return value.|
+|abort\_details\(\) const| [SubErrorCodes](enm_Api_SubErrorCodes.md#)|void|Returns the current value of abort\_details. If the abort\_details is not set, returns 0.|
+|set\_abort\_details\(\)|void| [SubErrorCodes](enm_Api_SubErrorCodes.md#)|Sets the value of abort\_details. After calling this, abort\_details\(\) will return value.|
 |clear\_abort\_details\(\)|void|void|Clears the value of abort\_details. After calling this, abort\_details\(\) will return the empty string/empty bytes.|
 |has\_connection\(\) const|bool|void|Returns true if connection is set.|
 |connection\(\)|const [Connection](msg_Common_Connection.md#)&|void|Returns the current value of connection. If connection is not set, returns a [Connection](msg_Common_Connection.md#) with none of its fields set \(possibly connection::default\_instance\(\)\).|

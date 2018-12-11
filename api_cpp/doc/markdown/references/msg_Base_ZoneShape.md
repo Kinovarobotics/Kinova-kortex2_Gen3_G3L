@@ -12,7 +12,7 @@ Provides a protection zone shape description
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|shape\_type|uint32|Shape type|
+|shape\_type| [ShapeType](enm_Base_ShapeType.md#)|Shape type|
 |origin| [Point](msg_Base_Point.md#)|Origin of the protection zone shape from reference \(in meters\)|
 |orientation| [RotationMatrix](msg_Base_RotationMatrix.md#)|Rotation matrix to provide shape orientation|
 |dimensions|float32|Shape size measurement \(in meters\). If rectangular prism: x, y and z dimensions. If cylinder: radius and height. If sphere: radius|
@@ -20,12 +20,12 @@ Provides a protection zone shape description
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|shape\_type\(\) const|uint32|void|Returns the current value of shape\_type. If the shape\_type is not set, returns 0.|
-|set\_shape\_type\(\)|void|uint32|Sets the value of shape\_type. After calling this, shape\_type\(\) will return value.|
+|shape\_type\(\) const| [ShapeType](enm_Base_ShapeType.md#)|void|Returns the current value of shape\_type. If the shape\_type is not set, returns 0.|
+|set\_shape\_type\(\)|void| [ShapeType](enm_Base_ShapeType.md#)|Sets the value of shape\_type. After calling this, shape\_type\(\) will return value.|
 |clear\_shape\_type\(\)|void|void|Clears the value of shape\_type. After calling this, shape\_type\(\) will return the empty string/empty bytes.|
 |has\_origin\(\) const|bool|void|Returns true if origin is set.|
 |origin\(\)|const [Point](msg_Base_Point.md#)&|void|Returns the current value of origin. If origin is not set, returns a [Point](msg_Base_Point.md#) with none of its fields set \(possibly origin::default\_instance\(\)\).|

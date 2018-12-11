@@ -12,18 +12,18 @@ Defines a command to control the gripper movement
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|mode|uint32|Mode in which to control the gripper|
+|mode| [GripperMode](enm_Base_GripperMode.md#)|Mode in which to control the gripper|
 |gripper| [Gripper](msg_Base_Gripper.md#)|In position, admissible values for each finger is between 0 and 1.0, where 0 is closed and 1.0 is fully open. In speed or torque, admissible values for each finger is between -1.0 and 1.0, where 1.0 corresponds to maximum opening speed and -1.0 corresponds to maximum closing speed. Gripper movement values|
 |duration|uint32|Duration constraint. If not 0, allows to set a limit \(in seconds\) to the GripperCommand|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|mode\(\) const|uint32|void|Returns the current value of mode. If the mode is not set, returns 0.|
-|set\_mode\(\)|void|uint32|Sets the value of mode. After calling this, mode\(\) will return value.|
+|mode\(\) const| [GripperMode](enm_Base_GripperMode.md#)|void|Returns the current value of mode. If the mode is not set, returns 0.|
+|set\_mode\(\)|void| [GripperMode](enm_Base_GripperMode.md#)|Sets the value of mode. After calling this, mode\(\) will return value.|
 |clear\_mode\(\)|void|void|Clears the value of mode. After calling this, mode\(\) will return the empty string/empty bytes.|
 |has\_gripper\(\) const|bool|void|Returns true if gripper is set.|
 |gripper\(\)|const [Gripper](msg_Base_Gripper.md#)&|void|Returns the current value of gripper. If gripper is not set, returns a [Gripper](msg_Base_Gripper.md#) with none of its fields set \(possibly gripper::default\_instance\(\)\).|

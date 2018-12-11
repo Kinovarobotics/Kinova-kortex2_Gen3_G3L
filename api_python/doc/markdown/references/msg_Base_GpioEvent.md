@@ -12,7 +12,7 @@ Identifies a GPIO event \(future\)
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|gpio\_state|int|New GPIO state|
+|gpio\_state| [GpioState](enm_Base_GpioState.md#)|New GPIO state|
 |device\_identifier|int|GPIO device identifier for which this event occured|
 
 **Parent topic:** [Base](../references/summary_Base.md)

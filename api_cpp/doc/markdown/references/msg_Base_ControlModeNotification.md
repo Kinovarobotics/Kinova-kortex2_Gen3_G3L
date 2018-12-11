@@ -12,19 +12,19 @@ Message that contains a control mode event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|control\_mode|uint32|New control mode|
+|control\_mode| [ControlMode](enm_Base_ControlMode.md#)|New control mode|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the control mode event|
 |connection| [Connection](msg_Common_Connection.md#)|Connection that caused the control mode event|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|control\_mode\(\) const|uint32|void|Returns the current value of control\_mode. If the control\_mode is not set, returns 0.|
-|set\_control\_mode\(\)|void|uint32|Sets the value of control\_mode. After calling this, control\_mode\(\) will return value.|
+|control\_mode\(\) const| [ControlMode](enm_Base_ControlMode.md#)|void|Returns the current value of control\_mode. If the control\_mode is not set, returns 0.|
+|set\_control\_mode\(\)|void| [ControlMode](enm_Base_ControlMode.md#)|Sets the value of control\_mode. After calling this, control\_mode\(\) will return value.|
 |clear\_control\_mode\(\)|void|void|Clears the value of control\_mode. After calling this, control\_mode\(\) will return the empty string/empty bytes.|
 |has\_timestamp\(\) const|bool|void|Returns true if timestamp is set.|
 |timestamp\(\)|const [Timestamp](msg_Common_Timestamp.md#)&|void|Returns the current value of timestamp. If timestamp is not set, returns a [Timestamp](msg_Common_Timestamp.md#) with none of its fields set \(possibly timestamp::default\_instance\(\)\).|

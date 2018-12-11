@@ -30,8 +30,6 @@ def example_api_creation():
     transport.connect(DEVICE_IP, DEVICE_PORT)
     router = RouterClient(transport, lambda kException: print("Error during connection"))
 
-    session_manager = SessionManager(router)
-
     # Create session
     session_info = Session_pb2.CreateSessionInfo()
     session_info.username = 'admin'
@@ -40,6 +38,7 @@ def example_api_creation():
     session_info.connection_inactivity_timeout = 2000 # 2 second
 
     print("Creating session for communication")
+    session_manager = SessionManager(router)
     session_manager.CreateSession(session_info)
 
     # Create needed services
@@ -49,8 +48,10 @@ def example_api_creation():
     print(device_config_service.GetDeviceType())
     print(base_client_service.GetAvailableWifi())
 
-    
-if __name__ == "__main__":
-    
-    example_api_creation()
+    session_manager.CloseSession()
 
+
+if __name__ == "__main__":
+
+    # example core
+    example_api_creation()

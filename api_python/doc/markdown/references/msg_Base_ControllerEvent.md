@@ -12,8 +12,8 @@ Identifies a controller event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|input\_type|int|Type of controller input that caused the event\_identifier|
-|behavior|int|Controller behavior that occured|
+|input\_type| [ControllerInputType](enm_Base_ControllerInputType.md#)|Type of controller input that caused the event\_identifier|
+|behavior| [ControllerBehavior](enm_Base_ControllerBehavior.md#)|Controller behavior that occured|
 |input\_identifier|int|Controller input that caused the event|
 
 **Parent topic:** [Base](../references/summary_Base.md)

@@ -12,7 +12,7 @@ Provides information about a sequence
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|event\_identifier|int|Sequence event type|
+|event\_identifier| [EventIdSequenceInfoNotification](enm_Base_EventIdSequenceInfoNotification.md#)|Sequence event type|
 |task\_index|int|Task index|
 |task\_identifier|int|Task identifier|
 

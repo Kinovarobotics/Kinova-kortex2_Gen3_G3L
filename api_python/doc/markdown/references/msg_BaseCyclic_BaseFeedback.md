@@ -11,7 +11,7 @@ This page describes the Python Kinova.Api.BaseCyclic.BaseFeedback message.
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |active\_state\_connection\_identifier|int|Connection identifier of the last processed command which triggered an arm state change|
-|active\_state|int|Active state of the arm|
+|active\_state| [ArmState](enm_Common_ArmState.md#)|Active state of the arm|
 |arm\_voltage|float|Arm voltage \(in Volts\)|
 |arm\_current|float|Arm current \(in Amperes\)|
 |temperature\_cpu|float|CPU temperature \(in degree Celcius\)|

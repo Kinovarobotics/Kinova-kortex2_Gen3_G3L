@@ -12,18 +12,18 @@ Defines a twist \(velocity\) command
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|mode|uint32|Mode in which the command is executed|
+|mode| [TwistMode](enm_Base_TwistMode.md#)|Mode in which the command is executed|
 |twist| [Twist](msg_Base_Twist.md#)|Twist value|
 |duration|uint32|Duration constrant. If not 0, allows to set a limit \(in seconds\) to the TwistCommand \(future\)|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|mode\(\) const|uint32|void|Returns the current value of mode. If the mode is not set, returns 0.|
-|set\_mode\(\)|void|uint32|Sets the value of mode. After calling this, mode\(\) will return value.|
+|mode\(\) const| [TwistMode](enm_Base_TwistMode.md#)|void|Returns the current value of mode. If the mode is not set, returns 0.|
+|set\_mode\(\)|void| [TwistMode](enm_Base_TwistMode.md#)|Sets the value of mode. After calling this, mode\(\) will return value.|
 |clear\_mode\(\)|void|void|Clears the value of mode. After calling this, mode\(\) will return the empty string/empty bytes.|
 |has\_twist\(\) const|bool|void|Returns true if twist is set.|
 |twist\(\)|const [Twist](msg_Base_Twist.md#)&|void|Returns the current value of twist. If twist is not set, returns a [Twist](msg_Base_Twist.md#) with none of its fields set \(possibly twist::default\_instance\(\)\).|

@@ -12,7 +12,7 @@ Message that contains a user event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|user\_event|int|User event type|
+|user\_event| [UserEvent](enm_Base_UserEvent.md#)|User event type|
 |modified\_user| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User profile that was modified|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the user profile event \(i.e. user who changed the user profile\)|

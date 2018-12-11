@@ -23,25 +23,27 @@ from jaco3_armbase.autogen.messages import DeviceConfig_pb2, Session_pb2, Base_p
 
 def example_call_rpc_using_options(base_service):
 
-    wifi_configuration = Base_pb2.WifiConfiguration()
-    wifi_configuration.ssid.identifier = "MyWifi_SSID"
-    wifi_configuration.security_key = "MyWifi_Password"
-    wifi_configuration.connect_automatically = True
-
     # The RouterClientSendOptions exist to modify the default behavior
     # of the router. The router default value are 
-    #     andForget = False
-    #     delay_ms = 0
+    #     andForget = False     (not implemented yet)
+    #     delay_ms = 0          (not implemented yet)
     #     timeout_ms = 10000
 
     # The RouterClientSendOptions is optional and need to be pass with the keyword
     # options
     router_options = RouterClientSendOptions()
-    router_options.timeout_ms = 1000 # 1 sec
+    router_options.timeout_ms = 5000 # 5 seconds
 
     # The same function call without the options=router_options is valid and will do the same
     # using the router default value
-    base_service.AddWifiConfiguration(wifi_configuration, options=router_options)  
+    wifi_list = base_service.GetAvailableWifi(options=router_options)
+    for wifi in wifi_list.wifi_information_list:
+        print("============================================")
+        print("Ssid : {0}".format(wifi.ssid.identifier))
+        print("Wifi security type : {0}".format(wifi.security_type))
+        print("Wifi encryption type : {0}".format(wifi.encryption_type))
+        print("Signal strength : {0}".format(wifi.signal_strength))
+        print("============================================")
 
 
 if __name__ == "__main__":
@@ -66,3 +68,5 @@ if __name__ == "__main__":
 
     # example core
     example_call_rpc_using_options(base_service)
+
+    session_manager.CloseSession()

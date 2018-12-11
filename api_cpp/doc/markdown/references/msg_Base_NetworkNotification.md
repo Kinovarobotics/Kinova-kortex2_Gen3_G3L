@@ -12,19 +12,19 @@ Message that contains a network event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|event|uint32|Event type|
+|event| [NetworkEvent](enm_Base_NetworkEvent.md#)|Event type|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the network event to occur|
 |connection| [Connection](msg_Common_Connection.md#)|Connection that caused the network event to occur|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|event\(\) const|uint32|void|Returns the current value of event. If the event is not set, returns 0.|
-|set\_event\(\)|void|uint32|Sets the value of event. After calling this, event\(\) will return value.|
+|event\(\) const| [NetworkEvent](enm_Base_NetworkEvent.md#)|void|Returns the current value of event. If the event is not set, returns 0.|
+|set\_event\(\)|void| [NetworkEvent](enm_Base_NetworkEvent.md#)|Sets the value of event. After calling this, event\(\) will return value.|
 |clear\_event\(\)|void|void|Clears the value of event. After calling this, event\(\) will return the empty string/empty bytes.|
 |has\_timestamp\(\) const|bool|void|Returns true if timestamp is set.|
 |timestamp\(\)|const [Timestamp](msg_Common_Timestamp.md#)&|void|Returns the current value of timestamp. If timestamp is not set, returns a [Timestamp](msg_Common_Timestamp.md#) with none of its fields set \(possibly timestamp::default\_instance\(\)\).|

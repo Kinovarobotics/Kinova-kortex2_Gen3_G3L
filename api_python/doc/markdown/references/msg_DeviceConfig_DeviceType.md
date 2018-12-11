@@ -12,7 +12,7 @@ Message specifying the device type
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|device\_type|int|Device type|
+|device\_type| [DeviceTypes](enm_Common_DeviceTypes.md#)|Device type|
 
 **Parent topic:** [DeviceConfig](../references/summary_DeviceConfig.md)
 

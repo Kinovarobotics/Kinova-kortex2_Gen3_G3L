@@ -12,7 +12,7 @@ Defines control loop parameters \(discrete transfer function\)
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|loop\_selection|uint32|ControlLoopSelection enum|
+|loop\_selection| [ControlLoopSelection](enm_ActuatorConfig_ControlLoopSelection.md#)|ControlLoopSelection enum|
 |error\_saturation|float32|Error saturation value|
 |output\_saturation|float32|Output saturation value|
 |kAz|float32|KAz \(index 0 to 4\): denominator gains A1 to A5|
@@ -20,12 +20,12 @@ Defines control loop parameters \(discrete transfer function\)
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|loop\_selection\(\) const|uint32|void|Returns the current value of loop\_selection. If the loop\_selection is not set, returns 0.|
-|set\_loop\_selection\(\)|void|uint32|Sets the value of loop\_selection. After calling this, loop\_selection\(\) will return value.|
+|loop\_selection\(\) const| [ControlLoopSelection](enm_ActuatorConfig_ControlLoopSelection.md#)|void|Returns the current value of loop\_selection. If the loop\_selection is not set, returns 0.|
+|set\_loop\_selection\(\)|void| [ControlLoopSelection](enm_ActuatorConfig_ControlLoopSelection.md#)|Sets the value of loop\_selection. After calling this, loop\_selection\(\) will return value.|
 |clear\_loop\_selection\(\)|void|void|Clears the value of loop\_selection. After calling this, loop\_selection\(\) will return the empty string/empty bytes.|
 |error\_saturation\(\)|float32|void|Returns the current value of error\_saturation. If the error\_saturation is not set, returns 0.|
 |set\_error\_saturation\(\)|void|float32|Sets the value of error\_saturation. After calling this, error\_saturation\(\) will return value.|

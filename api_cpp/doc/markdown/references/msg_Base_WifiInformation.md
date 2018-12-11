@@ -15,14 +15,14 @@ Provides information about a specific Wi-Fi network
 |ssid| [Ssid](msg_Base_Ssid.md#)|SSID|
 |security\_type|uint32|Wi-Fi security type|
 |encryption\_type|uint32|Wi-Fi encryption type|
-|signal\_quality|uint32|Wi-Fi signal quality|
+|signal\_quality| [SignalQuality](enm_Base_SignalQuality.md#)|Wi-Fi signal quality|
 |signal\_strength|int32|Wi-Fi signal power in dBm|
 |frequency|uint32|Wi-Fi operating frequency \(channel\) in MHz|
 |channel|uint32|Wi-Fi operating channel|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
@@ -38,8 +38,8 @@ The methods listed below are some of the most commonly used. Please refer to Goo
 |encryption\_type\(\)|uint32|void|Returns the current value of encryption\_type. If the encryption\_type is not set, returns 0.|
 |set\_encryption\_type\(\)|void|uint32|Sets the value of encryption\_type. After calling this, encryption\_type\(\) will return value.|
 |clear\_encryption\_type\(\)|void|void|Clears the value of encryption\_type. After calling this, encryption\_type\(\) will return 0.|
-|signal\_quality\(\) const|uint32|void|Returns the current value of signal\_quality. If the signal\_quality is not set, returns 0.|
-|set\_signal\_quality\(\)|void|uint32|Sets the value of signal\_quality. After calling this, signal\_quality\(\) will return value.|
+|signal\_quality\(\) const| [SignalQuality](enm_Base_SignalQuality.md#)|void|Returns the current value of signal\_quality. If the signal\_quality is not set, returns 0.|
+|set\_signal\_quality\(\)|void| [SignalQuality](enm_Base_SignalQuality.md#)|Sets the value of signal\_quality. After calling this, signal\_quality\(\) will return value.|
 |clear\_signal\_quality\(\)|void|void|Clears the value of signal\_quality. After calling this, signal\_quality\(\) will return the empty string/empty bytes.|
 |signal\_strength\(\)|int32|void|Returns the current value of signal\_strength. If the signal\_strength is not set, returns 0.|
 |set\_signal\_strength\(\)|void|int32|Sets the value of signal\_strength. After calling this, signal\_strength\(\) will return value.|

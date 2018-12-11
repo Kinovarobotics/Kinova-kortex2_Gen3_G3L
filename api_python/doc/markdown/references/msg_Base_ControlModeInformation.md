@@ -12,7 +12,7 @@ Provides control mode information
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|mode|int|Control mode|
+|mode| [ControlMode](enm_Base_ControlMode.md#)|Control mode|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

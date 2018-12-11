@@ -12,7 +12,7 @@ Defines a frequency response
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|loop\_selection|int|ControlLoopSelection enum|
+|loop\_selection| [ControlLoopSelection](enm_ActuatorConfig_ControlLoopSelection.md#)|ControlLoopSelection enum|
 |min\_frequency|float|Minimum frequency value|
 |max\_frequency|float|Maximum frequency value|
 |amplitude|float|Amplitude value|

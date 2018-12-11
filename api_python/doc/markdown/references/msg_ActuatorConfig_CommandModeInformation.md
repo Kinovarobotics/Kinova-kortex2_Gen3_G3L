@@ -12,7 +12,7 @@ Selects a command mode
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|command\_mode|int|Command mode|
+|command\_mode| [CommandMode](enm_ActuatorConfig_CommandMode.md#)|Command mode|
 
 **Parent topic:** [ActuatorConfig](../references/summary_ActuatorConfig.md)
 

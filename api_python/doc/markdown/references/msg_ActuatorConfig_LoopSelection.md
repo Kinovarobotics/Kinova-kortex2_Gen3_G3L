@@ -12,7 +12,7 @@ Defines the loop selection
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|loop\_selection|int|ControlLoopSelection enum|
+|loop\_selection| [ControlLoopSelection](enm_ActuatorConfig_ControlLoopSelection.md#)|ControlLoopSelection enum|
 
 **Parent topic:** [ActuatorConfig](../references/summary_ActuatorConfig.md)
 

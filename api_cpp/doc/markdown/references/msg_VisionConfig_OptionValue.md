@@ -12,21 +12,21 @@ Identifies the value of the particular option for the sensor.
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|sensor|uint32|The sensor to configure \(color or depth\)|
-|option|uint32|The option to configure|
+|sensor| [Sensor](enm_VisionConfig_Sensor.md#)|The sensor to configure \(color or depth\)|
+|option| [Option](enm_VisionConfig_Option.md#)|The option to configure|
 |value|float32|The desired value for the option|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|sensor\(\) const|uint32|void|Returns the current value of sensor. If the sensor is not set, returns 0.|
-|set\_sensor\(\)|void|uint32|Sets the value of sensor. After calling this, sensor\(\) will return value.|
+|sensor\(\) const| [Sensor](enm_VisionConfig_Sensor.md#)|void|Returns the current value of sensor. If the sensor is not set, returns 0.|
+|set\_sensor\(\)|void| [Sensor](enm_VisionConfig_Sensor.md#)|Sets the value of sensor. After calling this, sensor\(\) will return value.|
 |clear\_sensor\(\)|void|void|Clears the value of sensor. After calling this, sensor\(\) will return the empty string/empty bytes.|
-|option\(\) const|uint32|void|Returns the current value of option. If the option is not set, returns 0.|
-|set\_option\(\)|void|uint32|Sets the value of option. After calling this, option\(\) will return value.|
+|option\(\) const| [Option](enm_VisionConfig_Option.md#)|void|Returns the current value of option. If the option is not set, returns 0.|
+|set\_option\(\)|void| [Option](enm_VisionConfig_Option.md#)|Sets the value of option. After calling this, option\(\) will return value.|
 |clear\_option\(\)|void|void|Clears the value of option. After calling this, option\(\) will return the empty string/empty bytes.|
 |value\(\)|float32|void|Returns the current value of value. If the value is not set, returns 0.|
 |set\_value\(\)|void|float32|Sets the value of value. After calling this, value\(\) will return value.|

@@ -12,7 +12,7 @@ Defines a joint trajectory constraint that can be applied when controlling a joi
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|type|int|Joint trajectory constraint type|
+|type| [JointTrajectoryConstraintType](enm_Base_JointTrajectoryConstraintType.md#)|Joint trajectory constraint type|
 |value|float|Constraint value \(in seconds or in meters per second depending on constraint type\)|
 
 **Parent topic:** [Base](../references/summary_Base.md)

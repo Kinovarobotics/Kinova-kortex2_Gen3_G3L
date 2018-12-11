@@ -12,7 +12,7 @@ Provides a protection zone shape description
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|shape\_type|int|Shape type|
+|shape\_type| [ShapeType](enm_Base_ShapeType.md#)|Shape type|
 |origin| [Point](msg_Base_Point.md#)|Origin of the protection zone shape from reference \(in meters\)|
 |orientation| [RotationMatrix](msg_Base_RotationMatrix.md#)|Rotation matrix to provide shape orientation|
 |dimensions|float|Shape size measurement \(in meters\). If rectangular prism: x, y and z dimensions. If cylinder: radius and height. If sphere: radius|
