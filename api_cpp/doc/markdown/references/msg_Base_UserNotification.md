@@ -12,7 +12,7 @@ Message that contains a user event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|user\_event|uint32|User event type|
+|user\_event| [UserEvent](enm_Base_UserEvent.md#)|User event type|
 |modified\_user| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User profile that was modified|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the user profile event \(i.e. user who changed the user profile\)|
@@ -20,12 +20,12 @@ Message that contains a user event
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|user\_event\(\) const|uint32|void|Returns the current value of user\_event. If the user\_event is not set, returns 0.|
-|set\_user\_event\(\)|void|uint32|Sets the value of user\_event. After calling this, user\_event\(\) will return value.|
+|user\_event\(\) const| [UserEvent](enm_Base_UserEvent.md#)|void|Returns the current value of user\_event. If the user\_event is not set, returns 0.|
+|set\_user\_event\(\)|void| [UserEvent](enm_Base_UserEvent.md#)|Sets the value of user\_event. After calling this, user\_event\(\) will return value.|
 |clear\_user\_event\(\)|void|void|Clears the value of user\_event. After calling this, user\_event\(\) will return the empty string/empty bytes.|
 |has\_modified\_user\(\) const|bool|void|Returns true if modified\_user is set.|
 |modified\_user\(\)|const [UserProfileHandle](msg_Common_UserProfileHandle.md#)&|void|Returns the current value of modified\_user. If modified\_user is not set, returns a [UserProfileHandle](msg_Common_UserProfileHandle.md#) with none of its fields set \(possibly modified\_user::default\_instance\(\)\).|

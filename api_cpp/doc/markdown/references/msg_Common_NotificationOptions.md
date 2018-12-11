@@ -12,18 +12,18 @@ Specifies options associated to a Notification
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|type|uint32|Type of notification|
+|type| [NotificationType](enm_Common_NotificationType.md#)|Type of notification|
 |rate\_m\_sec|uint32|Rate value \(in meters per second\) \(if applicable\)|
 |threshold\_value|float32|Threshold value \(if applicable\)|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|type\(\) const|uint32|void|Returns the current value of type. If the type is not set, returns 0.|
-|set\_type\(\)|void|uint32|Sets the value of type. After calling this, type\(\) will return value.|
+|type\(\) const| [NotificationType](enm_Common_NotificationType.md#)|void|Returns the current value of type. If the type is not set, returns 0.|
+|set\_type\(\)|void| [NotificationType](enm_Common_NotificationType.md#)|Sets the value of type. After calling this, type\(\) will return value.|
 |clear\_type\(\)|void|void|Clears the value of type. After calling this, type\(\) will return the empty string/empty bytes.|
 |rate\_m\_sec\(\)|uint32|void|Returns the current value of rate\_m\_sec. If the rate\_m\_sec is not set, returns 0.|
 |set\_rate\_m\_sec\(\)|void|uint32|Sets the value of rate\_m\_sec. After calling this, rate\_m\_sec\(\) will return value.|

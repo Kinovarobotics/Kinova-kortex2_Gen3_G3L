@@ -12,7 +12,7 @@ Message that contains a protection zone event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|event|int|Event type|
+|event| [ProtectionZoneEvent](enm_Base_ProtectionZoneEvent.md#)|Event type|
 |handle| [ProtectionZoneHandle](msg_Base_ProtectionZoneHandle.md#)|Handle of the protection zone that this event refers to|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the protection zone event to occur|

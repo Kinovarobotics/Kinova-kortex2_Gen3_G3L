@@ -12,7 +12,7 @@ Provides information about the servoing mode
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|servoing\_mode|int|Servoing mode|
+|servoing\_mode| [ServoingMode](enm_Base_ServoingMode.md#)|Servoing mode|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

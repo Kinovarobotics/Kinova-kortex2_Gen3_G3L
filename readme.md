@@ -10,25 +10,30 @@
 *
 -->
 
+<h1>KINOVA<sup>®</sup> KORTEX™ API Reference</h1>
+
+<a id="markdown-description" name="description"></a>
+# Description
+
+The official repository containing documentation and examples explaining how to use the KINOVA<sup>®</sup> KORTEX™ API client with multiple languages (C++, Python).  
+
+
+Kortex GitHub: https://github.com/Kinovarobotics/kortex  
+
+<h1>Table Of Contents</h1>
+
 <!-- TOC -->
 
 - [Description](#description)
 - [Licensing](#licensing)
 - [Role of Google Protobuf in Kortex API](#role-of-google-protobuf-in-kortex-api)
     - [Quick Start HowTo Python](#quick-start-howto-python)
+- [API Download Links](#api-download-links)
 - [API details for a specific language](#api-details-for-a-specific-language)
 - [Reference](#reference)
             - [Useful Links](#useful-links)
 
 <!-- /TOC -->
-
-<a id="markdown-description" name="description"></a>
-# Description
-Repository containing documentations and examples using Kortex
-API client using multiple languages *(C++, Python)*.  
-  
-Part of the __**Kinova® Kortex™ suite**__  
-Kortex GitHub: https://github.com/Kinovarobotics/kortex  
 
 <a id="markdown-licensing" name="licensing"></a>
 # Licensing 
@@ -58,6 +63,12 @@ When using the Kortex API a developer will have to understand the protobuf featu
   > Here some general information about python interpreter & pip modules' manager.  
   > **[Python General Information](./linked_md/python_quick_start.md)**
 
+<a id="markdown-api-download-links" name="api-download-links"></a>
+# API Download Links
+
+Download the archive via the Kinova goggle drive: **[kortex_api](https://drive.google.com/file/d/19zfCNlRUfNBbZoMW9LOpLjVrYOO2BwYb/view)**  
+*More details about it in following section: **[API details for a specific language](#api-details-for-a-specific-language)***
+
 <a id="markdown-api-details-for-a-specific-language" name="api-details-for-a-specific-language"></a>
 # API details for a specific language
 
@@ -72,11 +83,3 @@ When using the Kortex API a developer will have to understand the protobuf featu
 | ---: | --- |  
 | Kinova home page: | https://www.kinovarobotics.com |  
 | Google Protobuf home page: | https://developers.google.com/protocol-buffers |  
-<!--
-| Docker home page: | https://www.docker.com |  
--->
-___________________________
-
-[How to contribute]: ./linked_md/contributing.md  
-[Installing docker]: ./linked_md/installation_docker.md  
-[Using docker]: ./linked_md/howto_docker.md  

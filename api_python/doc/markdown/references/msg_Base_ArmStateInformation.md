@@ -12,7 +12,7 @@ Provides information about the arm state
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|active\_state|int|Arm active state|
+|active\_state| [ArmState](enm_Common_ArmState.md#)|Arm active state|
 |connection| [Connection](msg_Common_Connection.md#)|Connection information of the last processed command which triggered an arm state change|
 
 **Parent topic:** [Base](../references/summary_Base.md)

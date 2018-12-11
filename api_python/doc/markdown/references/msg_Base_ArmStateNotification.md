@@ -12,7 +12,7 @@ Message that contains a arm state event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|active\_state|int|New arm state|
+|active\_state| [ArmState](enm_Common_ArmState.md#)|New arm state|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |connection| [Connection](msg_Common_Connection.md#)|Connection that caused the arm state event|
 

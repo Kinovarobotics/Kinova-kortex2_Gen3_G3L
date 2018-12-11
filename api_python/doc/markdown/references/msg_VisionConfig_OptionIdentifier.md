@@ -12,8 +12,8 @@ Identifies the sensor and the option to configure.
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|sensor|int|The sensor to configure|
-|option|int|The option to configure on the sensor|
+|sensor| [Sensor](enm_VisionConfig_Sensor.md#)|The sensor to configure|
+|option| [Option](enm_VisionConfig_Option.md#)|The option to configure on the sensor|
 
 **Parent topic:** [VisionConfig](../references/summary_VisionConfig.md)
 

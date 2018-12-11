@@ -12,7 +12,7 @@ Defines a Cartesian reference frame
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|reference\_frame|int|Reference frame|
+|reference\_frame| [CartesianReferenceFrame](enm_Base_CartesianReferenceFrame.md#)|Reference frame|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

@@ -12,18 +12,18 @@ Message that contains a arm state event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|active\_state|uint32|New arm state|
+|active\_state| [ArmState](enm_Common_ArmState.md#)|New arm state|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |connection| [Connection](msg_Common_Connection.md#)|Connection that caused the arm state event|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|active\_state\(\) const|uint32|void|Returns the current value of active\_state. If the active\_state is not set, returns 0.|
-|set\_active\_state\(\)|void|uint32|Sets the value of active\_state. After calling this, active\_state\(\) will return value.|
+|active\_state\(\) const| [ArmState](enm_Common_ArmState.md#)|void|Returns the current value of active\_state. If the active\_state is not set, returns 0.|
+|set\_active\_state\(\)|void| [ArmState](enm_Common_ArmState.md#)|Sets the value of active\_state. After calling this, active\_state\(\) will return value.|
 |clear\_active\_state\(\)|void|void|Clears the value of active\_state. After calling this, active\_state\(\) will return the empty string/empty bytes.|
 |has\_timestamp\(\) const|bool|void|Returns true if timestamp is set.|
 |timestamp\(\)|const [Timestamp](msg_Common_Timestamp.md#)&|void|Returns the current value of timestamp. If timestamp is not set, returns a [Timestamp](msg_Common_Timestamp.md#) with none of its fields set \(possibly timestamp::default\_instance\(\)\).|

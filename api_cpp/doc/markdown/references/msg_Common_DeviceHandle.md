@@ -12,18 +12,18 @@ Identifies a device
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|device\_type|uint32|Device type|
+|device\_type| [DeviceTypes](enm_Common_DeviceTypes.md#)|Device type|
 |device\_identifier|uint32|Unique device identifier \(used with other services\)|
 |order|uint32|Unique value indicating the order of that device versus the others to facilitate representation|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|device\_type\(\) const|uint32|void|Returns the current value of device\_type. If the device\_type is not set, returns 0.|
-|set\_device\_type\(\)|void|uint32|Sets the value of device\_type. After calling this, device\_type\(\) will return value.|
+|device\_type\(\) const| [DeviceTypes](enm_Common_DeviceTypes.md#)|void|Returns the current value of device\_type. If the device\_type is not set, returns 0.|
+|set\_device\_type\(\)|void| [DeviceTypes](enm_Common_DeviceTypes.md#)|Sets the value of device\_type. After calling this, device\_type\(\) will return value.|
 |clear\_device\_type\(\)|void|void|Clears the value of device\_type. After calling this, device\_type\(\) will return the empty string/empty bytes.|
 |device\_identifier\(\)|uint32|void|Returns the current value of device\_identifier. If the device\_identifier is not set, returns 0.|
 |set\_device\_identifier\(\)|void|uint32|Sets the value of device\_identifier. After calling this, device\_identifier\(\) will return value.|

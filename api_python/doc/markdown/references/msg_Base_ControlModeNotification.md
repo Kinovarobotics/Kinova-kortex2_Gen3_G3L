@@ -12,7 +12,7 @@ Message that contains a control mode event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|control\_mode|int|New control mode|
+|control\_mode| [ControlMode](enm_Base_ControlMode.md#)|New control mode|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the control mode event|
 |connection| [Connection](msg_Common_Connection.md#)|Connection that caused the control mode event|

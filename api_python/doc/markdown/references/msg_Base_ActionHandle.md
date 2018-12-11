@@ -13,7 +13,7 @@ Identifies an action
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |identifier|int|Action identifier|
-|action\_type|int|Action type|
+|action\_type| [ActionType](enm_Base_ActionType.md#)|Action type|
 |permission|int|Permission of specified Action entity. Must use 'Kinova.Api.Common.Permission' enum.|
 
 **Parent topic:** [Base](../references/summary_Base.md)

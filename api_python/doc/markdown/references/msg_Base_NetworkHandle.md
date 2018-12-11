@@ -12,7 +12,7 @@ Identifies a network
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|type|int|Network type|
+|type| [NetworkType](enm_Base_NetworkType.md#)|Network type|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

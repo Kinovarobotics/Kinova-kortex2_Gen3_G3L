@@ -12,7 +12,7 @@ Defines the admittance mode
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|admittance\_mode|int|mode|
+|admittance\_mode| [AdmittanceMode](enm_Base_AdmittanceMode.md#)|mode|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

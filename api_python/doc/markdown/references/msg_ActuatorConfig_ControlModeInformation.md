@@ -12,7 +12,7 @@ Defines the control mode
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|control\_mode|int|Control mode|
+|control\_mode| [ControlMode](enm_ActuatorConfig_ControlMode.md#)|Control mode|
 
 **Parent topic:** [ActuatorConfig](../references/summary_ActuatorConfig.md)
 

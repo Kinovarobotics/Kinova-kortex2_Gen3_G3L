@@ -12,7 +12,7 @@ Message used to request all action instances of a specific action type
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|action\_type|int|Action type|
+|action\_type| [ActionType](enm_Base_ActionType.md#)|Action type|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

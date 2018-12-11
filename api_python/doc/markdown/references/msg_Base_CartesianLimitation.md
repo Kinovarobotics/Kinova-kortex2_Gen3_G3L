@@ -12,7 +12,7 @@ Provides a Cartesian limitation configuration
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|type|int|Limitation type|
+|type| [LimitationType](enm_Base_LimitationType.md#)|Limitation type|
 |translation|float|Translation limitation|
 |orientation|float|Orientation limitation|
 

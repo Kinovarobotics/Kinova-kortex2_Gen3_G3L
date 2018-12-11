@@ -12,7 +12,7 @@ Specifies options associated to a Notification
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|type|int|Type of notification|
+|type| [NotificationType](enm_Common_NotificationType.md#)|Type of notification|
 |rate\_m\_sec|int|Rate value \(in meters per second\) \(if applicable\)|
 |threshold\_value|float|Threshold value \(if applicable\)|
 

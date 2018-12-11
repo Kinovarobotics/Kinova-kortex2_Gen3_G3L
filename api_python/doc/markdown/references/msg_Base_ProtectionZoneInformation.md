@@ -12,7 +12,7 @@ Provides information about a protection zone
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|event|int|Event type|
+|event| [ProtectionZoneEvent](enm_Base_ProtectionZoneEvent.md#)|Event type|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

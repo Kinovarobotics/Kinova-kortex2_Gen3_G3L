@@ -12,7 +12,7 @@ Identifies the sensor to configure.
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|sensor|int|Sensor|
+|sensor| [Sensor](enm_VisionConfig_Sensor.md#)|Sensor|
 
 **Parent topic:** [VisionConfig](../references/summary_VisionConfig.md)
 

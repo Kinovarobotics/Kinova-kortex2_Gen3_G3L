@@ -12,7 +12,7 @@ Message that contains an operating mode event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|operating\_mode|int|New operating mode|
+|operating\_mode| [OperatingMode](enm_Base_OperatingMode.md#)|New operating mode|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the operating mode event|
 |connection| [Connection](msg_Common_Connection.md#)|Connection that caused the operating mode event|

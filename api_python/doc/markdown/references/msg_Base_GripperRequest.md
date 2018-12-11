@@ -12,7 +12,7 @@ Message used to request the current gripper movement in either position, force o
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|mode|int|Mode for which the gripper movement status is requested|
+|mode| [GripperMode](enm_Base_GripperMode.md#)|Mode for which the gripper movement status is requested|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

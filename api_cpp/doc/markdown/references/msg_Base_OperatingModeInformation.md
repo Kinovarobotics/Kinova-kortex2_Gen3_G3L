@@ -12,17 +12,17 @@ Provides information about the operating mode
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|operating\_mode|uint32|Operating mode|
+|operating\_mode| [OperatingMode](enm_Base_OperatingMode.md#)|Operating mode|
 |device\_handle| [DeviceHandle](msg_Common_DeviceHandle.md#)|Device matching operating mode \(if applicable\)|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|operating\_mode\(\) const|uint32|void|Returns the current value of operating\_mode. If the operating\_mode is not set, returns 0.|
-|set\_operating\_mode\(\)|void|uint32|Sets the value of operating\_mode. After calling this, operating\_mode\(\) will return value.|
+|operating\_mode\(\) const| [OperatingMode](enm_Base_OperatingMode.md#)|void|Returns the current value of operating\_mode. If the operating\_mode is not set, returns 0.|
+|set\_operating\_mode\(\)|void| [OperatingMode](enm_Base_OperatingMode.md#)|Sets the value of operating\_mode. After calling this, operating\_mode\(\) will return value.|
 |clear\_operating\_mode\(\)|void|void|Clears the value of operating\_mode. After calling this, operating\_mode\(\) will return the empty string/empty bytes.|
 |has\_device\_handle\(\) const|bool|void|Returns true if device\_handle is set.|
 |device\_handle\(\)|const [DeviceHandle](msg_Common_DeviceHandle.md#)&|void|Returns the current value of device\_handle. If device\_handle is not set, returns a [DeviceHandle](msg_Common_DeviceHandle.md#) with none of its fields set \(possibly device\_handle::default\_instance\(\)\).|

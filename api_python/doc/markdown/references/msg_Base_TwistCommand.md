@@ -12,7 +12,7 @@ Defines a twist \(velocity\) command
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|mode|int|Mode in which the command is executed|
+|mode| [TwistMode](enm_Base_TwistMode.md#)|Mode in which the command is executed|
 |twist| [Twist](msg_Base_Twist.md#)|Twist value|
 |duration|int|Duration constrant. If not 0, allows to set a limit \(in seconds\) to the TwistCommand \(future\)|
 

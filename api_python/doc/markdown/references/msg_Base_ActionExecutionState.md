@@ -12,7 +12,7 @@ Indicates the execution state of an action \(future\)
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|action\_event|int|Action event type|
+|action\_event| [ActionEvent](enm_Base_ActionEvent.md#)|Action event type|
 |handle| [ActionHandle](msg_Base_ActionHandle.md#)|Identifies the action for which this event occured|
 
 **Parent topic:** [Base](../references/summary_Base.md)

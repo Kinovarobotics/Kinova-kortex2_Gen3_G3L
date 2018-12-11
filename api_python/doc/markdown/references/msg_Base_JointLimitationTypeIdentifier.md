@@ -13,7 +13,7 @@ Identifies a joint limitation for a specific joint
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |device\_identifier|int|Joint device identifier|
-|type|int|Joint limitation type|
+|type| [LimitationType](enm_Base_LimitationType.md#)|Joint limitation type|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

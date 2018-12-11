@@ -12,7 +12,7 @@ Enables or disables a specific communication interface \(ex. Wi-Fi, Wired Ethern
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|type|int|Network type \(ex. Wi-Fi, Wired Ethernet\)|
+|type| [NetworkType](enm_Base_NetworkType.md#)|Network type \(ex. Wi-Fi, Wired Ethernet\)|
 |enable|bool|Enable configuration. Set to true to enable network, false otherwise|
 
 **Parent topic:** [Base](../references/summary_Base.md)

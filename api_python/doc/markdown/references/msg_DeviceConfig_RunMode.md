@@ -12,7 +12,7 @@ Message specifying the run mode
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|run\_mode|int|Run mode|
+|run\_mode| [RunModes](enm_DeviceConfig_RunModes.md#)|Run mode|
 
 **Parent topic:** [DeviceConfig](../references/summary_DeviceConfig.md)
 

@@ -12,7 +12,7 @@ Defines joint limitation value
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|type|int|Limitation type|
+|type| [LimitationType](enm_Base_LimitationType.md#)|Limitation type|
 |value|float|Limitation value|
 
 **Parent topic:** [Base](../references/summary_Base.md)

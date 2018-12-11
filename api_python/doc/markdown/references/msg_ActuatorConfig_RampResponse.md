@@ -12,7 +12,7 @@ Defines a ramp response
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|loop\_selection|int|ControlLoopSelection enum|
+|loop\_selection| [ControlLoopSelection](enm_ActuatorConfig_ControlLoopSelection.md#)|ControlLoopSelection enum|
 |slope|float|Slope value|
 |ramp\_delay|float|Ramp delay value|
 |duration|float|Duration \(in seconds\)|

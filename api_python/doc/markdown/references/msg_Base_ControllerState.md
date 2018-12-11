@@ -13,7 +13,7 @@ Indicates if a controller is connected \(or disconnected\)
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |handle| [ControllerHandle](msg_Base_ControllerHandle.md#)|Controller identifier|
-|event\_type|int|Type of controller event that occured|
+|event\_type| [ControllerEventType](enm_Base_ControllerEventType.md#)|Type of controller event that occured|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

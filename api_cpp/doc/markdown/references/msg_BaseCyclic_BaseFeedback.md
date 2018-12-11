@@ -11,7 +11,7 @@ This page describes the C++ Kinova::Api::BaseCyclic::BaseFeedback message.
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |active\_state\_connection\_identifier|uint32|Connection identifier of the last processed command which triggered an arm state change|
-|active\_state|uint32|Active state of the arm|
+|active\_state| [ArmState](enm_Common_ArmState.md#)|Active state of the arm|
 |arm\_voltage|float32|Arm voltage \(in Volts\)|
 |arm\_current|float32|Arm current \(in Amperes\)|
 |temperature\_cpu|float32|CPU temperature \(in degree Celcius\)|
@@ -47,15 +47,15 @@ This page describes the C++ Kinova::Api::BaseCyclic::BaseFeedback message.
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
 |active\_state\_connection\_identifier\(\)|uint32|void|Returns the current value of active\_state\_connection\_identifier. If the active\_state\_connection\_identifier is not set, returns 0.|
 |set\_active\_state\_connection\_identifier\(\)|void|uint32|Sets the value of active\_state\_connection\_identifier. After calling this, active\_state\_connection\_identifier\(\) will return value.|
 |clear\_active\_state\_connection\_identifier\(\)|void|void|Clears the value of active\_state\_connection\_identifier. After calling this, active\_state\_connection\_identifier\(\) will return 0.|
-|active\_state\(\) const|uint32|void|Returns the current value of active\_state. If the active\_state is not set, returns 0.|
-|set\_active\_state\(\)|void|uint32|Sets the value of active\_state. After calling this, active\_state\(\) will return value.|
+|active\_state\(\) const| [ArmState](enm_Common_ArmState.md#)|void|Returns the current value of active\_state. If the active\_state is not set, returns 0.|
+|set\_active\_state\(\)|void| [ArmState](enm_Common_ArmState.md#)|Sets the value of active\_state. After calling this, active\_state\(\) will return value.|
 |clear\_active\_state\(\)|void|void|Clears the value of active\_state. After calling this, active\_state\(\) will return the empty string/empty bytes.|
 |arm\_voltage\(\)|float32|void|Returns the current value of arm\_voltage. If the arm\_voltage is not set, returns 0.|
 |set\_arm\_voltage\(\)|void|float32|Sets the value of arm\_voltage. After calling this, arm\_voltage\(\) will return value.|

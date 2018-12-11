@@ -12,7 +12,7 @@ Identifies a specific controller
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|type|int|Controller type|
+|type| [ControllerType](enm_Base_ControllerType.md#)|Controller type|
 |controller\_identifier|int|Controller identifier|
 
 **Parent topic:** [Base](../references/summary_Base.md)

@@ -15,7 +15,7 @@ Provides information about a specific Wi-Fi network
 |ssid| [Ssid](msg_Base_Ssid.md#)|SSID|
 |security\_type|int|Wi-Fi security type|
 |encryption\_type|int|Wi-Fi encryption type|
-|signal\_quality|int|Wi-Fi signal quality|
+|signal\_quality| [SignalQuality](enm_Base_SignalQuality.md#)|Wi-Fi signal quality|
 |signal\_strength|int|Wi-Fi signal power in dBm|
 |frequency|int|Wi-Fi operating frequency \(channel\) in MHz|
 |channel|int|Wi-Fi operating channel|

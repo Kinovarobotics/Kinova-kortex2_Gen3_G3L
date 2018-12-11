@@ -12,8 +12,8 @@ Identifies the value of the particular option for the sensor.
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|sensor|int|The sensor to configure \(color or depth\)|
-|option|int|The option to configure|
+|sensor| [Sensor](enm_VisionConfig_Sensor.md#)|The sensor to configure \(color or depth\)|
+|option| [Option](enm_VisionConfig_Option.md#)|The option to configure|
 |value|float|The desired value for the option|
 
 **Parent topic:** [VisionConfig](../references/summary_VisionConfig.md)

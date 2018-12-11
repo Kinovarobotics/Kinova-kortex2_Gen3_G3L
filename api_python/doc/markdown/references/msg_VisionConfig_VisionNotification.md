@@ -12,9 +12,9 @@ Message that contains Vision module event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|event|int|Vision event|
-|sensor|int|The sensor that caused the notification \(if applicable\)|
-|option|int|The option that caused the notification \(if applicable\)|
+|event| [VisionEvent](enm_VisionConfig_VisionEvent.md#)|Vision event|
+|sensor| [Sensor](enm_VisionConfig_Sensor.md#)|The sensor that caused the notification \(if applicable\)|
+|option| [Option](enm_VisionConfig_Option.md#)|The option that caused the notification \(if applicable\)|
 
 **Parent topic:** [VisionConfig](../references/summary_VisionConfig.md)
 

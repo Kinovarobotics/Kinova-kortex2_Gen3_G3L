@@ -13,14 +13,14 @@ Message that contains a Safety event
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |safety\_handle| [SafetyHandle](msg_Common_SafetyHandle.md#)|Safety handle|
-|value|uint32|New safety status|
+|value| [SafetyStatusValue](enm_Common_SafetyStatusValue.md#)|New safety status|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the safety event|
 |connection| [Connection](msg_Common_Connection.md#)|Connection that caused the safety event|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
@@ -30,8 +30,8 @@ The methods listed below are some of the most commonly used. Please refer to Goo
 |clear\_safety\_handle\(\)|void|void|Clears the value of the field. After calling this, has\_safety\_handle\(\) will return false and safety\_handle\(\) will return the default value.|
 |set\_allocated\_safety\_handle\(\)|void| [SafetyHandle](msg_Common_SafetyHandle.md#) \*|Sets the [SafetyHandle](msg_Common_SafetyHandle.md#) object to the field and frees the previous field value if it exists. If the [SafetyHandle](msg_Common_SafetyHandle.md#) pointer is not NULL, the message takes ownership of the allocated [SafetyHandle](msg_Common_SafetyHandle.md#) object and has\_ [SafetyHandle](msg_Common_SafetyHandle.md#)\(\) will return true. Otherwise, if the safety\_handle is NULL, the behavior is the same as calling clear\_safety\_handle\(\).|
 |release\_safety\_handle\(\)| [SafetyHandle](msg_Common_SafetyHandle.md#) \*|void|Releases the ownership of the field and returns the pointer of the [SafetyHandle](msg_Common_SafetyHandle.md#) object. After calling this, caller takes the ownership of the allocated [SafetyHandle](msg_Common_SafetyHandle.md#) object, has\_safety\_handle\(\) will return false, and safety\_handle\(\) will return the default value.|
-|value\(\) const|uint32|void|Returns the current value of value. If the value is not set, returns 0.|
-|set\_value\(\)|void|uint32|Sets the value of value. After calling this, value\(\) will return value.|
+|value\(\) const| [SafetyStatusValue](enm_Common_SafetyStatusValue.md#)|void|Returns the current value of value. If the value is not set, returns 0.|
+|set\_value\(\)|void| [SafetyStatusValue](enm_Common_SafetyStatusValue.md#)|Sets the value of value. After calling this, value\(\) will return value.|
 |clear\_value\(\)|void|void|Clears the value of value. After calling this, value\(\) will return the empty string/empty bytes.|
 |has\_timestamp\(\) const|bool|void|Returns true if timestamp is set.|
 |timestamp\(\)|const [Timestamp](msg_Common_Timestamp.md#)&|void|Returns the current value of timestamp. If timestamp is not set, returns a [Timestamp](msg_Common_Timestamp.md#) with none of its fields set \(possibly timestamp::default\_instance\(\)\).|

@@ -12,19 +12,19 @@ Message that contains a servoing mode event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|servoing\_mode|uint32|New operating mode|
+|servoing\_mode| [ServoingMode](enm_Base_ServoingMode.md#)|New operating mode|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the Operating mode event|
 |connection| [Connection](msg_Common_Connection.md#)|Connection that caused the Servoing mode event|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|servoing\_mode\(\) const|uint32|void|Returns the current value of servoing\_mode. If the servoing\_mode is not set, returns 0.|
-|set\_servoing\_mode\(\)|void|uint32|Sets the value of servoing\_mode. After calling this, servoing\_mode\(\) will return value.|
+|servoing\_mode\(\) const| [ServoingMode](enm_Base_ServoingMode.md#)|void|Returns the current value of servoing\_mode. If the servoing\_mode is not set, returns 0.|
+|set\_servoing\_mode\(\)|void| [ServoingMode](enm_Base_ServoingMode.md#)|Sets the value of servoing\_mode. After calling this, servoing\_mode\(\) will return value.|
 |clear\_servoing\_mode\(\)|void|void|Clears the value of servoing\_mode. After calling this, servoing\_mode\(\) will return the empty string/empty bytes.|
 |has\_timestamp\(\) const|bool|void|Returns true if timestamp is set.|
 |timestamp\(\)|const [Timestamp](msg_Common_Timestamp.md#)&|void|Returns the current value of timestamp. If timestamp is not set, returns a [Timestamp](msg_Common_Timestamp.md#) with none of its fields set \(possibly timestamp::default\_instance\(\)\).|

@@ -12,7 +12,7 @@ Identifies a limitation
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|type|int|Limitation type|
+|type| [LimitationType](enm_Base_LimitationType.md#)|Limitation type|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

@@ -12,18 +12,18 @@ Provides a Cartesian limitation configuration
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|type|uint32|Limitation type|
+|type| [LimitationType](enm_Base_LimitationType.md#)|Limitation type|
 |translation|float32|Translation limitation|
 |orientation|float32|Orientation limitation|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|type\(\) const|uint32|void|Returns the current value of type. If the type is not set, returns 0.|
-|set\_type\(\)|void|uint32|Sets the value of type. After calling this, type\(\) will return value.|
+|type\(\) const| [LimitationType](enm_Base_LimitationType.md#)|void|Returns the current value of type. If the type is not set, returns 0.|
+|set\_type\(\)|void| [LimitationType](enm_Base_LimitationType.md#)|Sets the value of type. After calling this, type\(\) will return value.|
 |clear\_type\(\)|void|void|Clears the value of type. After calling this, type\(\) will return the empty string/empty bytes.|
 |translation\(\)|float32|void|Returns the current value of translation. If the translation is not set, returns 0.|
 |set\_translation\(\)|void|float32|Sets the value of translation. After calling this, translation\(\) will return value.|

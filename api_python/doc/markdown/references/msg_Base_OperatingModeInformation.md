@@ -12,7 +12,7 @@ Provides information about the operating mode
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|operating\_mode|int|Operating mode|
+|operating\_mode| [OperatingMode](enm_Base_OperatingMode.md#)|Operating mode|
 |device\_handle| [DeviceHandle](msg_Common_DeviceHandle.md#)|Device matching operating mode \(if applicable\)|
 
 **Parent topic:** [Base](../references/summary_Base.md)

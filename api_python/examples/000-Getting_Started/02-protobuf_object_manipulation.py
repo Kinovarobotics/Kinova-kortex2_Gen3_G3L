@@ -55,15 +55,13 @@ def example_manipulation_protobuf_basic():
     #     string application_data = 5; //other application data (used by Web App)
     # }
 
-    user_profile = Base_pb2.UserProfile() # Here we affect to protobuf message to a python variable
-    # Protobuf message can reference to other message we will cover this in a future example.
-    # For now we going to used the default value of UserProfileHandle
-    handle = user_profile.handle
-    handle = Base_pb2.Common__pb2.UserProfileHandle()
-    user_profile.username = "jcash" # We can now affect data to variable attribute
+    user_profile = Base_pb2.UserProfile()
+    # Each scalar value in a message have a set_<field> function to set the value and a getter which is
+    # simply the variable name
+    user_profile.username = "jcash" # We can directly affect data to variable attribute
     user_profile.firstname = "Johnny"
     user_profile.lastname = "Cash"
-    user_profile.application_data = "Data used by web app"
+    # Handle and application_data are ignore on purpose
 
 def example_manipulation_protobuf_object():
 
@@ -75,9 +73,13 @@ def example_manipulation_protobuf_object():
 
     # A message can make a reference to another message to make more complete element
 
-    # For this example I'll use the the UserProfile message
+    # For this example I'll use the FullUserProfile and UserProfile message
+    # message FullUserProfile {
+    #     UserProfile user_profile = 1; //User Profile, which includes username
+    #     string password = 2; //User's password
+    # }
     # message UserProfile {
-    #     Kinova.Api.Common.UserProfileHandle handle = 1; //User handle (no need to set it with CreateUserProfile()
+    #     Kinova.Api.Common.UserProfileHandle handle = 1; //User handle (no need to be set)
     #     string username = 2; // username, which is used to connect to robot (or login via Web App)
     #     string firstname = 3; //user first name
     #     string lastname = 4; //user last name
@@ -86,22 +88,19 @@ def example_manipulation_protobuf_object():
 
     # https://developers.google.com/protocol-buffers/docs/proto3#simple
 
-    user_profile = Base_pb2.UserProfile()
+    full_user_profile = Base_pb2.FullUserProfile()
+    # Now I'll put data in the scalar value
+    full_user_profile.password = "MyPassword"
 
-    # Now I want to work with the handle attribute which is a message itself. 
-    # Since handle is a message you can still use the . to get access to his attribute.
-    user_profile.handle.identifier = 0
-    user_profile.handle.permission = 2
+    # Now I want to work with the user profile attribute which is a message itself. 
+    # Since user profile is a message you can use the . to get access 
+    # to those attribute.
+    full_user_profile.user_profile.username = "jcash"
+    full_user_profile.user_profile.firstname = "Johnny"
+    full_user_profile.user_profile.lastname = "Cash"
 
-    # Another way to do it it's to store the needed message in a variable and set value after
-    handle = user_profile.handle # Message must be affected to a variable before assigning a value
-    handle.identifier = 0
-    handle.permission = 2
-     
-
-    # The remaining attibute of the message will not be covered since it has been covered in example_manipulation_protobuf_basic
-
-    # Another basic element is the Enum. Enum are directly available from the message no need to pass by the enum 'message'.
+    # Another basic element is the Enum. Enum are directly available from 
+    # the message no need to pass by the enum 'message'.
     # Here's a example:
     # enum LimitationType {
     #     UNSPECIFIED_LIMITATION = 0; //unspecified limitation
@@ -149,17 +148,13 @@ def example_manipulation_protobuf_list():
 
     # Create the parent message
     sequence = Base_pb2.Sequence()
-    # sequence.handle.identifier = 0
-    # sequence.handle.permission = 3
     sequence.name = "Sequence"
-    sequence.application_data = "Used for web developpement"
 
     # The extend way
     sequence_task_1 = Base_pb2.SequenceTask()
     sequence_task_1.group_identifier = 10
     action = sequence_task_1.action
     action = Base_pb2.Action() # Using Action default constructor
-    sequence_task_1.application_data = "Used for web developpement"
     sequence.tasks.extend([sequence_task_1]) # Extend expect an iterable
 
     # Created for the add() function unique to repeated message field
@@ -167,19 +162,15 @@ def example_manipulation_protobuf_list():
     sequence_task_2.group_identifier = 20
     action = sequence_task_2.action
     action = Base_pb2.Action() # Using Action default constructor
-    sequence_task_2.application_data = "Used for web developpement"
-    
 
     # Since sequence.task is a list we can use all the python toolset to
     # loop, iterate, interogate and print element in that list
-
     for i in range(len(sequence.tasks)):
-        print("sequence ID without object iterator : {0}".format(sequence.tasks[i].group_identifier))
+        print("sequence ID with index : {0}".format(sequence.tasks[i].group_identifier))
 
 
     # The list still have the iterator proprety of python list so you can directly iterate
     # throught element without creating a iterator like previous example
-
     for task in sequence.tasks:
         print("sequence ID with object iterator : {0}".format(task.group_identifier))
 
@@ -255,33 +246,19 @@ def example_manipulation_protobuf_helpers():
 
     # I quickly populate the message
     sequence = Base_pb2.Sequence()
-    handle = sequence.handle
-    handle = Base_pb2.SequenceHandle()
     sequence.name = "A Name"
-    sequence.application_data = "Data"
 
-    sequence_task_1 = sequence.tasks.add()
-    sequence_task_1.group_identifier = 10
-    action = sequence_task_1.action
-    action = Base_pb2.Action() # Using Action default constructor
-    sequence_task_1.application_data = "Used for web developpement"
+    for i in range(5):
+        sequence_task = sequence.tasks.add()
+        sequence_task.group_identifier = 10 * (i + 1) # Some further function doesn't print if value = 0
+        action = sequence_task.action
+        action = Base_pb2.Action() # Using Action default constructor
 
-    sequence_task_2 = sequence.tasks.add()
-    sequence_task_2.CopyFrom(sequence_task_1)
-
-    sequence_task_3 = sequence.tasks.add()
-    sequence_task_3.CopyFrom(sequence_task_1)
-
-    sequence_task_4 = sequence.tasks.add()
-    sequence_task_4.CopyFrom(sequence_task_1)
-    
-    sequence_task_5 = sequence.tasks.add()
-    sequence_task_5.CopyFrom(sequence_task_1)
 
     # We need to import the module
     from google.protobuf import json_format
     
-    # Now to get the json object it's simple as
+    # Now to get the json object
     json_object = json_format.MessageToJson(sequence)
     
     # Now you can print it
@@ -290,30 +267,24 @@ def example_manipulation_protobuf_helpers():
     # output:
     # Json object
     # {
-    # "applicationData": "Data",
-    # "tasks": [
+    #   "name": "A Name",
+    #   "tasks": [
     #     {
-    #     "applicationData": "Used for web developpement",
-    #     "groupIdentifier": 10
+    #       "groupIdentifier": 10
     #     },
     #     {
-    #     "applicationData": "Used for web developpement",
-    #     "groupIdentifier": 10
+    #       "groupIdentifier": 20
     #     },
     #     {
-    #     "applicationData": "Used for web developpement",
-    #     "groupIdentifier": 10
+    #       "groupIdentifier": 30
     #     },
     #     {
-    #     "applicationData": "Used for web developpement",
-    #     "groupIdentifier": 10
+    #       "groupIdentifier": 40
     #     },
     #     {
-    #     "applicationData": "Used for web developpement",
-    #     "groupIdentifier": 10
+    #       "groupIdentifier": 50
     #     }
-    # ],
-    # "name": "A Name"
+    #   ]
     # }
 
 
@@ -332,26 +303,20 @@ def example_manipulation_protobuf_helpers():
     # output:
     # Text format
     # name: "A Name"
-    # application_data: "Data"
     # tasks {
-    #     group_identifier: 10
-    #     application_data: "Used for web developpement"
+    #   group_identifier: 10
     # }
     # tasks {
-    #     group_identifier: 10
-    #     application_data: "Used for web developpement"
+    #   group_identifier: 20
     # }
     # tasks {
-    #     group_identifier: 10
-    #     application_data: "Used for web developpement"
+    #   group_identifier: 30
     # }
     # tasks {
-    #     group_identifier: 10
-    #     application_data: "Used for web developpement"
+    #   group_identifier: 40
     # }
     # tasks {
-    #     group_identifier: 10
-    #     application_data: "Used for web developpement"
+    #   group_identifier: 50
     # }
 
 

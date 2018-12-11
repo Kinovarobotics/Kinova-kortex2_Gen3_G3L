@@ -34,7 +34,7 @@ def example_notification(base_service):
         print(json_format.MessageToJson(data))
         print("****************************")
 
-    # Registering to user topic
+    # Subscribe to ConfigurationChange notification
     try:
         notif_handle = base_service.OnNotificationConfigurationChangeTopic(notification_callback, Base_pb2.NotificationOptions())
     except KException:
@@ -42,8 +42,8 @@ def example_notification(base_service):
     except Exception:
         print("Error occured")
 
-    print("Notification ID : {0}".format(notif_handle.identifier))
-    time.sleep(5)
+    # ... miscellenaous tasks !!!
+    time.sleep(3)
 
     # Creating a user
     full_user_profile = Base_pb2.FullUserProfile()
@@ -53,12 +53,29 @@ def example_notification(base_service):
     full_user_profile.user_profile.application_data = "Custom Application Stuff"
     full_user_profile.password = "pwd"
 
-    user_profile_handle = base_service.CreateUserProfile(full_user_profile)
+    try:
+        user_profile_handle = base_service.CreateUserProfile(full_user_profile)
+    except KException:
+        print("User creation failed")
 
-    # At this point the callback should be call because an event occurs in user topic
+    # ... following the creation of the user_profile we should receive the ConfigurationChange notification (fct notification_callback() should be call)
+    print("User {0} created".format(full_user_profile.user_profile.username))
 
-    print("User {0} created with id : {1}".format(full_user_profile.user_profile.username, user_profile_handle.identifier))
-    time.sleep(5)
+    # ... miscellenaous tasks !!! and to let the notification works.
+    time.sleep(3)
+
+    print("Now unsubscribe ConfigurationChange notification")
+    base_service.Unsubscribe(notif_handle)
+
+    try:
+        print("Deleting user {0}".format(full_user_profile.user_profile.username))
+        base_service.DeleteUserProfile(user_profile_handle) # Should not received notification about this modification
+
+    except KException:
+        print("User deletion failed")
+    
+    # ... here sleep to confirm that ConfigurationChange notification is not raised anymore after the unsubscribe
+    time.sleep(3)
 
 
 if __name__ == "__main__":
@@ -83,4 +100,6 @@ if __name__ == "__main__":
 
     # example core
     example_notification(base_service)
+
+    session_manager.CloseSession()
 

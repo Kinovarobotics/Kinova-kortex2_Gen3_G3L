@@ -12,7 +12,7 @@ Message that contains a configuration change event
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|event|int|Configuration event|
+|event| [ConfigurationNotificationEvent](enm_Base_ConfigurationNotificationEvent.md#)|Configuration event|
 |timestamp| [Timestamp](msg_Common_Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User that caused the configuration event|
 |sequence\_handle|oneof:configuration\_change [SequenceHandle](msg_Base_SequenceHandle.md#)|Sequence for which the configuration changed|

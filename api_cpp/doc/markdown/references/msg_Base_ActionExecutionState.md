@@ -12,17 +12,17 @@ Indicates the execution state of an action \(future\)
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|action\_event|uint32|Action event type|
+|action\_event| [ActionEvent](enm_Base_ActionEvent.md#)|Action event type|
 |handle| [ActionHandle](msg_Base_ActionHandle.md#)|Identifies the action for which this event occured|
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|action\_event\(\) const|uint32|void|Returns the current value of action\_event. If the action\_event is not set, returns 0.|
-|set\_action\_event\(\)|void|uint32|Sets the value of action\_event. After calling this, action\_event\(\) will return value.|
+|action\_event\(\) const| [ActionEvent](enm_Base_ActionEvent.md#)|void|Returns the current value of action\_event. If the action\_event is not set, returns 0.|
+|set\_action\_event\(\)|void| [ActionEvent](enm_Base_ActionEvent.md#)|Sets the value of action\_event. After calling this, action\_event\(\) will return value.|
 |clear\_action\_event\(\)|void|void|Clears the value of action\_event. After calling this, action\_event\(\) will return the empty string/empty bytes.|
 |has\_handle\(\) const|bool|void|Returns true if handle is set.|
 |handle\(\)|const [ActionHandle](msg_Base_ActionHandle.md#)&|void|Returns the current value of handle. If handle is not set, returns a [ActionHandle](msg_Base_ActionHandle.md#) with none of its fields set \(possibly handle::default\_instance\(\)\).|

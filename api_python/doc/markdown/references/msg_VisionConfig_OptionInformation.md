@@ -12,8 +12,8 @@ Packages information about the optional settings for the chosen sensor
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|sensor|int|The sensor \(color or depth\)|
-|option|int|The option|
+|sensor| [Sensor](enm_VisionConfig_Sensor.md#)|The sensor \(color or depth\)|
+|option| [Option](enm_VisionConfig_Option.md#)|The option|
 |supported|bool|Is the option supported by the chosen sensor?|
 |read\_only|bool|Is the option read-only, or can it be changed?|
 |minimum|float|Minimum value for the option|

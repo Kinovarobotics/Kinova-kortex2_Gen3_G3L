@@ -12,8 +12,8 @@ Packages information about the optional settings for the chosen sensor
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|sensor|uint32|The sensor \(color or depth\)|
-|option|uint32|The option|
+|sensor| [Sensor](enm_VisionConfig_Sensor.md#)|The sensor \(color or depth\)|
+|option| [Option](enm_VisionConfig_Option.md#)|The option|
 |supported|bool|Is the option supported by the chosen sensor?|
 |read\_only|bool|Is the option read-only, or can it be changed?|
 |minimum|float32|Minimum value for the option|
@@ -23,15 +23,15 @@ Packages information about the optional settings for the chosen sensor
 
  **Methods** 
 
-The methods listed below are some of the most commonly used. Please refer to Google Protobuf documentation for an exhaustive list.
+The methods listed below are some of the most commonly used. Please refer to Google Protocol Buffer documentation for an exhaustive list.
 
 |Method name|Return type|Input type|Description|
 |-----------|-----------|----------|-----------|
-|sensor\(\) const|uint32|void|Returns the current value of sensor. If the sensor is not set, returns 0.|
-|set\_sensor\(\)|void|uint32|Sets the value of sensor. After calling this, sensor\(\) will return value.|
+|sensor\(\) const| [Sensor](enm_VisionConfig_Sensor.md#)|void|Returns the current value of sensor. If the sensor is not set, returns 0.|
+|set\_sensor\(\)|void| [Sensor](enm_VisionConfig_Sensor.md#)|Sets the value of sensor. After calling this, sensor\(\) will return value.|
 |clear\_sensor\(\)|void|void|Clears the value of sensor. After calling this, sensor\(\) will return the empty string/empty bytes.|
-|option\(\) const|uint32|void|Returns the current value of option. If the option is not set, returns 0.|
-|set\_option\(\)|void|uint32|Sets the value of option. After calling this, option\(\) will return value.|
+|option\(\) const| [Option](enm_VisionConfig_Option.md#)|void|Returns the current value of option. If the option is not set, returns 0.|
+|set\_option\(\)|void| [Option](enm_VisionConfig_Option.md#)|Sets the value of option. After calling this, option\(\) will return value.|
 |clear\_option\(\)|void|void|Clears the value of option. After calling this, option\(\) will return the empty string/empty bytes.|
 |supported\(\)|bool|void|Returns the current value of supported. If the supported is not set, returns 0.|
 |set\_supported\(\)|void|bool|Sets the value of supported. After calling this, supported\(\) will return value.|
