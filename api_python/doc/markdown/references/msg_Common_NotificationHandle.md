@@ -12,7 +12,7 @@ Identifies a notification
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|identifier|int|notification identifier|
+|identifier|int|Notification identifier|
 
 **Parent topic:** [Common](../references/summary_Common.md)
 

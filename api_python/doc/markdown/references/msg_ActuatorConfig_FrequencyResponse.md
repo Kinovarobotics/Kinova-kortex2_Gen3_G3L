@@ -4,7 +4,7 @@ This page describes the Python Kinova.Api.ActuatorConfig.FrequencyResponse messa
 
 ## Overview / Purpose
 
-Defines a frequency response
+Defines frequency response
 
 ## Class members
 

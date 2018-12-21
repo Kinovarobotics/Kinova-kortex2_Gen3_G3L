@@ -4,6 +4,8 @@ This page describes the C++ Kinova::Api::ActuatorCyclic::CustomData message.
 
 ## Overview / Purpose
 
+Custom development data, content varies according to debug needs
+
 ## Class members
 
  **Member variables** 

@@ -27,9 +27,9 @@ This section describes the data types used in the InterconnectCyclic package met
 
 |Message|Description|
 |-------|-----------|
-|[Command](msg_InterconnectCyclic_Command.md#)| |
-|[CustomData](msg_InterconnectCyclic_CustomData.md#)| |
-|[Feedback](msg_InterconnectCyclic_Feedback.md#)| |
+|[Command](msg_InterconnectCyclic_Command.md#)|Defines an interconnect module command|
+|[CustomData](msg_InterconnectCyclic_CustomData.md#)|Custom development data, content varies according to debug needs|
+|[Feedback](msg_InterconnectCyclic_Feedback.md#)|Defines the feedback provided by an interconnect module|
 |[MessageId](msg_InterconnectCyclic_MessageId.md#)|Identifies a message|
 
  **Enumerations** 

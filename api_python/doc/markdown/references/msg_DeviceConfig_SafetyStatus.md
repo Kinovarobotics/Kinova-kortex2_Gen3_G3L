@@ -12,7 +12,7 @@ Provides safety status
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|value| [SafetyStatusValue](enm_Common_SafetyStatusValue.md#)|Safety status \(ex. in error, warning or normal state\)|
+|value| [SafetyStatusValue](enm_Common_SafetyStatusValue.md#)|Safety status \(e.g. in error, warning or normal state\)|
 
 **Parent topic:** [DeviceConfig](../references/summary_DeviceConfig.md)
 

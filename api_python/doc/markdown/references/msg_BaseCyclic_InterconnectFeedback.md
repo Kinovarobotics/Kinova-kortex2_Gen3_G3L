@@ -4,7 +4,7 @@ This page describes the Python Kinova.Api.BaseCyclic.InterconnectFeedback messag
 
 ## Overview / Purpose
 
-copied from InterconnectCyclic.proto
+Defines the feedback provided by an interconnect module
 
 ## Class members
 

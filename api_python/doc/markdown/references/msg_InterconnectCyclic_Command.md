@@ -4,6 +4,8 @@ This page describes the Python Kinova.Api.InterconnectCyclic.Command message.
 
 ## Overview / Purpose
 
+Defines an interconnect module command
+
 ## Class members
 
  **Member variables** 

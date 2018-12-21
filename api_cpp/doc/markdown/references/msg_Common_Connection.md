@@ -4,7 +4,7 @@ This page describes the C++ Kinova::Api::Common::Connection message.
 
 ## Overview / Purpose
 
-Idenfities a Connection
+Idenfities a connection
 
 ## Class members
 
@@ -13,7 +13,7 @@ Idenfities a Connection
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |user\_handle| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User profile handle, or set to zero if no user logged in|
-|connection\_information|string|Connection info \(ex. IP address with port number\)|
+|connection\_information|string|Connection info \(e.g. IP address with port number\)|
 |connection\_identifier|uint32|Connection identifier|
 
  **Methods** 

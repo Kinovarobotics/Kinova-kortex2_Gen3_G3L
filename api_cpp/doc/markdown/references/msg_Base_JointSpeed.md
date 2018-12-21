@@ -13,7 +13,7 @@ Defines the speed of a specific joint
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |joint\_identifier|uint32|Joint identifier|
-|value|float32|Joint speed \(in degree per second\)|
+|value|float32|Joint speed \(in degrees per second\)|
 |duration|uint32|Duration constraint. If not 0, allows to set a limit \(in seconds\) to the JointsSpeed \(future\)|
 
  **Methods** 

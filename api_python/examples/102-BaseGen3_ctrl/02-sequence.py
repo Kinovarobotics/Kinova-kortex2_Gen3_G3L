@@ -5,8 +5,8 @@
 #
 # Copyright (c) 2018 Kinova inc. All rights reserved.
 #
-# This software may be modified and distributed under the
-# terms of the BSD 3-Clause license.
+# This software may be modified and distributed
+# under the terms of the BSD 3-Clause license.
 #
 # Refer to the LICENSE file for details.
 #
@@ -38,7 +38,7 @@ def create_angular_action():
 
 
 def create_cartesian_action():
-    print("Creating cartesian action")
+    print("Creating Cartesian action")
 
     action = Base_pb2.Action()
     action.name = "Example cartesian action"
@@ -70,7 +70,7 @@ def create_sequence(router):
     task_1.action.CopyFrom(angular_action)
     
     task_2 = sequence.tasks.add()
-    task_2.group_identifier = 1 # Sequence element with same group_id are played at the same time
+    task_2.group_identifier = 1 # sequence elements with same group_id are played at the same time
     task_2.action.CopyFrom(cartesian_action)
 
     print("Create sequence on device and execute it")
@@ -78,7 +78,7 @@ def create_sequence(router):
     handle_sequence = base_client_service.CreateSequence(sequence)
     base_client_service.PlaySequence(handle_sequence)
 
-    print("Waiting 30 seconds to finish movement...")
+    print("Waiting 30 seconds for motion to finish ...")
     time.sleep(30)
     
 
@@ -94,11 +94,11 @@ if __name__ == "__main__":
     session_info = Session_pb2.CreateSessionInfo()
     session_info.username = 'admin'
     session_info.password = 'admin'
-    session_info.session_inactivity_timeout = 600000 # 10 minutes
-    session_info.connection_inactivity_timeout = 2000 # 2 seconds
+    session_info.session_inactivity_timeout = 600000  # (milliseconds)
+    session_info.connection_inactivity_timeout = 2000 # (milliseconds)
 
     session_manager = SessionManager(router)
     session_manager.CreateSession(session_info)
 
-    # Example core
+    # example core
     create_sequence(router)

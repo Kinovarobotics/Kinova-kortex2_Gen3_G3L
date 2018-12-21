@@ -4,7 +4,7 @@ This page describes the Python Kinova.Api.Common.NotificationOptions message.
 
 ## Overview / Purpose
 
-Specifies options associated to a Notification
+Specifies options associated to a notification
 
 ## Class members
 

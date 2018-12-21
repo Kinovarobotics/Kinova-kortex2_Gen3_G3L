@@ -12,7 +12,7 @@ Defines an action to increase \(or reduce\) the maximum angular velocity per joi
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|joint\_speeds| [JointSpeeds](msg_Base_JointSpeeds.md#)|Series of joint speed|
+|joint\_speeds| [JointSpeeds](msg_Base_JointSpeeds.md#)|Joint speeds|
 
  **Methods** 
 

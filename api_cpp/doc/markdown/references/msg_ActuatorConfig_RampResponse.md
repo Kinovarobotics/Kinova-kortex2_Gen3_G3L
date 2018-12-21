@@ -4,7 +4,7 @@ This page describes the C++ Kinova::Api::ActuatorConfig::RampResponse message.
 
 ## Overview / Purpose
 
-Defines a ramp response
+Defines ramp response
 
 ## Class members
 

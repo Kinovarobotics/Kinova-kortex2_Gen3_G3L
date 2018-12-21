@@ -4,6 +4,8 @@ This page describes the C++ Kinova::Api::ActuatorCyclic::Feedback message.
 
 ## Overview / Purpose
 
+Defines the feedback provided by an actuator module
+
 ## Class members
 
  **Member variables** 
@@ -11,15 +13,15 @@ This page describes the C++ Kinova::Api::ActuatorCyclic::Feedback message.
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |feedback\_id| [MessageId](msg_ActuatorCyclic_MessageId.md#)|MessageId|
-|status\_flags|uint32|Status flags|
+|status\_flags|uint32|Status flags \(see enum SatatusFlags for the rest\)|
 |jitter\_comm|uint32|Jitter from the communication in μs|
-|position|float32|Position of the actuator in °|
-|velocity|float32|Angular velocity of the actuator in °/s|
-|torque|float32|Torque of the actuator in N·m|
-|current\_motor|float32|Current of the motor in A|
-|voltage|float32|Voltage of the main board in V|
-|temperature\_motor|float32|Motor temperature \(maximum of the three \(3\) phase temperatures in °C\)|
-|temperature\_core|float32|Microcontroller temperature in °C|
+|position|float32|Position of the actuator \(degrees\)|
+|velocity|float32|Angular velocity of the actuator \(degrees per second\)|
+|torque|float32|Torque of the actuator \(Newton meter\)|
+|current\_motor|float32|Current of the motor \(Amperes\)|
+|voltage|float32|Voltage of the main board in \(Volt\)|
+|temperature\_motor|float32|Motor temperature \(average of the three \(3\) temperatures \(degrees Celsius\)\)|
+|temperature\_core|float32|Microcontroller temperature in \(degrees Celsius\)|
 |fault\_bank\_a|uint32|Bank A Fault \(see ActuatorConfig.SafetyIdentifier\)|
 |fault\_bank\_b|uint32|Bank B Fault \(see ActuatorConfig.SafetyIdentifier\)|
 |warning\_bank\_a|uint32|Bank A Warning \(see ActuatorConfig.SafetyIdentifier\)|

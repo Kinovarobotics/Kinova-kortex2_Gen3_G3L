@@ -4,7 +4,7 @@ This page describes the Python Kinova.Api.ActuatorConfig.CommandModeInformation 
 
 ## Overview / Purpose
 
-Selects a command mode
+Selects command mode
 
 ## Class members
 

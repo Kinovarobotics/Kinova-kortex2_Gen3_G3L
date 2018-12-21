@@ -3,8 +3,8 @@
 *
 * Copyright (c) 2018 Kinova inc. All rights reserved.
 *
-* This software may be modified and distributed under the
-* terms of the BSD 3-Clause license.
+* This software may be modified and distributed
+* under the terms of the BSD 3-Clause license.
 *
 * Refer to the LICENSE file for details.
 *
@@ -40,13 +40,13 @@ namespace k_api = Kinova::Api;
 
 #define IP_ADDRESS "192.168.1.10"
 
-#define PORT 10000
+#define PORT 10000              // network adapter port
 #define PORT_RT 10001
-#define ACTUATOR_COUNT 7
-#define DURATION 30  //(seconds)
+#define ACTUATOR_COUNT 7        // actuator count
+#define DURATION 30             // network timeout (seconds)
 
-float velocity = 20.0f; // Default velocity of the actuator (degrees per seconds)
-float time_duration = DURATION; // Default duration of the actuator (seconds)
+float velocity = 20.0f;         // default velocity of the actuator (degrees per seconds)
+float time_duration = DURATION; // default duration of the actuator (seconds)
 
 int64_t GetTickUs()
 {
@@ -67,8 +67,8 @@ int64_t GetTickUs()
 
 bool example_cyclic_armbase()
 {
-    // Low level cyclic needs it's own transport and router
-    // For this example all the cyclic related object will have the RT suffix
+    // low-level cyclic needs its own transport and router
+    // for this example all the cyclic-related objects have the RT suffix
 
     bool returnStatus = true;
 
@@ -76,7 +76,7 @@ bool example_cyclic_armbase()
     k_api::TransportClientUdp* pTransportRT = new k_api::TransportClientUdp();
 
     pTransport->connect(IP_ADDRESS, PORT);
-    pTransportRT->connect(IP_ADDRESS, PORT_RT); // Cyclic data have it's own port
+    pTransportRT->connect(IP_ADDRESS, PORT_RT); // cyclic data have their own port
 
     auto errorCallback = [](k_api::KError err) { std::cout << "_________ callback error _________" << err.toString(); };
     auto errorCallbackRT = [](k_api::KError err) { std::cout << "_________ callback error (RT) _________" << err.toString(); };
@@ -93,20 +93,20 @@ bool example_cyclic_armbase()
     auto createSessionInfo = k_api::Session::CreateSessionInfo();
     createSessionInfo.set_username("admin");
     createSessionInfo.set_password("admin");
-    createSessionInfo.set_session_inactivity_timeout(60000);
-    createSessionInfo.set_connection_inactivity_timeout(2000);
+    createSessionInfo.set_session_inactivity_timeout(60000);      // (milliseconds)
+    createSessionInfo.set_connection_inactivity_timeout(2000);    // (milliseconds)
 
     auto createSessionInfoRT = k_api::Session::CreateSessionInfo();
     createSessionInfoRT.set_username("admin");
     createSessionInfoRT.set_password("admin");
-    createSessionInfoRT.set_session_inactivity_timeout(60000);
-    createSessionInfoRT.set_connection_inactivity_timeout(2000);
+    createSessionInfoRT.set_session_inactivity_timeout(60000);    // (milliseconds)
+    createSessionInfoRT.set_connection_inactivity_timeout(2000);  // (milliseconds)
 
-    std::cout << "Creating Session for communication" << std::endl;
+    std::cout << "Creating session for communication" << std::endl;
     pSessionMng->CreateSession(createSessionInfo);
     pSessionMngRT->CreateSession(createSessionInfoRT);
 
-    std::cout << "Session Created" << std::endl;
+    std::cout << "Session created" << std::endl;
 
     k_api::BaseCyclic::Feedback BaseFeedback;
     k_api::BaseCyclic::Command  BaseCommand;
@@ -126,13 +126,13 @@ bool example_cyclic_armbase()
 
     try
     {
-        // Need to set the base in low level servoing
+        // sets the base to low-level servoing
         auto servoingMode = k_api::Base::ServoingModeInformation();
         servoingMode.set_servoing_mode(k_api::Base::ServoingMode::LOW_LEVEL_SERVOING);
         pBase->SetServoingMode(servoingMode);
         BaseFeedback = pBaseCyclicRT->RefreshFeedback();
 
-        // Initializing each actuator and set them their current position
+        // initializes each actuator and sets to their current position
         for(int i = 0; i < 7; i++)
         {
             ActuatorCommands.push_back(k_api::BaseCyclic::ActuatorCommand());
@@ -145,7 +145,7 @@ bool example_cyclic_armbase()
             BaseCommand.add_actuators()->set_position(BaseFeedback.actuators(i).position());
         }
 
-        // Callback function used in Refresh_callback
+        // callback function used in Refresh_callback
         auto lambda_fct_callback = [](const Kinova::Api::Error &err, const k_api::BaseCyclic::Feedback data)
         {
             // we are printing the data just for the example purpose
@@ -155,7 +155,7 @@ bool example_cyclic_armbase()
             std::cout << serializedData << std::endl;
         };
 
-        // Real-time loop
+        // real-time loop
         while(timerCount < (time_duration * 1000))
         {
             now = GetTickUs();
@@ -165,7 +165,7 @@ bool example_cyclic_armbase()
             
                 for(int i = 0; i < ACTUATOR_COUNT; i++)
                 {
-                    // Only move the last actuator to prevent collision
+                    // move only the last actuator to prevent collision
         		    if(i == 6)
         		    {
                         Commands[i] += (0.001f * velocity);
@@ -203,7 +203,7 @@ bool example_cyclic_armbase()
         returnStatus = false;
     }
 
-    // just wait a while to let the response income
+    // just wait a while to let the response come
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 
     pSessionMng->CloseSession();

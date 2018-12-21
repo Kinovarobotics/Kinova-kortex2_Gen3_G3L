@@ -5,8 +5,8 @@
 #
 # Copyright (c) 2018 Kinova inc. All rights reserved.
 #
-# This software may be modified and distributed under the
-# terms of the BSD 3-Clause license.
+# This software may be modified and distributed
+# under the terms of the BSD 3-Clause license.
 #
 # Refer to the LICENSE file for details.
 #
@@ -26,7 +26,7 @@ from google.protobuf import json_format
 
 def example_routed_device_config(device_manager_service, device_config_service):
 
-    # getting all devices routing information (from DeviceManagerClient service)
+    # getting all device routing information (from DeviceManagerClient service)
     print("-- ReadAllDevices --\n")
     subDevicesInfo = device_manager_service.ReadAllDevices()
     print(json_format.MessageToJson(subDevicesInfo))
@@ -35,7 +35,7 @@ def example_routed_device_config(device_manager_service, device_config_service):
     options = RouterClientSendOptions()
     options.timeout_ms = 4000
 
-    # using devices routing information to route every devices (base, actuator, interconnect, etc.) in the armbase system and ask them their general device information
+    # using device routing information to route to every devices (base, actuator, interconnect, etc.) in the arm/base system and request their general device information
     for dev in subDevicesInfo.device_handle:
         deviceInfo = {}
         deviceInfo.update( json_format.MessageToDict( device_config_service.GetDeviceType           (dev.device_identifier, options) ) )
@@ -66,8 +66,8 @@ if __name__ == "__main__":
     session_info = Session_pb2.CreateSessionInfo()
     session_info.username = 'admin'
     session_info.password = 'admin'
-    session_info.session_inactivity_timeout = 600000 # 10 minutes
-    session_info.connection_inactivity_timeout = 2000 # 2 second
+    session_info.session_inactivity_timeout =  60000 # (milliseconds)
+    session_info.connection_inactivity_timeout = 2000 # (milliseconds)
 
     session_manager = SessionManager(router)
     session_manager.CreateSession(session_info)

@@ -1,14 +1,14 @@
 /*
-* KINOVA (R) KORTEX (TM)
-*
-* Copyright (c) 2018 Kinova inc. All rights reserved.
-*
-* This software may be modified and distributed under the
-* terms of the BSD 3-Clause license.
-*
-* Refer to the LICENSE file for details.
-*
-*/
+ * KINOVA (R) KORTEX (TM)
+ *
+ * Copyright (c) 2018 Kinova inc. All rights reserved.
+ *
+ * This software may be modified and distributed
+ * under the terms of the BSD 3-Clause license.
+ *
+ * Refer to the LICENSE file for details.
+ *
+ */
 
 #include <SessionManager.h>
 #include <DeviceConfigClientRpc.h>
@@ -25,39 +25,39 @@ namespace k_api = Kinova::Api;
 void example_api_creation()
 {
     // -----------------------------------------------------------
-    // Here how to create an api with the SessionManager, DeviceConfigClient and BaseClient services
+    // How to create an API with the SessionManager, DeviceConfigClient and BaseClient services
     auto errorCallback = [](k_api::KError err){ cout << "_________ callback error _________" << err.toString(); };
 
     auto pTransport = new k_api::TransportClientUdp();
     auto pRouterClient = new k_api::RouterClient(pTransport, errorCallback);
     pTransport->connect(IP_ADDRESS, PORT);
 
-    // Set session data connectiopn information
+    // set session data connection information
     auto createSessionInfo = k_api::Session::CreateSessionInfo();
     createSessionInfo.set_username("admin");
     createSessionInfo.set_password("admin");
-    createSessionInfo.set_session_inactivity_timeout(60000);
-    createSessionInfo.set_connection_inactivity_timeout(2000);
+    createSessionInfo.set_session_inactivity_timeout(60000);   // (milliseconds)
+    createSessionInfo.set_connection_inactivity_timeout(2000); // (milliseconds)
 
-    // Session manager service wrapper
+    // session manager service wrapper
     std::cout << "\nCreating Session for communication";
     auto pSessionMng = new k_api::SessionManager(pRouterClient);
     pSessionMng->CreateSession(createSessionInfo);
     std::cout << "\nSession Created";
 
-    // Create needed services
+    // create needed services
     auto pDeviceConfig = new k_api::DeviceConfig::DeviceConfigClient(pRouterClient);
     auto pBase = new k_api::Base::BaseClient(pRouterClient);
 
     // -----------------------------------------------------------
-    // Now you're ready to use the api
+    // Now you're ready to use the API
     // ...
 
     // -----------------------------------------------------------
-    // At the end here how to destroy the created api
+    // After you're done, here's how to destroy the created API
     pSessionMng->CloseSession();
 
-    // Destroy the api
+    // Destroy the API
     pTransport->disconnect();
     delete pBase;
     delete pDeviceConfig;

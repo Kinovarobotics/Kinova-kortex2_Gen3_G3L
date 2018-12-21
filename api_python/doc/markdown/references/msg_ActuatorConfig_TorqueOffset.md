@@ -4,7 +4,7 @@ This page describes the Python Kinova.Api.ActuatorConfig.TorqueOffset message.
 
 ## Overview / Purpose
 
-Defines a torque offset
+Defines torque offset
 
 ## Class members
 

@@ -4,7 +4,7 @@ This page describes the C++ Kinova::Api::Common::Timestamp message.
 
 ## Overview / Purpose
 
-Timestamp based on epoch
+Timestamp based on Epoch \(00:00:00 Thursday, January 1, 1970\)
 
 ## Class members
 
@@ -12,8 +12,8 @@ Timestamp based on epoch
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|sec|uint32|Epoch in seconds since 1970|
-|usec|uint32|Microseconds after the second \(0-999999\)|
+|sec|uint32|Number of seconds that have elapsed since Epoch|
+|usec|uint32|Number of microseconds that have elapsed since the last second \(0-999999\)|
 
  **Methods** 
 

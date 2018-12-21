@@ -4,7 +4,7 @@ This page describes the Python Kinova.Api.BaseCyclic.ActuatorCustomData message.
 
 ## Overview / Purpose
 
-copied from ActuatorCyclic.proto
+Custom development data from an actuator module, content varies according to debug needs
 
 ## Class members
 

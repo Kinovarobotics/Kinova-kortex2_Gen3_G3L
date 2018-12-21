@@ -27,16 +27,18 @@ This section describes the data types used in the ActuatorCyclic package methods
 
 |Message|Description|
 |-------|-----------|
-|[Command](msg_ActuatorCyclic_Command.md#)| |
-|[CustomData](msg_ActuatorCyclic_CustomData.md#)| |
-|[Feedback](msg_ActuatorCyclic_Feedback.md#)| |
+|[Command](msg_ActuatorCyclic_Command.md#)|Defines an actuator module command|
+|[CustomData](msg_ActuatorCyclic_CustomData.md#)|Custom development data, content varies according to debug needs|
+|[Feedback](msg_ActuatorCyclic_Feedback.md#)|Defines the feedback provided by an actuator module|
 |[MessageId](msg_ActuatorCyclic_MessageId.md#)|Provides a message identifier|
 
  **Enumerations** 
 
 |Enumeration|Description|
 |-----------|-----------|
+|[CommandFlags](enm_ActuatorCyclic_CommandFlags.md#)|Enumeration used to identify actuator commands|
 |[ServiceVersion](enm_ActuatorCyclic_ServiceVersion.md#)|Enumeration used to identify ActuatorCyclic current version|
+|[StatusFlags](enm_ActuatorCyclic_StatusFlags.md#)|Enumeration used to identify actuator status|
 
 **Parent topic:** [KINOVA® KORTEX™ Python API Reference](../index.md#)
 

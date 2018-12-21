@@ -3,8 +3,8 @@
 *
 * Copyright (c) 2018 Kinova inc. All rights reserved.
 *
-* This software may be modified and distributed under the
-* terms of the BSD 3-Clause license.
+* This software may be modified and distributed
+* under the terms of the BSD 3-Clause license.
 *
 * Refer to the LICENSE file for details.
 *
@@ -26,11 +26,11 @@ namespace pb = google::protobuf;
 
 void example_routed_vision(k_api::DeviceManager::DeviceManagerClient* pDeviceMng, k_api::VisionConfig::VisionConfigClient* pVision)
 {
-    // getting all devices routing information (from DeviceManagerClient service)
+    // gets all device routing information (from DeviceManagerClient service)
     printf("-- ReadAllDevices --\n\n");
     auto allDevicesInfo = pDeviceMng->ReadAllDevices();
 
-    // using devices routing information to route every devices (base, actuator, interconnect, etc.) in the armbase system and ask them their general device information
+    // uses device routing information to route to every device (base, actuator, interconnect, etc.) in the armbase system and request general device information
     for ( auto dev : allDevicesInfo.device_handle() )
     {
         if ( dev.device_type() == k_api::Common::DeviceTypes::VISION )
@@ -41,12 +41,12 @@ void example_routed_vision(k_api::DeviceManager::DeviceManagerClient* pDeviceMng
 
             auto intrinsicValue = pVision->GetIntrinsicParameters(sensorId, dev.device_identifier());
 
-            std::cout << "Width : " << intrinsicValue.width() << std::endl;
-            std::cout << "Height : " << intrinsicValue.height() << std::endl;
-            std::cout << "Principal point X : " << intrinsicValue.principal_point_x() << std::endl;
-            std::cout << "Principal point Y : " << intrinsicValue.principal_point_y() << std::endl;
-            std::cout << "focal lenght X : " << intrinsicValue.focal_length_x() << std::endl;
-            std::cout << "focal lenght Y : " << intrinsicValue.focal_length_y() << std::endl;
+            std::cout << "Width: " << intrinsicValue.width() << std::endl;
+            std::cout << "Height: " << intrinsicValue.height() << std::endl;
+            std::cout << "Principal point x: " << intrinsicValue.principal_point_x() << std::endl;
+            std::cout << "Principal point y: " << intrinsicValue.principal_point_y() << std::endl;
+            std::cout << "focal lenght x: " << intrinsicValue.focal_length_x() << std::endl;
+            std::cout << "focal lenght y: " << intrinsicValue.focal_length_y() << std::endl;
 
             break;
         }
@@ -59,7 +59,7 @@ int main(int argc, char **argv)
     pTransport->connect(IP_ADDRESS, PORT);
     auto pRouterClient = new k_api::RouterClient(pTransport, [](k_api::KError err){ std::cout << "_________ callback error _________" << err.toString(); });
 
-    // Create session
+    // create session
     auto createSessionInfo = k_api::Session::CreateSessionInfo();
     createSessionInfo.set_username("admin");
     createSessionInfo.set_password("admin");

@@ -5,8 +5,8 @@
 #
 # Copyright (c) 2018 Kinova inc. All rights reserved.
 #
-# This software may be modified and distributed under the
-# terms of the BSD 3-Clause license.
+# This software may be modified and distributed
+# under the terms of the BSD 3-Clause license.
 #
 # Refer to the LICENSE file for details.
 #
@@ -29,7 +29,7 @@ def example_call_rpc_using_options(base_service):
     #     delay_ms = 0          (not implemented yet)
     #     timeout_ms = 10000
 
-    # The RouterClientSendOptions is optional and need to be pass with the keyword
+    # The RouterClientSendOptions is optional and needs to be passed with the keyword
     # options
     router_options = RouterClientSendOptions()
     router_options.timeout_ms = 5000 # 5 seconds
@@ -39,10 +39,10 @@ def example_call_rpc_using_options(base_service):
     wifi_list = base_service.GetAvailableWifi(options=router_options)
     for wifi in wifi_list.wifi_information_list:
         print("============================================")
-        print("Ssid : {0}".format(wifi.ssid.identifier))
-        print("Wifi security type : {0}".format(wifi.security_type))
-        print("Wifi encryption type : {0}".format(wifi.encryption_type))
-        print("Signal strength : {0}".format(wifi.signal_strength))
+        print("SSID: {0}".format(wifi.ssid.identifier))
+        print("Wi-Fi security type: {0}".format(wifi.security_type))
+        print("Wi-Fi encryption type: {0}".format(wifi.encryption_type))
+        print("Signal strength: {0}".format(wifi.signal_strength))
         print("============================================")
 
 
@@ -58,8 +58,8 @@ if __name__ == "__main__":
     session_info = Session_pb2.CreateSessionInfo()
     session_info.username = 'admin'
     session_info.password = 'admin'
-    session_info.session_inactivity_timeout = 600000 # 10 minutes
-    session_info.connection_inactivity_timeout = 2000 # 2 second
+    session_info.session_inactivity_timeout = 60000   # (milliseconds)
+    session_info.connection_inactivity_timeout = 2000 # (milliseconds)
 
     session_manager = SessionManager(router)
     session_manager.CreateSession(session_info)

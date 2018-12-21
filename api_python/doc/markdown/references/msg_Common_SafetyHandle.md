@@ -12,7 +12,7 @@ Identifies a safety
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|identifier|int|safety identifier|
+|identifier|int|Safety identifier|
 
 **Parent topic:** [Common](../references/summary_Common.md)
 

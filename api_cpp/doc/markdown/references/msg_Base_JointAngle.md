@@ -13,7 +13,7 @@ Position of a specific joint
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |joint\_identifier|uint32|Joint identifier|
-|value|float32|Position \(in degree\)|
+|value|float32|Position \(in degrees\)|
 
  **Methods** 
 

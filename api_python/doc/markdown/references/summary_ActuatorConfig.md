@@ -22,7 +22,7 @@ This section describes procedure calls / methods exposed by the ActuatorConfig p
 |GetControlMode|[ControlModeInformation](msg_ActuatorConfig_ControlModeInformation.md#)|None|Gets actuator control mode|
 |GetEncoderDerivativeParameters|[EncoderDerivativeParameters](msg_ActuatorConfig_EncoderDerivativeParameters.md#)|None|Gets encoder derivative parameters \(internal use only\)|
 |GetSelectedCustomData|[CustomDataSelection](msg_ActuatorConfig_CustomDataSelection.md#)|None|Gets selected custom data|
-|GetServoing|[Servoing](msg_ActuatorConfig_Servoing.md#)|None|Gets servoing|
+|GetServoing|[Servoing](msg_ActuatorConfig_Servoing.md#)|None|Gets servoing state|
 |GetTorqueOffset|[TorqueOffset](msg_ActuatorConfig_TorqueOffset.md#)|None|Gets torque offset calibration|
 |GetVectorDriveParameters|[VectorDriveParameters](msg_ActuatorConfig_VectorDriveParameters.md#)|None|Gets motor drive FOC parameters \(internal use only\)|
 |MoveToPosition|None|[PositionCommand](msg_ActuatorConfig_PositionCommand.md#)|Moves the actuator to the desired position|
@@ -55,20 +55,20 @@ This section describes the data types used in the ActuatorConfig package methods
 |-------|-----------|
 |[AxisOffsets](msg_ActuatorConfig_AxisOffsets.md#)|Defines axis offsets|
 |[AxisPosition](msg_ActuatorConfig_AxisPosition.md#)|Defines an axis position|
-|[CommandModeInformation](msg_ActuatorConfig_CommandModeInformation.md#)|Selects a command mode|
+|[CommandModeInformation](msg_ActuatorConfig_CommandModeInformation.md#)|Selects command mode|
 |[ControlLoop](msg_ActuatorConfig_ControlLoop.md#)|Defines the control loop|
 |[ControlLoopParameters](msg_ActuatorConfig_ControlLoopParameters.md#)|Defines control loop parameters \(discrete transfer function\)|
 |[ControlModeInformation](msg_ActuatorConfig_ControlModeInformation.md#)|Defines the control mode|
-|[CustomDataSelection](msg_ActuatorConfig_CustomDataSelection.md#)|Selects a custom data|
+|[CustomDataSelection](msg_ActuatorConfig_CustomDataSelection.md#)|Selects custom data channels content|
 |[EncoderDerivativeParameters](msg_ActuatorConfig_EncoderDerivativeParameters.md#)|Defines variable window derivative parameters|
-|[FrequencyResponse](msg_ActuatorConfig_FrequencyResponse.md#)|Defines a frequency response|
+|[FrequencyResponse](msg_ActuatorConfig_FrequencyResponse.md#)|Defines frequency response|
 |[LoopSelection](msg_ActuatorConfig_LoopSelection.md#)|Defines the loop selection|
 |[PositionCommand](msg_ActuatorConfig_PositionCommand.md#)|Defines a position command|
-|[RampResponse](msg_ActuatorConfig_RampResponse.md#)|Defines a ramp response|
-|[Servoing](msg_ActuatorConfig_Servoing.md#)|Enables \(or disables\) the servoing mode|
-|[StepResponse](msg_ActuatorConfig_StepResponse.md#)|Defines a step response|
-|[TorqueCalibration](msg_ActuatorConfig_TorqueCalibration.md#)|Defines a torque calibration|
-|[TorqueOffset](msg_ActuatorConfig_TorqueOffset.md#)|Defines a torque offset|
+|[RampResponse](msg_ActuatorConfig_RampResponse.md#)|Defines ramp response|
+|[Servoing](msg_ActuatorConfig_Servoing.md#)|Enables/disables servoing|
+|[StepResponse](msg_ActuatorConfig_StepResponse.md#)|Defines step response|
+|[TorqueCalibration](msg_ActuatorConfig_TorqueCalibration.md#)|Defines torque calibration|
+|[TorqueOffset](msg_ActuatorConfig_TorqueOffset.md#)|Defines torque offset|
 |[VectorDriveParameters](msg_ActuatorConfig_VectorDriveParameters.md#)|Field-oriented control PI controller gain values|
 
  **Enumerations** 
@@ -78,6 +78,7 @@ This section describes the data types used in the ActuatorConfig package methods
 |[CommandMode](enm_ActuatorConfig_CommandMode.md#)|List of admissible command modes|
 |[ControlLoopSelection](enm_ActuatorConfig_ControlLoopSelection.md#)|List of admissible control loop selections|
 |[ControlMode](enm_ActuatorConfig_ControlMode.md#)|List of admissible control modes|
+|[CustomDataIndex](enm_ActuatorConfig_CustomDataIndex.md#)| |
 |[SafetyIdentifier](enm_ActuatorConfig_SafetyIdentifier.md#)|List of admissible actuator safeties|
 |[SafetyLimitType](enm_ActuatorConfig_SafetyLimitType.md#)|List of of admissible limit types|
 |[ServiceVersion](enm_ActuatorConfig_ServiceVersion.md#)|Enumeration used to identify ActuatorConfig service current version|

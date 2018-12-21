@@ -94,6 +94,8 @@ List of possible sub errror codes
 |USERNAME\_EMPTY|105|User profile empty username not allowed|
 |PASSWORD\_NOT\_CHANGED|106|Change password both passwords are the same|
 |MAXIMUM\_USER\_PROFILES\_USED|107|Maximum number of user profiles in use|
+|ROUTER\_UNVAILABLE|108|The client router is currently unavailable. This can happen if an API method is called after the router has been deactivated via the method SetActivationStatus.|
+|ADDRESS\_NOT\_IN\_VALID\_RANGE|120|IP Address not valid against netmask|
 
 **Parent topic:** [Api](../references/summary_Api.md)
 

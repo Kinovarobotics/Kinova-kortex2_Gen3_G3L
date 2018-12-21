@@ -12,9 +12,9 @@ Defines a Cartesian orientation
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|theta\_x|float|Theta X orientation \(in degree\)|
-|theta\_y|float|Theta Y orientation \(in degree\)|
-|theta\_z|float|Theta Z orientation \(in degree\)|
+|theta\_x|float|Theta X orientation \(in degrees\)|
+|theta\_y|float|Theta Y orientation \(in degrees\)|
+|theta\_z|float|Theta Z orientation \(in degrees\)|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

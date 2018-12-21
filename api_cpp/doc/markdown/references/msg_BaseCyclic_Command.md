@@ -4,6 +4,8 @@ This page describes the C++ Kinova::Api::BaseCyclic::Command message.
 
 ## Overview / Purpose
 
+Defines a command for many modules \(actuactors and interconnect\)
+
 ## Class members
 
  **Member variables** 

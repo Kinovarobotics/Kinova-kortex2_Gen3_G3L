@@ -33,16 +33,16 @@ This section describes the data types used in the BaseCyclic package methods, in
 
 |Message|Description|
 |-------|-----------|
-|[ActuatorCommand](msg_BaseCyclic_ActuatorCommand.md#)|copied from ActuatorCyclic.proto|
-|[ActuatorCustomData](msg_BaseCyclic_ActuatorCustomData.md#)|copied from ActuatorCyclic.proto|
-|[ActuatorFeedback](msg_BaseCyclic_ActuatorFeedback.md#)|copied from ActuatorCyclic.proto|
-|[BaseFeedback](msg_BaseCyclic_BaseFeedback.md#)| |
-|[Command](msg_BaseCyclic_Command.md#)| |
+|[ActuatorCommand](msg_BaseCyclic_ActuatorCommand.md#)|Defines an actuator module command|
+|[ActuatorCustomData](msg_BaseCyclic_ActuatorCustomData.md#)|Custom development data from an actuator module, content varies according to debug needs|
+|[ActuatorFeedback](msg_BaseCyclic_ActuatorFeedback.md#)|Defines the feedback provided by an actuator module|
+|[BaseFeedback](msg_BaseCyclic_BaseFeedback.md#)|Defines the feedback provided by the base module|
+|[Command](msg_BaseCyclic_Command.md#)|Defines a command for many modules \(actuactors and interconnect\)|
 |[CustomData](msg_BaseCyclic_CustomData.md#)|Custom development data, content varies according to debug needs|
-|[Feedback](msg_BaseCyclic_Feedback.md#)| |
-|[InterconnectCommand](msg_BaseCyclic_InterconnectCommand.md#)|copied from InterconnectCyclic.proto|
-|[InterconnectCustomData](msg_BaseCyclic_InterconnectCustomData.md#)|copied from InterconnectCyclic.proto|
-|[InterconnectFeedback](msg_BaseCyclic_InterconnectFeedback.md#)|copied from InterconnectCyclic.proto|
+|[Feedback](msg_BaseCyclic_Feedback.md#)|Defines the feedback provided by many modules \(base, actuactors and interconnect\)|
+|[InterconnectCommand](msg_BaseCyclic_InterconnectCommand.md#)|Defines an interconnect module command|
+|[InterconnectCustomData](msg_BaseCyclic_InterconnectCustomData.md#)|Custom development data from an interconnect module, content varies according to debug needs|
+|[InterconnectFeedback](msg_BaseCyclic_InterconnectFeedback.md#)|Defines the feedback provided by an interconnect module|
 
  **Enumerations** 
 

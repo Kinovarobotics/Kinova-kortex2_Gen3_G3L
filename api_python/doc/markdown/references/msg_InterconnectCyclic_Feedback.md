@@ -4,6 +4,8 @@ This page describes the Python Kinova.Api.InterconnectCyclic.Feedback message.
 
 ## Overview / Purpose
 
+Defines the feedback provided by an interconnect module
+
 ## Class members
 
  **Member variables** 

@@ -4,7 +4,7 @@ This page describes the Python Kinova.Api.ActuatorConfig.CustomDataSelection mes
 
 ## Overview / Purpose
 
-Selects a custom data
+Selects custom data channels content
 
 ## Class members
 
@@ -12,7 +12,7 @@ Selects a custom data
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|channel|int|16 channels maximum|
+|channel| [CustomDataIndex](enm_ActuatorConfig_CustomDataIndex.md#)|16 channels maximum|
 
 **Parent topic:** [ActuatorConfig](../references/summary_ActuatorConfig.md)
 

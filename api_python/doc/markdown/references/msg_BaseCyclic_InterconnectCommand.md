@@ -4,7 +4,7 @@ This page describes the Python Kinova.Api.BaseCyclic.InterconnectCommand message
 
 ## Overview / Purpose
 
-copied from InterconnectCyclic.proto
+Defines an interconnect module command
 
 ## Class members
 

@@ -58,6 +58,7 @@ Every method listed below, except the notification subscription methods \(begini
 |GetConnectedWifiInformation|[WifiInformation](msg_Base_WifiInformation.md#)|void|Gets information about the connected Wi-Fi network|
 |GetControllerState|[ControllerState](msg_Base_ControllerState.md#)|[ControllerHandle](msg_Base_ControllerHandle.md#)|Retrieves the state of a specific controller|
 |GetControlMode|[ControlModeInformation](msg_Base_ControlModeInformation.md#)|void|Retrieves current control mode|
+|GetCountryCode|[CountryCode](msg_Base_CountryCode.md#)|void|Retrieves country code|
 |GetFwdKinematics|[TransformationMatrix](msg_Base_TransformationMatrix.md#)|void|Retrieves the forward kinematics that corresponds to specified transformation matrix \(future\)|
 |GetIPv4Configuration|[IPv4Configuration](msg_Base_IPv4Configuration.md#)|[NetworkHandle](msg_Base_NetworkHandle.md#)|Retrieves the IPv4 network configuration for the specified network adapter|
 |GetIPv4Information|[IPv4Information](msg_Base_IPv4Information.md#)|[NetworkHandle](msg_Base_NetworkHandle.md#)|Retrieves the IPv4 network information for the specified network adapter|
@@ -121,6 +122,7 @@ Every method listed below, except the notification subscription methods \(begini
 |SendTwistCommand|void|[TwistCommand](msg_Base_TwistCommand.md#)|Sends a twist command|
 |SetAdmittance|void|[Admittance](msg_Base_Admittance.md#)|Sets the robot in admittance mode|
 |SetCommunicationInterfaceEnable|void|[CommunicationInterfaceConfiguration](msg_Base_CommunicationInterfaceConfiguration.md#)|Enables \(or disables\) the specified communication interface|
+|SetCountryCode|void|[CountryCode](msg_Base_CountryCode.md#)|Sets country code|
 |SetIPv4Configuration|void|[FullIPv4Configuration](msg_Base_FullIPv4Configuration.md#)|Modifies the IPv4 network configuration for the specified network adapter|
 |SetOperatingMode|void|[OperatingModeInformation](msg_Base_OperatingModeInformation.md#)|Sets a new operating mode. Only Maintenance, Update and Run modes are permitted.|
 |SetServoingMode|void|[ServoingModeInformation](msg_Base_ServoingModeInformation.md#)|Sets the servoing mode|
@@ -162,7 +164,7 @@ This section describes the data types used in the Base package methods, includin
 |[CartesianTrajectoryConstraint](msg_Base_CartesianTrajectoryConstraint.md#)|Defines a Cartesian trajectory constraint that can be applied when controlling in Cartesian trajectory mode|
 |[ChangeJointSpeeds](msg_Base_ChangeJointSpeeds.md#)|Defines an action to increase \(or reduce\) the maximum angular velocity per joint by a specific increment|
 |[ChangeTwist](msg_Base_ChangeTwist.md#)|Defines an action to increase \(or reduce\) the maximum Cartesian velocity by a specific increment|
-|[CommunicationInterfaceConfiguration](msg_Base_CommunicationInterfaceConfiguration.md#)|Enables or disables a specific communication interface \(ex. Wi-Fi, Wired Ethernet\)|
+|[CommunicationInterfaceConfiguration](msg_Base_CommunicationInterfaceConfiguration.md#)|Enables or disables a specific communication interface \(e.g. Wi-Fi, Wired Ethernet\)|
 |[ConfigurationChangeNotification](msg_Base_ConfigurationChangeNotification.md#)|Message that contains a configuration change event|
 |[ConfigurationChangeNotificationList](msg_Base_ConfigurationChangeNotificationList.md#)|Array of configuration change notifications|
 |[ConstrainedJointAngle](msg_Base_ConstrainedJointAngle.md#)|Defines a single joint angle value with constraint|
@@ -181,6 +183,7 @@ This section describes the data types used in the Base package methods, includin
 |[ControllerNotification](msg_Base_ControllerNotification.md#)|Message that contains a controller event|
 |[ControllerNotificationList](msg_Base_ControllerNotificationList.md#)|Array of controller notifications|
 |[ControllerState](msg_Base_ControllerState.md#)|Indicates if a controller is connected \(or disconnected\)|
+|[CountryCode](msg_Base_CountryCode.md#)|Country code|
 |[Delay](msg_Base_Delay.md#)|Defines an action to apply a delay|
 |[EmergencyStop](msg_Base_EmergencyStop.md#)|Defines an action to force an emergency of the robot|
 |[FactoryNotification](msg_Base_FactoryNotification.md#)|Message that contains a factory event|
@@ -289,6 +292,7 @@ This section describes the data types used in the Base package methods, includin
 |[ControllerEventType](enm_Base_ControllerEventType.md#)|List of admissible controller event types|
 |[ControllerInputType](enm_Base_ControllerInputType.md#)|List of admissible controller input types|
 |[ControllerType](enm_Base_ControllerType.md#)|List of admissible controller types|
+|[CountryCodeIdentifier](enm_Base_CountryCodeIdentifier.md#)|list of supported ISO3166 country identifiers|
 |[EventIdSequenceInfoNotification](enm_Base_EventIdSequenceInfoNotification.md#)|List of admissible sequence event types|
 |[FactoryEvent](enm_Base_FactoryEvent.md#)|List of admissible factory events|
 |[GpioState](enm_Base_GpioState.md#)|List of admissible GPIO states \(future\)|

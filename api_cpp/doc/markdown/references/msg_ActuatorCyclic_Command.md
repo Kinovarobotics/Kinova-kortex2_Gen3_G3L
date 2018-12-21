@@ -4,6 +4,8 @@ This page describes the C++ Kinova::Api::ActuatorCyclic::Command message.
 
 ## Overview / Purpose
 
+Defines an actuator module command
+
 ## Class members
 
  **Member variables** 
@@ -11,11 +13,11 @@ This page describes the C++ Kinova::Api::ActuatorCyclic::Command message.
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |command\_id| [MessageId](msg_ActuatorCyclic_MessageId.md#)|MessageId|
-|flags|uint32|Flags|
-|position|float32|Desired position of the actuator in °|
-|velocity|float32|Desired velocity of the actuator in °/s|
-|torque\_joint|float32|Desired torque of the actuator in N·m \(future\)|
-|current\_motor|float32|Desired current of the motor in A|
+|flags|uint32|Command flags \(see enum CommandFlags\)|
+|position|float32|Desired position of the actuator \(degrees\)|
+|velocity|float32|Desired velocity of the actuator \(degrees per second\)|
+|torque\_joint|float32|Desired torque of the actuator \(Newton-meters\)|
+|current\_motor|float32|Desired current of the motor \(Amperes\)|
 
  **Methods** 
 

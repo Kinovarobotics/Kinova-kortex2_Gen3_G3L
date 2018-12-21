@@ -5,8 +5,8 @@
 #
 # Copyright (c) 2018 Kinova inc. All rights reserved.
 #
-# This software may be modified and distributed under the
-# terms of the BSD 3-Clause license.
+# This software may be modified and distributed
+# under the terms of the BSD 3-Clause license.
 #
 # Refer to the LICENSE file for details.
 #
@@ -34,7 +34,7 @@ def example_notification(base_service):
         print(json_format.MessageToJson(data))
         print("****************************")
 
-    # Subscribe to ConfigurationChange notification
+    # subscribe to ConfigurationChange notifications
     try:
         notif_handle = base_service.OnNotificationConfigurationChangeTopic(notification_callback, Base_pb2.NotificationOptions())
     except KException:
@@ -42,10 +42,10 @@ def example_notification(base_service):
     except Exception:
         print("Error occured")
 
-    # ... miscellenaous tasks !!!
+    # ... miscellenaous tasks
     time.sleep(3)
 
-    # Creating a user
+    # creating a user profile
     full_user_profile = Base_pb2.FullUserProfile()
     full_user_profile.user_profile.username = 'jcash'
     full_user_profile.user_profile.firstname = 'Johnny'
@@ -58,18 +58,18 @@ def example_notification(base_service):
     except KException:
         print("User creation failed")
 
-    # ... following the creation of the user_profile we should receive the ConfigurationChange notification (fct notification_callback() should be call)
+    # ... following the creation of the user_profile we should receive the ConfigurationChange notification (notification_callback() should be called)
     print("User {0} created".format(full_user_profile.user_profile.username))
 
-    # ... miscellenaous tasks !!! and to let the notification works.
+    # ... miscelleneous tasks and to give time for the notification to work.
     time.sleep(3)
 
-    print("Now unsubscribe ConfigurationChange notification")
+    print("Now unsubscribe from ConfigurationChange notifications")
     base_service.Unsubscribe(notif_handle)
 
     try:
         print("Deleting user {0}".format(full_user_profile.user_profile.username))
-        base_service.DeleteUserProfile(user_profile_handle) # Should not received notification about this modification
+        base_service.DeleteUserProfile(user_profile_handle) # Should not have received notification about this modification
 
     except KException:
         print("User deletion failed")
@@ -90,8 +90,8 @@ if __name__ == "__main__":
     session_info = Session_pb2.CreateSessionInfo()
     session_info.username = 'admin'
     session_info.password = 'admin'
-    session_info.session_inactivity_timeout = 600000 # 10 minutes
-    session_info.connection_inactivity_timeout = 2000 # 2 second
+    session_info.session_inactivity_timeout = 60000   # (milliseconds)
+    session_info.connection_inactivity_timeout = 2000 # (milliseconds)
 
     session_manager = SessionManager(router)
     session_manager.CreateSession(session_info)

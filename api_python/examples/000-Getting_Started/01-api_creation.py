@@ -5,8 +5,8 @@
 #
 # Copyright (c) 2018 Kinova inc. All rights reserved.
 #
-# This software may be modified and distributed under the
-# terms of the BSD 3-Clause license.
+# This software may be modified and distributed
+# under the under the terms of the BSD 3-Clause license.
 #
 # Refer to the LICENSE file for details.
 #
@@ -30,18 +30,18 @@ def example_api_creation():
     transport.connect(DEVICE_IP, DEVICE_PORT)
     router = RouterClient(transport, lambda kException: print("Error during connection"))
 
-    # Create session
+    # create session
     session_info = Session_pb2.CreateSessionInfo()
     session_info.username = 'admin'
     session_info.password = 'admin'
-    session_info.session_inactivity_timeout = 600000 # 10 minutes
-    session_info.connection_inactivity_timeout = 2000 # 2 second
+    session_info.session_inactivity_timeout = 60000  # (milliseconds)
+    session_info.connection_inactivity_timeout = 2000 # (milliseconds)
 
     print("Creating session for communication")
     session_manager = SessionManager(router)
     session_manager.CreateSession(session_info)
 
-    # Create needed services
+    # create requested services
     device_config_service = DeviceConfigClient(router)
     base_client_service = BaseClient(router)
 

@@ -4,6 +4,8 @@ This page describes the Python Kinova.Api.BaseCyclic.Feedback message.
 
 ## Overview / Purpose
 
+Defines the feedback provided by many modules \(base, actuactors and interconnect\)
+
 ## Class members
 
  **Member variables** 

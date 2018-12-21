@@ -20,7 +20,7 @@ List of admissible action types
 |NAVIGATE\_JOINTS|17|Action to select the next actuator to control from control mapping|
 |NAVIGATE\_MAPPINGS|18|Action to select a different map|
 |CHANGE\_TWIST|22|Action to change the twist|
-|CHANGE\_JOINT\_SPEEDS|23|Action to change the joint speeds per joint|
+|CHANGE\_JOINT\_SPEEDS|23|Action to change the joint speeds individually|
 |APPLY\_EMERGENCY\_STOP|28|Action to apply robot emergency stop|
 |CLEAR\_FAULTS|29|Action to clear faults. Robot will be able to move if there is no more fault \(see BaseCyclic.BaseFeedback.\[fault\_bank\_a | fault\_bank\_b\]\)|
 |DELAY|31|Action to apply a delay|

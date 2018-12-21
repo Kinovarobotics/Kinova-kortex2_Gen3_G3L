@@ -4,7 +4,7 @@ This page describes the Python Kinova.Api.ActuatorConfig.StepResponse message.
 
 ## Overview / Purpose
 
-Defines a step response
+Defines step response
 
 ## Class members
 

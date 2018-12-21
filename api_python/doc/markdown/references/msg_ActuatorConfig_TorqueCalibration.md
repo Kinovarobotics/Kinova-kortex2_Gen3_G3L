@@ -4,7 +4,7 @@ This page describes the Python Kinova.Api.ActuatorConfig.TorqueCalibration messa
 
 ## Overview / Purpose
 
-Defines a torque calibration
+Defines torque calibration
 
 ## Class members
 

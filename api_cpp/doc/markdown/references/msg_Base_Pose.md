@@ -15,9 +15,9 @@ Defines a Cartesian pose
 |x|float32|X position \(in meters\)|
 |y|float32|Y position \(in meters\)|
 |z|float32|Z position \(in meters\)|
-|theta\_x|float32|Theta X orientation \(in degree\)|
-|theta\_y|float32|Theta Y orienation \(in degree\)|
-|theta\_z|float32|Theta Z orientation \(in degree\)|
+|theta\_x|float32|Theta X orientation \(in degrees\)|
+|theta\_y|float32|Theta Y orienation \(in degrees\)|
+|theta\_z|float32|Theta Z orientation \(in degrees\)|
 
  **Methods** 
 

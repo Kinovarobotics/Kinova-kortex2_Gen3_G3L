@@ -3,8 +3,8 @@
 *
 * Copyright (c) 2018 Kinova inc. All rights reserved.
 *
-* This software may be modified and distributed under the
-* terms of the BSD 3-Clause license.
+* This software may be modified and distributed
+* under the terms of the BSD 3-Clause license.
 *
 * Refer to the LICENSE file for details.
 *
@@ -24,7 +24,7 @@ namespace k_api = Kinova::Api;
 
 void angularMovement(k_api::Base::BaseClient* base)
 {
-    std::cout << "Starting angular movement..." << std::endl;
+    std::cout << "Starting angular movement ..." << std::endl;
 
     auto action = k_api::Base::Action();
     action.set_name("Example angular movement");
@@ -33,7 +33,7 @@ void angularMovement(k_api::Base::BaseClient* base)
     auto reachJointAngles = action.mutable_reach_joint_angles();
     auto jointAngles = reachJointAngles->mutable_joint_angles();
     
-    std::vector<float> angles = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f}; // Arm straight up
+    std::vector<float> angles = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f}; // arm straight up
     for(size_t i = 0 ; i < angles.size(); ++i)
     {
         auto jointAngle = jointAngles->add_joint_angles();
@@ -61,20 +61,20 @@ void cartesiantMovement(k_api::Base::BaseClient* base)
 
     auto constrainPose = action.mutable_reach_pose();
     auto pose = constrainPose->mutable_target_pose();
-    pose->set_x(0.8);           // (meters)
-    pose->set_y(0.0);           // (meters)
-    pose->set_z(0.36);          // (meters)
-    pose->set_theta_x(10.0);    // (degrees)
-    pose->set_theta_y(90.0);    // (degrees)
-    pose->set_theta_z(10.0);    // (degrees)
+    pose->set_x(0.8);           // x (meters)
+    pose->set_y(0.0);           // y (meters)
+    pose->set_z(0.36);          // z (meters)
+    pose->set_theta_x(10.0);    // theta x (degrees)
+    pose->set_theta_y(90.0);    // theta y (degrees)
+    pose->set_theta_z(10.0);    // theta z (degrees)
 
     std::cout << "Executing action" << std::endl;
     base->ExecuteAction(action);
 
-    std::cout << "Waiting 20 seconds to finish movement..." << std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(20000));
+    std::cout << "Waiting 20 seconds to finish movement ..." << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(20000)); 
 
-    std::cout << "Cartesian movement finish" << std::endl;
+    std::cout << "Cartesian movement ended" << std::endl;
 }
 
 
@@ -85,20 +85,20 @@ int main(int argc, char **argv)
 
     k_api::RouterClient* pRouter = new k_api::RouterClient(pTransport, [](k_api::KError err){ std::cout << "_________ callback error _________" << err.toString(); });
 
-    // Create session
+    // create session
     auto createSessionInfo = k_api::Session::CreateSessionInfo();
     createSessionInfo.set_username("admin");
     createSessionInfo.set_password("admin");
-    createSessionInfo.set_session_inactivity_timeout(60000); // 10 minutes
-    createSessionInfo.set_connection_inactivity_timeout(2000); // 2 seconds
+    createSessionInfo.set_session_inactivity_timeout(60000);   // (milliseconds)
+    createSessionInfo.set_connection_inactivity_timeout(2000); // (milliseconds)
 
-    std::cout << "Creating Session for communication" << std::endl;
+    std::cout << "Creating session for communication" << std::endl;
     k_api::SessionManager* pSessionMng = new k_api::SessionManager(pRouter);
     pSessionMng->CreateSession(createSessionInfo);
     std::cout << "Session Created" << std::endl;
 
     std::cout << "Waiting 7.5 seconds before trying to take control of the robot" << std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(7500));
+    std::this_thread::sleep_for(std::chrono::milliseconds(7500)); 
 
     k_api::Base::BaseClient* pBase = new k_api::Base::BaseClient(pRouter);
     

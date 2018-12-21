@@ -5,8 +5,8 @@
 #
 # Copyright (c) 2018 Kinova inc. All rights reserved.
 #
-# This software may be modified and distributed under the
-# terms of the BSD 3-Clause license.
+# This software may be modified and distributed
+# under the terms of the BSD 3-Clause license.
 #
 # Refer to the LICENSE file for details.
 #
@@ -25,7 +25,7 @@ from jaco3_armbase.autogen.messages import DeviceConfig_pb2, Session_pb2, Device
 
 def example_vision_config(device_manager_service, vision_config_service):
 
-    # getting all devices routing information (from DeviceManagerClient service)
+    # getting all device routing information (from DeviceManagerClient service)
     allDevicesInfo = device_manager_service.ReadAllDevices()
 
     vision_handles = [ hd for hd in allDevicesInfo.device_handle if hd.device_type == DeviceConfig_pb2.VISION ]
@@ -41,12 +41,12 @@ def example_vision_config(device_manager_service, vision_config_service):
 
     intrinsic_value = vision_config_service.GetIntrinsicParameters(sensor_id, handle.device_identifier)
 
-    print("Width : {0}".format(intrinsic_value.width))
-    print("Height : {0}".format(intrinsic_value.height))
-    print("Principal point x : {0}".format(intrinsic_value.principal_point_x))
-    print("Principal point y : {0}".format(intrinsic_value.principal_point_y))
-    print("focal length x : {0}".format(intrinsic_value.focal_length_x))
-    print("focal length y : {0}".format(intrinsic_value.focal_length_y))
+    print("Width: {0}".format(intrinsic_value.width))
+    print("Height: {0}".format(intrinsic_value.height))
+    print("Principal point x: {0}".format(intrinsic_value.principal_point_x))
+    print("Principal point y: {0}".format(intrinsic_value.principal_point_y))
+    print("Focal length x: {0}".format(intrinsic_value.focal_length_x))
+    print("Focal length y: {0}".format(intrinsic_value.focal_length_y))
 
 
 if __name__ == "__main__":
@@ -61,8 +61,8 @@ if __name__ == "__main__":
     session_info = Session_pb2.CreateSessionInfo()
     session_info.username = 'admin'
     session_info.password = 'admin'
-    session_info.session_inactivity_timeout = 600000 # 10 minutes
-    session_info.connection_inactivity_timeout = 2000 # 2 second
+    session_info.session_inactivity_timeout = 60000  # (milliseconds)
+    session_info.connection_inactivity_timeout = 2000 # (milliseconds)
 
     session_manager = SessionManager(router)
     session_manager.CreateSession(session_info)

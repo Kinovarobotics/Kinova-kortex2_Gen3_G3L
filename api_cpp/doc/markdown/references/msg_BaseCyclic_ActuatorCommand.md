@@ -4,7 +4,7 @@ This page describes the C++ Kinova::Api::BaseCyclic::ActuatorCommand message.
 
 ## Overview / Purpose
 
-copied from ActuatorCyclic.proto
+Defines an actuator module command
 
 ## Class members
 

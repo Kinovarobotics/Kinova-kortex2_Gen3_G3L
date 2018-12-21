@@ -3,8 +3,8 @@
 *
 * Copyright (c) 2018 Kinova inc. All rights reserved.
 *
-* This software may be modified and distributed under the
-* terms of the BSD 3-Clause license.
+* This software may be modified and distributed
+* under the terms of the BSD 3-Clause license.
 *
 * Refer to the LICENSE file for details.
 *
@@ -42,7 +42,7 @@ void example_notification(k_api::Base::BaseClient* pBase)
     std::cout << "Create notification" << std::endl;
     auto notifHandle = pBase->OnNotificationConfigurationChangeTopic(fct_callback, k_api::Common::NotificationOptions());
 
-    // Creating a user to trigger the notification
+    // creating a user to trigger the notification
     auto fullUserProfile = k_api::Base::FullUserProfile();
     auto userProfile = fullUserProfile.mutable_user_profile();
     auto userProfileHandle = userProfile->mutable_handle();
@@ -64,10 +64,10 @@ void example_notification(k_api::Base::BaseClient* pBase)
         std::cout << "Error during user creation" << std::endl;
     }
     
-    // Let the Base process the user creation request
+    // let the base process the user creation request
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 
-    // Unsubscribe from notification
+    // unsubscribe from notifications
 
     std::cout << "Unsubscribe from notification" << std::endl;
     pBase->Unsubscribe(notifHandle);
@@ -75,7 +75,7 @@ void example_notification(k_api::Base::BaseClient* pBase)
     try
     {
         std::cout << "Deleting previously created user" << std::endl;
-        pBase->DeleteUserProfile(returnedUserProfileHandle); // Should not received notification about this modification
+        pBase->DeleteUserProfile(returnedUserProfileHandle); // should not have received notification about this modification
     }
     catch (k_api::KDetailedException& ex)
     {
@@ -94,8 +94,8 @@ int main(int argc, char **argv)
     auto createSessionInfo = k_api::Session::CreateSessionInfo();
     createSessionInfo.set_username("admin");
     createSessionInfo.set_password("admin");
-    createSessionInfo.set_session_inactivity_timeout(60000);
-    createSessionInfo.set_connection_inactivity_timeout(2000);
+    createSessionInfo.set_session_inactivity_timeout(60000);   // (milliseconds)
+    createSessionInfo.set_connection_inactivity_timeout(2000); // (milliseconds)
 
     k_api::SessionManager* pSessionMng = new k_api::SessionManager(pRouterClient);
     pSessionMng->CreateSession(createSessionInfo);

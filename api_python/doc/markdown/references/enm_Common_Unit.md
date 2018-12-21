@@ -11,7 +11,7 @@ List of admissible units used throughout API methods
 |Enumerator|Value|Description|
 |----------|-----|-----------|
 |UNSPECIFIED\_UNIT|0|Unspecified unit|
-|CELSIUS|1|Celsius|
+|CELSIUS|1|Degree Celsius|
 |AMPERE|2|Ampere|
 |VOLT|3|Volt|
 |METER\_PER\_SECOND|4|Meter per second|
@@ -19,7 +19,7 @@ List of admissible units used throughout API methods
 |METER\_PER\_SECOND\_2|6|Meter per second squared|
 |DEGREE\_PER\_SECOND\_2|7|Degree per second squared|
 |NEWTON|8|Newton|
-|NEWTON\_METER|9|Newton x meter|
+|NEWTON\_METER|9|Newton \* meter|
 |KILOGRAM|10|Kilogram|
 |DEGREE|11|Degree|
 |TICK|12|Tick|

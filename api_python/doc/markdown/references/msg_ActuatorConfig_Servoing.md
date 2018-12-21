@@ -4,7 +4,7 @@ This page describes the Python Kinova.Api.ActuatorConfig.Servoing message.
 
 ## Overview / Purpose
 
-Enables \(or disables\) the servoing mode
+Enables/disables servoing
 
 ## Class members
 

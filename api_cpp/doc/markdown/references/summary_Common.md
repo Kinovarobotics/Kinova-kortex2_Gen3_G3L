@@ -14,14 +14,14 @@ This section describes the data types used in the Common package methods, includ
 
 |Message|Description|
 |-------|-----------|
-|[Connection](msg_Common_Connection.md#)|Idenfities a Connection|
+|[Connection](msg_Common_Connection.md#)|Idenfities a connection|
 |[DeviceHandle](msg_Common_DeviceHandle.md#)|Identifies a device|
 |[Empty](msg_Common_Empty.md#)|Message used when no information needs to be exchanged between client application and robot, and vice versa|
 |[NotificationHandle](msg_Common_NotificationHandle.md#)|Identifies a notification|
-|[NotificationOptions](msg_Common_NotificationOptions.md#)|Specifies options associated to a Notification|
+|[NotificationOptions](msg_Common_NotificationOptions.md#)|Specifies options associated to a notification|
 |[SafetyHandle](msg_Common_SafetyHandle.md#)|Identifies a safety|
-|[SafetyNotification](msg_Common_SafetyNotification.md#)|Message that contains a Safety event|
-|[Timestamp](msg_Common_Timestamp.md#)|Timestamp based on epoch|
+|[SafetyNotification](msg_Common_SafetyNotification.md#)|Message that contains a safety event|
+|[Timestamp](msg_Common_Timestamp.md#)|Timestamp based on Epoch \(00:00:00 Thursday, January 1, 1970\)|
 |[UserProfileHandle](msg_Common_UserProfileHandle.md#)|Identifies a user profile|
 
  **Enumerations** 

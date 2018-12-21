@@ -4,7 +4,7 @@ This page describes the Python Kinova.Api.Common.SafetyNotification message.
 
 ## Overview / Purpose
 
-Message that contains a Safety event
+Message that contains a safety event
 
 ## Class members
 

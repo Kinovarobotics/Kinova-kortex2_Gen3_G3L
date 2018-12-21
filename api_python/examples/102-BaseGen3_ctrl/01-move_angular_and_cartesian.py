@@ -5,8 +5,8 @@
 #
 # Copyright (c) 2018 Kinova inc. All rights reserved.
 #
-# This software may be modified and distributed under the
-# terms of the BSD 3-Clause license.
+# This software may be modified and distributed
+# under the terms of the BSD 3-Clause license.
 #
 # Refer to the LICENSE file for details.
 #
@@ -26,13 +26,13 @@ from jaco3_armbase.autogen.messages import Session_pb2
 
 
 def angular_movement(base_client_service):
-    print("Starting angular movement...")
+    print("Starting angular motion ...")
 
     action = Base_pb2.Action()
-    action.name = "Example angular movement"
+    action.name = "Example angular motion"
     action.application_data = ""
     
-    angle_value = [0, 0, 0, 0, 0, 0, 0] # Arm straight up
+    angle_value = [0, 0, 0, 0, 0, 0, 0] # arm straight up
     for joint_id in range(7):
         joint_angle = action.reach_joint_angles.joint_angles.joint_angles.add()
         joint_angle.joint_identifier = joint_id
@@ -48,10 +48,10 @@ def angular_movement(base_client_service):
 
 
 def cartesian_movement(base_client_service):
-    print("Starting Cartesian movement...")
+    print("Starting Cartesian motion ...")
 
     action = Base_pb2.Action()
-    action.name = "Example cartesian movement"
+    action.name = "Example Cartesian motion"
     action.application_data = ""
 
     cartesian_pose = action.reach_pose.target_pose
@@ -65,10 +65,10 @@ def cartesian_movement(base_client_service):
     print("Executing action")
     base_client_service.ExecuteAction(action)
 
-    print("Waiting 20 seconds to finish movement...")
+    print("Waiting 20 seconds for motion to finish ...")
     time.sleep(20)
 
-    print("Cartesian movement finish")
+    print("Cartesian motion ended")
 
 
 if __name__ == "__main__":
@@ -84,8 +84,8 @@ if __name__ == "__main__":
     session_info = Session_pb2.CreateSessionInfo()
     session_info.username = 'admin'
     session_info.password = 'admin'
-    session_info.session_inactivity_timeout = 600000 # 10 minutes
-    session_info.connection_inactivity_timeout = 2000 # 2 seconds
+    session_info.session_inactivity_timeout = 60000   # (milliseconds)
+    session_info.connection_inactivity_timeout = 2000 # (milliseconds)
     print("Session created")
 
     session_manager_service = SessionManager(router)   

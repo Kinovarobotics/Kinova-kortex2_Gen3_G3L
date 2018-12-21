@@ -19,7 +19,7 @@ List of admissible arm states
 |ARM\_SERVOING\_LOW\_LEVEL|6|Arm is in low-level servoing mode|
 |ARM\_SERVOING\_READY|7|Arm is ready to be controlled|
 |ARM\_SERVOING\_PLAYING\_SEQUENCE|8|Arm is currently being controlled via a sequence|
-|ARM\_SERVOING\_MANUALLY\_CONTROLLED|9|Arm is currently being manually controlled|
+|ARM\_SERVOING\_MANUALLY\_CONTROLLED|9|Arm is currently being controlled manually|
 |RESERVED|255|For debugging, this state must never be reported outside the base. this means that a state is not mapped correctly|
 
 **Parent topic:** [Common](../references/summary_Common.md)

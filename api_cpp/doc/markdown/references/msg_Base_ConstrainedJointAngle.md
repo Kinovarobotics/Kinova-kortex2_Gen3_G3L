@@ -13,7 +13,7 @@ Defines a single joint angle value with constraint
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |joint\_identifier|uint32|Joint identifier \(use device\_identifier\)|
-|value|float32|Joint value \(in degree\)|
+|value|float32|Joint value \(in degrees\)|
 |constraint| [JointTrajectoryConstraint](msg_Base_JointTrajectoryConstraint.md#)|Constraint to apply to the joint angle \(optional\)|
 
  **Methods** 

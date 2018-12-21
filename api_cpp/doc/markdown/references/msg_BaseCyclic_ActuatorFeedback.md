@@ -4,7 +4,7 @@ This page describes the C++ Kinova::Api::BaseCyclic::ActuatorFeedback message.
 
 ## Overview / Purpose
 
-copied from ActuatorCyclic.proto
+Defines the feedback provided by an actuator module
 
 ## Class members
 

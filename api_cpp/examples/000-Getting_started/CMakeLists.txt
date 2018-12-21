@@ -28,20 +28,34 @@ foreach ( SRC_FILE ${EXE_LIST} )
     MESSAGE("create TARGET_EXE_NAME: '${TARGET_EXE_NAME}'")
 
     add_executable(${TARGET_EXE_NAME} ${SRC_FILE})
-    target_compile_options(${TARGET_EXE_NAME} PRIVATE -Wall)
-    target_compile_features(${TARGET_EXE_NAME} PRIVATE cxx_std_11)
+    if(MSVC)
+        target_compile_options(${TARGET_EXE_NAME} PRIVATE -W2)
+    else()
+        target_compile_options(${TARGET_EXE_NAME} PRIVATE -Wall)
+        target_compile_options(${TARGET_EXE_NAME} PRIVATE -Wno-reorder)
+        target_compile_features(${TARGET_EXE_NAME} PRIVATE cxx_std_11)
+    endif()
 
     if(UNIX)
         target_compile_definitions(${TARGET_EXE_NAME} PRIVATE -D_OS_UNIX)
     elseif(WIN32)
         target_compile_definitions(${TARGET_EXE_NAME} PRIVATE -D_OS_WINDOWS)
+        
+        if(MSVC)
+            # Compiling with /MT must also be done in executables using the library
+            target_compile_options(${TARGET_EXE_NAME} PRIVATE /bigobj /MT)
+        endif()
     endif()
 
     ##################################################################################
     set(KORTEX_DIR "${PROJECT_SOURCE_DIR}/../kortex_api/${KORTEX_SUB_DIR}")
 
     ##### Link to lib
-    target_link_libraries(${TARGET_EXE_NAME} PRIVATE ${KORTEX_DIR}lib/${CMAKE_BUILD_TYPE}/libCppKinovaApi.a)
+    if(MSVC)
+        target_link_libraries(${TARGET_EXE_NAME} PRIVATE ${KORTEX_DIR}lib/${CMAKE_BUILD_TYPE}/CppKinovaApi.lib)
+    else()
+        target_link_libraries(${TARGET_EXE_NAME} PRIVATE ${KORTEX_DIR}lib/${CMAKE_BUILD_TYPE}/libCppKinovaApi.a)
+    endif()
 
     # link other libs
     if(UNIX)

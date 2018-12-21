@@ -13,7 +13,7 @@ Position of a specific joint
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |joint\_identifier|int|Joint identifier|
-|value|float|Position \(in degree\)|
+|value|float|Position \(in degrees\)|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

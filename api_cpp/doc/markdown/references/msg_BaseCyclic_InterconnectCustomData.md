@@ -4,7 +4,7 @@ This page describes the C++ Kinova::Api::BaseCyclic::InterconnectCustomData mess
 
 ## Overview / Purpose
 
-copied from InterconnectCyclic.proto
+Custom development data from an interconnect module, content varies according to debug needs
 
 ## Class members
 
