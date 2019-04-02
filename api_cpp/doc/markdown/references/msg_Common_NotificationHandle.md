@@ -12,7 +12,7 @@ Identifies a notification
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|identifier|uint32|notification identifier|
+|identifier|uint32|Notification identifier|
 
  **Methods** 
 

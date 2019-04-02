@@ -12,7 +12,7 @@ Array of mappings
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|mappings| [Mapping](msg_Base_Mapping.md#)|Mapping|
+|mappings|Collection of [Mapping](msg_Base_Mapping.md#)|Mapping|
 
  **Methods** 
 

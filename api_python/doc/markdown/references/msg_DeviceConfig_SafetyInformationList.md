@@ -12,7 +12,7 @@ Array of safety information
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|information| [SafetyInformation](msg_DeviceConfig_SafetyInformation.md#)| |
+|information|Collection of [SafetyInformation](msg_DeviceConfig_SafetyInformation.md#)| |
 
 **Parent topic:** [DeviceConfig](../references/summary_DeviceConfig.md)
 

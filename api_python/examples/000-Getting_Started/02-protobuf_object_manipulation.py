@@ -12,8 +12,8 @@
 #
 ###
 
-from jaco3_armbase.autogen.client_stubs.BaseClientRpc import BaseClient
-from jaco3_armbase.autogen.messages import Base_pb2
+from kortex_api.autogen.client_stubs.BaseClientRpc import BaseClient
+from kortex_api.autogen.messages import Base_pb2
 
 
 def example_manipulation_protobuf_basic():

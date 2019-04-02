@@ -10,8 +10,8 @@ List of possible sub errror codes
 
 |Enumerator|Value|Description|
 |----------|-----|-----------|
-|SUB\_SUCCESS|0|No sub errors|
-|FAILED|1|Failed method|
+|SUB\_ERROR\_NONE|0|No sub error|
+|METHOD\_FAILED|1|Method returned a failure status \(generic error\)|
 |UNIMPLEMENTED|2|Unimplemented method|
 |INVALID\_PARAM|3|Invalid parameter|
 |UNSUPPORTED\_SERVICE|4|Service not recognized|

@@ -39,10 +39,11 @@ void example_notification(k_api::Base::BaseClient* pBase)
         std::cout << "********************************" << std::endl;
     };
 
-    std::cout << "Create notification" << std::endl;
+    // Subscribe to ConfigurationChange notifications
+    std::cout << "Subscribing to ConfigurationChange notifications" << std::endl;
     auto notifHandle = pBase->OnNotificationConfigurationChangeTopic(fct_callback, k_api::Common::NotificationOptions());
 
-    // creating a user to trigger the notification
+    // Create a user profile to trigger a notification
     auto fullUserProfile = k_api::Base::FullUserProfile();
     auto userProfile = fullUserProfile.mutable_user_profile();
     auto userProfileHandle = userProfile->mutable_handle();
@@ -52,43 +53,42 @@ void example_notification(k_api::Base::BaseClient* pBase)
     userProfile->set_lastname("Cash");
     fullUserProfile.set_password("pwd");
 
-
     k_api::Common::UserProfileHandle returnedUserProfileHandle;
     try
     {
-        std::cout << "Create User to trigger notification" << std::endl;
+        std::cout << "Creating user profile to trigger notification" << std::endl;
         returnedUserProfileHandle = pBase->CreateUserProfile(fullUserProfile);
     }
     catch (k_api::KDetailedException& ex)
     {
-        std::cout << "Error during user creation" << std::endl;
+        std::cout << "User profile creation failed" << std::endl;
     }
     
-    // let the base process the user creation request
+    // Let the base process the user creation request
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 
-    // unsubscribe from notifications
-
-    std::cout << "Unsubscribe from notification" << std::endl;
+    // Unsubscribe from notifications
+    std::cout << "Now unsubscribe from ConfigurationChange notifications" << std::endl;
     pBase->Unsubscribe(notifHandle);
 
     try
     {
-        std::cout << "Deleting previously created user" << std::endl;
-        pBase->DeleteUserProfile(returnedUserProfileHandle); // should not have received notification about this modification
+        std::cout << "Deleting previously created user profile" << std::endl;
+        pBase->DeleteUserProfile(returnedUserProfileHandle); // Should not have received notification about this modification
     }
     catch (k_api::KDetailedException& ex)
     {
-        std::cout << "Error during user deletion" << std::endl;
+        std::cout << "User profile deletion failed" << std::endl;
     }
-
 }
+
 
 int main(int argc, char **argv)
 {
-    k_api::TransportClientUdp* pTransport = new k_api::TransportClientUdp();
+    // Setup API
+    auto pTransport = new k_api::TransportClientUdp();
+    auto pRouter = new k_api::RouterClient(pTransport, [](k_api::KError err){ std::cout << "_________ callback error _________" << err.toString(); });
     pTransport->connect(IP_ADDRESS, PORT);
-    k_api::RouterClient* pRouterClient = new k_api::RouterClient(pTransport, [](k_api::KError err){ std::cout << "_________ callback error _________" << err.toString(); });
 
     // Create session
     auto createSessionInfo = k_api::Session::CreateSessionInfo();
@@ -97,19 +97,25 @@ int main(int argc, char **argv)
     createSessionInfo.set_session_inactivity_timeout(60000);   // (milliseconds)
     createSessionInfo.set_connection_inactivity_timeout(2000); // (milliseconds)
 
-    k_api::SessionManager* pSessionMng = new k_api::SessionManager(pRouterClient);
+    auto pSessionMng = new k_api::SessionManager(pRouter);
     pSessionMng->CreateSession(createSessionInfo);
-    std::cout << "Session Created" << std::endl;
 
-    k_api::Base::BaseClient* pBase = new k_api::Base::BaseClient(pRouterClient);
+    // Create required services
+    auto pBase = new k_api::Base::BaseClient(pRouter);
 
+    // Example core
     example_notification(pBase);
 
+    // Close API session
     pSessionMng->CloseSession();
 
+    // Deactivate the router and cleanly disconnect from the transport object
+    pRouter->SetActivationStatus(false);
     pTransport->disconnect();
+
+    // Destroy the API
     delete pBase;
     delete pSessionMng;
-    delete pRouterClient;
+    delete pRouter;
     delete pTransport;
 }

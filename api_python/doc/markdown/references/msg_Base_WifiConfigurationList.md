@@ -12,7 +12,7 @@ Array of Wi-Fi configuration
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|wifi\_configuration\_list| [WifiConfiguration](msg_Base_WifiConfiguration.md#)|Wi-Fi configurations|
+|wifi\_configuration\_list|Collection of [WifiConfiguration](msg_Base_WifiConfiguration.md#)|Wi-Fi configurations|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

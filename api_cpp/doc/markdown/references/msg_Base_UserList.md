@@ -12,7 +12,7 @@ Array of user handles
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|user\_handles| [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User handle|
+|user\_handles|Collection of [UserProfileHandle](msg_Common_UserProfileHandle.md#)|User handle|
 
  **Methods** 
 

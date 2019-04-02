@@ -14,8 +14,8 @@ Defines torque calibration
 |-----------|---------|-----------|
 |global\_gain|float32|Global gain value|
 |global\_offset|float32|Global offset value|
-|gain|float32|Gain \(index 0 to 3\)|
-|offset|float32|Offset \(index 0 to 3\)|
+|gain|Collection of float32|Gain \(index 0 to 3\)|
+|offset|Collection of float32|Offset \(index 0 to 3\)|
 
  **Methods** 
 

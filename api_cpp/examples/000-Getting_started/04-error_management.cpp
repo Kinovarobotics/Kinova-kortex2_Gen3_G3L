@@ -11,6 +11,7 @@
 */
 
 #include <KDetailedException.h>
+#include <KError.h>
 
 #include <SessionManager.h>
 #include <DeviceConfigClientRpc.h>
@@ -32,38 +33,51 @@ void example_error_management(k_api::Base::BaseClient* pBase)
     }
     catch(k_api::KDetailedException& ex)
     {
+        auto errorInfo = ex.getErrorInfo();
+        auto errorCode = errorInfo.getError();
         std::cout << "KDetailedException detected toStr: " << ex.toString().c_str() << std::endl;
-        std::cout << "KDetailedoption detected what:  " << ex.what() << std::endl;
+        std::cout << "KDetailedoption detected what:  " << ex.what() << std::endl << std::endl;
+        
+        std::cout << "KError error_code: " << errorCode.error_code() << std::endl;
+        std::cout << "KError sub_code: " << errorCode.error_sub_code() << std::endl;
+        std::cout << "KError sub_string: " << errorCode.error_sub_string() << std::endl;
     }
 }
 
 
 int main(int argc, char **argv)
 {
-    k_api::TransportClientUdp* pTransport = new k_api::TransportClientUdp();
+    // Setup API
+    auto pTransport = new k_api::TransportClientUdp();
+    auto pRouter = new k_api::RouterClient(pTransport, [](k_api::KError err){ std::cout << "_________ callback error _________" << err.toString(); });
     pTransport->connect(IP_ADDRESS, PORT);
-    k_api::RouterClient* pRouterClient = new k_api::RouterClient(pTransport, [](k_api::KError err){ std::cout << "_________ callback error _________" << err.toString(); });
 
-    // create session
+    // Create session
     auto createSessionInfo = k_api::Session::CreateSessionInfo();
     createSessionInfo.set_username("admin");
     createSessionInfo.set_password("admin");
     createSessionInfo.set_session_inactivity_timeout(60000);   // (milliseconds)
     createSessionInfo.set_connection_inactivity_timeout(2000); // (milliseconds)
 
-    k_api::SessionManager* pSessionMng = new k_api::SessionManager(pRouterClient);
+    auto pSessionMng = new k_api::SessionManager(pRouter);
     pSessionMng->CreateSession(createSessionInfo);
-    std::cout << "\nSession Created" << std::endl;
 
-    k_api::Base::BaseClient* pBase = new k_api::Base::BaseClient(pRouterClient);
+    // Create required services
+    auto pBase = new k_api::Base::BaseClient(pRouter);
 
+    // Example core
     example_error_management(pBase);
 
+    // Close API session
     pSessionMng->CloseSession();
 
+    // Deactivate the router and cleanly disconnect from the transport object
+    pRouter->SetActivationStatus(false);
     pTransport->disconnect();
+
+    // Destroy the API
     delete pBase;
     delete pSessionMng;
-    delete pRouterClient;
+    delete pRouter;
     delete pTransport;
 }

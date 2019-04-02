@@ -15,7 +15,7 @@ Provides information about a sequence
 |handle| [SequenceHandle](msg_Base_SequenceHandle.md#)|Sequence handle|
 |name|string|Sequence name|
 |application\_data|string|Application data \(reserved for use by Web App\)|
-|tasks| [SequenceTask](msg_Base_SequenceTask.md#)|Array of tasks that this sequence contains|
+|tasks|Collection of [SequenceTask](msg_Base_SequenceTask.md#)|Array of tasks that this sequence contains|
 
  **Methods** 
 

@@ -22,7 +22,6 @@ namespace k_api = Kinova::Api;
 
 void example_manipulation_protobuf_basic()
 {
-    
     // In Google Protocol Buffer, there are many scalar value types you can declare. 
     // All these types have a corresponding type in C++. 
     // Here's the list:
@@ -177,7 +176,6 @@ void example_manipulation_protobuf_list()
     {
         std::cout << "[" << joint_angle.value() << "] = " << joint_angle.joint_identifier() << std::endl; 
     }
-
 }
 
 
@@ -191,36 +189,34 @@ void example_manipulation_protobuf_helpers()
     // JSON string manipulation is offer by the include file google/protobuf/util/json_util.h
  
     // Creating a message to work with
-    auto actionToSerialized = k_api::Base::Action();
-    actionToSerialized.set_name("Serialize/Deserialized action");
+    auto actionToSerialize = k_api::Base::Action();
+    actionToSerialize.set_name("Serialized/Deserialized action");
     
     // Now serializing to JSON string
     std::string serializedJson;
-    google::protobuf::util::MessageToJsonString(actionToSerialized, &serializedJson);
+    google::protobuf::util::MessageToJsonString(actionToSerialize, &serializedJson);
     std::cout << "JSON String : " << std::endl;
     std::cout << serializedJson << std::endl;
-    /* output:
+    /* Expected output:
     JSON String : 
     {"name":"Serialized/Deserialized action"}
-    
     */
 
     // Now deserialize a JSON string to a message
-    auto actionDeserialized = k_api::Base::Action();
-    google::protobuf::util::JsonStringToMessage(serializedJson, &actionDeserialized);
+    auto deserializedAction = k_api::Base::Action();
+    google::protobuf::util::JsonStringToMessage(serializedJson, &deserializedAction);
     std::cout << "Google Protocol Buffer message : " << std::endl;
-    std::cout << actionDeserialized.name() << std::endl; // unfortunately, messages are not easily printable without first having been serialized
-    /* output:
-    Protobuf message: 
+    std::cout << deserializedAction.name() << std::endl; // unfortunately, messages are not easily printable without first having been serialized
+    /* Expected output:
+    Google Protocol Buffer message : 
     Serialized/Deserialized action
-    
     */
-
 }
 
 
 int main(int argc, char **argv)
 {
+    // Example core
     example_manipulation_protobuf_basic();
     example_manipulation_protobuf_object();
     example_manipulation_protobuf_list();

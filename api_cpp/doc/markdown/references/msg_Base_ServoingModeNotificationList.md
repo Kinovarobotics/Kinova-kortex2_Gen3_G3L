@@ -12,7 +12,7 @@ Array of servoing mode notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [ServoingModeNotification](msg_Base_ServoingModeNotification.md#)|Notification|
+|notifications|Collection of [ServoingModeNotification](msg_Base_ServoingModeNotification.md#)|Notification|
 
  **Methods** 
 

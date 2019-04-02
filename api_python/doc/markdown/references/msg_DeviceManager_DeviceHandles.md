@@ -12,7 +12,7 @@ List of Device handles
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|device\_handle| [DeviceHandle](msg_Common_DeviceHandle.md#)|Device handle|
+|device\_handle|Collection of [DeviceHandle](msg_Common_DeviceHandle.md#)|Device handle|
 
 **Parent topic:** [DeviceManager](../references/summary_DeviceManager.md)
 

@@ -14,7 +14,7 @@ Defines a map as an array of map elements
 |-----------|---------|-----------|
 |handle| [MapHandle](msg_Base_MapHandle.md#)|Map handle \(do not set on createMap\(\) call\)|
 |name|string|Map friendly name|
-|elements| [MapElement](msg_Base_MapElement.md#)|Array of map elements|
+|elements|Collection of [MapElement](msg_Base_MapElement.md#)|Array of map elements|
 
  **Methods** 
 

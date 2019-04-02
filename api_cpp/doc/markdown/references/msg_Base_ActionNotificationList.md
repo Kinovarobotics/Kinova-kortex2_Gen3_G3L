@@ -12,7 +12,7 @@ Array of action notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [ActionNotification](msg_Base_ActionNotification.md#)|Notification|
+|notifications|Collection of [ActionNotification](msg_Base_ActionNotification.md#)|Notification|
 
  **Methods** 
 

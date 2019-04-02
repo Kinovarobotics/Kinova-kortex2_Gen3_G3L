@@ -12,7 +12,7 @@ Array of configuration change notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [ConfigurationChangeNotification](msg_Base_ConfigurationChangeNotification.md#)|Notification|
+|notifications|Collection of [ConfigurationChangeNotification](msg_Base_ConfigurationChangeNotification.md#)|Notification|
 
  **Methods** 
 

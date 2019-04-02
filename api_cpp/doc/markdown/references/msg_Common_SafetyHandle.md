@@ -12,7 +12,7 @@ Identifies a safety
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|identifier|uint32|safety identifier|
+|identifier|uint32|Safety identifier|
 
  **Methods** 
 

@@ -12,7 +12,7 @@ Array of sequences
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|sequence\_list| [Sequence](msg_Base_Sequence.md#)|Sequence|
+|sequence\_list|Collection of [Sequence](msg_Base_Sequence.md#)|Sequence|
 
  **Methods** 
 

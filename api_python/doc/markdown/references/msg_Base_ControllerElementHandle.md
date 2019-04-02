@@ -13,8 +13,8 @@ Identifies a specific button \(or axis\) of a controller
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |controller\_handle| [ControllerHandle](msg_Base_ControllerHandle.md#)|Controller handle|
-|button|oneof:identifier int|Button identifier \(only set if 'button' controller event, otherwise zero\)|
-|axis|oneof:identifier int|Axis identifier \(only set if 'axis' controller event, otherwise zero\)|
+|oneof identifier : button|int|Button identifier \(only set if 'button' controller event, otherwise zero\)|
+|oneof identifier : axis|int|Axis identifier \(only set if 'axis' controller event, otherwise zero\)|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

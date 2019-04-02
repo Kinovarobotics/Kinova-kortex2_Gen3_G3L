@@ -17,8 +17,8 @@ Provides a protection zone configuration
 |application\_data|str|Application data \(reserved for use by Web App\)|
 |is\_enabled|bool|True if protection zone is enabled, false otherwise|
 |shape| [ZoneShape](msg_Base_ZoneShape.md#)|Protection zone shape|
-|limitations| [CartesianLimitation](msg_Base_CartesianLimitation.md#)|List of Cartesian limitation|
-|envelope\_limitations| [CartesianLimitation](msg_Base_CartesianLimitation.md#)|List of Cartesian limitation of the envelop|
+|limitations|Collection of [CartesianLimitation](msg_Base_CartesianLimitation.md#)|List of Cartesian limitation|
+|envelope\_limitations|Collection of [CartesianLimitation](msg_Base_CartesianLimitation.md#)|List of Cartesian limitation of the envelop|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

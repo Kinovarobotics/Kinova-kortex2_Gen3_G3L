@@ -12,7 +12,7 @@ Array of mapping information notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [MappingInfoNotification](msg_Base_MappingInfoNotification.md#)|Notification|
+|notifications|Collection of [MappingInfoNotification](msg_Base_MappingInfoNotification.md#)|Notification|
 
  **Methods** 
 

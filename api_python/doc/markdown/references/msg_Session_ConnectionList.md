@@ -12,7 +12,7 @@ Message used to retrieve a list of connections
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|connection| [Connection](msg_Common_Connection.md#)|Connection|
+|connection|Collection of [Connection](msg_Common_Connection.md#)|Connection|
 
 **Parent topic:** [Session](../references/summary_Session.md)
 

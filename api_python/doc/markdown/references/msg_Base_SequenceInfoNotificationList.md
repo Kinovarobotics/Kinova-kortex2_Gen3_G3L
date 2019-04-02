@@ -12,7 +12,7 @@ Array of sequence information notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [SequenceInfoNotification](msg_Base_SequenceInfoNotification.md#)|Notification|
+|notifications|Collection of [SequenceInfoNotification](msg_Base_SequenceInfoNotification.md#)|Notification|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

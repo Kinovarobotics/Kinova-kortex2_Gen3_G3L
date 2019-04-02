@@ -21,7 +21,7 @@ Custom development data, content varies according to debug needs
 |custom\_data\_5|int|Custom data word 5|
 |custom\_data\_6|int|Custom data word 6|
 |custom\_data\_7|int|Custom data word 7|
-|actuators\_custom\_data| [ActuatorCustomData](msg_BaseCyclic_ActuatorCustomData.md#)|Actuator custom data \(repeated\)|
+|actuators\_custom\_data|Collection of [ActuatorCustomData](msg_BaseCyclic_ActuatorCustomData.md#)|Actuator custom data \(repeated\)|
 |interconnect\_custom\_data| [InterconnectCustomData](msg_BaseCyclic_InterconnectCustomData.md#)|Interconnect custom data|
 
 **Parent topic:** [BaseCyclic](../references/summary_BaseCyclic.md)

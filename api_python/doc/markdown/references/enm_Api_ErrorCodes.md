@@ -10,11 +10,11 @@ List of possible error codes
 
 |Enumerator|Value|Description|
 |----------|-----|-----------|
-|SUCCESS|0|No errors|
-|ERROR\_PROTOCOL\_SERVER|1|Protocol server errors|
-|ERROR\_PROTOCOL\_CLIENT|2|Protocol client errors|
-|ERROR\_DEVICE|3|Device errors|
-|ERROR\_INTERNAL|4|Internal errors|
+|ERROR\_NONE|0|No error|
+|ERROR\_PROTOCOL\_SERVER|1|Protocol server error|
+|ERROR\_PROTOCOL\_CLIENT|2|Protocol client error|
+|ERROR\_DEVICE|3|Device error|
+|ERROR\_INTERNAL|4|Internal error|
 
 **Parent topic:** [Api](../references/summary_Api.md)
 

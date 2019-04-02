@@ -4,7 +4,7 @@ This page describes the C++ Kinova::Api::Base::CountryCodeIdentifier enumeration
 
 ## Overview / Purpose
 
-list of supported ISO3166 country identifiers
+List of supported ISO3166 country identifiers
 
 ## Enumeration definition
 

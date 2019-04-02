@@ -12,7 +12,7 @@ Array of user profiles
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|user\_profiles| [UserProfile](msg_Base_UserProfile.md#)|User profile|
+|user\_profiles|Collection of [UserProfile](msg_Base_UserProfile.md#)|User profile|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

@@ -12,7 +12,7 @@ Array of safety notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [SafetyNotification](msg_Common_SafetyNotification.md#)|Notification|
+|notifications|Collection of [SafetyNotification](msg_Common_SafetyNotification.md#)|Notification|
 
  **Methods** 
 

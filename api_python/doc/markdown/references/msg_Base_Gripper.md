@@ -12,7 +12,7 @@ Defines a gripper movement, which is composed of a series of fingers movement
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|finger| [Finger](msg_Base_Finger.md#)|Finger movements|
+|finger|Collection of [Finger](msg_Base_Finger.md#)|Finger movements|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

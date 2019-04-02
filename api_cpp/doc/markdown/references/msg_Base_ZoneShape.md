@@ -15,7 +15,7 @@ Provides a protection zone shape description
 |shape\_type| [ShapeType](enm_Base_ShapeType.md#)|Shape type|
 |origin| [Point](msg_Base_Point.md#)|Origin of the protection zone shape from reference \(in meters\)|
 |orientation| [RotationMatrix](msg_Base_RotationMatrix.md#)|Rotation matrix to provide shape orientation|
-|dimensions|float32|Shape size measurement \(in meters\). If rectangular prism: x, y and z dimensions. If cylinder: radius and height. If sphere: radius|
+|dimensions|Collection of float32|Shape size measurement \(in meters\). If rectangular prism: x, y and z dimensions. If cylinder: radius and height. If sphere: radius|
 |envelope\_thickness|float32|Thickness of envelop around shape \(in meters\). The envelop is of same shape type as the shape at its center.|
 
  **Methods** 

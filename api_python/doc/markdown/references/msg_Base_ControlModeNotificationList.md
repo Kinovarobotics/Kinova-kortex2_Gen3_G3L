@@ -12,7 +12,7 @@ Array of control mode notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [ControlModeNotification](msg_Base_ControlModeNotification.md#)|Notification|
+|notifications|Collection of [ControlModeNotification](msg_Base_ControlModeNotification.md#)|Notification|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

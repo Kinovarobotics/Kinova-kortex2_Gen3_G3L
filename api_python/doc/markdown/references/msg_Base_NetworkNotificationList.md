@@ -12,7 +12,7 @@ Array of network event notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [NetworkNotification](msg_Base_NetworkNotification.md#)|Notification|
+|notifications|Collection of [NetworkNotification](msg_Base_NetworkNotification.md#)|Notification|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

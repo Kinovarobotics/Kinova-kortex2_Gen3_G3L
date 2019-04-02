@@ -12,7 +12,7 @@ Selects custom data channels content
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|channel| [CustomDataIndex](enm_ActuatorConfig_CustomDataIndex.md#)|16 channels maximum|
+|channel|Collection of [CustomDataIndex](enm_ActuatorConfig_CustomDataIndex.md#)|16 channels maximum|
 
  **Methods** 
 

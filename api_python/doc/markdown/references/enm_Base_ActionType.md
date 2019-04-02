@@ -23,7 +23,7 @@ List of admissible action types
 |CHANGE\_JOINT\_SPEEDS|23|Action to change the joint speeds individually|
 |APPLY\_EMERGENCY\_STOP|28|Action to apply robot emergency stop|
 |CLEAR\_FAULTS|29|Action to clear faults. Robot will be able to move if there is no more fault \(see BaseCyclic.BaseFeedback.\[fault\_bank\_a | fault\_bank\_b\]\)|
-|DELAY|31|Action to apply a delay|
+|TIME\_DELAY|31|Action to apply a delay|
 |EXECUTE\_ACTION|32|Action to execute an existing action|
 |SEND\_GRIPPER\_COMMAND|33|Action to execute a gripper command|
 |STOP\_ACTION|35|Action to stop movement|

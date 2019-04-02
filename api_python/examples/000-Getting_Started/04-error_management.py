@@ -12,16 +12,16 @@
 #
 ###
 
-from jaco3_armbase.UDPTransport import UDPTransport
-from jaco3_armbase.RouterClient import RouterClient
-from jaco3_armbase.SessionManager import SessionManager
+from kortex_api.UDPTransport import UDPTransport
+from kortex_api.RouterClient import RouterClient
+from kortex_api.SessionManager import SessionManager
 
-from jaco3_armbase.autogen.client_stubs.DeviceConfigClientRpc import DeviceConfigClient
-from jaco3_armbase.autogen.client_stubs.BaseClientRpc import BaseClient
+from kortex_api.autogen.client_stubs.DeviceConfigClientRpc import DeviceConfigClient
+from kortex_api.autogen.client_stubs.BaseClientRpc import BaseClient
 
-from jaco3_armbase.autogen.messages import DeviceConfig_pb2, Session_pb2, Base_pb2, Errors_pb2
+from kortex_api.autogen.messages import DeviceConfig_pb2, Session_pb2, Base_pb2, Errors_pb2
 
-from jaco3_armbase.Exceptions.KServerException import KServerException
+from kortex_api.Exceptions.KServerException import KServerException
 
 def example_error_management(base_service):
 
@@ -29,17 +29,16 @@ def example_error_management(base_service):
         base_service.CreateUserProfile(Base_pb2.FullUserProfile())
 
     except KServerException as ex:
-
-        # get sub error codes
+        # Get error and sub error codes
         error_code = ex.get_error_code()
         sub_error_code = ex.get_error_sub_code()
         print("error_code:{0} sub_error_code:{1} ".format(error_code, sub_error_code))
 
-        # error exception to string (here the try/except addresses an known issue that will be fixed in a future version)
+        # Error exception to string (here the try/except addresses an known issue that will be fixed in a future version)
         try:
             print("Error: {0}".format(ex))
         except Exception:
-            print("Unkonown error details for error_code:{0} sub_error_code:{1} ".format(error_code, sub_error_code))
+            print("Unknown error details for error_code:{0} sub_error_code:{1} ".format(error_code, sub_error_code))
     
     except Exception:
         import sys
@@ -51,10 +50,13 @@ if __name__ == "__main__":
     DEVICE_IP = "192.168.1.10"
     DEVICE_PORT = 10000
 
+    # Setup API
+    errorCallback = lambda kException: print("_________ callback error _________ {}".format(kException))
     transport = UDPTransport()
+    router = RouterClient(transport, errorCallback)
     transport.connect(DEVICE_IP, DEVICE_PORT)
-    router = RouterClient(transport, lambda kException: print("Error during connection"))
 
+    # Create session
     session_info = Session_pb2.CreateSessionInfo()
     session_info.username = 'admin'
     session_info.password = 'admin'
@@ -64,9 +66,15 @@ if __name__ == "__main__":
     session_manager = SessionManager(router)
     session_manager.CreateSession(session_info)
 
+    # Create required services
     base_service = BaseClient(router)
 
-    # example core
+    # Example core
     example_error_management(base_service)
 
+    # Close API session
     session_manager.CloseSession()
+
+    # Deactivate the router and cleanly disconnect from the transport object
+    router.SetActivationStatus(False)
+    transport.disconnect()

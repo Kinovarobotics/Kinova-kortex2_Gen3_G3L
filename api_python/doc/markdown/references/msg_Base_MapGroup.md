@@ -16,8 +16,8 @@ Message that contains all information about a map group including the list of ma
 |name|str|Map group friendly name|
 |related\_mapping\_handle| [MappingHandle](msg_Base_MappingHandle.md#)|Mapping that this map group belongs to|
 |parent\_group\_handle| [MapGroupHandle](msg_Base_MapGroupHandle.md#)|Parent map group \(if any\)|
-|children\_map\_group\_handles| [MapGroupHandle](msg_Base_MapGroupHandle.md#)|Children map groups \(if any\)|
-|map\_handles| [MapHandle](msg_Base_MapHandle.md#)|Array of maps that are included in this map group|
+|children\_map\_group\_handles|Collection of [MapGroupHandle](msg_Base_MapGroupHandle.md#)|Children map groups \(if any\)|
+|map\_handles|Collection of [MapHandle](msg_Base_MapHandle.md#)|Array of maps that are included in this map group|
 |application\_data|str|Application data \(reserved for use by Web App\)|
 
 **Parent topic:** [Base](../references/summary_Base.md)

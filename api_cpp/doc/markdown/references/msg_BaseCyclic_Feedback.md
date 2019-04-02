@@ -14,7 +14,7 @@ Defines the feedback provided by many modules \(base, actuactors and interconnec
 |-----------|---------|-----------|
 |frame\_id|uint32|Frame ID|
 |base| [BaseFeedback](msg_BaseCyclic_BaseFeedback.md#)|Base feedback|
-|actuators| [ActuatorFeedback](msg_BaseCyclic_ActuatorFeedback.md#)|Actuator feedback|
+|actuators|Collection of [ActuatorFeedback](msg_BaseCyclic_ActuatorFeedback.md#)|Actuator feedback|
 |interconnect| [InterconnectFeedback](msg_BaseCyclic_InterconnectFeedback.md#)|Interconnect feedback|
 
  **Methods** 

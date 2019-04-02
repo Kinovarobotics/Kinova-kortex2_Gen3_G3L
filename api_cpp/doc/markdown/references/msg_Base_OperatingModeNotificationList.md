@@ -12,7 +12,7 @@ Array of Operating mode notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [OperatingModeNotification](msg_Base_OperatingModeNotification.md#)|Notification|
+|notifications|Collection of [OperatingModeNotification](msg_Base_OperatingModeNotification.md#)|Notification|
 
  **Methods** 
 

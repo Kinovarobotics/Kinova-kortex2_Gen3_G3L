@@ -103,11 +103,11 @@
 > ```
 -->
 > *Manual installation using downloaded archive:*  
-> + Download the archive via Kinova's Google Drive: [kortex_api](https://drive.google.com/file/d/19zfCNlRUfNBbZoMW9LOpLjVrYOO2BwYb/view)  
+> + Download the archive via Kinova's Google Drive: [kortex_api](https://drive.google.com/file/d/1ASbEsulf5cByru8Hy1oBZJyNDBa9H22C/view)
 > + Uncompress the content of the archive and place in the sub-directory *kortex_api*  
 
-*Be sure to respect one of the following directory hierarchies.*  
-*1. using one specific Kortex API OS/compiler*
+*Ensure that you respect one of the following directory hierarchies.*  
+*1. using content of a specific Kortex API OS_Compiler_Architecture*
 ```sh
 examples/kortex_api  
 ┬  
@@ -118,11 +118,11 @@ examples/kortex_api
     └ release/
 
 ```
-*2. using KORTEX_SUB_DIR cmake argument to specify the Kortex API OS/compiler*
+*2. using KORTEX_SUB_DIR cmake argument to specify the Kortex API OS_Compiler_Architecture*
 ```sh
 examples/kortex_api  
 ┬  
-├ os_arch/
+├ OS_Compiler_Architecture/
 └   ┬  
     ├ include/
     ├ lib/  
@@ -140,7 +140,7 @@ examples/kortex_api
 > ```sh
 > mkdir build  
 > cd build  
-> cmake .. -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<os_arch dir name>]  
+> cmake .. -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<OS_Compiler_Architecture dir name>]
 > make  
 > ```
 >

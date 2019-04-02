@@ -12,7 +12,7 @@ Array of protection zone notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [ProtectionZoneNotification](msg_Base_ProtectionZoneNotification.md#)|Notification|
+|notifications|Collection of [ProtectionZoneNotification](msg_Base_ProtectionZoneNotification.md#)|Notification|
 
  **Methods** 
 

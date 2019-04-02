@@ -12,7 +12,7 @@ Array of controller notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [ControllerNotification](msg_Base_ControllerNotification.md#)|Notifications|
+|notifications|Collection of [ControllerNotification](msg_Base_ControllerNotification.md#)|Notifications|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

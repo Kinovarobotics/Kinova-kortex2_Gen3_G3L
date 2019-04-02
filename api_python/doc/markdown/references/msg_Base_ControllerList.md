@@ -12,7 +12,7 @@ Array of controllers
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|handles| [ControllerHandle](msg_Base_ControllerHandle.md#)|Controller handle|
+|handles|Collection of [ControllerHandle](msg_Base_ControllerHandle.md#)|Controller handle|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

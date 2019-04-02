@@ -12,7 +12,7 @@ Array of maps
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|map\_list| [Map](msg_Base_Map.md#)|map|
+|map\_list|Collection of [Map](msg_Base_Map.md#)|map|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

@@ -10,6 +10,10 @@
 *
 -->
 
+<h1>Python examples</h1>
+
+<h2>Table of Contents</h2>
+
 <!-- TOC -->
 
 - [Setup (Python environment)](#setup-example-python-environment)
@@ -39,7 +43,7 @@
 
 *Install what is needed to run the examples via a downloaded whl file (Python wheel package).*
 
-+ The whl file can be downloaded via Kinova Google Drive: [kortex_api](https://drive.google.com/file/d/19zfCNlRUfNBbZoMW9LOpLjVrYOO2BwYb/view)  
++ The whl file can be downloaded via the Kinova Google Drive: [kortex_api](https://drive.google.com/file/d/1ASbEsulf5cByru8Hy1oBZJyNDBa9H22C/view)  
 ```sh
 python -m pip install <whl relative fullpath name>.whl
 ```
@@ -49,14 +53,14 @@ python -m pip install <whl relative fullpath name>.whl
 <a id="markdown-how-to-use-examples-with-gen3-robot" name="how-to-use-examples-with-gen3-robot"></a>
 # How to use the examples
 
-*We assume the robot is using its default IP address: 192.168.1.10*
+*We assume the robot is using its default IP address:* ``192.168.1.10``
 
-Before starting, ensure that you run the test in a safe area with some examples that contain movement. Also verify that your Gen3 device is correctly afixed to the working surface.
+Before starting, ensure that you run the test in a safe area with some examples that contain movement. Also, verify that your Gen3 device is correctly afixed to the working surface.
 
 Prerequisites:
-+ The examples required a wired connection to your computer
-+ Configure a static IP address on your network interface (e.g.    ``192.168.1.11/24``)
-+ Add a route to arm actuators:
++ The examples require a wired network connection to your computer
++ Configure a static IP address on your network interface (e.g. ``192.168.1.11/24``)
++ Add a route to the arm actuators:
   + under Windows
     ```batch
     route ADD -p 10.10.0.0 MASK 255.255.255.0 192.168.1.10 METRIC 1
@@ -66,7 +70,7 @@ Prerequisites:
     ip route add 10.10.0.0/24 via 192.168.1.10
     ```
 
-Now you're ready to run the examples. Each Python example has its own ``__main__`` instruction. You need only ``cd`` into the example directory and invoke the Python file using the Python command.
+Now you're ready to run the examples. Each Python example has its own ``__main__`` instruction. You need only ``cd`` into the example directory and invoke the Python file using the command:
 ```sh
 python <example-file>.py
 ```

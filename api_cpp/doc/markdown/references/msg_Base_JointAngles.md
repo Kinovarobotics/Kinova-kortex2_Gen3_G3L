@@ -12,7 +12,7 @@ Position of a series of joints
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|joint\_angles| [JointAngle](msg_Base_JointAngle.md#)|Array of joint angle|
+|joint\_angles|Collection of [JointAngle](msg_Base_JointAngle.md#)|Array of joint angle|
 
  **Methods** 
 

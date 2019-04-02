@@ -12,7 +12,7 @@ Array of robot event notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [RobotEventNotification](msg_Base_RobotEventNotification.md#)|Notification|
+|notifications|Collection of [RobotEventNotification](msg_Base_RobotEventNotification.md#)|Notification|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

@@ -12,7 +12,7 @@ Array of map groups \(future\)
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|map\_groups| [MapGroup](msg_Base_MapGroup.md#)|Map group|
+|map\_groups|Collection of [MapGroup](msg_Base_MapGroup.md#)|Map group|
 
  **Methods** 
 

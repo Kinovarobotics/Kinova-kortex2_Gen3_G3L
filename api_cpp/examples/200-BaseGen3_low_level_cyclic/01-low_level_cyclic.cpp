@@ -67,7 +67,7 @@ int64_t GetTickUs()
 
 bool example_cyclic_armbase()
 {
-    // low-level cyclic needs its own transport and router
+    // Low-level cyclic needs its own transport and router
     // for this example all the cyclic-related objects have the RT suffix
 
     bool returnStatus = true;
@@ -75,20 +75,20 @@ bool example_cyclic_armbase()
     k_api::TransportClientUdp* pTransport = new k_api::TransportClientUdp();
     k_api::TransportClientUdp* pTransportRT = new k_api::TransportClientUdp();
 
-    pTransport->connect(IP_ADDRESS, PORT);
-    pTransportRT->connect(IP_ADDRESS, PORT_RT); // cyclic data have their own port
-
     auto errorCallback = [](k_api::KError err) { std::cout << "_________ callback error _________" << err.toString(); };
     auto errorCallbackRT = [](k_api::KError err) { std::cout << "_________ callback error (RT) _________" << err.toString(); };
     
-    k_api::RouterClient* pRouterClient = new k_api::RouterClient(pTransport, errorCallback);
-    k_api::RouterClient* pRouterClientRT = new k_api::RouterClient(pTransportRT, errorCallbackRT);
+    k_api::RouterClient* pRouter = new k_api::RouterClient(pTransport, errorCallback);
+    k_api::RouterClient* pRouterRT = new k_api::RouterClient(pTransportRT, errorCallbackRT);
     
-    k_api::Base::BaseClient* pBase = new k_api::Base::BaseClient(pRouterClient);
-    k_api::BaseCyclic::BaseCyclicClient* pBaseCyclicRT = new k_api::BaseCyclic::BaseCyclicClient(pRouterClientRT);
+    pTransport->connect(IP_ADDRESS, PORT);
+    pTransportRT->connect(IP_ADDRESS, PORT_RT); // cyclic data have their own port
 
-    k_api::SessionManager* pSessionMng = new k_api::SessionManager(pRouterClient);
-    k_api::SessionManager* pSessionMngRT = new k_api::SessionManager(pRouterClientRT);
+    k_api::Base::BaseClient* pBase = new k_api::Base::BaseClient(pRouter);
+    k_api::BaseCyclic::BaseCyclicClient* pBaseCyclicRT = new k_api::BaseCyclic::BaseCyclicClient(pRouterRT);
+
+    k_api::SessionManager* pSessionMng = new k_api::SessionManager(pRouter);
+    k_api::SessionManager* pSessionMngRT = new k_api::SessionManager(pRouterRT);
 
     auto createSessionInfo = k_api::Session::CreateSessionInfo();
     createSessionInfo.set_username("admin");
@@ -102,11 +102,36 @@ bool example_cyclic_armbase()
     createSessionInfoRT.set_session_inactivity_timeout(60000);    // (milliseconds)
     createSessionInfoRT.set_connection_inactivity_timeout(2000);  // (milliseconds)
 
-    std::cout << "Creating session for communication" << std::endl;
+    std::cout << "\nCreating session for communication" << std::endl;
     pSessionMng->CreateSession(createSessionInfo);
     pSessionMngRT->CreateSession(createSessionInfoRT);
-
     std::cout << "Session created" << std::endl;
+
+    // Move arm to ready position
+    std::cout << "\nMoving the arm to a safe position before executing example" << std::endl;
+    auto action_type = k_api::Base::RequestedActionType();
+    action_type.set_action_type(k_api::Base::REACH_JOINT_ANGLES);
+    auto action_list = pBase->ReadAllActions(action_type);
+    auto action_handle = k_api::Base::ActionHandle();
+    action_handle.set_identifier(0); 
+    for( auto action : action_list.action_list())
+    {
+        if(action.name() == "Home")
+        {
+            action_handle = action.handle();
+        }
+    }
+
+    if(action_handle.identifier() == 0)
+    {
+        std::cout << "\nCan't reach safe position. Exiting" << std::endl;       
+    }
+    else
+    {
+        pBase->ExecuteActionFromReference(action_handle);
+        std::this_thread::sleep_for(std::chrono::seconds(20)); // Leave time to action to finish
+    }
+    
 
     k_api::BaseCyclic::Feedback BaseFeedback;
     k_api::BaseCyclic::Command  BaseCommand;
@@ -126,13 +151,13 @@ bool example_cyclic_armbase()
 
     try
     {
-        // sets the base to low-level servoing
+        // Set the base in low-level servoing mode
         auto servoingMode = k_api::Base::ServoingModeInformation();
         servoingMode.set_servoing_mode(k_api::Base::ServoingMode::LOW_LEVEL_SERVOING);
         pBase->SetServoingMode(servoingMode);
         BaseFeedback = pBaseCyclicRT->RefreshFeedback();
 
-        // initializes each actuator and sets to their current position
+        // Initialize each actuator to their current position
         for(int i = 0; i < 7; i++)
         {
             ActuatorCommands.push_back(k_api::BaseCyclic::ActuatorCommand());
@@ -145,17 +170,17 @@ bool example_cyclic_armbase()
             BaseCommand.add_actuators()->set_position(BaseFeedback.actuators(i).position());
         }
 
-        // callback function used in Refresh_callback
+        // Define the callback function used in Refresh_callback
         auto lambda_fct_callback = [](const Kinova::Api::Error &err, const k_api::BaseCyclic::Feedback data)
         {
-            // we are printing the data just for the example purpose
-            // normally if we want a real-time loop avoid this
+            // We are printing the data just for the example purpose,
+            // avoid this in a real-time loop
             std::string serializedData;
             google::protobuf::util::MessageToJsonString(data, &serializedData);
             std::cout << serializedData << std::endl;
         };
 
-        // real-time loop
+        // Real-time loop
         while(timerCount < (time_duration * 1000))
         {
             now = GetTickUs();
@@ -165,7 +190,7 @@ bool example_cyclic_armbase()
             
                 for(int i = 0; i < ACTUATOR_COUNT; i++)
                 {
-                    // move only the last actuator to prevent collision
+                    // Move only the last actuator to prevent collision
         		    if(i == 6)
         		    {
                         Commands[i] += (0.001f * velocity);
@@ -190,7 +215,6 @@ bool example_cyclic_armbase()
 
 	    servoingMode.set_servoing_mode(k_api::Base::ServoingMode::SINGLE_LEVEL_SERVOING);
         pBase->SetServoingMode(servoingMode);
-
     }
     catch (k_api::KDetailedException& ex)
     {
@@ -203,23 +227,28 @@ bool example_cyclic_armbase()
         returnStatus = false;
     }
 
-    // just wait a while to let the response come
+    // Just wait a while to let the response come
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 
+    // Close both API sessions
     pSessionMng->CloseSession();
     pSessionMngRT->CloseSession();
 
+    // Deactivate both routers and cleanly disconnect from the transport objects
+    pRouter->SetActivationStatus(false);
+    pRouterRT->SetActivationStatus(false);
     pTransport->disconnect();
     pTransportRT->disconnect();
 
+    // Destroy both API
     delete pBase;
     delete pSessionMng;
-    delete pRouterClient;
+    delete pRouter;
     delete pTransport;
 
     delete pBaseCyclicRT;
     delete pSessionMngRT;
-    delete pRouterClientRT;
+    delete pRouterRT;
     delete pTransportRT;
 
     return returnStatus;

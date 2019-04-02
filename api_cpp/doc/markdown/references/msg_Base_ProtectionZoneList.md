@@ -12,7 +12,7 @@ Array of protection zones
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|protection\_zones| [ProtectionZone](msg_Base_ProtectionZone.md#)|Protection zone|
+|protection\_zones|Collection of [ProtectionZone](msg_Base_ProtectionZone.md#)|Protection zone|
 
  **Methods** 
 

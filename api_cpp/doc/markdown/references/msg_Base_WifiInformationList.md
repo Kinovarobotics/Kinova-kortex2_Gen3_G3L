@@ -12,7 +12,7 @@ Array of Wi-Fi information
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|wifi\_information\_list| [WifiInformation](msg_Base_WifiInformation.md#)|Wi-Fi information|
+|wifi\_information\_list|Collection of [WifiInformation](msg_Base_WifiInformation.md#)|Wi-Fi information|
 
  **Methods** 
 

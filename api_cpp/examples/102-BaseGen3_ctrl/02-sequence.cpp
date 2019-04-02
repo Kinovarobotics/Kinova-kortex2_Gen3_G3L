@@ -25,7 +25,8 @@ namespace k_api = Kinova::Api;
 
 void createAngularAction(k_api::Base::Action* action)
 {
-    std::cout << "Creating angular action" << std::endl;
+    std::cout << "\nCreating angular action" << std::endl;
+
     action->set_name("Example angular action");
     action->set_application_data("");    
 
@@ -44,8 +45,9 @@ void createAngularAction(k_api::Base::Action* action)
 
 void createCartesianAction(k_api::Base::Action* action)
 {
-    std::cout << "Creating cartesian action" << std::endl;
-    action->set_name("cartesian movement");
+    std::cout << "\nCreating Cartesian action" << std::endl;
+
+    action->set_name("Example Cartesian movement");
     action->set_application_data("");
 
     auto constrainPose = action->mutable_reach_pose();
@@ -56,14 +58,13 @@ void createCartesianAction(k_api::Base::Action* action)
     pose->set_theta_x(10.0);    // theta x (degrees)
     pose->set_theta_y(90.0);    // theta y (degrees)
     pose->set_theta_z(10.0);    // theta z (degrees)
-
 }
 
 
-void createSequence(k_api::Base::BaseClient* pBase)
+void example_createSequence(k_api::Base::BaseClient* pBase)
 {
- 
-    std::cout << "Creating Sequence" << std::endl;
+    std::cout << "\nCreating Sequence" << std::endl;
+
     auto sequence = k_api::Base::Sequence();
     sequence.set_name("Example sequence");
     
@@ -76,48 +77,78 @@ void createSequence(k_api::Base::BaseClient* pBase)
     task_2->set_group_identifier(1); // sequence elements with same group_id are played at the same time
     createCartesianAction(task_2->mutable_action());
 
-    // create the sequence and play it
-    std::cout << "Create sequence on device and execute it" << std::endl;
+    std::cout << "Creating sequence on device and executing it" << std::endl;
     auto sequenceHandle = pBase->CreateSequence(sequence);
     pBase->PlaySequence(sequenceHandle);
 
-    std::cout << "Waiting 30 seconds to finish movement..." << std::endl;
+    std::cout << "Waiting 30 seconds for movement to finish ..." << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(30000)); // (milliseconds)
 
-    std::cout << "Sleep complete" << std::endl;
+    std::cout << "Sequence completed" << std::endl;
 }
 
 
 int main(int argc, char **argv)
 {
-    k_api::TransportClientUdp* pTransport = new k_api::TransportClientUdp();
+    // Setup API
+    auto errorCallback =  [](k_api::KError err){ std::cout << "_________ callback error _________" << err.toString(); };
+    auto pTransport = new k_api::TransportClientUdp();
+    auto pRouter = new k_api::RouterClient(pTransport, errorCallback);
     pTransport->connect(IP_ADDRESS, PORT);
 
-    auto router_callback =  [](k_api::KError err){ std::cout << "_________ callback error _________" << err.toString(); };
-    k_api::RouterClient* pRouter = new Kinova::Api::RouterClient(pTransport, router_callback);
-
-    // create session
+    // Create session
     auto createSessionInfo = k_api::Session::CreateSessionInfo();
     createSessionInfo.set_username("admin");
     createSessionInfo.set_password("admin");
     createSessionInfo.set_session_inactivity_timeout(60000);   // (milliseconds)
     createSessionInfo.set_connection_inactivity_timeout(2000); // (milliseconds)
 
-    std::cout << "Creating Session for communication" << std::endl;
-    k_api::SessionManager* pSessionMng = new k_api::SessionManager(pRouter);
+    std::cout << "\nCreating session for communication" << std::endl;
+    auto pSessionMng = new k_api::SessionManager(pRouter);
     pSessionMng->CreateSession(createSessionInfo);
-    std::cout << "Session Created" << std::endl;
+    std::cout << "Session created" << std::endl;
 
+    // Create required services
     auto pBase = new k_api::Base::BaseClient(pRouter);
+    
+    // Move arm to ready position
+    std::cout << "\nMoving the arm to a safe position before executing example" << std::endl;
+    auto action_type = k_api::Base::RequestedActionType();
+    action_type.set_action_type(k_api::Base::REACH_JOINT_ANGLES);
+    auto action_list = pBase->ReadAllActions(action_type);
+    auto action_handle = k_api::Base::ActionHandle();
+    action_handle.set_identifier(0); 
+    for( auto action : action_list.action_list())
+    {
+        if(action.name() == "Home")
+        {
+            action_handle = action.handle();
+        }
+    }
 
-    // example core
-    createSequence(pBase);
+    if(action_handle.identifier() == 0)
+    {
+        std::cout << "\nCan't reach safe position. Exiting" << std::endl;       
+    }
+    else
+    {
+        pBase->ExecuteActionFromReference(action_handle);
+        std::this_thread::sleep_for(std::chrono::seconds(20)); // Leave time to action to finish
+    }
+    
+    // Example core
+    example_createSequence(pBase);
 
+    // Close API session
     pSessionMng->CloseSession();
+
+    // Deactivate the router and cleanly disconnect from the transport object
+    pRouter->SetActivationStatus(false);
     pTransport->disconnect();
+
+    // Destroy the API
+    delete pBase;
     delete pSessionMng;
     delete pRouter;
     delete pTransport;
-    delete pBase;
-
 };

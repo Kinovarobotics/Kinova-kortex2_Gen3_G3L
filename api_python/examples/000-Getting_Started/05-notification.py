@@ -14,16 +14,16 @@
 
 import time
 
-from jaco3_armbase.UDPTransport import UDPTransport
-from jaco3_armbase.RouterClient import RouterClient, RouterClientSendOptions
-from jaco3_armbase.SessionManager import SessionManager
+from kortex_api.UDPTransport import UDPTransport
+from kortex_api.RouterClient import RouterClient, RouterClientSendOptions
+from kortex_api.SessionManager import SessionManager
 
-from jaco3_armbase.autogen.client_stubs.DeviceConfigClientRpc import DeviceConfigClient
-from jaco3_armbase.autogen.client_stubs.BaseClientRpc import BaseClient
+from kortex_api.autogen.client_stubs.DeviceConfigClientRpc import DeviceConfigClient
+from kortex_api.autogen.client_stubs.BaseClientRpc import BaseClient
 
-from jaco3_armbase.autogen.messages import DeviceConfig_pb2, Session_pb2, Base_pb2
+from kortex_api.autogen.messages import DeviceConfig_pb2, Session_pb2, Base_pb2
 
-from jaco3_armbase.Exceptions.KException import KException
+from kortex_api.Exceptions.KException import KException
 from google.protobuf import json_format
 
 def example_notification(base_service):
@@ -34,18 +34,19 @@ def example_notification(base_service):
         print(json_format.MessageToJson(data))
         print("****************************")
 
-    # subscribe to ConfigurationChange notifications
+    # Subscribe to ConfigurationChange notifications
+    print("Subscribing to ConfigurationChange notifications")
     try:
         notif_handle = base_service.OnNotificationConfigurationChangeTopic(notification_callback, Base_pb2.NotificationOptions())
-    except KException:
-        print("Error occured user probably already exist")
+    except KException as k_ex:
+        print("Error occured: {}".format(k_ex))
     except Exception:
         print("Error occured")
 
-    # ... miscellenaous tasks
+    # ... miscellaneous tasks
     time.sleep(3)
 
-    # creating a user profile
+    # Create a user profile to trigger a notification
     full_user_profile = Base_pb2.FullUserProfile()
     full_user_profile.user_profile.username = 'jcash'
     full_user_profile.user_profile.firstname = 'Johnny'
@@ -53,26 +54,28 @@ def example_notification(base_service):
     full_user_profile.user_profile.application_data = "Custom Application Stuff"
     full_user_profile.password = "pwd"
 
+    user_profile_handle = Base_pb2.UserProfileHandle()
     try:
+        print("Creating user profile to trigger notification")
         user_profile_handle = base_service.CreateUserProfile(full_user_profile)
     except KException:
-        print("User creation failed")
+        print("User profile creation failed")
 
-    # ... following the creation of the user_profile we should receive the ConfigurationChange notification (notification_callback() should be called)
+    # ... following the creation of the user profile we should receive the ConfigurationChange notification (notification_callback() should be called)
     print("User {0} created".format(full_user_profile.user_profile.username))
 
-    # ... miscelleneous tasks and to give time for the notification to work.
+    # ... miscellaneous tasks and to give time for the notification to work.
     time.sleep(3)
 
     print("Now unsubscribe from ConfigurationChange notifications")
     base_service.Unsubscribe(notif_handle)
 
     try:
-        print("Deleting user {0}".format(full_user_profile.user_profile.username))
+        print("Deleting previously created user profile ({0})".format(full_user_profile.user_profile.username))
         base_service.DeleteUserProfile(user_profile_handle) # Should not have received notification about this modification
 
     except KException:
-        print("User deletion failed")
+        print("User profile deletion failed")
     
     # ... here sleep to confirm that ConfigurationChange notification is not raised anymore after the unsubscribe
     time.sleep(3)
@@ -83,10 +86,13 @@ if __name__ == "__main__":
     DEVICE_IP = "192.168.1.10"
     DEVICE_PORT = 10000
 
+    # Setup API
+    errorCallback = lambda kException: print("_________ callback error _________ {}".format(kException))
     transport = UDPTransport()
+    router = RouterClient(transport, errorCallback)
     transport.connect(DEVICE_IP, DEVICE_PORT)
-    router = RouterClient(transport, lambda kException: print("Error during connection"))
 
+    # Create session
     session_info = Session_pb2.CreateSessionInfo()
     session_info.username = 'admin'
     session_info.password = 'admin'
@@ -96,10 +102,15 @@ if __name__ == "__main__":
     session_manager = SessionManager(router)
     session_manager.CreateSession(session_info)
 
+    # Create required services
     base_service = BaseClient(router)
 
-    # example core
+    # Example core
     example_notification(base_service)
 
+    # Close API session
     session_manager.CloseSession()
 
+    # Deactivate the router and cleanly disconnect from the transport object
+    router.SetActivationStatus(False)
+    transport.disconnect()

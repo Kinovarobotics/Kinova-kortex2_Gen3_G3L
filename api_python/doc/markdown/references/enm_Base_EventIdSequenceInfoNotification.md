@@ -11,12 +11,12 @@ List of admissible sequence event types
 |Enumerator|Value|Description|
 |----------|-----|-----------|
 |UNSPECIFIED\_SEQUENCE\_EVENT|0|Unspecified sequence event|
-|END|1|Sequence end reached|
-|ABORT|2|Sequence aborted|
-|PAUSE|3|Sequence paused|
-|TASK\_START|4|Sequence task started|
-|TASK\_END|5|Sequence task ended|
-|START|6|Sequence started|
+|SEQUENCE\_COMPLETED|1|Sequence completed successfully|
+|SEQUENCE\_ABORTED|2|Sequence aborted|
+|SEQUENCE\_PAUSED|3|Sequence paused|
+|SEQUENCE\_TASK\_STARTED|4|Sequence task started|
+|SEQUENCE\_TASK\_COMPLETED|5|Sequence task completed|
+|SEQUENCE\_STARTED|6|Sequence started|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

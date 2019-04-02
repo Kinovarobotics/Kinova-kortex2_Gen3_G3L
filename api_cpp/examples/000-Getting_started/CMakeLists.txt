@@ -52,9 +52,9 @@ foreach ( SRC_FILE ${EXE_LIST} )
 
     ##### Link to lib
     if(MSVC)
-        target_link_libraries(${TARGET_EXE_NAME} PRIVATE ${KORTEX_DIR}lib/${CMAKE_BUILD_TYPE}/CppKinovaApi.lib)
+        target_link_libraries(${TARGET_EXE_NAME} PRIVATE ${KORTEX_DIR}lib/${CMAKE_BUILD_TYPE}/KortexApi.lib)
     else()
-        target_link_libraries(${TARGET_EXE_NAME} PRIVATE ${KORTEX_DIR}lib/${CMAKE_BUILD_TYPE}/libCppKinovaApi.a)
+        target_link_libraries(${TARGET_EXE_NAME} PRIVATE ${KORTEX_DIR}lib/${CMAKE_BUILD_TYPE}/libKortexApi.a)
     endif()
 
     # link other libs

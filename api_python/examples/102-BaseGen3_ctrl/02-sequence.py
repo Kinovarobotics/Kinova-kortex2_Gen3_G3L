@@ -14,16 +14,16 @@
 
 import time
 
-from jaco3_armbase.UDPTransport import UDPTransport
-from jaco3_armbase.RouterClient import RouterClient, RouterClientSendOptions
-from jaco3_armbase.SessionManager import SessionManager
+from kortex_api.UDPTransport import UDPTransport
+from kortex_api.RouterClient import RouterClient, RouterClientSendOptions
+from kortex_api.SessionManager import SessionManager
 
-from jaco3_armbase.autogen.client_stubs.BaseClientRpc import BaseClient
+from kortex_api.autogen.client_stubs.BaseClientRpc import BaseClient
 
-from jaco3_armbase.autogen.messages import Session_pb2, Base_pb2
+from kortex_api.autogen.messages import Session_pb2, Base_pb2
 
 def create_angular_action():
-    print("Creating angular action")
+    print("\nCreating angular action")
 
     action = Base_pb2.Action()
     action.name = "Example angular action"
@@ -38,10 +38,10 @@ def create_angular_action():
 
 
 def create_cartesian_action():
-    print("Creating Cartesian action")
+    print("\nCreating Cartesian action")
 
     action = Base_pb2.Action()
-    action.name = "Example cartesian action"
+    action.name = "Example Cartesian action"
     action.application_data = ""
     
     cartesian_pose = action.reach_pose.target_pose
@@ -55,8 +55,9 @@ def create_cartesian_action():
     return action
 
 
-def create_sequence(router):
-    print("Creating Action for Sequence")
+def example_create_sequence(base_client_service):
+    print("\nCreating Action for Sequence")
+
     angular_action = create_angular_action()
     cartesian_action = create_cartesian_action()
 
@@ -73,24 +74,28 @@ def create_sequence(router):
     task_2.group_identifier = 1 # sequence elements with same group_id are played at the same time
     task_2.action.CopyFrom(cartesian_action)
 
-    print("Create sequence on device and execute it")
-    base_client_service = BaseClient(router)
+    print("Creating sequence on device and executing it")
     handle_sequence = base_client_service.CreateSequence(sequence)
     base_client_service.PlaySequence(handle_sequence)
 
-    print("Waiting 30 seconds for motion to finish ...")
+    print("Waiting 30 seconds for movement to finish ...")
     time.sleep(30)
-    
+
+    print("Sequence completed")
+
 
 if __name__ == "__main__":
 
     DEVICE_IP = "192.168.1.10"
     DEVICE_PORT = 10000
 
+    # Setup API
+    errorCallback = lambda kException: print("_________ callback error _________ {}".format(kException))
     transport = UDPTransport()
+    router = RouterClient(transport, errorCallback)
     transport.connect(DEVICE_IP, DEVICE_PORT)
-    router = RouterClient(transport, lambda kException: print("Error during connection"))
 
+    # Create session
     session_info = Session_pb2.CreateSessionInfo()
     session_info.username = 'admin'
     session_info.password = 'admin'
@@ -100,5 +105,33 @@ if __name__ == "__main__":
     session_manager = SessionManager(router)
     session_manager.CreateSession(session_info)
 
-    # example core
-    create_sequence(router)
+    # Create required services
+    base_client_service = BaseClient(router)
+
+    # Move arm to ready position
+    print("\nMoving the arm to a safe position before executing example")
+    action_type = Base_pb2.RequestedActionType()
+    action_type.action_type = Base_pb2.REACH_JOINT_ANGLES
+    action_list = base_client_service.ReadAllActions(action_type)
+    action_handle = None
+    for action in action_list.action_list:
+        if action.name == "Home":
+            action_handle = action.handle
+
+    if action_handle == None:
+        import sys
+        print("\nCan't reach safe position. Exiting")
+        sys.exit(0)
+
+    base_client_service.ExecuteActionFromReference(action_handle)
+    time.sleep(20) # Leave time to action to complete
+
+    # Example core
+    example_create_sequence(base_client_service)
+
+    # Close API session
+    session_manager.CloseSession()
+
+    # Deactivate the router and cleanly disconnect from the transport object
+    router.SetActivationStatus(False)
+    transport.disconnect()

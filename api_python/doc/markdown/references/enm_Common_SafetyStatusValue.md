@@ -10,10 +10,10 @@ List of admissible safety statuses
 
 |Enumerator|Value|Description|
 |----------|-----|-----------|
-|UNSPECIFIED|0|Unspecified safety status|
-|WARNING|1|Warning safety reached|
-|ERROR|2|Error safety reached|
-|NORMAL|3|Safety is off|
+|SAFETY\_STATUS\_UNSPECIFIED|0|Unspecified safety status|
+|SAFETY\_STATUS\_WARNING|1|Warning safety reached|
+|SAFETY\_STATUS\_ERROR|2|Error safety reached|
+|SAFETY\_STATUS\_NORMAL|3|Safety is off|
 
 **Parent topic:** [Common](../references/summary_Common.md)
 

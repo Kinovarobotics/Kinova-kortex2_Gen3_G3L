@@ -13,7 +13,7 @@ Defines a command for many modules \(actuactors and interconnect\)
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |frame\_id|uint32|Frame ID|
-|actuators| [ActuatorCommand](msg_BaseCyclic_ActuatorCommand.md#)|Actuator command \(repeated\)|
+|actuators|Collection of [ActuatorCommand](msg_BaseCyclic_ActuatorCommand.md#)|Actuator command \(repeated\)|
 |interconnect| [InterconnectCommand](msg_BaseCyclic_InterconnectCommand.md#)|Interconnect command|
 
  **Methods** 

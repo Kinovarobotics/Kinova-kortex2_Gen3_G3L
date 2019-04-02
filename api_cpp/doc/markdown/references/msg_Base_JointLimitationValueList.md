@@ -12,7 +12,7 @@ List of joint limitations
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|joint\_limitation\_values| [JointLimitationValue](msg_Base_JointLimitationValue.md#)|Joint limitation|
+|joint\_limitation\_values|Collection of [JointLimitationValue](msg_Base_JointLimitationValue.md#)|Joint limitation|
 
  **Methods** 
 

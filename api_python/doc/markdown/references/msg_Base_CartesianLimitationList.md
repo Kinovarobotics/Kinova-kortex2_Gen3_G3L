@@ -12,7 +12,7 @@ Array of Cartesian limitations
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|limitations| [CartesianLimitation](msg_Base_CartesianLimitation.md#)|Limitation|
+|limitations|Collection of [CartesianLimitation](msg_Base_CartesianLimitation.md#)|Limitation|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

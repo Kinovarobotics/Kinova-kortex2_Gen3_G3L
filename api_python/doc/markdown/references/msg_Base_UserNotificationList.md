@@ -12,7 +12,7 @@ Array of user notifications
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|notifications| [UserNotification](msg_Base_UserNotification.md#)|Notification|
+|notifications|Collection of [UserNotification](msg_Base_UserNotification.md#)|Notification|
 
 **Parent topic:** [Base](../references/summary_Base.md)
 

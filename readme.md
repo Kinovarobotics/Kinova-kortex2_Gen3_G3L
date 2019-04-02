@@ -20,14 +20,15 @@ The official repository contains documentation and examples explaining how to us
 
 [https://github.com/Kinovarobotics/kortex](https://github.com/Kinovarobotics/kortex)  
 
-<h1>Table Of Contents</h1>
+<h1>Table of Contents</h1>
 
 <!-- TOC -->
 
 - [Description](#description)
 - [Licensing](#licensing)
-- [Role of Google Proto Buffer in Kortex API](#role-of-google-protobuf-in-kortex-api)
+- [Role of Google Protocol Buffer in Kortex API](#role-of-google-protobuf-in-kortex-api)
     - [Quick Start for Python users](#quick-start-howto-python)
+    - [Quick Start for C++ users](#quick-start-howto-cpp)
 - [API download links](#api-download-links)
 - [Language-specific details](#api-details-for-a-specific-language)
 - [Reference](#reference)
@@ -37,21 +38,31 @@ The official repository contains documentation and examples explaining how to us
 
 <a id="markdown-licensing" name="licensing"></a>
 # Licensing 
-Note that this repository is licenced under the **BSD 3-Clause "Revised" License**: **[LICENSE File](./LICENSE)**  
+This repository is licenced under the **[BSD 3-Clause "Revised" License](./LICENSE)**  
 
 <a id="markdown-role-of-google-protobuf-in-kortex-api" name="role-of-google-protobuf-in-kortex-api"></a>
-# Role of Google Proto Buffer in Kortex API 
+# Role of Google Protocol Buffer in Kortex API 
 
-The Kortex API uses Google Proto Buffer message objects<sup>**[1](#useful-links)**</sup> to exchange data between client and server.  
+The Kortex API uses Google Protocol Buffer message objects<sup>**[1](#useful-links)**</sup> to exchange data between client and server.  
 
-Google Proto Buffer offers structured data objects with standard methods for each member field:  
+Google Protocol Buffer offers structured data objects with standard methods for each member field:  
 + structured, nested objects
 + basic types and collections
 + getters/setters have methods on basic types
 + iterators, dimension and appending methods on collections
 + many helpers (e.g. serialize/deserialize, I/O functions)
   
-When using the Kortex API a developer will need to understand the Google Proto Buffer feature set to maximize their efficiency.  
+When using the Kortex API a developer will need to understand the Google Protocol Buffer feature set to maximize their efficiency.  
+
+<a id="markdown-quick-start-howto-cpp" name="quick-start-howto-cpp"></a>
+## Quick Start for C++ users
+  Here are some helpful guide for C++ developper. You will find informations about Kortex's mechanism and some code examples.
+
++ **[Error management](./linked_md/cpp_error_management.md)**
++ **[API mechanism](./linked_md/cpp_api_mechanism.md)**
++ **[Device routing](./linked_md/cpp_device_routing.md)**
++ **[Transport / Router / Session / Notification](./linked_md/cpp_transport_router_session_notif.md)**
++ **[Examples](./api_cpp/examples/readme.md)**
 
 <a id="markdown-quick-start-howto-python" name="quick-start-howto-python"></a>
 ## Quick Start for Python users
@@ -59,13 +70,17 @@ When using the Kortex API a developer will need to understand the Google Proto B
   To run the Python examples you will need to install the Python interpreter and the pip installation module.  
   Note that for C++ developers it could be useful to install the Python Kortex API, to allow for quick tests and validations.
 
-  > Here is some general information about the Python interpreter and the pip module manager.  
-  > **[Python General Information](./linked_md/python_quick_start.md)**
+  Here is some general information about the Python interpreter and the pip module manager.  
+  - **[Python General Information](./linked_md/python_quick_start.md)**
+  - **[Error management](./linked_md/python_error_management.md)**
+  - **[Device routing](./linked_md/py_device_routing.md)**
+  - **[Transport / Router / Session / Notification](./linked_md/py_transport_router_session_notif.md)**
+  - **[Examples](./api_python/examples/readme.md)**
 
 <a id="markdown-api-download-links" name="api-download-links"></a>
 # API download links
 
-Download the archive via Kinova Google Drive: **[kortex_api](https://drive.google.com/file/d/19zfCNlRUfNBbZoMW9LOpLjVrYOO2BwYb/view)**  
+Download the archive via Kinova Google Drive: **[kortex_api](https://drive.google.com/file/d/1ASbEsulf5cByru8Hy1oBZJyNDBa9H22C/view)**  
 *More details are in: **[Language-specific details](#api-details-for-a-specific-language)***
 
 <a id="markdown-api-details-for-a-specific-language" name="api-details-for-a-specific-language"></a>
@@ -81,4 +96,4 @@ Download the archive via Kinova Google Drive: **[kortex_api](https://drive.googl
 |  |  |  
 | ---: | --- |  
 | Kinova home page: | [https://www.kinovarobotics.com](https://www.kinovarobotics.com)|  
-| Google Protobuf home page: | [https://developers.google.com/protocol-buffers](https://developers.google.com/protocol-buffers) |  
+| Google Protocol Buffers home page: | [https://developers.google.com/protocol-buffers](https://developers.google.com/protocol-buffers) |  

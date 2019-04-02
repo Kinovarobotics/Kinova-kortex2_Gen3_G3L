@@ -12,7 +12,7 @@ Defines a series of joint speeds
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|joint\_speeds| [JointSpeed](msg_Base_JointSpeed.md#)|Array of joint speed|
+|joint\_speeds|Collection of [JointSpeed](msg_Base_JointSpeed.md#)|Array of joint speed|
 |duration|uint32|Duration constraint. If not 0, allows to set a limit \(in seconds\) common to every joint specified in 'joint\_speeds' \(future\)|
 
  **Methods** 

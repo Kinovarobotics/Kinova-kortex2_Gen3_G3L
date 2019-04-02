@@ -12,7 +12,7 @@ Array of actions
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|action\_list| [Action](msg_Base_Action.md#)|Action|
+|action\_list|Collection of [Action](msg_Base_Action.md#)|Action|
 
  **Methods** 
 

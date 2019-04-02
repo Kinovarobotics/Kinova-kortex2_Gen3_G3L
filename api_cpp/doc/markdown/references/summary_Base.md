@@ -292,7 +292,7 @@ This section describes the data types used in the Base package methods, includin
 |[ControllerEventType](enm_Base_ControllerEventType.md#)|List of admissible controller event types|
 |[ControllerInputType](enm_Base_ControllerInputType.md#)|List of admissible controller input types|
 |[ControllerType](enm_Base_ControllerType.md#)|List of admissible controller types|
-|[CountryCodeIdentifier](enm_Base_CountryCodeIdentifier.md#)|list of supported ISO3166 country identifiers|
+|[CountryCodeIdentifier](enm_Base_CountryCodeIdentifier.md#)|List of supported ISO3166 country identifiers|
 |[EventIdSequenceInfoNotification](enm_Base_EventIdSequenceInfoNotification.md#)|List of admissible sequence event types|
 |[FactoryEvent](enm_Base_FactoryEvent.md#)|List of admissible factory events|
 |[GpioState](enm_Base_GpioState.md#)|List of admissible GPIO states \(future\)|

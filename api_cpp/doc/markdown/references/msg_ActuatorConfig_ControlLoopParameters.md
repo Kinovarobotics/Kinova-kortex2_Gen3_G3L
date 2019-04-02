@@ -15,8 +15,8 @@ Defines control loop parameters \(discrete transfer function\)
 |loop\_selection| [ControlLoopSelection](enm_ActuatorConfig_ControlLoopSelection.md#)|ControlLoopSelection enum|
 |error\_saturation|float32|Error saturation value|
 |output\_saturation|float32|Output saturation value|
-|kAz|float32|KAz \(index 0 to 4\): denominator gains A1 to A5|
-|kBz|float32|KBz \(index 0 to 5\): numerator gains B0 to B5|
+|kAz|Collection of float32|KAz \(index 0 to 4\): denominator gains A1 to A5|
+|kBz|Collection of float32|KBz \(index 0 to 5\): numerator gains B0 to B5|
 
  **Methods** 
 
