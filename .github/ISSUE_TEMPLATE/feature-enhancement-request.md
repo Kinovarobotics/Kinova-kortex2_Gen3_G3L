@@ -3,7 +3,7 @@ name: Feature/enhancement request
 about: Suggest an enhancement
 title: ''
 labels: ''
-assignees: ''
+assignees: KinovaCustomerSupport
 
 ---
 
