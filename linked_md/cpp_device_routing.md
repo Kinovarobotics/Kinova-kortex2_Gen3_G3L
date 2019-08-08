@@ -21,9 +21,8 @@
 	- [Service description](#service-description)
 	- [Good to know](#good-to-know)
 	- [Example](#example)
-- [Device Config](#device-config)
+- [Device Config service](#device-config-service)
 	- [Service description](#service-description-1)
-	- [Good to know](#good-to-know-1)
 	- [Example](#example-1)
 - [Other Services](#other-services)
 	- [Example](#example-2)
@@ -32,109 +31,123 @@
 
 <a id="markdown-overview" name="overview"></a>
 ## Overview
-Device routing is a mechanism that allows the sending of commands to specific devices using the connection with the base.  This is done by specifying a *device_identifier* when sending a command through a service, which doesn't need to be implemented by the base.
+Device routing is a mechanism that allows users to send commands to specific devices using the connection with the base.  This is done by specifying a *device_identifier* when sending a command through a service. This service doesn't need to be implemented by the base.
 
-In other words, you can send a command to a sub device with a service known only by the sub device (e.g.: ``ActuatorConfigClientRpc)`` as long as the *device_identifier* is specified in the command parameter.
+In other words, you can send a command to a sub device with a service known only by the sub device (e.g.: ``ActuatorConfigClient)`` as long as the *device_identifier* is specified as an additional command parameter.
 
 The **Device Manager** service is used to obtain the *device_identifier*.
 
-<a id="markdown-srv-devMgn" name="srv-devMng"></a>
+<a id="markdown-srv-devMgn" name="device-manager-service"></a>
 ## Device Manager service
 
-<a id="markdown-devMng-description" name="devMng-description"></a>
+<a id="markdown-devMng-description" name="service-description"></a>
 ### Service description
-The purpose of the **Device Manager** service is to return a device handle list which contains handles for all current devices.
+The **Device Manager** service contains a method `ReadAllDevices()` which returns a device handle list containing handles for all current devices in the robot.
 
-<a id="markdown-devMng-gtk" name="devMng-gtk"></a>
+<a id="markdown-devMng-gtk" name="good-to-know"></a>
 ### Good to know
-- The device handle list returned by ``ReadAllDevices()`` is not ordered.
-
-<a id="markdown-devMng-example" name="devMng-example"></a>
-### Example
-```cpp
-namespace k_api = Kinova::Api;
-
-/* API initialisation */
-auto pDeviceMng = new k_api::DeviceManager::DeviceManagerClient(pRouter);
-auto allDevicesInfo = pDeviceMng->ReadAllDevices();
-```
-
-<a id="markdown-srv-devConfig" name="srv-devConfig"></a>
-## Device Config
-
-<a id="markdown-devConfig-description" name="devConfig-description"></a>
-### Service description
-The **Device Config** service provides information about the device being interrogated, including device type, firmware version, manufacturing information and hardware revision.
-
-<a id="markdown-devConfig-gtk" name="devConfig-gtk"></a>
-### Good to know
-- The device handle list returned by ``ReadAllDevices()`` is not ordered.
+- The device handle list returned by `ReadAllDevices()` is not in any particular order with respect to the location of devices in the robot.
 - Device handles also have a *device_type* field and an *order* field.
 
-<a id="markdown-devConfig-example" name="devConfig-example"></a>
+<a id="markdown-devMng-example" name="example"></a>
 ### Example
 ```cpp
 namespace k_api = Kinova::Api;
-namespace pb = google::protobuf;
 
 /* API initialisation */
-auto pDeviceMng = new k_api::DeviceManager::DeviceManagerClient(pRouter);
-auto allDevicesInfo = pDeviceMng->ReadAllDevices();
+auto device_manager = new k_api::DeviceManager::DeviceManagerClient(router);
+auto allDevicesInfo = device_manager->ReadAllDevices();
+```
 
-// RouterClientSendOptions still available when routing
+<a id="markdown-srv-devConfig" name="device-config-service"></a>
+## Device Config service
+
+<a id="markdown-devConfig-description" name="service-description-1"></a>
+### Service description
+The **Device Config** service provides information about the device being interrogated, including:
+- device type
+- firmware and bootloader version
+- part and serial numbers
+- MAC address and 
+- hardware revision
+
+
+<a id="markdown-devConfig-example" name="example-1"></a>
+### Example
+```cpp
+namespace k_api = Kinova::Api;
+
+/* API initialisation */
+auto device_manager = new k_api::DeviceManager::DeviceManagerClient(router);
+auto device_config = new k_api::DeviceConfig::DeviceConfigClient(router);
+
+// Get all device routing information (from DeviceManagerClient service)
+auto allDevicesInfo = device_manager->ReadAllDevices();
+
 k_api::RouterClientSendOptions options;
 options.timeout_ms = 4000;  // (milliseconds)
 
-for ( auto dev : allDevicesInfo.device_handle() )
+// Use device routing information to route to every device (base, actuator, interconnect, etc.) in the arm base system and request general device information
+for (auto device : allDevicesInfo.device_handle())
 {
+
+	std::cout << "-----------------------------\n";
+	std::cout << "-- " << k_api::Common::DeviceTypes_Name(device.device_type()) << ": id = " << device.device_identifier() << " --\n";
+
 	std::string str;
-	pb::TextFormat::PrintToString( pDeviceConfig->GetDeviceType         (dev.device_identifier(), options), &str );     std::cout << str;
-	pb::TextFormat::PrintToString( pDeviceConfig->GetFirmwareVersion    (dev.device_identifier(), options), &str );     std::cout << str;
-	pb::TextFormat::PrintToString( pDeviceConfig->GetBootloaderVersion  (dev.device_identifier(), options), &str );     std::cout << str;
-	pb::TextFormat::PrintToString( pDeviceConfig->GetPartNumber         (dev.device_identifier(), options), &str );     std::cout << str;
-	pb::TextFormat::PrintToString( pDeviceConfig->GetSerialNumber       (dev.device_identifier(), options), &str );     std::cout << str;
-	pb::TextFormat::PrintToString( pDeviceConfig->GetMACAddress         (dev.device_identifier(), options), &str );     std::cout << str;
-	pb::TextFormat::PrintToString( pDeviceConfig->GetPartNumberRevision (dev.device_identifier(), options), &str );     std::cout << str;
-	std::cout << "\n";
+	google::protobuf::TextFormat::PrintToString(device_config->GetDeviceType(device.device_identifier(), options), &str);
+	std::cout << str;
+	google::protobuf::TextFormat::PrintToString(device_config->GetFirmwareVersion(device.device_identifier(), options), &str);
+	std::cout << str; 
+	google::protobuf::TextFormat::PrintToString(device_config->GetBootloaderVersion(device.device_identifier(), options), &str); 
+	std::cout << str;
+	google::protobuf::TextFormat::PrintToString(device_config->GetModelNumber(device.device_identifier(), options), &str);
+	std::cout << str;
+	google::protobuf::TextFormat::PrintToString(device_config->GetPartNumber(device.device_identifier(), options), &str);     
+	std::cout << str;
+	google::protobuf::TextFormat::PrintToString(device_config->GetPartNumberRevision(device.device_identifier(), options), &str);
+	std::cout << str;
+	google::protobuf::TextFormat::PrintToString(device_config->GetSerialNumber(device.device_identifier(), options), &str);   
+	std::cout << str;
+	std::cout << std::endl;
 }
 ```
 
-<a id="markdown-other" name="other"></a>
+<a id="markdown-other" name="other-services"></a>
 ## Other Services
 
 The *device_identifier* can be used by other services to directly interrogate a device.
 
-<a id="markdown-example" name="other-example"></a>
+<a id="markdown-example" name="example-2"></a>
 ### Example
 
 ```cpp
 namespace k_api = Kinova::Api;
-namespace pb = google::protobuf;
 
 /* API initialisation */
-auto pDeviceMng = new k_api::DeviceManager::DeviceManagerClient(pRouter);
-auto pVision = new k_api::VisionConfig::VisionConfigClient(pRouter);
+auto device_manager = new k_api::DeviceManager::DeviceManagerClient(router);
+auto vision_config = new k_api::VisionConfig::VisionConfigClient(router);
 
-auto allDevicesInfo = pDeviceMng->ReadAllDevices();
+auto allDevicesInfo = device_manager->ReadAllDevices();
 
 // uses device routing information to route to every device (base, actuator, interconnect, etc.)
-for ( auto dev : allDevicesInfo.device_handle() )
+for (auto dev : allDevicesInfo.device_handle())
 {	
-    if ( dev.device_type() == k_api::Common::DeviceTypes::VISION )
+    if (dev.device_type() == k_api::Common::DeviceTypes::VISION)
 	{
-	    printf("-- Using Vision Config Service to get intrinsic parameters --\n");
-	    k_api::VisionConfig::SensorIdentifier sensorId;
-	    sensorId.set_sensor(k_api::VisionConfig::SENSOR_COLOR);
+	    std::cout << "-- Using Vision Config Service to get intrinsic parameters --" << std::endl;
+	    k_api::VisionConfig::SensorIdentifier sensor_id;
+		sensor_id.set_sensor(k_api::VisionConfig::SENSOR_COLOR);
 
 		// We can now use the Vision service with the base connection by specifing the device_identifier
-	    auto intrinsicValue = pVision->GetIntrinsicParameters(sensorId, dev.device_identifier());
+	    auto intrinsic_value = vision_config->GetIntrinsicParameters(sensor_id, dev.device_identifier());
 
-	    std::cout << "Width: " << intrinsicValue.width() << std::endl;
-	    std::cout << "Height: " << intrinsicValue.height() << std::endl;
-	    std::cout << "Principal point x: " << intrinsicValue.principal_point_x() << std::endl;
-	    std::cout << "Principal point y: " << intrinsicValue.principal_point_y() << std::endl;
-	    std::cout << "focal lenght x: " << intrinsicValue.focal_length_x() << std::endl;
-	    std::cout << "focal lenght y: " << intrinsicValue.focal_length_y() << std::endl;
+	    std::cout << "Width: " << intrinsic_value.width() << std::endl;
+	    std::cout << "Height: " << intrinsic_value.height() << std::endl;
+	    std::cout << "Principal point x: " << intrinsic_value.principal_point_x() << std::endl;
+	    std::cout << "Principal point y: " << intrinsic_value.principal_point_y() << std::endl;
+	    std::cout << "Focal length x: " << intrinsic_value.focal_length_x() << std::endl;
+	    std::cout << "Focal length y: " << intrinsic_value.focal_length_y() << std::endl;
 
 	    break;
 	}

@@ -10,25 +10,25 @@
 *
 -->
 
-<h1>API mechanism</h1>
+<h1>Python API mechanism</h1>
 
 <h2>Table Of Contents</h2>
 
 <!-- TOC -->
 
 - [Overview](#overview)
-- [Blocking-method](#blocking-function)
+- [Blocking-method](#function)
 
 <!-- /TOC -->
 
 <a id="markdown-overview" name="overview"></a>
 ## Overview
-The **Python Kortex API** offers one mechanism to call a method: the standard **blocking** method.
+The Python Kortex API offers one mechanism to call a method: a standard blocking method.
 
 
-<a id="markdown-blocking-function" name="blocking-function"></a>
+<a id="markdown-blocking-function" name="function"></a>
 ## Blocking method
-The **blocking** method (blocking call) is quite straightforward. The function is called, and the process waits until an answer is received from the server side.
+The blocking method (blocking call) is relatively straightforward. The function is called, and the process waits until an answer is received from the server side.
 
 
 ```python
@@ -39,13 +39,12 @@ router_options.timeout_ms = 5000 # 5 seconds
 
 # The same function call without the options=router_options is valid and will do the same
 # using the router default value
-wifi_list = base_service.GetAvailableWifi(options=router_options)
+all_speed_hard_limits = base.GetAllJointsSpeedHardLimitation()
 
-for wifi in wifi_list.wifi_information_list:
+for speed_limit in all_speed_hard_limits.joints_limitations:
 	print("============================================")
-	print("SSID: {0}".format(wifi.ssid.identifier))
-	print("Wi-Fi security type: {0}".format(wifi.security_type))
-	print("Wi-Fi encryption type: {0}".format(wifi.encryption_type))
-	print("Signal strength: {0}".format(wifi.signal_strength))
+	print("Joint: {0}".format(speed_limit.joint_identifier))
+	print("Type of limitation: {0}".format(Base_pb2.LimitationType.Name(speed_limit.type)))
+	print("Value: {0}".format(speed_limit.value))
 	print("============================================")
 ```

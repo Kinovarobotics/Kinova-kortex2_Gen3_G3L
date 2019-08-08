@@ -38,7 +38,7 @@ The official repository contains documentation and examples explaining how to us
 
 <a id="markdown-licensing" name="licensing"></a>
 # Licensing 
-This repository is licenced under the **[BSD 3-Clause "Revised" License](./LICENSE)**  
+This repository is licenced under the [BSD 3-Clause "Revised" License](./LICENSE) 
 
 <a id="markdown-role-of-google-protobuf-in-kortex-api" name="role-of-google-protobuf-in-kortex-api"></a>
 # Role of Google Protocol Buffer in Kortex API 
@@ -48,7 +48,7 @@ The Kortex API uses Google Protocol Buffer message objects<sup>**[1](#useful-lin
 Google Protocol Buffer offers structured data objects with standard methods for each member field:  
 + structured, nested objects
 + basic types and collections
-+ getters/setters have methods on basic types
++ getter/setter methods on basic types
 + iterators, dimension and appending methods on collections
 + many helpers (e.g. serialize/deserialize, I/O functions)
   
@@ -56,38 +56,42 @@ When using the Kortex API a developer will need to understand the Google Protoco
 
 <a id="markdown-quick-start-howto-cpp" name="quick-start-howto-cpp"></a>
 ## Quick Start for C++ users
-  Here are some helpful guide for C++ developper. You will find informations about Kortex's mechanism and some code examples.
+  The following links provide some helpful guidance for C++ developer. You will find information about Kortex mechanism and some code examples.
 
-+ **[Error management](./linked_md/cpp_error_management.md)**
-+ **[API mechanism](./linked_md/cpp_api_mechanism.md)**
-+ **[Device routing](./linked_md/cpp_device_routing.md)**
-+ **[Transport / Router / Session / Notification](./linked_md/cpp_transport_router_session_notif.md)**
-+ **[Examples](./api_cpp/examples/readme.md)**
++ [API mechanism](./linked_md/cpp_api_mechanism.md)
++ [Transport / Router / Session / Notification](./linked_md/cpp_transport_router_session_notif.md)
++ [Device routing](./linked_md/cpp_device_routing.md)
++ [Servoing modes](./linked_md/cpp_servoing_modes.md)
++ [Error management](./linked_md/cpp_error_management.md)
++ [Examples](./api_cpp/examples/readme.md)
 
 <a id="markdown-quick-start-howto-python" name="quick-start-howto-python"></a>
 ## Quick Start for Python users
 
-  To run the Python examples you will need to install the Python interpreter and the pip installation module.  
-  Note that for C++ developers it could be useful to install the Python Kortex API, to allow for quick tests and validations.
+  To run the Python examples you will need to install the Python interpreter and the pip installation module.
+
+  Note that for C++ developers it could be useful to install the Python Kortex API to allow for quick tests and validations.
 
   Here is some general information about the Python interpreter and the pip module manager.  
-  - **[Python General Information](./linked_md/python_quick_start.md)**
-  - **[Error management](./linked_md/python_error_management.md)**
-  - **[Device routing](./linked_md/py_device_routing.md)**
-  - **[Transport / Router / Session / Notification](./linked_md/py_transport_router_session_notif.md)**
-  - **[Examples](./api_python/examples/readme.md)**
+  - [Python General Information](./linked_md/python_quick_start.md)
+  - [API mechanism](./linked_md/python_api_mechanism.md)
+  - [Transport / Router / Session / Notification](./linked_md/py_transport_router_session_notif.md)
+  - [Device routing](./linked_md/py_device_routing.md)
+  - [Servoing modes](./linked_md/python_servoing_modes.md)
+  - [Error management](./linked_md/python_error_management.md)
+  - [Examples](./api_python/examples/readme.md)
 
 <a id="markdown-api-download-links" name="api-download-links"></a>
 # API download links
 
-Download the archive via Kinova Google Drive: **[kortex_api](https://drive.google.com/file/d/1ASbEsulf5cByru8Hy1oBZJyNDBa9H22C/view)**  
-*More details are in: **[Language-specific details](#api-details-for-a-specific-language)***
+Download the archive via Kinova Google Drive: [kortex_api](https://drive.google.com/file/d/1ASbEsulf5cByru8Hy1oBZJyNDBa9H22C/view)  
+More details are in: [Language-specific details](#api-details-for-a-specific-language)
 
 <a id="markdown-api-details-for-a-specific-language" name="api-details-for-a-specific-language"></a>
 # Language-specific details 
 
-**[C++ API](./api_cpp/examples/readme.md)**  
-**[Python API](./api_python/examples/readme.md)**  
+[C++ API](./api_cpp/examples/readme.md)  
+[Python API](./api_python/examples/readme.md) 
 
 <a id="markdown-reference" name="reference"></a>
 # Reference
