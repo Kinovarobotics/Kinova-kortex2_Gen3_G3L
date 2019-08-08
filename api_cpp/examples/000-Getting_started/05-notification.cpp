@@ -10,13 +10,12 @@
 *
 */
 
-
 #include <SessionManager.h>
 #include <BaseClientRpc.h>
 #include <DeviceConfigClientRpc.h>
 
 #include <RouterClient.h>
-#include <TransportClientUdp.h>
+#include <TransportClientTcp.h>
 
 #include <google/protobuf/util/json_util.h>
 
@@ -25,9 +24,9 @@ namespace k_api = Kinova::Api;
 #define IP_ADDRESS "192.168.1.10"
 #define PORT 10000
 
-void example_notification(k_api::Base::BaseClient* pBase)
+void example_notification(k_api::Base::BaseClient* base)
 {
-    auto fct_callback = [](k_api::Base::ConfigurationChangeNotification data)
+    auto function_callback = [](k_api::Base::ConfigurationChangeNotification data)
     {
         std::cout << "Callback triger" << std::endl;
 
@@ -41,23 +40,23 @@ void example_notification(k_api::Base::BaseClient* pBase)
 
     // Subscribe to ConfigurationChange notifications
     std::cout << "Subscribing to ConfigurationChange notifications" << std::endl;
-    auto notifHandle = pBase->OnNotificationConfigurationChangeTopic(fct_callback, k_api::Common::NotificationOptions());
+    auto notification_handle = base->OnNotificationConfigurationChangeTopic(function_callback, k_api::Common::NotificationOptions());
 
     // Create a user profile to trigger a notification
-    auto fullUserProfile = k_api::Base::FullUserProfile();
-    auto userProfile = fullUserProfile.mutable_user_profile();
-    auto userProfileHandle = userProfile->mutable_handle();
-    userProfileHandle->set_identifier(0);
-    userProfile->set_username("jcash");
-    userProfile->set_firstname("Johnny");
-    userProfile->set_lastname("Cash");
-    fullUserProfile.set_password("pwd");
+    auto full_user_profile = k_api::Base::FullUserProfile();
+    auto user_profile = full_user_profile.mutable_user_profile();
+    auto user_profile_handle = user_profile->mutable_handle();
+    user_profile_handle->set_identifier(0);
+    user_profile->set_username("jcash");
+    user_profile->set_firstname("Johnny");
+    user_profile->set_lastname("Cash");
+    full_user_profile.set_password("pwd");
 
-    k_api::Common::UserProfileHandle returnedUserProfileHandle;
+    k_api::Common::UserProfileHandle returned_user_profile_handle;
     try
     {
         std::cout << "Creating user profile to trigger notification" << std::endl;
-        returnedUserProfileHandle = pBase->CreateUserProfile(fullUserProfile);
+        returned_user_profile_handle = base->CreateUserProfile(full_user_profile);
     }
     catch (k_api::KDetailedException& ex)
     {
@@ -68,54 +67,60 @@ void example_notification(k_api::Base::BaseClient* pBase)
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 
     // Unsubscribe from notifications
-    std::cout << "Now unsubscribe from ConfigurationChange notifications" << std::endl;
-    pBase->Unsubscribe(notifHandle);
+    std::cout << "Unsubscribing from ConfigurationChange notifications" << std::endl;
+    base->Unsubscribe(notification_handle);
 
     try
     {
         std::cout << "Deleting previously created user profile" << std::endl;
-        pBase->DeleteUserProfile(returnedUserProfileHandle); // Should not have received notification about this modification
+        base->DeleteUserProfile(returned_user_profile_handle); // Should not have received notification about this modification
     }
     catch (k_api::KDetailedException& ex)
     {
         std::cout << "User profile deletion failed" << std::endl;
     }
-}
 
+    // Let the base process the user deletion request and see the notification doesn't come in
+    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+}
 
 int main(int argc, char **argv)
 {
-    // Setup API
-    auto pTransport = new k_api::TransportClientUdp();
-    auto pRouter = new k_api::RouterClient(pTransport, [](k_api::KError err){ std::cout << "_________ callback error _________" << err.toString(); });
-    pTransport->connect(IP_ADDRESS, PORT);
+    // Create API objects
+    auto error_callback = [](k_api::KError err){ cout << "_________ callback error _________" << err.toString(); };
+    auto transport = new k_api::TransportClientTcp();
+    auto router = new k_api::RouterClient(transport, error_callback);
+    transport->connect(IP_ADDRESS, PORT);
 
-    // Create session
-    auto createSessionInfo = k_api::Session::CreateSessionInfo();
-    createSessionInfo.set_username("admin");
-    createSessionInfo.set_password("admin");
-    createSessionInfo.set_session_inactivity_timeout(60000);   // (milliseconds)
-    createSessionInfo.set_connection_inactivity_timeout(2000); // (milliseconds)
+    // Set session data connection information
+    auto create_session_info = k_api::Session::CreateSessionInfo();
+    create_session_info.set_username("admin");
+    create_session_info.set_password("admin");
+    create_session_info.set_session_inactivity_timeout(60000);   // (milliseconds)
+    create_session_info.set_connection_inactivity_timeout(2000); // (milliseconds)
 
-    auto pSessionMng = new k_api::SessionManager(pRouter);
-    pSessionMng->CreateSession(createSessionInfo);
+    // Session manager service wrapper
+    std::cout << "Creating session for communication" << std::endl;
+    auto session_manager = new k_api::SessionManager(router);
+    session_manager->CreateSession(create_session_info);
+    std::cout << "Session created" << std::endl;
 
-    // Create required services
-    auto pBase = new k_api::Base::BaseClient(pRouter);
+    // Create services
+    auto base = new k_api::Base::BaseClient(router);
 
     // Example core
-    example_notification(pBase);
+    example_notification(base);
 
     // Close API session
-    pSessionMng->CloseSession();
+    session_manager->CloseSession();
 
     // Deactivate the router and cleanly disconnect from the transport object
-    pRouter->SetActivationStatus(false);
-    pTransport->disconnect();
+    router->SetActivationStatus(false);
+    transport->disconnect();
 
     // Destroy the API
-    delete pBase;
-    delete pSessionMng;
-    delete pRouter;
-    delete pTransport;
+    delete base;
+    delete session_manager;
+    delete router;
+    delete transport;
 }

@@ -18,66 +18,74 @@
 #include <BaseClientRpc.h>
 
 #include <RouterClient.h>
-#include <TransportClientUdp.h>
+#include <TransportClientTcp.h>
 
 namespace k_api = Kinova::Api;
 
 #define IP_ADDRESS "192.168.1.10"
 #define PORT 10000
 
-void example_error_management(k_api::Base::BaseClient* pBase)
+void example_error_management(k_api::Base::BaseClient* base)
 {
+    // You can wrap your function call in a try-catch block to catch an exception it may throw
     try
     {
-        pBase->CreateUserProfile(k_api::Base::FullUserProfile());
+        base->CreateUserProfile(k_api::Base::FullUserProfile());
     }
     catch(k_api::KDetailedException& ex)
     {
-        auto errorInfo = ex.getErrorInfo();
-        auto errorCode = errorInfo.getError();
-        std::cout << "KDetailedException detected toStr: " << ex.toString().c_str() << std::endl;
-        std::cout << "KDetailedoption detected what:  " << ex.what() << std::endl << std::endl;
+        // You can print the error informations and error codes
+        auto error_info = ex.getErrorInfo().getError();
+        std::cout << "KDetailedoption detected what:  " << ex.what() << std::endl;
         
-        std::cout << "KError error_code: " << errorCode.error_code() << std::endl;
-        std::cout << "KError sub_code: " << errorCode.error_sub_code() << std::endl;
-        std::cout << "KError sub_string: " << errorCode.error_sub_string() << std::endl;
+        std::cout << "KError error_code: " << error_info.error_code() << std::endl;
+        std::cout << "KError sub_code: " << error_info.error_sub_code() << std::endl;
+        std::cout << "KError sub_string: " << error_info.error_sub_string() << std::endl;
+
+        // Error codes by themselves are not very verbose if you don't see their corresponding enum value
+        // You can use google::protobuf helpers to get the string enum element for every error code and sub-code 
+        std::cout << "Error code string equivalent: " << k_api::ErrorCodes_Name(k_api::ErrorCodes(error_info.error_code())) << std::endl;
+        std::cout << "Error sub-code string equivalent: " << k_api::SubErrorCodes_Name(k_api::SubErrorCodes(error_info.error_sub_code())) << std::endl;
     }
 }
 
-
 int main(int argc, char **argv)
 {
-    // Setup API
-    auto pTransport = new k_api::TransportClientUdp();
-    auto pRouter = new k_api::RouterClient(pTransport, [](k_api::KError err){ std::cout << "_________ callback error _________" << err.toString(); });
-    pTransport->connect(IP_ADDRESS, PORT);
+    // Create API objects
+    auto error_callback = [](k_api::KError err){ cout << "_________ callback error _________" << err.toString(); };
+    auto transport = new k_api::TransportClientTcp();
+    auto router = new k_api::RouterClient(transport, error_callback);
+    transport->connect(IP_ADDRESS, PORT);
 
-    // Create session
-    auto createSessionInfo = k_api::Session::CreateSessionInfo();
-    createSessionInfo.set_username("admin");
-    createSessionInfo.set_password("admin");
-    createSessionInfo.set_session_inactivity_timeout(60000);   // (milliseconds)
-    createSessionInfo.set_connection_inactivity_timeout(2000); // (milliseconds)
+    // Set session data connection information
+    auto create_session_info = k_api::Session::CreateSessionInfo();
+    create_session_info.set_username("admin");
+    create_session_info.set_password("admin");
+    create_session_info.set_session_inactivity_timeout(60000);   // (milliseconds)
+    create_session_info.set_connection_inactivity_timeout(2000); // (milliseconds)
 
-    auto pSessionMng = new k_api::SessionManager(pRouter);
-    pSessionMng->CreateSession(createSessionInfo);
+    // Session manager service wrapper
+    std::cout << "Creating session for communication" << std::endl;
+    auto session_manager = new k_api::SessionManager(router);
+    session_manager->CreateSession(create_session_info);
+    std::cout << "Session created" << std::endl;
 
-    // Create required services
-    auto pBase = new k_api::Base::BaseClient(pRouter);
+    // Create services
+    auto base = new k_api::Base::BaseClient(router);
 
     // Example core
-    example_error_management(pBase);
+    example_error_management(base);
 
     // Close API session
-    pSessionMng->CloseSession();
+    session_manager->CloseSession();
 
     // Deactivate the router and cleanly disconnect from the transport object
-    pRouter->SetActivationStatus(false);
-    pTransport->disconnect();
+    router->SetActivationStatus(false);
+    transport->disconnect();
 
     // Destroy the API
-    delete pBase;
-    delete pSessionMng;
-    delete pRouter;
-    delete pTransport;
+    delete base;
+    delete session_manager;
+    delete router;
+    delete transport;
 }
