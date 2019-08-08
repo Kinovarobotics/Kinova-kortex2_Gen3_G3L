@@ -12,16 +12,17 @@
 #
 ###
 
-from kortex_api.UDPTransport import UDPTransport
-from kortex_api.RouterClient import RouterClient, RouterClientSendOptions
-from kortex_api.SessionManager import SessionManager
+import sys
+import os
+
+from kortex_api.RouterClient import RouterClientSendOptions
 
 from kortex_api.autogen.client_stubs.DeviceConfigClientRpc import DeviceConfigClient
 from kortex_api.autogen.client_stubs.BaseClientRpc import BaseClient
 
 from kortex_api.autogen.messages import DeviceConfig_pb2, Session_pb2, Base_pb2
 
-def example_call_rpc_using_options(base_service):
+def example_call_rpc_using_options(base):
 
     # The RouterClientSendOptions exist to modify the default behavior
     # of the router. The router default value are 
@@ -34,48 +35,38 @@ def example_call_rpc_using_options(base_service):
     router_options = RouterClientSendOptions()
     router_options.timeout_ms = 5000 # 5 seconds
 
+    
     # The same function call without the options=router_options is valid and will do the same
-    # using the router default value
-    wifi_list = base_service.GetAvailableWifi(options=router_options)
-    for wifi in wifi_list.wifi_information_list:
+    # using router's default options
+    
+    try:
+        all_speed_hard_limits = base.GetAllJointsSpeedHardLimitation()
+    except Exception as e:
+        print(e)
+    
+    for speed_limit in all_speed_hard_limits.joints_limitations:
         print("============================================")
-        print("SSID: {0}".format(wifi.ssid.identifier))
-        print("Wi-Fi security type: {0}".format(wifi.security_type))
-        print("Wi-Fi encryption type: {0}".format(wifi.encryption_type))
-        print("Signal strength: {0}".format(wifi.signal_strength))
+        print("Joint: {0}".format(speed_limit.joint_identifier))
+        print("Type of limitation: {0}".format(Base_pb2.LimitationType.Name(speed_limit.type)))
+        print("Value: {0}".format(speed_limit.value))
         print("============================================")
 
+def main():
+    # Import the utilities helper module
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+    import utilities
+
+    # Parse arguments
+    args = utilities.parseConnectionArguments()
+    
+    # Create connection to the device and get the router
+    with utilities.DeviceConnection.createTcpConnection(args) as router:
+
+        # Create required services
+        base = BaseClient(router)
+
+        # Example core
+        example_call_rpc_using_options(base)
 
 if __name__ == "__main__":
-
-    DEVICE_IP = "192.168.1.10"
-    DEVICE_PORT = 10000
-
-    # Setup API
-    errorCallback = lambda kException: print("_________ callback error _________ {}".format(kException))
-    transport = UDPTransport()
-    router = RouterClient(transport, errorCallback)
-    transport.connect(DEVICE_IP, DEVICE_PORT)
-
-    # Create session
-    session_info = Session_pb2.CreateSessionInfo()
-    session_info.username = 'admin'
-    session_info.password = 'admin'
-    session_info.session_inactivity_timeout = 60000   # (milliseconds)
-    session_info.connection_inactivity_timeout = 2000 # (milliseconds)
-
-    session_manager = SessionManager(router)
-    session_manager.CreateSession(session_info)
-
-    # Create required services
-    base_service = BaseClient(router)
-
-    # Example core
-    example_call_rpc_using_options(base_service)
-
-    # Close API session
-    session_manager.CloseSession()
-
-    # Deactivate the router and cleanly disconnect from the transport object
-    router.SetActivationStatus(False)
-    transport.disconnect()
+    main()

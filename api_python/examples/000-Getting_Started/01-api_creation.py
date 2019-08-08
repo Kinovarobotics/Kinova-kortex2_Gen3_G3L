@@ -12,7 +12,10 @@
 #
 ###
 
-from kortex_api.UDPTransport import UDPTransport
+import sys
+import os
+
+from kortex_api.TCPTransport import TCPTransport
 from kortex_api.RouterClient import RouterClient
 from kortex_api.SessionManager import SessionManager
 
@@ -21,21 +24,26 @@ from kortex_api.autogen.client_stubs.BaseClientRpc import BaseClient
 
 from kortex_api.autogen.messages import DeviceConfig_pb2, Session_pb2, Base_pb2
 
-def example_api_creation():
+def example_api_creation(args):
+    '''
+    This function creates all required objects and connections to use the arm's services.
+    It is easier to use the DeviceConnection utility class to create the router and then 
+    create the services you need (as done in the other examples).
+    However, if you want to create all objects yourself, this function tells you how to do it.
+    '''
 
-    DEVICE_IP = "192.168.1.10"
-    DEVICE_PORT = 10000
+    PORT = 10000
 
     # Setup API
-    errorCallback = lambda kException: print("_________ callback error _________ {}".format(kException))
-    transport = UDPTransport()
-    router = RouterClient(transport, errorCallback)
-    transport.connect(DEVICE_IP, DEVICE_PORT)
+    error_callback = lambda kException: print("_________ callback error _________ {}".format(kException))
+    transport = TCPTransport()
+    router = RouterClient(transport, error_callback)
+    transport.connect(args.ip, PORT)
 
     # Create session
     session_info = Session_pb2.CreateSessionInfo()
-    session_info.username = 'admin'
-    session_info.password = 'admin'
+    session_info.username = args.username
+    session_info.password = args.password
     session_info.session_inactivity_timeout = 60000   # (milliseconds)
     session_info.connection_inactivity_timeout = 2000 # (milliseconds)
 
@@ -45,21 +53,28 @@ def example_api_creation():
     print("Session created")
 
     # Create required services
-    device_config_service = DeviceConfigClient(router)
-    base_client_service = BaseClient(router)
+    device_config = DeviceConfigClient(router)
+    base = BaseClient(router)
 
-    print(device_config_service.GetDeviceType())
-    print(base_client_service.GetAvailableWifi())
+    print(device_config.GetDeviceType())
+    print(base.GetArmState())
 
     # Close API session
     session_manager.CloseSession()
 
-    # Deactivate the router and cleanly disconnect from the transport object
-    router.SetActivationStatus(False)
+    # Disconnect from the transport object
     transport.disconnect()
 
+def main():
+    # Import the utilities helper module
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+    import utilities
 
-if __name__ == "__main__":
+    # Parse arguments
+    args = utilities.parseConnectionArguments()
 
     # Example core
-    example_api_creation()
+    example_api_creation(args)
+    
+if __name__ == "__main__":
+    main()

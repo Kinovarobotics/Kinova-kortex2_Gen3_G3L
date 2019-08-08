@@ -17,6 +17,7 @@ from kortex_api.autogen.messages import Base_pb2
 
 
 def example_manipulation_protobuf_basic():
+    
     # In Google Protocol Buffer, there are many scalar value types you can declare. 
     # All have a corresponding type in Python. 
     # Here's the list:
@@ -65,7 +66,6 @@ def example_manipulation_protobuf_basic():
 
 def example_manipulation_protobuf_object():
 
-
     # Messages are the main element in Google Protocol Buffer in the same way classes are to Python. You need a message 
     # to make a workable object. A message can contain many kind of elements. We have already
     # covered the scalar value and in this section we are going to cover the message.
@@ -99,7 +99,7 @@ def example_manipulation_protobuf_object():
     full_user_profile.user_profile.firstname = "Johnny"
     full_user_profile.user_profile.lastname = "Cash"
 
-    # Another basic element is the enum. Enum are directly available from 
+    # Another basic element is the enum. Enum is directly available from 
     # the message - no need to use the enum 'message'.
     # Here's an example:
     # enum LimitationType {
@@ -109,14 +109,14 @@ def example_manipulation_protobuf_object():
     #     VELOCITY_LIMITATION = 3;     // velocity limitation
     # }
 
-    # message LimitationTypeIdentifier { 
+    # message CartesianLimitation { 
     #     LimitationType type = 1;     // limitation type
     # }
 
     # https://developers.google.com/protocol-buffers/docs/proto3#enum
 
-    limitation_type_identifier = Base_pb2.LimitationTypeIdentifier()
-    limitation_type_identifier.type = Base_pb2.FORCE_LIMITATION
+    cartesianLimitation = Base_pb2.CartesianLimitation
+    cartesianLimitation.type = Base_pb2.FORCE_LIMITATION
 
 
 def example_manipulation_protobuf_list():
@@ -166,13 +166,13 @@ def example_manipulation_protobuf_list():
     # Since sequence.task is a list we can use all the Python features to
     # loop, iterate, interogate and print elements in that list.
     for i in range(len(sequence.tasks)):
-        print("sequence ID with index : {0}".format(sequence.tasks[i].group_identifier))
+        print("Sequence ID with index : {0}".format(sequence.tasks[i].group_identifier))
 
 
     # Lists have the iterator property of a Python list, so you can directly iterate
     # throught element without creating a iterator as in the previous example
     for task in sequence.tasks:
-        print("sequence ID with object iterator : {0}".format(task.group_identifier))
+        print("Sequence ID with object iterator : {0}".format(task.group_identifier))
 
 
 def example_manipulation_protobuf_helpers():
@@ -263,7 +263,7 @@ def example_manipulation_protobuf_helpers():
     json_object = json_format.MessageToJson(sequence)
     
     # now print it
-    print("Json object")
+    print("Json object:")
     print(json_object)
     # output:
     # Json object
@@ -299,7 +299,7 @@ def example_manipulation_protobuf_helpers():
     from google.protobuf import text_format
 
     # Now print
-    print("Text format")
+    print("Text format:")
     print(text_format.MessageToString(sequence))
     # output:
     # Text format
@@ -322,7 +322,15 @@ def example_manipulation_protobuf_helpers():
 
 
 if __name__ == "__main__":
+    # Example core
+    # Basic manipulation
     example_manipulation_protobuf_basic()
+    
+    # Manipulating messages with nested messages
     example_manipulation_protobuf_object()
+
+    # Manipulation messages containing lists
     example_manipulation_protobuf_list()
+
+    # Using the google::protobuf helper functions
     example_manipulation_protobuf_helpers()
