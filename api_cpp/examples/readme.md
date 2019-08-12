@@ -120,7 +120,7 @@ Because GCC is not coded for the Windows operating system, a GCC port of MinGW-w
 > ```
 -->
 Manual installation using downloaded archive:  
- + Download the archive via Kinova's Google Drive: [kortex_api](https://drive.google.com/file/d/1ASbEsulf5cByru8Hy1oBZJyNDBa9H22C/view)
+ + Download the archive via Kinova's Artifactory: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/gen3/bundle/2.0.0/kortex_api_2.0.0.zip)
  + Uncompress the content of the archive and place the contents of the `cpp` folder in the sub-directory `kortex_api`.  
 
 You will then have to use the `KORTEX_SUB_DIR` CMake argument to specify the Kortex API OS_Compiler_Architecture.

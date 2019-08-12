@@ -29,7 +29,7 @@ The official repository contains documentation and examples explaining how to us
 - [Role of Google Protocol Buffer in Kortex API](#role-of-google-protobuf-in-kortex-api)
     - [Quick Start for Python users](#quick-start-howto-python)
     - [Quick Start for C++ users](#quick-start-howto-cpp)
-- [API download links](#api-download-links)
+- [Download links](#api-download-links)
 - [Language-specific details](#api-details-for-a-specific-language)
 - [Reference](#reference)
             - [Useful Links](#useful-links)
@@ -82,9 +82,12 @@ When using the Kortex API a developer will need to understand the Google Protoco
   - [Examples](./api_python/examples/readme.md)
 
 <a id="markdown-api-download-links" name="api-download-links"></a>
-# API download links
+# Download links
 
-Download the archive via Kinova Google Drive: [kortex_api](https://drive.google.com/file/d/1ASbEsulf5cByru8Hy1oBZJyNDBa9H22C/view)  
+[Download the latest SWU firmware package](https://artifactory.kinovaapps.com/artifactory/generic-local-public/gen3/bundle/2.0.0/Gen3-2.0.0.swu)
+
+[Download the Kortex API](https://artifactory.kinovaapps.com/artifactory/generic-local-public/gen3/bundle/2.0.0/kortex_api_2.0.0.zip)  
+
 More details are in: [Language-specific details](#api-details-for-a-specific-language)
 
 <a id="markdown-api-details-for-a-specific-language" name="api-details-for-a-specific-language"></a>
