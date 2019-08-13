@@ -33,29 +33,31 @@ The RPC to set the servoing mode is in the base service
 
 ```python
 # API initialisation
-base_service = BaseClient(router)
+base = BaseClient(router)
 
 # Set the base in low level servoing
 servoing_mode_information = Base_pb2.ServoingModeInformation()
 servoing_mode_information.servoing_mode = Base_pb2.LOW_LEVEL_SERVOING
-base_service.SetServoingMode(servoing_mode_information)
+base.SetServoingMode(servoing_mode_information)
 ```
 
 <a id="markdown-high-level" name="high-level"></a>
-### High level servoing mode
+### High-level servoing mode
 High-level servoing is the default servoing mode for the robot on bootup.
 
 In high-level servoing, users connect to the base through the API, sending command inputs. The base routes commands to the actuators, and manages a 1 kHz control loop.
 
-High-level servoing is the recommended servoing mode for non-advanced users, because you have access to cartesian movement and doesn't have to manage a 1kHz control loop. 
+High-level servoing is the recommended servoing mode for non-advanced users, because you have access to Cartesian movement and don't have to manage a 1kHz control loop to send commands to the robot. 
 
 <a id="markdown-low-level" name="low-level"></a> 
-### Low level servoing mode
+### Low-level servoing mode
 
-> **This servoing mode is not meant to run under python.** C++ is a much more suitable language for this mode. Python is an interpreted language and by extension much more sensitive to jitter and will not guarantee a 1 kHz refresh rate.
-
-In low-level servoing, the API client connects to the base and sends commands to the base for routing. Take note that this mode **does not support cartesian command**
+In low-level servoing, the API client connects to the base and sends commands to the base for routing. Note that this mode **does not** support Cartesian commands.
 
 The base ensures device routing and internal communications with the actuators at 1 kHz, but the high-level functionality for the base control loop (cartesian movement, robot kinematics, trajectory management, etc.) are no longer available.
 
-Low-level servoing allows clients to control each actuator individually by sending little position increments at a 1 kHz frequency (bypassing the kinematic control library).
+Low-level servoing allows clients to control each actuator individually by sending small position increments at a 1 kHz frequency (bypassing the kinematic control library).
+
+> **Note**  
+> This servoing mode is not meant to be run under Python. C++ is a much more suitable language for low-level control. 
+> Python is >an interpreted language. By extension, low-level control using Python will be much more sensitive to jitter and will not guarantee a 1 kHz refresh rate.

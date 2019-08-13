@@ -17,7 +17,6 @@
 <!-- TOC -->
 
 - [Overview](#overview)
-    - [To summarize:](#to-summarize)
 - [Blocking method](#blocking-method)
     - [Example](#example)
     - [KDetailedException](#kdetailedexception)
@@ -36,15 +35,18 @@
 <a id="markdown-overview" name="overview"></a>
 ## Overview
 
-There are three mechanisms available to manage errors triggered by the C++ Kortex API: standard **Exception**, accessing the **Error object** returned by the callback function, and catching the exception thrown by a **std::future**. When you use the Kortex API, choose one of these mechanisms according to the type of called method.
+There are three mechanisms available to manage errors triggered by the C++ Kortex API: 
+- standard `Exception`
+- accessing the `Error` object returned by the callback function, and 
+- catching the exception thrown by a `std::future`. 
 
-#### To summarize: 
+When you use the Kortex API, the mechanism to be used depends on the type of called method:
   
-    - With the blocking method, use exceptions.
-    - With the callback function, use the Error object from the callback header.
-    - With the async method, use exceptions.
+- With the blocking method, use standard `Exception`.
+- With the callback version of a method, use the `Error` object provided in the callback header.
+- With the async version of a method, use the `Exception` thrown by the future.
 
-Note that there is a [special case](#special-cases) explained at the end of this document.
+Note that there is a [special case](#special-cases) explained at the end of this section.
 
 <a id="markdown-blocking-function" name="blocking-function"></a>
 ## Blocking method
@@ -57,23 +59,26 @@ Exceptions are only used if a blocking or async function is used. The code is su
 ```cpp
 try
 {
-	// Your code...
+    // Your code...
 }
 catch(k_api::KDetailedException& ex)
 {
-	auto errorInfo = ex.getErrorInfo();
-	auto errorCode = errorInfo.getError();
-	
-	std::cout << "KDetailedException toStr: " << ex.toString().c_str() << std::endl;
-	std::cout << "KDetailedException what:  " << ex.what() << std::endl << std::endl;
+    // You can print the error informations and error codes
+    auto error_info = ex.getErrorInfo().getError();
+    std::cout << "KDetailedoption detected what:  " << ex.what() << std::endl;
+    
+    std::cout << "KError error_code: " << error_info.error_code() << std::endl;
+    std::cout << "KError sub_code: " << error_info.error_sub_code() << std::endl;
+    std::cout << "KError sub_string: " << error_info.error_sub_string() << std::endl;
 
-	std::cout << "KError error_code: " << errorCode.error_code() << std::endl;
-	std::cout << "KError sub_code: " << errorCode.error_sub_code() << std::endl;
-	std::cout << "KError sub_string: " << errorCode.error_sub_string() << std::endl;
+    // Error codes by themselves are not very verbose if you don't see their corresponding enum value
+    // You can use google::protobuf helpers to get the string enum element for every error code and sub-code 
+    std::cout << "Error code string equivalent: " << k_api::ErrorCodes_Name(k_api::ErrorCodes(error_info.error_code())) << std::endl;
+    std::cout << "Error sub-code string equivalent: " << k_api::SubErrorCodes_Name(k_api::SubErrorCodes     (error_info.error_sub_code())) << std::endl;
 }
 ```
 
-Here are the details of the object **Kinova::Api::KDetailedException** thrown by the Kortex API.
+Here are the details of the object `Kinova::Api::KDetailedException` thrown by the Kortex API.
 
 <a id="markdown-kdetailed-exception" name="kdetailed-exception"></a>
 #### KDetailedException
@@ -98,7 +103,7 @@ class KDetailedException : public KBasicException
 };
 ```
 
-Here are the details of the object **KError** nested in the exception.
+Here are the details of the object `KError` nested in the exception.
 
 <a id="markdown-kerror" name="kerror"></a>
 #### KError
@@ -129,9 +134,9 @@ class KError
 };
 ```
 
-The **KError** object holds an error code and a sub error code to identify the fault.
+The `KError` object holds an error code and a sub error code to identify the fault.
 
-Here's a link to the documentation that explains all of the error codes:
+Here is a link to documentation explaining all of the error and sub error codes:
 
 - [Error code](https://github.com/Kinovarobotics/kortex/blob/master/api_cpp/doc/markdown/references/enm_Api_ErrorCodes.md)
 - [Sub error code](https://github.com/Kinovarobotics/kortex/blob/master/api_cpp/doc/markdown/references/enm_Api_SubErrorCodes.md#)
@@ -146,15 +151,15 @@ If the callback version is used, a ``std::function`` is given as a parameter to 
 // callback function used in Refresh_callback
 auto lambda_fct_callback = [](const Kinova::Api::Error &err, const k_api::BaseCyclic::Feedback data)
 {
-    // we are printing the data for example purposes
+    // We are printing the data for example purposes
     // avoid this for a real-time loop 
 
-    std::string serializedData;
-    google::protobuf::util::MessageToJsonString(data, &serializedData);
-    std::cout << serializedData << std::endl;
+    std::string serialized_data;
+    google::protobuf::util::MessageToJsonString(data, &serialized_data);
+    std::cout << serialized_data << std::endl;
 };
 
-pBaseCyclicService->Refresh_callback(BaseCommand, lambda_fct_callback, 0);
+base_cyclic->Refresh_callback(BaseCommand, lambda_fct_callback, 0);
 ```
 
 <a id="markdown-callback-example-c" name="callback-example-c"></a>
@@ -163,13 +168,13 @@ pBaseCyclicService->Refresh_callback(BaseCommand, lambda_fct_callback, 0);
 // callback function used in Refresh_callback
 void fct_callback(const k_api::Error &err, const k_api::BaseCyclic::Feedback data)
 {
-    std::cout << "Callback function results: " << std::endl << std::endl;
-    //React to the fault...
+    std::cout << "Callback function results: " << std::endl;
+    //react to the fault...
 }
 
 void example_function_call()
 {
-	pBaseCyclicService->Refresh_callback(BaseCommand, fct_callback, 0);
+	base_cyclic->Refresh_callback(BaseCommand, fct_callback, 0);
 }
 
 ```
@@ -183,26 +188,26 @@ If an async function is used, exceptions must be used to catch any error trigger
 #### Async example 
 
 ```cpp
-// The function returns a **future** object
-std::future<k_api::Base::WifiInformationList> availableWifiFuture_async = pBase->GetAvailableWifi_async();
+// The function returns a future object, and not a workable object.
+std::future<k_api::Base::JointsLimitationsList> limitations_future_async = base->GetAllJointsSpeedHardLimitation_async();
 
-// Waiting for the promise to be complete by the API
+// Waiting for the promise to be completed by the API.
 auto timeout_ms = std::chrono::milliseconds(10000);
-std::future_status status = availableWifiFuture_async.wait_for(timeout_ms);
+std::future_status status = limitations_future_async.wait_for(timeout_ms);
 
 if(status != std::future_status::ready)
 {
-	throw std::runtime_error("Timeout detected while waiting for function\n");
+    throw std::runtime_error("Timeout detected while waiting for function\n");
 }
 
+// Retrieve the workable object from the future object.
 try
 {
-	// Retrieve the result object from the future object
-	auto availableWifi_async = availableWifiFuture_async.get();
+    auto limitations_async = limitations_future_async.get();
 }
 catch(k_api::KDetailedException& ex)
 {
-	//respond to the fault.
+    // Respond to the fault
 }
 ```
 
@@ -212,5 +217,5 @@ This section describes a case that doesn't follow the standard error management 
 #### RouterClient
 When a **RouterClient** object is instantiated a callback can be specified for execution when an error occurs.
 ```cpp
-RouterClient* pRouter = new RouterClient(pTransport, [](KError err){ cout << "callback error" << err.toString(); });
+RouterClient* router = new RouterClient(pTransport, [](KError err){ cout << "callback error" << err.toString(); });
 ```

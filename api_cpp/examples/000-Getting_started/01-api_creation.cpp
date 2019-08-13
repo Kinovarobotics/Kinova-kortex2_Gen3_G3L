@@ -15,7 +15,7 @@
 #include <BaseClientRpc.h>
 
 #include <RouterClient.h>
-#include <TransportClientUdp.h>
+#include <TransportClientTcp.h>
 
 namespace k_api = Kinova::Api;
 
@@ -26,27 +26,27 @@ void example_api_creation()
 {
     // -----------------------------------------------------------
     // How to create an API with the SessionManager, DeviceConfigClient and BaseClient services
-    auto errorCallback = [](k_api::KError err){ cout << "_________ callback error _________" << err.toString(); };
-    auto pTransport = new k_api::TransportClientUdp();
-    auto pRouter = new k_api::RouterClient(pTransport, errorCallback);
-    pTransport->connect(IP_ADDRESS, PORT);
+    auto error_callback = [](k_api::KError err){ cout << "_________ callback error _________" << err.toString(); };
+    auto transport = new k_api::TransportClientTcp();
+    auto router = new k_api::RouterClient(transport, error_callback);
+    transport->connect(IP_ADDRESS, PORT);
 
     // Set session data connection information
-    auto createSessionInfo = k_api::Session::CreateSessionInfo();
-    createSessionInfo.set_username("admin");
-    createSessionInfo.set_password("admin");
-    createSessionInfo.set_session_inactivity_timeout(60000);   // (milliseconds)
-    createSessionInfo.set_connection_inactivity_timeout(2000); // (milliseconds)
+    auto create_session_info = k_api::Session::CreateSessionInfo();
+    create_session_info.set_username("admin");
+    create_session_info.set_password("admin");
+    create_session_info.set_session_inactivity_timeout(60000);   // (milliseconds)
+    create_session_info.set_connection_inactivity_timeout(2000); // (milliseconds)
 
     // Session manager service wrapper
-    std::cout << "Creating session for communication" << endl;
-    auto pSessionMng = new k_api::SessionManager(pRouter);
-    pSessionMng->CreateSession(createSessionInfo);
-    std::cout << "Session created" << endl;
+    std::cout << "Creating session for communication" << std::endl;
+    auto session_manager = new k_api::SessionManager(router);
+    session_manager->CreateSession(create_session_info);
+    std::cout << "Session created" << std::endl;
 
-    // Create required services
-    auto pDeviceConfig = new k_api::DeviceConfig::DeviceConfigClient(pRouter);
-    auto pBase = new k_api::Base::BaseClient(pRouter);
+    // Create DeviceConfigClient and BaseClient
+    auto device_config = new k_api::DeviceConfig::DeviceConfigClient(router);
+    auto base = new k_api::Base::BaseClient(router);
 
     // -----------------------------------------------------------
     // Now you're ready to use the API
@@ -56,22 +56,21 @@ void example_api_creation()
     // After you're done, here's how to tear down the API
 
     // Close API session
-    pSessionMng->CloseSession();
+    session_manager->CloseSession();
 
     // Deactivate the router and cleanly disconnect from the transport object
-    pRouter->SetActivationStatus(false);
-    pTransport->disconnect();
+    router->SetActivationStatus(false);
+    transport->disconnect();
 
     // Destroy the API
-    delete pBase;
-    delete pDeviceConfig;
-    delete pSessionMng;
-    delete pRouter;
-    delete pTransport;
+    delete base;
+    delete device_config;
+    delete session_manager;
+    delete router;
+    delete transport;
 }
 
 int main(int argc, char **argv)
 {
-    // Example core
     example_api_creation();
 }

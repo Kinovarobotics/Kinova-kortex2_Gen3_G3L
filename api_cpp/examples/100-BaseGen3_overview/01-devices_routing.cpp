@@ -1,7 +1,7 @@
 /*
 * KINOVA (R) KORTEX (TM)
 *
-* Copyright (c) 2018 Kinova inc. All rights reserved.
+* Copyright (c) 2019 Kinova inc. All rights reserved.
 *
 * This software may be modified and distributed
 * under the terms of the BSD 3-Clause license.
@@ -11,93 +11,99 @@
 */
 
 #include <SessionManager.h>
-#include <VisionConfigClientRpc.h>
 #include <DeviceConfigClientRpc.h>
 #include <DeviceManagerClientRpc.h>
 
+#include <TransportClientTcp.h>
 #include <RouterClient.h>
-#include <TransportClientUdp.h>
 
 #include <google/protobuf/text_format.h>
 
-namespace k_api = Kinova::Api;
-namespace pb = google::protobuf;
+#include <iomanip>
 
-#define PORT 10000
 #define IP_ADDRESS "192.168.1.10"
+#define PORT 10000
 
+namespace k_api = Kinova::Api;
 
-void example_routed_device_config(k_api::DeviceConfig::DeviceConfigClient* pDeviceConfig, k_api::DeviceManager::DeviceManagerClient* pDeviceMng)
+void example_device_routing(k_api::DeviceManager::DeviceManagerClient* device_manager, k_api::DeviceConfig::DeviceConfigClient* device_config)
 {
     // Get all device routing information (from DeviceManagerClient service)
-    printf("-- ReadAllDevices --\n\n");
-    auto allDevicesInfo = pDeviceMng->ReadAllDevices();
+    auto allDevicesInfo = device_manager->ReadAllDevices();
 
     k_api::RouterClientSendOptions options;
     options.timeout_ms = 4000;  // (milliseconds)
 
     // Use device routing information to route to every device (base, actuator, interconnect, etc.) in the arm base system and request general device information
-    for ( auto dev : allDevicesInfo.device_handle() )
+    for (auto device : allDevicesInfo.device_handle())
     {
-        const pb::EnumDescriptor *descriptor = k_api::Common::DeviceTypes_descriptor();
-        
+
         std::cout << "-----------------------------\n";
-        std::cout << "-- " << descriptor->FindValueByNumber(dev.device_type())->name() << ": id = " << dev.device_identifier() << " --\n";
-        
+        std::cout << "-- " << k_api::Common::DeviceTypes_Name(device.device_type()) << ": id = " << device.device_identifier() << " --\n";
+
         std::string str;
-        pb::TextFormat::PrintToString( pDeviceConfig->GetDeviceType         (dev.device_identifier(), options), &str );     std::cout << str;
-        pb::TextFormat::PrintToString( pDeviceConfig->GetFirmwareVersion    (dev.device_identifier(), options), &str );     std::cout << str;
-        pb::TextFormat::PrintToString( pDeviceConfig->GetBootloaderVersion  (dev.device_identifier(), options), &str );     std::cout << str;
-        pb::TextFormat::PrintToString( pDeviceConfig->GetModelNumber        (dev.device_identifier(), options), &str );     std::cout << str;
-        pb::TextFormat::PrintToString( pDeviceConfig->GetPartNumber         (dev.device_identifier(), options), &str );     std::cout << str;
-        pb::TextFormat::PrintToString( pDeviceConfig->GetPartNumberRevision (dev.device_identifier(), options), &str );     std::cout << str;
-        pb::TextFormat::PrintToString( pDeviceConfig->GetSerialNumber       (dev.device_identifier(), options), &str );     std::cout << str;
+        google::protobuf::TextFormat::PrintToString( device_config->GetDeviceType         (device.device_identifier(), options), &str );     std::cout << str;
+        google::protobuf::TextFormat::PrintToString( device_config->GetFirmwareVersion    (device.device_identifier(), options), &str );     std::cout << str;
+        google::protobuf::TextFormat::PrintToString( device_config->GetBootloaderVersion  (device.device_identifier(), options), &str );     std::cout << str;
+        google::protobuf::TextFormat::PrintToString( device_config->GetModelNumber        (device.device_identifier(), options), &str );     std::cout << str;
+        google::protobuf::TextFormat::PrintToString( device_config->GetPartNumber         (device.device_identifier(), options), &str );     std::cout << str;
+        google::protobuf::TextFormat::PrintToString( device_config->GetPartNumberRevision (device.device_identifier(), options), &str );     std::cout << str;
+        google::protobuf::TextFormat::PrintToString( device_config->GetSerialNumber       (device.device_identifier(), options), &str );     std::cout << str;
 
         // Get hexadecimal representation of MAC address
-        std::string macAddress = pDeviceConfig->GetMACAddress(dev.device_identifier(), options).mac_address();
-        std::cout << "macAddress => ";
-        for(size_t i=0; i < macAddress.size(); ++i)
-            printf("%02X", (uint8_t)macAddress.c_str()[i]);
-        std::cout << "\n";
+        std::string mac_address = device_config->GetMACAddress(device.device_identifier(), options).mac_address();
+        std::cout << "MAC address: ";
+        for(size_t i=0; i < mac_address.size(); ++i)
+        {
+            std::cout << std::hex << std::setw(2) << static_cast<unsigned int>(uint8_t(mac_address.c_str()[i]));
+            if (i != mac_address.size() - 1)
+            {
+                std::cout << ":";
+            }
+        }
+        std::cout << std::endl;
     }
 }
 
-
 int main(int argc, char **argv)
 {
-    // Setup API
-    auto pTransport = new k_api::TransportClientUdp();
-    auto pRouter = new k_api::RouterClient(pTransport, [](k_api::KError err){ std::cout << "_________ callback error _________" << err.toString(); });
-    pTransport->connect(IP_ADDRESS, PORT);
+    // Create API objects
+    auto error_callback = [](k_api::KError err){ cout << "_________ callback error _________" << err.toString(); };
+    auto transport = new k_api::TransportClientTcp();
+    auto router = new k_api::RouterClient(transport, error_callback);
+    transport->connect(IP_ADDRESS, PORT);
 
-    // Create session
-    auto createSessionInfo = k_api::Session::CreateSessionInfo();
-    createSessionInfo.set_username("admin");
-    createSessionInfo.set_password("admin");
-    createSessionInfo.set_session_inactivity_timeout(60000);   // (milliseconds)
-    createSessionInfo.set_connection_inactivity_timeout(2000); // (milliseconds)
+    // Set session data connection information
+    auto create_session_info = k_api::Session::CreateSessionInfo();
+    create_session_info.set_username("admin");
+    create_session_info.set_password("admin");
+    create_session_info.set_session_inactivity_timeout(60000);   // (milliseconds)
+    create_session_info.set_connection_inactivity_timeout(2000); // (milliseconds)
 
-    auto pSessionMng = new k_api::SessionManager(pRouter);
-    pSessionMng->CreateSession(createSessionInfo);
+    // Session manager service wrapper
+    std::cout << "Creating session for communication" << std::endl;
+    auto session_manager = new k_api::SessionManager(router);
+    session_manager->CreateSession(create_session_info);
+    std::cout << "Session created" << std::endl;
 
-    // Create required services
-    auto pDeviceConfig = new k_api::DeviceConfig::DeviceConfigClient(pRouter);
-    auto pDeviceMng = new k_api::DeviceManager::DeviceManagerClient(pRouter);
+    // Create services
+    auto device_manager = new k_api::DeviceManager::DeviceManagerClient(router);
+    auto device_config = new k_api::DeviceConfig::DeviceConfigClient(router);
 
     // Example core
-    example_routed_device_config(pDeviceConfig, pDeviceMng);
+    example_device_routing(device_manager, device_config);
 
     // Close API session
-    pSessionMng->CloseSession();
+    session_manager->CloseSession();
 
     // Deactivate the router and cleanly disconnect from the transport object
-    pRouter->SetActivationStatus(false);
-    pTransport->disconnect();
+    router->SetActivationStatus(false);
+    transport->disconnect();
 
     // Destroy the API
-    delete pSessionMng;
-    delete pDeviceConfig;
-    delete pDeviceMng;
-    delete pRouter;
-    delete pTransport;
+    delete device_manager;
+  	delete device_config;
+    delete session_manager;
+    delete router;
+    delete transport;
 }

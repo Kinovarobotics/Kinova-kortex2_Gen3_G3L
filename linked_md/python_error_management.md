@@ -25,7 +25,7 @@
 
 <a id="markdown-overview" name="overview"></a>
 ## Overview
-The Python Kortex API currently has only one mechanism to manage errors: surrounding the code block with a **try/catch** statement pair and reacting to the exception.
+The Python Kortex API currently has only one mechanism to manage errors: surrounding the code block with a **try/except** statement pair and reacting to the exception.
 
 
 Note that there are [special cases](#special-cases) explained at the end of this document.
@@ -38,11 +38,11 @@ try:
 	base_service.CreateUserProfile(Base_pb2.FullUserProfile())
 
 except KClientException as ex:
-
-# get sub error codes
-error_code = ex.get_error_code()
-sub_error_code = ex.get_error_sub_code()
-print("error_code:{0} sub_error_code:{1} ".format(error_code, sub_error_code))
+	# Get error and sub error codes
+	error_code = ex.get_error_code()
+	sub_error_code = ex.get_error_sub_code()
+	print("Error_code:{0} , Sub_error_code:{1} ".format(error_code, sub_error_code))
+	print("Caught expected error: {0}".format(ex))
 
 except KServerException as server_ex:
 	# Do something...
@@ -50,7 +50,12 @@ except KServerException as server_ex:
 except Exception:
 	# Do something...
 ```
-A **KClientException** is thrown when an error occurs on the API client side, just as a **KServerException** is thrown when the error occurs on the API server side.
+A `KClientException` is thrown when an error occurs on the API client side, just as a `KServerException` is thrown when the error occurs on the API server side.
+
+A `KClientException` includes error code and sub error code information describing the exception. Here is a link to documentation explaining all of the error and sub error codes:
+
+- [Error code](https://github.com/Kinovarobotics/kortex/blob/master/api_python/doc/markdown/references/enm_Api_ErrorCodes.md)
+- [Sub error code](https://github.com/Kinovarobotics/kortex/blob/master/api_python/doc/markdown/references/enm_Api_SubErrorCodes.md#)
 
 <a id="markdown-special-cases" name="special-cases"></a>
 ## Special case
@@ -58,7 +63,7 @@ This section describes a case that doesn't follow the standard error management 
 
 <a id="markdown-special-router-client" name="special-router-client"></a>
 #### RouterClient
-When a **RouterClient** object is instantiated a callback function (or lambda expression) can be specified. This function will be called if an exception is thrown during the process.
+When a `RouterClient` object is instantiated a callback function (or lambda expression) can be specified. This function will be called if an exception is thrown during the process.
 ```python
 router = RouterClient(transport, lambda kException: print("Error detected: {}".format(kException)))
 ```

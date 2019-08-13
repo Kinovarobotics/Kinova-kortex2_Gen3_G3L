@@ -18,7 +18,7 @@
 
 - [Setup (Python environment)](#setup-example-python-environment)
   - [Python setup](#requested-basic-python--python-modules)
-  - [Install Kortex Python API and required dependencies](#install-python-module-kortex-api--the-needed-dependencies)
+  - [Install Kortex Python API and required dependencies](#install-python-kortex-api-and-required-dependencies)
 - [How to use the examples](#how-to-use-examples-with-gen3-robot)
 - [Python API documentation](#api-documentation)
 - [Reference](#reference)
@@ -36,41 +36,48 @@
 - Python >= 3.5
 - pip
 
-**Refer to the main README for Python installation details: [parent readme](../../readme.md)**  
+Refer to the main README for Python installation details: [parent readme](../../readme.md)
 
 <a id="markdown-install-python-module-kortex-api--the-needed-dependencies" name="install-python-module-kortex-api--the-needed-dependencies"></a>
 ## Install Kortex Python API and required dependencies  
 
-*Install what is needed to run the examples via a downloaded whl file (Python wheel package).*
+Install what is needed to run the examples via a downloaded whl file (Python wheel package).
 
-+ The whl file can be downloaded via the Kinova Google Drive: [kortex_api](https://drive.google.com/file/d/1ASbEsulf5cByru8Hy1oBZJyNDBa9H22C/view)  
+The Kortex API can be downloaded here: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip)  
+
+You will have to extract the ZIP file, and you will find the .whl file in the ```python``` folder.
+
+On Linux:
+
+```sh
+python3 -m pip install <whl relative fullpath name>.whl
+```
+**Note:** root privilege is usually required to install a new module under Linux.
+
+On Windows:
+
 ```sh
 python -m pip install <whl relative fullpath name>.whl
 ```
 
-*note: root privilege is usually required to install a new module under Linux*
-
 <a id="markdown-how-to-use-examples-with-gen3-robot" name="how-to-use-examples-with-gen3-robot"></a>
 # How to use the examples
 
-*We assume the robot is using its default IP address:* ``192.168.1.10``
+We assume the robot is using its default IP address: ``192.168.1.10``
 
 Before starting, ensure that you run the test in a safe area with some examples that contain movement. Also, verify that your Gen3 device is correctly afixed to the working surface.
 
 Prerequisites:
 + The examples require a wired network connection to your computer
 + Configure a static IP address on your network interface (e.g. ``192.168.1.11/24``)
-+ Add a route to the arm actuators:
-  + under Windows
-    ```batch
-    route ADD -p 10.10.0.0 MASK 255.255.255.0 192.168.1.10 METRIC 1
-    ```
-  + under Linux
-    ```sh
-    ip route add 10.10.0.0/24 via 192.168.1.10
-    ```
 
-Now you're ready to run the examples. Each Python example has its own ``__main__`` instruction. You need only ``cd`` into the example directory and invoke the Python file using the command:
+Now you're ready to run the examples. Each Python example has its own ``__main__`` instruction. You need only to ``cd`` into the example directory and invoke the Python file using the command:
+
+- On Linux:
+```sh
+python3 <example-file>.py
+```
+- On Windows:
 ```sh
 python <example-file>.py
 ```
@@ -90,4 +97,4 @@ Here's a link to the generated documentation
 
 __________________________
 <a id="markdown-back-to-root-topic-readmemdreadmemd" name="back-to-root-topic-readmemdreadmemd"></a>
-# Back to root topic: **[readme.md](../../readme.md)**  
+## Back to root topic: **[readme.md](../../readme.md)**  

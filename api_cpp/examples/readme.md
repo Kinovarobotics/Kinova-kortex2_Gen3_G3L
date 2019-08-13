@@ -12,16 +12,19 @@
 
 <!-- TOC -->
 
-- [Setup (C++ environment)](#setup-example-cpp-environment)
-  - [Set up PC environment](#setup-pc-environment)
+<h1>C++ examples</h1>
+
+<h2>Table of Contents</h2>
+
+- [Setup (C++ environment)](#setup-c-environment)
+  - [Setup PC environment](#set-up-pc-environment)
     - [CMake](#cmake)
     - [GCC 5.4 compiler (preferred)](#gcc-54-compiler-prefered)
       - [Install GCC 5.4 under Linux (Ubuntu 16.04 and higher)](#procedure-to-install-gcc-54-under-linux-ubuntu-1604)
       - [Install GCC 5.4 under Windows](#procedure-to-install-gcc-54-under-windows)
-    - [Windows MSVC 2017 Compiler (for )](#windows-msvc-2017-compiler-for)
-  - [Install C++ Kortex API and the required dependencies](#install-cpp-kortex-api--the-needed-dependencies)
-- [Build instructions](#build-instruction)
-- [How to use examples](#how-to-use-examples-with-gen3-robot)
+  - [Download and set up Kortex C++ API](#download-and-set-up-kortex-c-api)
+- [Build](#build-instruction)
+- [Run](#how-to-use-examples-with-gen3-robot)
 - [C++ API documentation](#api-documentation)
 - [Reference](#reference)
       - [Useful Links](#usefull-links)
@@ -48,38 +51,52 @@
 
 <a id="markdown-setup-pc-environment" name="setup-pc-environment"></a>
 ## Set up PC environment
-> 
+
 <a id="markdown-cmake" name="cmake"></a>
 ### CMake
-> The C++ example projects in this repository use CMake.  
-> The following link has the instructions to install CMake.  
-> - cmake >= 3.10: [CMake install page](https://cmake.org/install)
+The C++ example projects in this repository use CMake.  
+The following link has the instructions to install CMake.  
+ - cmake >= 3.5: [CMake install page](https://cmake.org/install)
+
+On Windows, make sure you add CMake to your PATH variable
+
+ ![CMake add to path](../..//linked_md/add_cmake_to_path.PNG)
 <a id="markdown-gcc-54-compiler-prefered" name="gcc-54-compiler-prefered"></a>
 ### GCC 5.4 compiler (preferred)  
-> 
-> To check which version of GCC is installed on Windows or Linux  
-> *Note: This procedure only works on Windows if you add the MinGW bin directory path to the PATH environment variable*  
-> ```sh
-> gcc --version
-> ```
+ 
+ To check which version of GCC is installed on Windows or Linux  
+**Note:** This procedure only works on Windows if you add the MinGW bin directory path to the PATH environment variable.
+
+ ```sh
+ gcc --version
+ ```
 <a id="markdown-procedure-to-install-gcc-54-under-linux-ubuntu-1604" name="procedure-to-install-gcc-54-under-linux-ubuntu-1604"></a>
+
 #### Procedure to install GCC 5.4 under Linux (Ubuntu 16.04 and higher)
-> ```sh
-> sudo apt-get install build-essential
-> ```
+```sh
+sudo apt-get install build-essential
+```
+
 <a id="markdown-procedure-to-install-gcc-54-under-windows" name="procedure-to-install-gcc-54-under-windows"></a>
 #### Procedure to install GCC 5.4 under Windows
-> Because GCC is not coded for the Windows operating system, a GCC port of MinGW-w64 for Windows is required. The '-w64' suffix indicates that it can support a 32-bit or 64-bit environment. The 32-bit versions are still available and one of them will be used to compile the affected project.
-> 
-> 1. Go to  https://sourceforge.net/projects/mingw-w64
-> 2. Start the installer and click 'Next' until you reach the installation options page
-> 3. On the options page ensure that the options look exactly like this (all options are the default values, except for version, which is the version of GCC we want to install - 5.4 in this case)
-> 
-> ![Gcc Setting](../..//linked_md/MinGW_5_4_install_setting.png)
-> 
-> 4. Click 'Next' until the end of the installation. The install directory by default is the one set in the build script included with the project.
-> 5. Optional: You can add the path of the bin directory to the system path to make all the MinGW commands and tools available system wide.
-> 
+Because GCC is not coded for the Windows operating system, a GCC port of MinGW-w64 for Windows is required. The '-w64' suffix indicates that it can support a 32-bit or 64-bit environment. The 32-bit versions are still available and one of them will be used to compile the affected project.
+
+1. Go to  https://sourceforge.net/projects/mingw-w64
+2. Start the installer and click `Next` until you reach the installation options page
+3. On the options page ensure that the options look exactly like this (all options are the default values, except for version, which is the version of GCC we want to install - 5.4 in this case)
+ 
+ ![Gcc Setting](../..//linked_md/MinGW_5_4_install_setting.png)
+ 
+4. Click `Next` until the end of the installation. The install directory by default is the one set in the build script included with the project.
+5. Add the path of the bin directory to the system path to make all the MinGW commands and tools available system wide:
+    - Right-click on the `Start` Button
+    - Select `System` from the context menu.
+    - Click `Advanced system settings`
+    - Go to the `Advanced` tab
+    - Click `Environment Variables…`
+    - Click variable called `Path` and click `Edit…`
+    - Click `New`
+    - Enter the path to the folder containing the binary you want on your `PATH` (e.g. `C:\Program Files (x86)\mingw-w64\i686-5.4.0-posix-dwarf-rt_v5-rev0\mingw32\bin`)
 
 <!-- omit in toc 
 <a id="markdown-windows-msvc-2017-compiler-for-" name="windows-msvc-2017-compiler-for-"></a>
@@ -92,7 +109,7 @@
 -->
 
 <a id="markdown-install-cpp-kortex-api--the-needed-dependencies" name="install-cpp-kortex-api--the-needed-dependencies"></a>
-## Install C++ Kortex API and the required dependencies
+## Download and set up Kortex C++ API
 
 <!-- 
 > *Installation using jfrog cli:*
@@ -102,27 +119,16 @@
 > jfrog rt ...
 > ```
 -->
-> *Manual installation using downloaded archive:*  
-> + Download the archive via Kinova's Google Drive: [kortex_api](https://drive.google.com/file/d/1ASbEsulf5cByru8Hy1oBZJyNDBa9H22C/view)
-> + Uncompress the content of the archive and place in the sub-directory *kortex_api*  
+Manual installation using downloaded archive:  
+ + Download the archive via Kinova's Artifactory: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip)
+ + Uncompress the content of the archive and place the contents of the `cpp` folder in the sub-directory `kortex_api`.  
 
-*Ensure that you respect one of the following directory hierarchies.*  
-*1. using content of a specific Kortex API OS_Compiler_Architecture*
+You will then have to use the `KORTEX_SUB_DIR` CMake argument to specify the Kortex API OS_Compiler_Architecture.
+
 ```sh
 examples/kortex_api  
 ┬  
-├ include/
-├ lib/  
-└   ┬  
-    ├ debug/  
-    └ release/
-
-```
-*2. using KORTEX_SUB_DIR cmake argument to specify the Kortex API OS_Compiler_Architecture*
-```sh
-examples/kortex_api  
-┬  
-├ OS_Compiler_Architecture/
+├ OS_Compiler_Architecture/ [e.g. linux_gcc_x86-64]
 └   ┬  
     ├ include/
     ├ lib/  
@@ -131,122 +137,115 @@ examples/kortex_api
         └ release/
 ```
 
+ You can also uncompress the content of the archive and place the contents of the `cpp/(your architecture)` folder in the sub-directory `kortex_api`, like so:
+
+```sh
+examples/kortex_api  
+┬  
+├ include/
+├ lib/  
+└   ┬  
+    ├ debug/  
+    └ release/
+```
+
 <a id="markdown-build-instruction" name="build-instruction"></a>
-# Build instructions
+# Build
 
-> <p><details open>
-> <summary>Linux Ubuntu</summary>
-> 
-> ```sh
-> mkdir build  
-> cd build  
-> cmake .. -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<OS_Compiler_Architecture dir name>]
-> make  
-> ```
->
-> </details></p>  
+To build, you need change the current directory to the example directory. 
+The build instructions then depend on your OS and compiler (see below).
 
-> <p><details open>
-> <p></p>
-> <i>(note that the name of the executable is mingw32-make.exe, even for the 64-bit version)</i>  
-> <summary>Windows - using GCC</summary>
-> 
-> ```sh
-> mkdir build  
-> cd build  
-> cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<os_arch dir name>]  
-> mingw32-make  
-> ```
->
-> </details></p>  
+```sh
+my_example_repo  
+┬  
+├ api_cpp/
+└   ┬  
+    ├ doc/
+    └ examples/     (you have to cd here)
+```
 
-><p><details open>
-><summary>Windows - using Visual Studio 2017</summary>
->
-> ```sh
-> mkdir build  
-> cd build  
-> cmake .. -G "Visual Studio 15 2017 [arch]" -DCMAKE_SH=CMAKE_SH-NOTFOUND -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<os_arch dir name>]  
-> ```
->
-> </details></p>  
+ <p><details open>
+ <summary>Linux Ubuntu</summary>
+ 
+ ```sh
+ mkdir build  
+ cd build  
+ cmake .. -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<OS_Compiler_Architecture dir name>]
+ make  
+ ```
 
-><p><details open>
-><summary>Windows - using command-line MSVC build</summary>
->
-> ```sh
-> call "C:\Program Files (x86)\Microsoft Visual > Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsamd64_x86.bat"
->  
-> :: Add the cl.exe path the Windows Environment PATH
-> set PATH=%PATH%;C:/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.15.26726/bin/Hostx64/x64
-> 
-> mkdir build  
-> cd build  
-> cmake .. -G "NMake Makefiles" -DCMAKE_SH=CMAKE_SH-NOTFOUND -DCMAKE_BUILD_TYPE=Release  
-> nmake
->```
->
-> </details></p>  
+ </details></p>  
+
+ <p><details open>
+ <p></p>
+ 
+ **Note:** the name of the executable is `mingw32-make.exe`, even for the 64-bit version)
+
+ <summary>Windows - using GCC</summary>
+ 
+ ```bat
+ mkdir build  
+ cd build  
+ cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<os_arch dir name>]  
+ mingw32-make  
+ ```
+
+ </details></p>  
+
+<p><details open>
+<summary>Windows - using Visual Studio 2017</summary>
+
+ ```sh
+ mkdir build  
+ cd build  
+ cmake .. -G "Visual Studio 15 2017 [arch]" -DCMAKE_SH=CMAKE_SH-NOTFOUND -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<os_arch dir name>]  
+ ```
+
+ </details></p> 
+
+<p><details open>
+<summary>Windows - using command-line MSVC build</summary>
+
+ Setup the build environment
+ 
+ **Note:** Make sure to adjust the path to match the location of your installed BuildTools call: 
+ 
+ `C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat`
+
+```bat
+ mkdir build  
+  cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release [-DKORTEX_SUB_DIR=<os_arch dir name>]
+ nmake
+```
+
+ </details></p>  
 
 <a id="markdown-how-to-use-examples-with-gen3-robot" name="how-to-use-examples-with-gen3-robot"></a>
-# How to use examples with the Gen3 robot
+# Run
 
-*We assume the robot is using its default IP address: 192.168.1.10*
+We assume the robot is using its default IP address: `192.168.1.10`.
 
 Before you start make sure you run the test in a safe area - some examples contain movement. Also verify that your Gen3 device is correctly afixed to your working surface.
 
 Prerequisites:
 + The examples require a wired connection to your computer
-+ Configure a static IP on your network interface (e.g: 192.168.1.11/24)
-+ Add a route to arm actuators:
-  + under Windows
-    ```batch
-    route ADD -p 10.10.0.0 MASK 255.255.255.0 192.168.1.10 METRIC 1
-    ```
-  + under Linux
-    ```sh
-    ip route add 10.10.0.0/24 via 192.168.1.10
-    ```
++ Configure a static IP on your network interface (e.g: `192.168.1.11/24`)
 
+Each example has its own `main` function so you can run them individually from the examples folder.
 
-Now you're ready to compile the example. There are two ways to build the example: build all, or by sub directory.
-
-To build all, you need change the current directory to the example directory. To build a sub directory you need to change the current directory to the parent directory of the one you want to build. The build instruction below is the same.
+On Linux :
 ```sh
-examples/kortex_api  
-┬  
-├ api_cpp/
-└   ┬  
-    ├ doc/
-    ├ examples/     (Here to build all example)
-    └   ┬  
-        ├ 000-Getting_started/  (Here to build this specific directory)
-        └ .../
-
+./build/<example_name>
 ```
 
-Create a build directory
+On Windows :
 ```sh
-mkdir build
-```
-
-Change the current directory to the build directory and build the example using one of the following commands:
-```sh
-cd build
-[Windows]:    cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release .. && minGW32-make
-[Linux]:      cmake -DCMAKE_BUILD_TYPE=Release .. && make
-```
-
-Each example have it's own ``main`` function so you can run them individually. Change the current directory to the newly-created example folder to execute them.
-```sh
-cd <example_directory>
-[Windows]: <example_name>.exe
-[Linux]: ./<example_name>
+build\<example_name>.exe
 ```
 
 <a id="markdown-api-documentation" name="api-documentation"></a>
-# API documentation
-Here is a link to the generated documentation  
+# C++ API documentation
+Here is a link to the generated documentation:  
 [API C++ Services Documentation](../doc/markdown/index.md)  
 
 <a id="markdown-reference" name="reference"></a>
@@ -259,5 +258,5 @@ Here is a link to the generated documentation
 
 __________________________
 <a id="markdown-back-to-root-topic-readmemdreadmemd" name="back-to-root-topic-readmemdreadmemd"></a>
-# Back to root topic: **[readme.md](../../readme.md)**  
+## Back to root topic: **[readme.md](../../readme.md)**  
 
