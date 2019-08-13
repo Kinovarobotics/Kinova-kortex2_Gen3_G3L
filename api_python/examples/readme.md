@@ -43,7 +43,7 @@ Refer to the main README for Python installation details: [parent readme](../../
 
 Install what is needed to run the examples via a downloaded whl file (Python wheel package).
 
-The Kortex API can be downloaded here: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/gen3/bundle/2.0.0/kortex_api_2.0.0.zip)  
+The Kortex API can be downloaded here: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip)  
 
 You will have to extract the ZIP file, and you will find the .whl file in the ```python``` folder.
 
