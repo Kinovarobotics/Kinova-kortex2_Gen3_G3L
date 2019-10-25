@@ -84,11 +84,11 @@ When using the Kortex API a developer will need to understand the Google Protoco
 <a id="markdown-api-download-links" name="api-download-links"></a>
 # Download links
 
-[Download the latest SWU firmware package](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.0.1/Gen3-2.0.1.swu)
+[Download the latest SWU firmware package (2.0.1)](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.0.1/Gen3-2.0.1.swu)
 
-[Download the Kortex API](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip)  
+[Download the Kortex API (2.0.0)](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip)  
 
-[Download the latest release notes](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.0.1/RN-001_KINOVA_Gen3_Ultra_lightweight_robot-Release_Notes_EN_R05%20(1).pdf)
+[Download the latest release notes (2.0.1)](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.0.1/RN-001_KINOVA_Gen3_Ultra_lightweight_robot-Release_Notes_EN_R05%20(1).pdf)
 
 More details are in: [Language-specific details](#api-details-for-a-specific-language)
 
