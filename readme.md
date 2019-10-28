@@ -75,8 +75,8 @@ When using the Kortex API a developer will need to understand the Google Protoco
   Here is some general information about the Python interpreter and the pip module manager.  
   - [Python General Information](./linked_md/python_quick_start.md)
   - [API mechanism](./linked_md/python_api_mechanism.md)
-  - [Transport / Router / Session / Notification](./linked_md/py_transport_router_session_notif.md)
-  - [Device routing](./linked_md/py_device_routing.md)
+  - [Transport / Router / Session / Notification](./linked_md/python_transport_router_session_notif.md)
+  - [Device routing](./linked_md/python_device_routing.md)
   - [Servoing modes](./linked_md/python_servoing_modes.md)
   - [Error management](./linked_md/python_error_management.md)
   - [Examples](./api_python/examples/readme.md)
