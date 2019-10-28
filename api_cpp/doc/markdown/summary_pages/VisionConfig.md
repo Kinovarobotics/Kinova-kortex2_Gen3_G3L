@@ -51,7 +51,7 @@ Service to configure the Vision Module
 |GetOptionValue|[OptionValue](../messages/VisionConfig/OptionValue.md#)|[OptionIdentifier](../messages/VisionConfig/OptionIdentifier.md#)|Retrieves option value from the sensor|
 |SetOptionValue|[Empty](../messages/Common/Empty.md#)|[OptionValue](../messages/VisionConfig/OptionValue.md#)|Writes new value to sensor option|
 |GetOptionInformation|[OptionInformation](../messages/VisionConfig/OptionInformation.md#)|[OptionIdentifier](../messages/VisionConfig/OptionIdentifier.md#)|Retrieves option information from the sensor|
-|VisionTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to Vision configuration notifications|
+|OnNotificationVisionTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to Vision configuration notifications|
 |DoSensorFocusAction|[Empty](../messages/Common/Empty.md#)|[SensorFocusAction](../messages/VisionConfig/SensorFocusAction.md#)|Do a focus action|
 |GetIntrinsicParameters|[IntrinsicParameters](../messages/VisionConfig/IntrinsicParameters.md#)|[SensorIdentifier](../messages/VisionConfig/SensorIdentifier.md#)|Retrieves sensor intrinsic parameters|
 |GetIntrinsicParametersProfile|[IntrinsicParameters](../messages/VisionConfig/IntrinsicParameters.md#)|[IntrinsicProfileIdentifier](../messages/VisionConfig/IntrinsicProfileIdentifier.md#)|Retrieves sensor intrinsic parameters for a specific profile|

@@ -261,16 +261,16 @@ Base service. Broadly useful service. Provides functions for configuring a range
 |DisconnectWifi|[Empty](../messages/Common/Empty.md#)|[Empty](../messages/Common/Empty.md#)|Disconnects the robot from the currently connected Wi-Fi network|
 |GetConnectedWifiInformation|[WifiInformation](../messages/Base/WifiInformation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves information about the connected Wi-Fi network|
 |Unsubscribe|[Empty](../messages/Common/Empty.md#)|[NotificationHandle](../messages/Common/NotificationHandle.md#)|Unsubscribes client from receiving notifications for the specified topic|
-|ConfigurationChangeTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to configuration change topic for notifications|
-|MappingInfoTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to mapping information topic for notifications|
-|ControlModeTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to control mode topic for notifications|
-|OperatingModeTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to operating mode topic for notifications|
-|SequenceInfoTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to sequence information topic for notifications|
-|ProtectionZoneTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to protection zone topic for notifications|
-|UserTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to user topic for notifications|
-|ControllerTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to controller topic for notifications|
-|ActionTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to action topic for notifications|
-|RobotEventTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to robot event topic for notifications|
+|OnNotificationConfigurationChangeTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to configuration change topic for notifications|
+|OnNotificationMappingInfoTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to mapping information topic for notifications|
+|OnNotificationControlModeTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to control mode topic for notifications|
+|OnNotificationOperatingModeTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to operating mode topic for notifications|
+|OnNotificationSequenceInfoTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to sequence information topic for notifications|
+|OnNotificationProtectionZoneTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to protection zone topic for notifications|
+|OnNotificationUserTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to user topic for notifications|
+|OnNotificationControllerTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to controller topic for notifications|
+|OnNotificationActionTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to action topic for notifications|
+|OnNotificationRobotEventTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to robot event topic for notifications|
 |PlayCartesianTrajectory|[Empty](../messages/Common/Empty.md#)|[ConstrainedPose](../messages/Base/ConstrainedPose.md#)|Moves robot to the specifed tool pose \(position and orientation\) while imposing specified constraints|
 |PlayCartesianTrajectoryPosition|[Empty](../messages/Common/Empty.md#)|[ConstrainedPosition](../messages/Base/ConstrainedPosition.md#)|Moves robot to the specifed position while imposing specified constraints|
 |PlayCartesianTrajectoryOrientation|[Empty](../messages/Common/Empty.md#)|[ConstrainedOrientation](../messages/Base/ConstrainedOrientation.md#)|Moves to the specifed orientation while imposing specified constraints|
@@ -295,18 +295,18 @@ Base service. Broadly useful service. Provides functions for configuring a range
 |GetOperatingMode|[OperatingModeInformation](../messages/Base/OperatingModeInformation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves current operating mode|
 |SetServoingMode|[Empty](../messages/Common/Empty.md#)|[ServoingModeInformation](../messages/Base/ServoingModeInformation.md#)|Sets the servoing mode|
 |GetServoingMode|[ServoingModeInformation](../messages/Base/ServoingModeInformation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves current servoing mode|
-|ServoingModeTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to servoing mode topic for notifications|
+|OnNotificationServoingModeTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to servoing mode topic for notifications|
 |RestoreFactorySettings|[Empty](../messages/Common/Empty.md#)|[Empty](../messages/Common/Empty.md#)|Deletes all configurations and reverts settings to their factory defaults \(except network settings\)|
 |Reboot|[Empty](../messages/Common/Empty.md#)|[Empty](../messages/Common/Empty.md#)|Reboots the robot|
-|FactoryTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to factory topic for notifications|
+|OnNotificationFactoryTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to factory topic for notifications|
 |GetAllConnectedControllers|[ControllerList](../messages/Base/ControllerList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves the list of all connected controllers|
 |GetControllerState|[ControllerState](../messages/Base/ControllerState.md#)|[ControllerHandle](../messages/Base/ControllerHandle.md#)|Retrieves the state of a specified controller|
 |GetActuatorCount|[ActuatorInformation](../messages/Base/ActuatorInformation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves the number of actuators in the robot|
 |StartWifiScan|[Empty](../messages/Common/Empty.md#)|[Empty](../messages/Common/Empty.md#)|Initiates Wi-Fi scanning|
 |GetConfiguredWifi|[WifiConfiguration](../messages/Base/WifiConfiguration.md#)|[Ssid](../messages/Base/Ssid.md#)|Retrieves a configured Wi-Fi network|
-|NetworkTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to network event notifications|
+|OnNotificationNetworkTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to network event notifications|
 |GetArmState|[ArmStateInformation](../messages/Base/ArmStateInformation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves current robot arm state|
-|ArmStateTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to robot arm state notifications|
+|OnNotificationArmStateTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to robot arm state notifications|
 |GetIPv4Information|[IPv4Information](../messages/Base/IPv4Information.md#)|[NetworkHandle](../messages/Base/NetworkHandle.md#)|Retrieves the IPv4 network information for the specified network adapter|
 |SetWifiCountryCode|[Empty](../messages/Common/Empty.md#)|[CountryCode](../messages/Common/CountryCode.md#)|Sets the Wi-Fi country code|
 |GetWifiCountryCode|[CountryCode](../messages/Common/CountryCode.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves the Wi-Fi country code|

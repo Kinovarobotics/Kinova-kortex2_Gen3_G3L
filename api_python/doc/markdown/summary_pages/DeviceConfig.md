@@ -79,7 +79,7 @@ Service to get and set device configuration information
 |GetAllSafetyConfiguration|[SafetyConfigurationList](../messages/DeviceConfig/SafetyConfigurationList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves configuration on all safeties|
 |GetAllSafetyInformation|[SafetyInformationList](../messages/DeviceConfig/SafetyInformationList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves information on all safeties|
 |ResetSafetyDefaults|[Empty](../messages/Common/Empty.md#)|[Empty](../messages/Common/Empty.md#)|Restores all safety configurations to factory defaults|
-|SafetyTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to safety notifications|
+|OnNotificationSafetyTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to safety notifications|
 |ExecuteCalibration|[Empty](../messages/Common/Empty.md#)|[Calibration](../messages/DeviceConfig/Calibration.md#)|Starts device calibration \(intended for Kinova Production of Pico\)|
 |GetCalibrationResult|[CalibrationResult](../messages/DeviceConfig/CalibrationResult.md#)|[CalibrationElement](../messages/DeviceConfig/CalibrationElement.md#)|Retrieves the status/result of device calibration \(intended for Kinova Production of Pico\)|
 |StopCalibration|[CalibrationResult](../messages/DeviceConfig/CalibrationResult.md#)|[Calibration](../messages/DeviceConfig/Calibration.md#)|Stop calibration in progress|
