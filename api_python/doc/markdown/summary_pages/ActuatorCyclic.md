@@ -25,7 +25,7 @@ This section describes the data classes used in this API, as well as their membe
 
 Service to exchange cyclic data with an actuator
 
- **Services** 
+ **ActuatorCyclicClient RPCs** 
 
 |Function name|Return type|Input type|Description|
 |-------------|-----------|----------|-----------|

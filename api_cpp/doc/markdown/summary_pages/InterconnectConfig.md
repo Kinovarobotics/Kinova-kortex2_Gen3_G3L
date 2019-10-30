@@ -44,7 +44,7 @@ This section describes the data classes used in this API, as well as their membe
 
 Service to get and set interface module \(interconnect\) configuration information, including user expansion
 
- **Services** 
+ **InterconnectConfigClient RPCs** 
 
 |Function name|Return type|Input type|Description|
 |-------------|-----------|----------|-----------|

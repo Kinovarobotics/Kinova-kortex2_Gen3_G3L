@@ -20,7 +20,7 @@ This section describes the data classes used in this API, as well as their membe
 
 This service provides information about which devices are present in the robot
 
- **Services** 
+ **DeviceManagerClient RPCs** 
 
 |Function name|Return type|Input type|Description|
 |-------------|-----------|----------|-----------|

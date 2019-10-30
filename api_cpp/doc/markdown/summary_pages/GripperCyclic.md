@@ -26,7 +26,7 @@ This section describes the data classes used in this API, as well as their membe
 
 Service to exchange cyclic data with gripper
 
- **Services** 
+ **GripperCyclicClient RPCs** 
 
 |Function name|Return type|Input type|Description|
 |-------------|-----------|----------|-----------|
