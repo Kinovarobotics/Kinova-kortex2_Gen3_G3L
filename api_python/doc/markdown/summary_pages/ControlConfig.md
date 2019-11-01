@@ -27,7 +27,7 @@ This section describes the data classes used in this API, as well as their membe
 
 Service to configure robot control library
 
- **Services** 
+ **ControlConfigClient RPCs** 
 
 |Function name|Return type|Input type|Description|
 |-------------|-----------|----------|-----------|

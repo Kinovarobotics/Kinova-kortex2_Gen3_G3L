@@ -204,7 +204,7 @@ This section describes the data classes used in this API, as well as their membe
 
 Base service. Broadly useful service. Provides functions for configuring a range of base-related functionalities and for enabling high-level control for the robot.
 
- **Services** 
+ **BaseClient RPCs** 
 
 |Function name|Return type|Input type|Description|
 |-------------|-----------|----------|-----------|

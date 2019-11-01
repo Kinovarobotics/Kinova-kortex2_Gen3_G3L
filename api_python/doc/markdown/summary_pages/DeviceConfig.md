@@ -49,7 +49,7 @@ This section describes the data classes used in this API, as well as their membe
 
 Service to get and set device configuration information
 
- **Services** 
+ **DeviceConfigClient RPCs** 
 
 |Function name|Return type|Input type|Description|
 |-------------|-----------|----------|-----------|
