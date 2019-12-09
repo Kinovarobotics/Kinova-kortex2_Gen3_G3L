@@ -33,6 +33,7 @@ Enumeration SafetyIdentifierBankA
 |WATCHDOG\_TRIGGERED|8388608|0x800000 - Watchdog triggered|
 |UNRELIABLE\_CAPACITIVE\_SENSOR|16777216|0x1000000 - Capacitive sensor is unreliable|
 |UNEXPECTED\_GEAR\_RATIO|33554432|0x2000000 - Incorrect gear ratio for detected configuration|
+|HALL\_MAGNETIC\_MISMATCH|67108864|0x4000000 - Position mismatch between hall and magnetic sensors|
 
 **Parent topic:** [ActuatorConfig \(Python\)](../../summary_pages/ActuatorConfig.md)
 

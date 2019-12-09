@@ -234,8 +234,13 @@ Base service. Broadly useful service. Provides functions for configuring a range
 |ReadAllProtectionZones|[ProtectionZoneList](../messages/Base/ProtectionZoneList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves a list of all protection zones|
 |CreateMapping|[MappingHandle](../messages/Base/MappingHandle.md#)|[Mapping](../messages/Base/Mapping.md#)|Creates a new mapping|
 |ReadMapping|[Mapping](../messages/Base/Mapping.md#)|[MappingHandle](../messages/Base/MappingHandle.md#)|Retrieves an existing mapping|
+|UpdateMapping|[Empty](../messages/Common/Empty.md#)|[Mapping](../messages/Base/Mapping.md#)|Updates an existing mapping|
+|DeleteMapping|[Empty](../messages/Common/Empty.md#)|[MappingHandle](../messages/Base/MappingHandle.md#)|Deletes an existing mapping|
 |ReadAllMappings|[MappingList](../messages/Base/MappingList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves a list of all mappings|
 |CreateMap|[MapHandle](../messages/Base/MapHandle.md#)|[Map](../messages/Base/Map.md#)|Creates a new map|
+|ReadMap|[Map](../messages/Base/Map.md#)|[MapHandle](../messages/Base/MapHandle.md#)|Retrieves an existing map|
+|UpdateMap|[Empty](../messages/Common/Empty.md#)|[Map](../messages/Base/Map.md#)|Updates an existing map|
+|DeleteMap|[Empty](../messages/Common/Empty.md#)|[MapHandle](../messages/Base/MapHandle.md#)|Deletes an existing map|
 |ReadAllMaps|[MapList](../messages/Base/MapList.md#)|[MappingHandle](../messages/Base/MappingHandle.md#)|Retrieves a list of all maps associated to the specified mapping|
 |ActivateMap|[Empty](../messages/Common/Empty.md#)|[ActivateMapHandle](../messages/Base/ActivateMapHandle.md#)|Activates the specified map within the specified map group and mapping|
 |CreateAction|[ActionHandle](../messages/Base/ActionHandle.md#)|[Action](../messages/Base/Action.md#)|Creates a new action|

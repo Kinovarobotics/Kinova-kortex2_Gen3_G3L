@@ -24,7 +24,7 @@
       - [Install GCC 5.4 under Windows](#procedure-to-install-gcc-54-under-windows)
   - [Download and set up Kortex C++ API](#download-and-set-up-kortex-c-api)
 - [Build](#build-instruction)
-- [Run](#how-to-use-examples-with-gen3-robot)
+- [Run](#how-to-use-examples-with-your-robot)
 - [C++ API documentation](#api-documentation)
 - [Reference](#reference)
       - [Useful Links](#usefull-links)
@@ -111,19 +111,22 @@ Because GCC is not coded for the Windows operating system, a GCC port of MinGW-w
 <a id="markdown-install-cpp-kortex-api--the-needed-dependencies" name="install-cpp-kortex-api--the-needed-dependencies"></a>
 ## Download and set up Kortex C++ API
 
-<!-- 
-> *Installation using jfrog cli:*
-> 
-> from *kortex_api* sub-directory
-> ```sh
-> jfrog rt ...
-> ```
--->
+<!--This link will need to change for the public download link-->
 Manual installation using downloaded archive:  
- + Download the archive via Kinova's Artifactory: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip)
- + Uncompress the content of the archive and place the contents of the `cpp` folder in the sub-directory `kortex_api`.  
+ + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/artifactory/webapp/#/artifacts/browse/tree/General/generic-local-stable/API/2.1.0/kortex_api_2.1.0-3.zip)
+ + Uncompress the content of the archive and place the contents of the `cpp/{your_architecture}` folder in the sub-directory `kortex_api`.  
 
-You will then have to use the `KORTEX_SUB_DIR` CMake argument to specify the Kortex API OS_Compiler_Architecture.
+```sh
+examples/kortex_api  
+┬  
+├ include/
+├ lib/  
+└   ┬  
+    ├ debug/  
+    └ release/
+```
+
+You can also uncompress the contents of the `cpp/` folder in the sub-directory `kortex_api`. You will then have to use the `KORTEX_SUB_DIR` CMake argument to specify the Kortex API OS_Compiler_Architecture.
 
 ```sh
 examples/kortex_api  
@@ -135,18 +138,6 @@ examples/kortex_api
 └       ┬  
         ├ debug/  
         └ release/
-```
-
- You can also uncompress the content of the archive and place the contents of the `cpp/(your architecture)` folder in the sub-directory `kortex_api`, like so:
-
-```sh
-examples/kortex_api  
-┬  
-├ include/
-├ lib/  
-└   ┬  
-    ├ debug/  
-    └ release/
 ```
 
 <a id="markdown-build-instruction" name="build-instruction"></a>
@@ -166,7 +157,13 @@ my_example_repo
 
  <p><details open>
  <summary>Linux Ubuntu</summary>
- 
+
+ You can run the build script:
+ ```
+ ./scripts/build-gcc.sh {release|debug}
+ ```
+
+ You can also build manually:
  ```sh
  mkdir build  
  cd build  
@@ -183,6 +180,13 @@ my_example_repo
 
  <summary>Windows - using GCC</summary>
  
+
+ You can run the build script:
+ ```
+ scripts\build-mingw.bat {release|debug}
+ ```
+
+ You can also build manually:
  ```bat
  mkdir build  
  cd build  
@@ -206,26 +210,32 @@ my_example_repo
 <p><details open>
 <summary>Windows - using command-line MSVC build</summary>
 
- Setup the build environment
+ Setup the build environment:
  
  **Note:** Make sure to adjust the path to match the location of your installed BuildTools call: 
  
  `C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat`
 
-```bat
+ You can run the build script:
+ ```
+ scripts\build-msvc.bat {release|debug} {static|dynamic}
+ ```
+
+ You can also build manually:
+ ```bat
  mkdir build  
-  cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release [-DKORTEX_SUB_DIR=<os_arch dir name>]
+ cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release [-DKORTEX_SUB_DIR=<os_arch dir name>]
  nmake
-```
+ ```
 
  </details></p>  
 
-<a id="markdown-how-to-use-examples-with-gen3-robot" name="how-to-use-examples-with-gen3-robot"></a>
+<a id="markdown-how-to-use-examples-with-your-robot" name="how-to-use-examples-with-your-robot"></a>
 # Run
 
 We assume the robot is using its default IP address: `192.168.1.10`.
 
-Before you start make sure you run the test in a safe area - some examples contain movement. Also verify that your Gen3 device is correctly afixed to your working surface.
+Before you start make sure you run the test in a safe area - some examples contain movement. Also verify that your robot is correctly afixed to your working surface.
 
 Prerequisites:
 + The examples require a wired connection to your computer
@@ -235,12 +245,12 @@ Each example has its own `main` function so you can run them individually from t
 
 On Linux :
 ```sh
-./build/<example_name>
+./<your_build_folder>/<example_name>
 ```
 
 On Windows :
-```sh
-build\<example_name>.exe
+```bat
+<your_build_folder>\<example_name>.exe
 ```
 
 <a id="markdown-api-documentation" name="api-documentation"></a>
