@@ -62,6 +62,12 @@ Enumeration CustomDataIndex
 |FLOAT\_CURRENT\_MOTOR\_CMD|53|Motor current command sent to motor drive \(Amperes\)|
 |FLOAT\_TORQUE\_JOINT\_CMD|54|Axis torque command sent to joint torque control loop \(Newton-meters\)|
 |FLOAT\_POSITION\_UNWRAPPED|55|Actuator position unwrapped \(degrees\)|
+|UINT32\_HALL\_SENSOR\_0|56|Hall sensor 0 value \(raw\)|
+|UINT32\_HALL\_SENSOR\_1|57|Hall sensor 1 value \(raw\)|
+|UINT32\_HALL\_SENSOR\_2|58|Hall sensor 2 value \(raw\)|
+|INT32\_HALL\_SENSOR\_SCALED\_0|59|Hall sensor 0 scaled value \(raw\)|
+|INT32\_HALL\_SENSOR\_SCALED\_1|60|Hall sensor 1 scaled value \(raw\)|
+|INT32\_HALL\_SENSOR\_SCALED\_2|61|Hall sensor 2 scaled value \(raw\)|
 
 **Parent topic:** [ActuatorConfig \(C++\)](../../summary_pages/ActuatorConfig.md)
 

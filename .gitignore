@@ -1,3 +1,5 @@
 kortex_api/
 kortex_api*.zip
-api_cpp/examples/build/
+api_cpp/examples/build*
+.vscode/
+__pycache__/

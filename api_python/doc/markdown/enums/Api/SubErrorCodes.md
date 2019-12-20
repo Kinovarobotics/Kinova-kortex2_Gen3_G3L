@@ -93,11 +93,13 @@ Enumeration SubErrorCodes
 |MAXIMUM\_USER\_PROFILES\_USED|107|Maximum number of user profiles in use|
 |ROUTER\_UNVAILABLE|108|The client router is currently unavailable. This can happen if an API method is called after the router has been deactivated via the method SetActivationStatus.|
 |ADDRESS\_NOT\_IN\_VALID\_RANGE|120|IP Address not valid against netmask|
+|ADDRESS\_NOT\_CONFIGURABLE|121|IP Address not configurable on specified interface|
 |SESSION\_NOT\_IN\_CONTROL|130|Trying to perform command from a non-controlling session in single-level mode|
 |METHOD\_TIMEOUT|131|Timeout occured during method execution|
 |UNSUPPORTED\_ROBOT\_CONFIGURATION|132|Product Configuration setter method failed because changing this parameter is unsupported on your robot model|
 |NVRAM\_READ\_FAIL|133|Failed to read in NVRAM.|
 |NVRAM\_WRITE\_FAIL|134|Failed to write in NVRAM.|
+|NETWORK\_NO\_ADDRESS\_ASSIGNED|135|The specified interface has no assigned IP|
 
 **Parent topic:** [Api \(Python\)](../../summary_pages/Api.md)
 

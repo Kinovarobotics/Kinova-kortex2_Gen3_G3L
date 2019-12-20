@@ -8,14 +8,14 @@
 #  From the api_cpp/examples directory, invoke:
 #    $ mkdir build
 #    $ cd build/
-#    $ cmake .. -DCMAKE_BUILD_TYPE=release -DKORTEX_SUB_DIR=linux_gcc_x86-64
+#    $ cmake .. 
 #    $ make
 #
 #  In Windows (MinGW) :
 #  From the api_cpp/examples directory, invoke:
 #    $ mkdir build
 #    $ cd build/
-#    $ cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=release -DKORTEX_SUB_DIR=win_mingw_x86
+#    $ cmake .. -G "MinGW Makefiles"
 #    $ mingw32-make
 #
 #  In Windows (MSVC command line) :
@@ -23,13 +23,13 @@
 #    $ call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" [MODIFY THIS PATH FOR YOURS]
 #    $ mkdir build
 #    $ cd build/
-#    $ cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DKORTEX_SUB_DIR=win_msvc_x86-64
+#    $ cmake .. -G "NMake Makefiles"
 #    $ nmake
 #
 # ----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.5)
 
-project(cppExamples VERSION 0.0.1 LANGUAGES CXX)
+project(kortexApiCppExamples VERSION 2.1.0 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR   ON)
 set(CMAKE_VERBOSE_MAKEFILE      ON)
@@ -49,9 +49,6 @@ endif()
 # Activate C++ 11
 set (CMAKE_CXX_STANDARD 11)
 
-include_directories(${PROJECT_SOURCE_DIR}/thirdParty/cxxopts/)
-
-
 if(MSVC)
   add_compile_options(-W2)
 else()
@@ -62,16 +59,25 @@ endif()
 
 if(UNIX)
   add_definitions(-D_OS_UNIX)
+  execute_process(COMMAND ./download_kortex_api.sh
+                WORKING_DIRECTORY ../scripts
+                RESULT_VARIABLE DOWNLOAD_API_RESULT
+                OUTPUT_VARIABLE DOWNLOAD_API_OUTPUT)
+  
+  if(NOT DOWNLOAD_API_RESULT EQUAL 0)
+    message("Kortex API was not downloaded prior to running CMake.")
+    message(FATAL_ERROR ${DOWNLOAD_API_OUTPUT})
+  endif()
 elseif(WIN32)
   add_definitions(-D_OS_WINDOWS -DNOMINMAX)
-  message(${CMAKE_CURRENT_SOURCE_DIR})
   execute_process(COMMAND download_kortex_api.bat
                 WORKING_DIRECTORY ../scripts
-                RESULT_VARIABLE DOWNLOAD_API_RESULT)
+                RESULT_VARIABLE DOWNLOAD_API_RESULT
+                OUTPUT_VARIABLE DOWNLOAD_API_OUTPUT)
 
-  message(${DOWNLOAD_API_RESULT})
   if(NOT DOWNLOAD_API_RESULT EQUAL 0)
-    message(FATAL_ERROR "Kortex API was not downloaded prior to running CMake.")
+    message("Kortex API was not downloaded prior to running CMake.")
+    message(FATAL_ERROR ${DOWNLOAD_API_OUTPUT})
   endif()
 
   if(MSVC)
@@ -109,13 +115,13 @@ include_directories(${KORTEX_DIR}include/messages)
 include_directories(${KORTEX_DIR}include/client_stubs)
 ##################################################################################
 
-# Link to submodule base on OS
+# Link to submodule based on OS
 if(UNIX)
   link_libraries(pthread)
 elseif(WIN32)
   link_libraries(ws2_32 winMM Winusb Setupapi xinput)
 else()
-  MESSAGE(FATAL_ERROR "Unknown OS! Not supported yet")
+  MESSAGE(FATAL_ERROR "Unknown OS! Not supported yet.")
 endif()
 
 
@@ -133,15 +139,3 @@ foreach ( SRC_FILE ${EXE_LIST} )
   add_executable(${TARGET_EXE_NAME} ${SRC_FILE})
 
 endforeach()
-
-
-
-
-
-
-
-
-
-
-
-

@@ -19,7 +19,7 @@
 - [Setup (Python environment)](#setup-example-python-environment)
   - [Python setup](#requested-basic-python--python-modules)
   - [Install Kortex Python API and required dependencies](#install-python-kortex-api-and-required-dependencies)
-- [How to use the examples](#how-to-use-examples-with-gen3-robot)
+- [How to use the examples](#how-to-use-examples-with-your-robot)
 - [Python API documentation](#api-documentation)
 - [Reference](#reference)
       - [useful links](#useful-links)
@@ -43,9 +43,7 @@ Refer to the main README for Python installation details: [parent readme](../../
 
 Install what is needed to run the examples via a downloaded whl file (Python wheel package).
 
-The Kortex API can be downloaded here: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip)  
-
-You will have to extract the ZIP file, and you will find the .whl file in the ```python``` folder.
+The whl file can be downloaded via the Kinova Artifactory: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.1.0/kortex_api_2.1.0.zip)  
 
 On Linux:
 
@@ -60,12 +58,12 @@ On Windows:
 python -m pip install <whl relative fullpath name>.whl
 ```
 
-<a id="markdown-how-to-use-examples-with-gen3-robot" name="how-to-use-examples-with-gen3-robot"></a>
+<a id="markdown-how-to-use-examples-with-your-robot" name="how-to-use-examples-with-your-robot"></a>
 # How to use the examples
 
 We assume the robot is using its default IP address: ``192.168.1.10``
 
-Before starting, ensure that you run the test in a safe area with some examples that contain movement. Also, verify that your Gen3 device is correctly afixed to the working surface.
+Before starting, ensure that you run the test in a safe area with some examples that contain movement. Also, verify that your robot is correctly afixed to the working surface.
 
 Prerequisites:
 + The examples require a wired network connection to your computer
