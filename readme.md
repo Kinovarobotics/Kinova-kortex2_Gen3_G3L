@@ -84,7 +84,8 @@ When using the Kortex API a developer will need to understand the Google Protoco
 <a id="markdown-api-download-links" name="api-download-links"></a>
 # API download links
 
-Download the archive via Kinova Artifactory: [kortex_api](https://artifactory.kinovaapps.com/artifactory/webapp/#/artifacts/browse/tree/General/generic-local-stable/API/2.1.0/kortex_api_2.1.0-3.zip)  
+Download the latest archive via Kinova Artifactory: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.1.0/kortex_api_2.1.0.zip)  
+
 More details are in: [Language-specific details](#api-details-for-a-specific-language)
 
 <a id="markdown-api-details-for-a-specific-language" name="api-details-for-a-specific-language"></a>

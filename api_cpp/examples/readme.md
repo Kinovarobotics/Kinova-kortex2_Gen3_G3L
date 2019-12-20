@@ -111,9 +111,8 @@ Because GCC is not coded for the Windows operating system, a GCC port of MinGW-w
 <a id="markdown-install-cpp-kortex-api--the-needed-dependencies" name="install-cpp-kortex-api--the-needed-dependencies"></a>
 ## Download and set up Kortex C++ API
 
-<!--This link will need to change for the public download link-->
 Manual installation using downloaded archive:  
- + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/artifactory/webapp/#/artifacts/browse/tree/General/generic-local-stable/API/2.1.0/kortex_api_2.1.0-3.zip)
+ + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.1.0/kortex_api_2.1.0.zip)
  + Uncompress the content of the archive and place the contents of the `cpp/{your_architecture}` folder in the sub-directory `kortex_api`.  
 
 ```sh
