@@ -29,7 +29,7 @@ The official repository contains documentation and examples explaining how to us
 - [Role of Google Protocol Buffer in Kortex API](#role-of-google-protobuf-in-kortex-api)
     - [Quick Start for Python users](#quick-start-howto-python)
     - [Quick Start for C++ users](#quick-start-howto-cpp)
-- [API download links](#api-download-links)
+- [Download links](#api-download-links)
 - [Language-specific details](#api-details-for-a-specific-language)
 - [Reference](#reference)
             - [Useful Links](#useful-links)
@@ -75,18 +75,31 @@ When using the Kortex API a developer will need to understand the Google Protoco
   Here is some general information about the Python interpreter and the pip module manager.  
   - [Python General Information](./linked_md/python_quick_start.md)
   - [API mechanism](./linked_md/python_api_mechanism.md)
-  - [Transport / Router / Session / Notification](./linked_md/py_transport_router_session_notif.md)
-  - [Device routing](./linked_md/py_device_routing.md)
+  - [Transport / Router / Session / Notification](./linked_md/python_transport_router_session_notif.md)
+  - [Device routing](./linked_md/python_device_routing.md)
   - [Servoing modes](./linked_md/python_servoing_modes.md)
   - [Error management](./linked_md/python_error_management.md)
   - [Examples](./api_python/examples/readme.md)
 
 <a id="markdown-api-download-links" name="api-download-links"></a>
-# API download links
+# Download links
 
-Download the latest archive via Kinova Artifactory: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.1.0/kortex_api_2.1.0.zip)  
+The latest download links for each arm type are reported in the table below:
 
-More details are in: [Language-specific details](#api-details-for-a-specific-language)
+| Arm type       | Firmware     | Release notes      | API |
+| :------------- | :----------: | :-----------: | :-----------:
+|  Gen3 | [2.0.1](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.0.1/Gen3-2.0.1.swu)   | [2.0.1](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.0.1/RN-001_KINOVA_Gen3_Ultra_lightweight_robot-Release_Notes_EN_R05%20(1).pdf)    | [2.0.0](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip)
+| Gen3 lite   | [2.1.1](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3Lite/2.1.1/Gen3Lite-2.1.1.swu) | [2.1.1](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3Lite/2.1.1/RN-002_Gen3_lite_robot_Release_Notes_EN_R01.pdf) | [2.1.0](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.1.0/kortex_api_2.1.0.zip)
+
+<details><summary>Previous releases</summary>
+<p>
+<ul>
+<li>
+Release 2.0.0 for Gen3: <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3/2.0.0/Gen3-2.0.0.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3/2.0.0/RN-001_KINOVA_Gen3_Ultra_lightweight_robot-Release_Notes_EN_R04.pdf">Release Notes</a>, <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip">Kortex API</a>
+</li>
+</ul>
+</p>
+</details>
 
 <a id="markdown-api-details-for-a-specific-language" name="api-details-for-a-specific-language"></a>
 # Language-specific details 
