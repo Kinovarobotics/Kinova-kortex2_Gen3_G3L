@@ -22,9 +22,9 @@
 |tool\_pose\_theta\_x|float32|Measured Cartesian orientation \(X-Axis\) of the tool \(in degrees\)|
 |tool\_pose\_theta\_y|float32|Measured Cartesian orientation \(Y-Axis\) of the tool \(in degrees\)|
 |tool\_pose\_theta\_z|float32|Measured Cartesian orientation \(Z-Axis\) of the tool \(in degrees\)|
-|tool\_twist\_linear\_x|float32|Measured Cartesian linear velocity \(X-Axis\) of the tool \(in meters\)|
-|tool\_twist\_linear\_y|float32|Measured Cartesian linear velocity \(Y-Axis\) of the tool \(in meters\)|
-|tool\_twist\_linear\_z|float32|Measured Cartesian linear velocity \(Z-Axis\) of the tool \(in meters\)|
+|tool\_twist\_linear\_x|float32|Measured Cartesian linear velocity \(X-Axis\) of the tool \(in meters per second\)|
+|tool\_twist\_linear\_y|float32|Measured Cartesian linear velocity \(Y-Axis\) of the tool \(in meters per second\)|
+|tool\_twist\_linear\_z|float32|Measured Cartesian linear velocity \(Z-Axis\) of the tool \(in meters per second\)|
 |tool\_twist\_angular\_x|float32|Measured Cartesian angular velocity \(X-Axis\) of the tool \(in degrees per second\)|
 |tool\_twist\_angular\_y|float32|Measured Cartesian angular velocity \(Y-Axis\) of the tool \(in degrees per second\)|
 |tool\_twist\_angular\_z|float32|Measured Cartesian angular velocity \(Z-Axis\) of the tool \(in degrees per second\)|

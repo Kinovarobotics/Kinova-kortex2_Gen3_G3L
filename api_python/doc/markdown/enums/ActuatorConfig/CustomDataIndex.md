@@ -68,6 +68,39 @@ Enumeration CustomDataIndex
 |INT32\_HALL\_SENSOR\_SCALED\_0|59|Hall sensor 0 scaled value \(raw\)|
 |INT32\_HALL\_SENSOR\_SCALED\_1|60|Hall sensor 1 scaled value \(raw\)|
 |INT32\_HALL\_SENSOR\_SCALED\_2|61|Hall sensor 2 scaled value \(raw\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_0|62|Cogging torque cancellation coefficient A0 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_1|63|Cogging torque cancellation coefficient A1 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_2|64|Cogging torque cancellation coefficient A2 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_3|65|Cogging torque cancellation coefficient A3 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_4|66|Cogging torque cancellation coefficient A4 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_5|67|Cogging torque cancellation coefficient A5 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_6|68|Cogging torque cancellation coefficient A6 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_7|69|Cogging torque cancellation coefficient A7 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_8|70|Cogging torque cancellation coefficient A8 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_9|71|Cogging torque cancellation coefficient A9 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_10|72|Cogging torque cancellation coefficient A10 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_11|73|Cogging torque cancellation coefficient A11 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_12|74|Cogging torque cancellation coefficient A12 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_13|75|Cogging torque cancellation coefficient A13 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_14|76|Cogging torque cancellation coefficient A14 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_A\_15|77|Cogging torque cancellation coefficient A15 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_0|78|Cogging torque cancellation coefficient B0 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_1|79|Cogging torque cancellation coefficient B1 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_2|80|Cogging torque cancellation coefficient B2 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_3|81|Cogging torque cancellation coefficient B3 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_4|82|Cogging torque cancellation coefficient B4 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_5|83|Cogging torque cancellation coefficient B5 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_6|84|Cogging torque cancellation coefficient B6 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_7|85|Cogging torque cancellation coefficient B7 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_8|86|Cogging torque cancellation coefficient B8 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_9|87|Cogging torque cancellation coefficient B9 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_10|88|Cogging torque cancellation coefficient B10 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_11|89|Cogging torque cancellation coefficient B11 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_12|90|Cogging torque cancellation coefficient B12 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_13|91|Cogging torque cancellation coefficient B13 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_14|92|Cogging torque cancellation coefficient B14 \(Amperes\)|
+|FLOAT\_COGGING\_COEFFICIENT\_B\_15|93|Cogging torque cancellation coefficient B15 \(Amperes\)|
+|FLOAT\_CURRENT\_COGGING\_FEEDFORWARD|94|Commanded cogging cancellation feedforward current sent to motor drive \(Amperes\)|
 
 **Parent topic:** [ActuatorConfig \(Python\)](../../summary_pages/ActuatorConfig.md)
 

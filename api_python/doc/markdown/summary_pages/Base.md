@@ -44,9 +44,12 @@ This section describes the data classes used in this API, as well as their membe
 |[ConstrainedOrientation](../messages/Base/ConstrainedOrientation.md#)|Cartesian tool orientation with specified constraint|
 |[ConstrainedPose](../messages/Base/ConstrainedPose.md#)|Cartesian tool pose with specified constraint|
 |[ConstrainedPosition](../messages/Base/ConstrainedPosition.md#)|Cartesian tool position with specified constraint|
-|[ControlModeInformation](../messages/Base/ControlModeInformation.md#)|Control mode information|
+|[ControlModeInformation](../messages/Base/ControlModeInformation.md#)|Control mode information This message may be removed in a future release. It has been moved to ControlConfig service.|
 |[ControlModeNotification](../messages/Base/ControlModeNotification.md#)|Notification about a single control mode event|
 |[ControlModeNotificationList](../messages/Base/ControlModeNotificationList.md#)|Array of control mode notifications|
+|[ControllerConfiguration](../messages/Base/ControllerConfiguration.md#)|Controller configuration information|
+|[ControllerConfigurationList](../messages/Base/ControllerConfigurationList.md#)|Controller configuration information for multiple controllers|
+|[ControllerConfigurationMode](../messages/Base/ControllerConfigurationMode.md#)|Controller configuration mode information|
 |[ControllerElementHandle](../messages/Base/ControllerElementHandle.md#)|Reference ro a specific button \(or axis\) of a controller device|
 |[ControllerElementState](../messages/Base/ControllerElementState.md#)|Indicates if a specific button \(or axis\) was pressed \(or moved\)|
 |[ControllerEvent](../messages/Base/ControllerEvent.md#)|A controller event|
@@ -60,6 +63,8 @@ This section describes the data classes used in this API, as well as their membe
 |[FactoryNotification](../messages/Base/FactoryNotification.md#)|Notification about a single factory event|
 |[Faults](../messages/Base/Faults.md#)|Action to clear faults|
 |[Finger](../messages/Base/Finger.md#)|Movement of a specified gripper finger|
+|[FirmwareBundleVersions](../messages/Base/FirmwareBundleVersions.md#)|Firmware bundle versions including main firmware bundle version and components versions|
+|[FirmwareComponentVersion](../messages/Base/FirmwareComponentVersion.md#)|Individual component with its version|
 |[FullIPv4Configuration](../messages/Base/FullIPv4Configuration.md#)|IPv4 configuration for a specific network|
 |[FullUserProfile](../messages/Base/FullUserProfile.md#)|Information about a user, together with a password. Full set of information needed to create a user profile.|
 |[GpioEvent](../messages/Base/GpioEvent.md#)|A GPIO event \(not implemented yet\)|
@@ -124,10 +129,16 @@ This section describes the data classes used in this API, as well as their membe
 |[SequenceInformation](../messages/Base/SequenceInformation.md#)|Information about a sequence|
 |[SequenceList](../messages/Base/SequenceList.md#)|An array of sequences|
 |[SequenceTask](../messages/Base/SequenceTask.md#)|Information on a single task within a sequence|
+|[SequenceTaskConfiguration](../messages/Base/SequenceTaskConfiguration.md#)|Reference to a specific task within a sequence, and configuration information on task to be updated|
 |[SequenceTaskHandle](../messages/Base/SequenceTaskHandle.md#)|Reference to a specific task inside a sequence|
+|[SequenceTasks](../messages/Base/SequenceTasks.md#)|Information on multiple tasks within a sequence|
+|[SequenceTasksConfiguration](../messages/Base/SequenceTasksConfiguration.md#)|Reference to a specific task within a sequence, and information on list of sequence tasks to be inserted|
+|[SequenceTasksPair](../messages/Base/SequenceTasksPair.md#)|Information on a sequence and a pair of tasks to be operated on|
+|[SequenceTasksRange](../messages/Base/SequenceTasksRange.md#)|Information on a range of task indexes|
 |[ServoingModeInformation](../messages/Base/ServoingModeInformation.md#)|Information about the servoing mode|
 |[ServoingModeNotification](../messages/Base/ServoingModeNotification.md#)|Notification about a single servoing mode event|
 |[ServoingModeNotificationList](../messages/Base/ServoingModeNotificationList.md#)|Array of servoing mode notifications|
+|[Snapshot](../messages/Base/Snapshot.md#)|Action parameter to take a snapshot of current robot position|
 |[Ssid](../messages/Base/Ssid.md#)|Wi-Fi SSID|
 |[Stop](../messages/Base/Stop.md#)|Action to stop robot movement|
 |[SwitchControlMapping](../messages/Base/SwitchControlMapping.md#)|Action parameter to switch the active controller map|
@@ -166,7 +177,7 @@ This section describes the data classes used in this API, as well as their membe
 |[BridgeType](../enums/Base/BridgeType.md#)|Type of port forward bridge to create|
 |[CapSenseMode](../enums/Base/CapSenseMode.md#)|Admissible capacitive sensor modes|
 |[ConfigurationNotificationEvent](../enums/Base/ConfigurationNotificationEvent.md#)|Admissible configuration events|
-|[ControlMode](../enums/Base/ControlMode.md#)|Admissible robot control modes|
+|[ControlMode](../enums/Base/ControlMode.md#)|Admissible robot control modes. This enum may be removed in a future release. It has been moved to ControlConfig service.|
 |[ControllerBehavior](../enums/Base/ControllerBehavior.md#)|Admissible controller input behaviors|
 |[ControllerElementEventType](../enums/Base/ControllerElementEventType.md#)|Admissible controller element event types|
 |[ControllerEventType](../enums/Base/ControllerEventType.md#)|Admissible controller event types|
@@ -174,7 +185,8 @@ This section describes the data classes used in this API, as well as their membe
 |[ControllerType](../enums/Base/ControllerType.md#)|Admissible controller types|
 |[EventIdSequenceInfoNotification](../enums/Base/EventIdSequenceInfoNotification.md#)|Admissible sequence event types|
 |[FactoryEvent](../enums/Base/FactoryEvent.md#)|Admissible factory events|
-|[GpioState](../enums/Base/GpioState.md#)|Admissible GPIO states \(not implemented yet\)|
+|[Gen3GpioPinId](../enums/Base/Gen3GpioPinId.md#)|Available GPIO PIN \(not implemented yet\)|
+|[GpioBehavior](../enums/Base/GpioBehavior.md#)|Admissible GPIO behavior \(not implemented yet\)|
 |[GripperMode](../enums/Base/GripperMode.md#)|Admissible gripper control mode|
 |[JointNavigationDirection](../enums/Base/JointNavigationDirection.md#)|Admissible joint navigation directions|
 |[JointTrajectoryConstraintType](../enums/Base/JointTrajectoryConstraintType.md#)|Admissible constraint types that can be applied when controlling a joint in trajectory mode|
@@ -191,6 +203,7 @@ This section describes the data classes used in this API, as well as their membe
 |[ServoingMode](../enums/Base/ServoingMode.md#)|Admissible servoing modes|
 |[ShapeType](../enums/Base/ShapeType.md#)|Admissible protection zone shape types|
 |[SignalQuality](../enums/Base/SignalQuality.md#)|Admissible signal quality values|
+|[SnapshotType](../enums/Base/SnapshotType.md#)|Admissible types of snapshots|
 |[SoundType](../enums/Base/SoundType.md#)|Admissible sound types \(not implemented yet\)|
 |[TrajectoryContinuityMode](../enums/Base/TrajectoryContinuityMode.md#)|Admissible trajectory continuity mode|
 |[TrajectoryErrorIdentifier](../enums/Base/TrajectoryErrorIdentifier.md#)|Trajectory validation error identifiers|
@@ -199,6 +212,7 @@ This section describes the data classes used in this API, as well as their membe
 |[WifiEncryptionType](../enums/Base/WifiEncryptionType.md#)|Admissible Wi-Fi encryption types|
 |[WifiSecurityType](../enums/Base/WifiSecurityType.md#)|Admissible Wi-Fi Security types|
 |[WrenchMode](../enums/Base/WrenchMode.md#)|Admissible wrench \(force\) modes|
+|[WristDigitalInputIdentifier](../enums/Base/WristDigitalInputIdentifier.md#)|Admissible Wrist digital inputs|
 |[Xbox360AnalogInputIdentifier](../enums/Base/Xbox360AnalogInputIdentifier.md#)|Admissible XBOX360 analog inputs|
 |[Xbox360DigitalInputIdentifier](../enums/Base/Xbox360DigitalInputIdentifier.md#)|Admissible XBOX360 digital inputs|
 
@@ -220,8 +234,6 @@ Base service. Broadly useful service. Provides functions for configuring a range
 |ReadSequence|[Sequence](../messages/Base/Sequence.md#)|[SequenceHandle](../messages/Base/SequenceHandle.md#)|Retrieves an existing sequence|
 |DeleteSequence|[Empty](../messages/Common/Empty.md#)|[SequenceHandle](../messages/Base/SequenceHandle.md#)|Deletes an existing sequence|
 |ReadAllSequences|[SequenceList](../messages/Base/SequenceList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves the list of all existing sequences|
-|DeleteSequenceTask|[Empty](../messages/Common/Empty.md#)|[SequenceTaskHandle](../messages/Base/SequenceTaskHandle.md#)|Deletes a specific task from the specified sequence|
-|DeleteAllSequenceTasks|[Empty](../messages/Common/Empty.md#)|[SequenceHandle](../messages/Base/SequenceHandle.md#)|Deletes all tasks from the specified sequence|
 |PlaySequence|[Empty](../messages/Common/Empty.md#)|[SequenceHandle](../messages/Base/SequenceHandle.md#)|Plays an existing sequence|
 |PlayAdvancedSequence|[Empty](../messages/Common/Empty.md#)|[AdvancedSequenceHandle](../messages/Base/AdvancedSequenceHandle.md#)|Plays an existing sequence with options|
 |StopSequence|[Empty](../messages/Common/Empty.md#)|[Empty](../messages/Common/Empty.md#)|Stops execution of currently playing sequence|
@@ -276,17 +288,17 @@ Base service. Broadly useful service. Provides functions for configuring a range
 |OnNotificationControllerTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to controller topic for notifications|
 |OnNotificationActionTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to action topic for notifications|
 |OnNotificationRobotEventTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to robot event topic for notifications|
-|PlayCartesianTrajectory|[Empty](../messages/Common/Empty.md#)|[ConstrainedPose](../messages/Base/ConstrainedPose.md#)|Moves robot to the specifed tool pose \(position and orientation\) while imposing specified constraints|
-|PlayCartesianTrajectoryPosition|[Empty](../messages/Common/Empty.md#)|[ConstrainedPosition](../messages/Base/ConstrainedPosition.md#)|Moves robot to the specifed position while imposing specified constraints|
-|PlayCartesianTrajectoryOrientation|[Empty](../messages/Common/Empty.md#)|[ConstrainedOrientation](../messages/Base/ConstrainedOrientation.md#)|Moves to the specifed orientation while imposing specified constraints|
+|PlayCartesianTrajectory|[Empty](../messages/Common/Empty.md#)|[ConstrainedPose](../messages/Base/ConstrainedPose.md#)|Moves robot to the specified tool pose \(position and orientation\) while imposing specified constraints.|
+|PlayCartesianTrajectoryPosition|[Empty](../messages/Common/Empty.md#)|[ConstrainedPosition](../messages/Base/ConstrainedPosition.md#)|Moves robot to the specified position while imposing specified constraints.|
+|PlayCartesianTrajectoryOrientation|[Empty](../messages/Common/Empty.md#)|[ConstrainedOrientation](../messages/Base/ConstrainedOrientation.md#)|Moves to the specified orientation while imposing specified constraints.|
 |Stop|[Empty](../messages/Common/Empty.md#)|[Empty](../messages/Common/Empty.md#)|Stops robot movement|
 |GetMeasuredCartesianPose|[Pose](../messages/Base/Pose.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves the current computed tool pose \(position and orientation\) for the robot|
 |SendWrenchCommand|[Empty](../messages/Common/Empty.md#)|[WrenchCommand](../messages/Base/WrenchCommand.md#)|Sends a wrench command \(screw consisting of force and torque\) to be applied to the tool. This method is EXPERIMENTAL.|
 |SendWrenchJoystickCommand|[Empty](../messages/Common/Empty.md#)|[WrenchCommand](../messages/Base/WrenchCommand.md#)|Sends a wrench \(screw consisting of force and torque\) joystick command to be applied to the tool. The wrench values sent to this call are expected to be a ratio of maximum value \(between -1.0/+1.0\). This method is EXPERIMENTAL.|
 |SendTwistJoystickCommand|[Empty](../messages/Common/Empty.md#)|[TwistCommand](../messages/Base/TwistCommand.md#)|Sends a twist \(screw consisting of linear and angular velocity\) joystick command to be applied to the tool. The twist values sent to this call are expected to be a ratio of the maximum value \(between -1.0/+1.0\).|
 |SendTwistCommand|[Empty](../messages/Common/Empty.md#)|[TwistCommand](../messages/Base/TwistCommand.md#)|Sends a twist \(screw consisting of linear and angular velocity\) command to be applied to the tool|
-|PlayJointTrajectory|[Empty](../messages/Common/Empty.md#)|[ConstrainedJointAngles](../messages/Base/ConstrainedJointAngles.md#)|Moves joints to the specified joint angles while imposing specified constraints|
-|PlaySelectedJointTrajectory|[Empty](../messages/Common/Empty.md#)|[ConstrainedJointAngle](../messages/Base/ConstrainedJointAngle.md#)|Moves specifed joint to the specifed joint angle while imposing specified constraints|
+|PlayJointTrajectory|[Empty](../messages/Common/Empty.md#)|[ConstrainedJointAngles](../messages/Base/ConstrainedJointAngles.md#)|Moves joints to the specified joint angles while imposing specified constraints.|
+|PlaySelectedJointTrajectory|[Empty](../messages/Common/Empty.md#)|[ConstrainedJointAngle](../messages/Base/ConstrainedJointAngle.md#)|Moves specifed joint to the specifed joint angle while imposing specified constraints.|
 |GetMeasuredJointAngles|[JointAngles](../messages/Base/JointAngles.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves the currently measured joint angles for each joint|
 |SendJointSpeedsCommand|[Empty](../messages/Common/Empty.md#)|[JointSpeeds](../messages/Base/JointSpeeds.md#)|Sends a set of joint speed commands to all joints with one command. Joint speed commmands must be sent to all joints. If you do not want to move some of the joints, simply send a speed value of 0 degrees / second for that joint.|
 |SendSelectedJointSpeedCommand|[Empty](../messages/Common/Empty.md#)|[JointSpeed](../messages/Base/JointSpeed.md#)|Sends a speed command for a specific joint|
@@ -317,10 +329,10 @@ Base service. Broadly useful service. Provides functions for configuring a range
 |GetWifiCountryCode|[CountryCode](../messages/Common/CountryCode.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves the Wi-Fi country code|
 |SetCapSenseConfig|[Empty](../messages/Common/Empty.md#)|[CapSenseConfig](../messages/Base/CapSenseConfig.md#)|Configures capacitive sensor on the gripper or wrist|
 |GetCapSenseConfig|[CapSenseConfig](../messages/Base/CapSenseConfig.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves configuration of capacitive sensor on the gripper or wrist|
-|GetAllJointsSpeedHardLimitation|[JointsLimitationsList](../messages/Base/JointsLimitationsList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves speed hard limits for all joints|
-|GetAllJointsTorqueHardLimitation|[JointsLimitationsList](../messages/Base/JointsLimitationsList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves torque hard limits for all joints|
-|GetTwistHardLimitation|[TwistLimitation](../messages/Base/TwistLimitation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves twist hard limitations|
-|GetWrenchHardLimitation|[WrenchLimitation](../messages/Base/WrenchLimitation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves wrench hard limitations|
+|GetAllJointsSpeedHardLimitation|[JointsLimitationsList](../messages/Base/JointsLimitationsList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves speed hard limits for all joints. **This function will be removed in a future release. Use GetKinematicHardLimits from the ControlConfig service instead.**|
+|GetAllJointsTorqueHardLimitation|[JointsLimitationsList](../messages/Base/JointsLimitationsList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves torque hard limits for all joints. **This function will be removed in a future release.**|
+|GetTwistHardLimitation|[TwistLimitation](../messages/Base/TwistLimitation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves twist hard limitations. **This function will be removed in a future release. Use GetKinematicHardLimits from the ControlConfig service instead.**|
+|GetWrenchHardLimitation|[WrenchLimitation](../messages/Base/WrenchLimitation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves wrench hard limitations. **This function will be removed in a future release.**|
 |SendJointSpeedsJoystickCommand|[Empty](../messages/Common/Empty.md#)|[JointSpeeds](../messages/Base/JointSpeeds.md#)|Sends the desired joystick speeds to all joints with one command. The speed values sent to this call are expected to be a ratio of the maximum value \(between -1.0/+1.0\) Speeds must be sent to all joints. If you don't want to move some of the joints, send a value of 0.|
 |SendSelectedJointSpeedJoystickCommand|[Empty](../messages/Common/Empty.md#)|[JointSpeed](../messages/Base/JointSpeed.md#)|Sends a joystick speed for a specific joint. The speed value sent to this call is expected to be a ratio of the maximum value \(between -1.0/+1.0\)|
 |EnableBridge|[BridgeResult](../messages/Base/BridgeResult.md#)|[BridgeConfig](../messages/Base/BridgeConfig.md#)|Enables TCP bridge to hardware device|
@@ -329,17 +341,30 @@ Base service. Broadly useful service. Provides functions for configuring a range
 |GetBridgeConfig|[BridgeConfig](../messages/Base/BridgeConfig.md#)|[BridgeIdentifier](../messages/Base/BridgeIdentifier.md#)|Retrieves configuration for specified bridge|
 |PlayPreComputedJointTrajectory|[Empty](../messages/Common/Empty.md#)|[PreComputedJointTrajectory](../messages/Base/PreComputedJointTrajectory.md#)|Plays a pre-computed angular trajectory|
 |GetProductConfiguration|[CompleteProductConfiguration](../messages/ProductConfiguration/CompleteProductConfiguration.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves product configuration information|
-|UpdateDegreeOfFreedomConfiguration|[Empty](../messages/Common/Empty.md#)|[ProductConfigurationDegreeOfFreedom](../messages/ProductConfiguration/ProductConfigurationDegreeOfFreedom.md#)|Set new value for Degree of Freedom in product configuration \(Identification Number\)|
-|UpdateBaseTypeConfiguration|[Empty](../messages/Common/Empty.md#)|[ProductConfigurationBaseType](../messages/ProductConfiguration/ProductConfigurationBaseType.md#)|Set new Base type in product configuration \(Identification Number\)|
 |UpdateEndEffectorTypeConfiguration|[Empty](../messages/Common/Empty.md#)|[ProductConfigurationEndEffectorType](../messages/ProductConfiguration/ProductConfigurationEndEffectorType.md#)|Set new end-effector type in product configuration \(Identification Number\)|
-|UpdateVisionModuleTypeConfiguration|[Empty](../messages/Common/Empty.md#)|[ProductConfigurationVisionModuleType](../messages/ProductConfiguration/ProductConfigurationVisionModuleType.md#)|Set new vision module type in product configuration \(Identification Number\)|
-|UpdateInterfaceModuleTypeConfiguration|[Empty](../messages/Common/Empty.md#)|[ProductConfigurationInterfaceModuleType](../messages/ProductConfiguration/ProductConfigurationInterfaceModuleType.md#)|Set new interface module type in product configuration \(Identification Number\)|
-|UpdateArmLateralityConfiguration|[Empty](../messages/Common/Empty.md#)|[ProductConfigurationLaterality](../messages/ProductConfiguration/ProductConfigurationLaterality.md#)|Set new arm laterality in product configuration \(Identification Number\)|
-|UpdateWristTypeConfiguration|[Empty](../messages/Common/Empty.md#)|[ProductConfigurationWristType](../messages/ProductConfiguration/ProductConfigurationWristType.md#)|Sets new wrist type in product configuration \(Identification Number\)|
 |RestoreFactoryProductConfiguration|[Empty](../messages/Common/Empty.md#)|[Empty](../messages/Common/Empty.md#)|Restores product configuration to factory product configuration|
 |GetTrajectoryErrorReport|[TrajectoryErrorReport](../messages/Base/TrajectoryErrorReport.md#)|[Empty](../messages/Common/Empty.md#)|Obtains trajectory error report listing errors for rejected trajectory. Provides some feedback on why the trajectory could not be completed.|
-|GetAllJointsSpeedSoftLimitation|[JointsLimitationsList](../messages/Base/JointsLimitationsList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves list of soft speed limits for all joints|
-|GetAllJointsTorqueSoftLimitation|[JointsLimitationsList](../messages/Base/JointsLimitationsList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves list of soft torque limits for all joints|
-|GetTwistSoftLimitation|[TwistLimitation](../messages/Base/TwistLimitation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves all twist soft limitations|
-|GetWrenchSoftLimitation|[WrenchLimitation](../messages/Base/WrenchLimitation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves all wrench soft limitations|
+|GetAllJointsSpeedSoftLimitation|[JointsLimitationsList](../messages/Base/JointsLimitationsList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves list of soft speed limits for all joints. **This function will be removed in a future release. Use GetKinematicSoftLimits from the ControlConfig service instead.**|
+|GetAllJointsTorqueSoftLimitation|[JointsLimitationsList](../messages/Base/JointsLimitationsList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves list of soft torque limits for all joints. **This function will be removed in a future release.**|
+|GetTwistSoftLimitation|[TwistLimitation](../messages/Base/TwistLimitation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves all twist soft limitations. **This function will be removed in a future release. Use GetKinematicSoftLimits from the ControlConfig service instead.**|
+|GetWrenchSoftLimitation|[WrenchLimitation](../messages/Base/WrenchLimitation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves all wrench soft limitations. **This function will be removed in a future release.**|
+|SetControllerConfigurationMode|[Empty](../messages/Common/Empty.md#)|[ControllerConfigurationMode](../messages/Base/ControllerConfigurationMode.md#)|Sets controller configuration mode|
+|GetControllerConfigurationMode|[ControllerConfigurationMode](../messages/Base/ControllerConfigurationMode.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves current controller configuration mode|
+|StartTeaching|[Empty](../messages/Common/Empty.md#)|[SequenceTaskHandle](../messages/Base/SequenceTaskHandle.md#)|Enables the teaching mode on a sequence|
+|StopTeaching|[Empty](../messages/Common/Empty.md#)|[Empty](../messages/Common/Empty.md#)|Disables the teaching mode on a sequence|
+|AddSequenceTasks|[SequenceTasksRange](../messages/Base/SequenceTasksRange.md#)|[SequenceTasksConfiguration](../messages/Base/SequenceTasksConfiguration.md#)|Adds tasks to the specified sequence|
+|UpdateSequenceTask|[Empty](../messages/Common/Empty.md#)|[SequenceTaskConfiguration](../messages/Base/SequenceTaskConfiguration.md#)|Updates a task within the specified sequence|
+|SwapSequenceTasks|[Empty](../messages/Common/Empty.md#)|[SequenceTasksPair](../messages/Base/SequenceTasksPair.md#)|Swaps two task indexes in a sequence|
+|ReadSequenceTask|[SequenceTask](../messages/Base/SequenceTask.md#)|[SequenceTaskHandle](../messages/Base/SequenceTaskHandle.md#)|Reads a specific task from the specified sequence|
+|ReadAllSequenceTasks|[SequenceTasks](../messages/Base/SequenceTasks.md#)|[SequenceHandle](../messages/Base/SequenceHandle.md#)|Reads all tasks from the specified sequence|
+|DeleteSequenceTask|[Empty](../messages/Common/Empty.md#)|[SequenceTaskHandle](../messages/Base/SequenceTaskHandle.md#)|Deletes a specific task from the specified sequence|
+|DeleteAllSequenceTasks|[Empty](../messages/Common/Empty.md#)|[SequenceHandle](../messages/Base/SequenceHandle.md#)|Deletes all tasks from the specified sequence|
+|TakeSnapshot|[Empty](../messages/Common/Empty.md#)|[Snapshot](../messages/Base/Snapshot.md#)|Take a snapshot of current robot Cartesian, joint or gripper position|
+|GetFirmwareBundleVersions|[FirmwareBundleVersions](../messages/Base/FirmwareBundleVersions.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves current firmware bundle versions|
+|MoveSequenceTask|[Empty](../messages/Common/Empty.md#)|[SequenceTasksPair](../messages/Base/SequenceTasksPair.md#)|Move task to new index in a sequence|
+|DuplicateMapping|[MappingHandle](../messages/Base/MappingHandle.md#)|[MappingHandle](../messages/Base/MappingHandle.md#)|Duplicates an existing mapping|
+|DuplicateMap|[MapHandle](../messages/Base/MapHandle.md#)|[MapHandle](../messages/Base/MapHandle.md#)|Duplicates an existing map|
+|SetControllerConfiguration|[Empty](../messages/Common/Empty.md#)|[ControllerConfiguration](../messages/Base/ControllerConfiguration.md#)|Sets controller configuration|
+|GetControllerConfiguration|[ControllerConfiguration](../messages/Base/ControllerConfiguration.md#)|[ControllerHandle](../messages/Base/ControllerHandle.md#)|Retrieves current controller configuration|
+|GetAllControllerConfigurations|[ControllerConfigurationList](../messages/Base/ControllerConfigurationList.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves all controller configurations|
 

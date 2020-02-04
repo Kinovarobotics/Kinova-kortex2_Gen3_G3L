@@ -7,7 +7,7 @@
 |event\_identifier|uint32|Sequence event type|
 |sequence\_handle| [SequenceHandle](SequenceHandle.md#)|Handle of the sequence that this event refers to|
 |task\_index|uint32|Task index|
-|group\_identifier|uint32|Specifies the order in which this task must be executed|
+|group\_identifier|uint32|This field is deprecated and unused. Use task\_index instead.|
 |timestamp| [Timestamp](../Common/Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](../Common/UserProfileHandle.md#)|User that caused the sequence event|
 |abort\_details|uint32|Details if event\_identifier is equal to ABORT|

@@ -12,6 +12,7 @@ This section describes the data classes used in this API, as well as their membe
 |-----|-----------|
 |[AxisOffsets](../messages/ActuatorConfig/AxisOffsets.md#)|Axis offsets|
 |[AxisPosition](../messages/ActuatorConfig/AxisPosition.md#)|Axis position|
+|[CoggingFeedforwardModeInformation](../messages/ActuatorConfig/CoggingFeedforwardModeInformation.md#)|Cogging feedforward mode|
 |[CommandModeInformation](../messages/ActuatorConfig/CommandModeInformation.md#)|Command mode|
 |[ControlLoop](../messages/ActuatorConfig/ControlLoop.md#)|Control loop|
 |[ControlLoopParameters](../messages/ActuatorConfig/ControlLoopParameters.md#)|Control loop parameters \(discrete transfer function\)|
@@ -32,6 +33,7 @@ This section describes the data classes used in this API, as well as their membe
 
 |Enumerator|Description|
 |----------|-----------|
+|[CoggingFeedforwardMode](../enums/ActuatorConfig/CoggingFeedforwardMode.md#)|Admissable cogging feedforward modes|
 |[CommandMode](../enums/ActuatorConfig/CommandMode.md#)|Admissible command modes|
 |[ControlLoopSelection](../enums/ActuatorConfig/ControlLoopSelection.md#)|Admissible control loop selections|
 |[ControlMode](../enums/ActuatorConfig/ControlMode.md#)|Admissible control modes|
@@ -47,7 +49,7 @@ Service to configure actuators
 |Function name|Return type|Input type|Description|
 |-------------|-----------|----------|-----------|
 |GetAxisOffsets|[AxisOffsets](../messages/ActuatorConfig/AxisOffsets.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves axis offsets for absolute and relative encoder|
-|SetAxisOffsets|[Empty](../messages/Common/Empty.md#)|[AxisPosition](../messages/ActuatorConfig/AxisPosition.md#)|Sets offsets for absolute and relative encoder|
+|SetAxisOffsets|[Empty](../messages/Common/Empty.md#)|[AxisPosition](../messages/ActuatorConfig/AxisPosition.md#)|Sets offsets for absolute and relative encoder Invoking this method shall invalidate arm calibration if one exists. This method is for kinova usage only.|
 |ReadTorqueCalibration|[TorqueCalibration](../messages/ActuatorConfig/TorqueCalibration.md#)|[Empty](../messages/Common/Empty.md#)|Reads torque calibration parameters \(internal use only\)|
 |WriteTorqueCalibration|[Empty](../messages/Common/Empty.md#)|[TorqueCalibration](../messages/ActuatorConfig/TorqueCalibration.md#)|Writes torque calibration parameters \(internal use only\)|
 |SetTorqueOffset|[Empty](../messages/Common/Empty.md#)|[TorqueOffset](../messages/ActuatorConfig/TorqueOffset.md#)|Sets zero torque calibration|
@@ -76,4 +78,6 @@ Service to configure actuators
 |GetCommandMode|[CommandModeInformation](../messages/ActuatorConfig/CommandModeInformation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves command mode \(config versus cyclic\)|
 |GetServoing|[Servoing](../messages/ActuatorConfig/Servoing.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves servoing state|
 |GetTorqueOffset|[TorqueOffset](../messages/ActuatorConfig/TorqueOffset.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves torque offset calibration|
+|SetCoggingFeedforwardMode|[Empty](../messages/Common/Empty.md#)|[CoggingFeedforwardModeInformation](../messages/ActuatorConfig/CoggingFeedforwardModeInformation.md#)|Sets cogging feedforward mode|
+|GetCoggingFeedforwardMode|[CoggingFeedforwardModeInformation](../messages/ActuatorConfig/CoggingFeedforwardModeInformation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves cogging feedforward mode|
 
