@@ -30,7 +30,7 @@ The official repository contains documentation and examples explaining how to us
     - [Quick Start for Python users](#quick-start-howto-python)
     - [Quick Start for C++ users](#quick-start-howto-cpp)
 - [Download links](#api-download-links)
-- [Language-specific details](#api-details-for-a-specific-language)
+- [Build and run instructions](#build-and-run-instructions)
 - [Reference](#reference)
             - [Useful Links](#useful-links)
 
@@ -101,8 +101,8 @@ Release 2.0.0 for Gen3: <a href="https://artifactory.kinovaapps.com/artifactory/
 </p>
 </details>
 
-<a id="markdown-api-details-for-a-specific-language" name="api-details-for-a-specific-language"></a>
-# Language-specific details 
+<a id="markdown-build-and-run-instructions" name="build-and-run-instructions"></a>
+# Build and Run instructions
 
 [C++ API](./api_cpp/examples/readme.md)  
 [Python API](./api_python/examples/readme.md) 

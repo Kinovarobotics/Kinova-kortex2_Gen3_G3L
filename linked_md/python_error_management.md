@@ -54,8 +54,8 @@ A `KClientException` is thrown when an error occurs on the API client side, just
 
 A `KClientException` includes error code and sub error code information describing the exception. Here is a link to documentation explaining all of the error and sub error codes:
 
-- [Error code](https://github.com/Kinovarobotics/kortex/blob/master/api_python/doc/markdown/references/enm_Api_ErrorCodes.md)
-- [Sub error code](https://github.com/Kinovarobotics/kortex/blob/master/api_python/doc/markdown/references/enm_Api_SubErrorCodes.md#)
+- [Error code](https://github.com/Kinovarobotics/kortex/blob/master/api_python/doc/markdown/enums/Api/ErrorCodes.md)
+- [Sub error code](https://github.com/Kinovarobotics/kortex/blob/master/api_python/doc/markdown/enums/Api/SubErrorCodes.md)
 
 <a id="markdown-special-cases" name="special-cases"></a>
 ## Special case

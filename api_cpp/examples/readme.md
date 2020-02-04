@@ -22,6 +22,7 @@
     - [GCC 5.4 compiler (preferred)](#gcc-54-compiler-prefered)
       - [Install GCC 5.4 under Linux (Ubuntu 16.04 and higher)](#procedure-to-install-gcc-54-under-linux-ubuntu-1604)
       - [Install GCC 5.4 under Windows](#procedure-to-install-gcc-54-under-windows)
+  - [Conan](#conan)
   - [Download and set up Kortex C++ API](#download-and-set-up-kortex-c-api)
 - [Build](#build-instruction)
 - [Run](#how-to-use-examples-with-your-robot)
@@ -108,9 +109,59 @@ Because GCC is not coded for the Windows operating system, a GCC port of MinGW-w
 > 
 -->
 
+<a id="markdown-conan" name="conan"></a>
+## Conan
+
+### Using Conan
+
+The C++ examples use the Conan package manager for fetching its dependencies. 
+This is done by default and requires Conan to be installed.
+
+You can refer to the [Conan Installation Tutorial](https://docs.conan.io/en/latest/installation.html) for installing Conan.
+**Note**: It is recommended to install Python3 for Conan. You can download and install Python3 from https://www.python.org/  
+
+Next, enable the revision feature for Artifactory plugin
+```sh
+conan config set general.revisions_enabled=1
+```
+
+Create an automatically detected default profile
+```sh
+conan profile new default --detect 
+```
+
+After Conan is properly installed, build as specified in the [build](#build) section.
+
+### Not using Conan
+
+Although building with Conan is recommended, it is possible to disable it.
+
+Doing so requires calling cmake with an additional option: `-DUSE_CONAN=OFF`.
+
+Example (Linux):
+
+```sh
+ mkdir build  
+ cd build  
+ cmake .. -DUSE_CONAN=OFF -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<OS_Compiler_Architecture dir name>]
+ make  
+ ```
+
+This applies to all the manual build commands. The build scripts can also be modified to add this option.
+
+Example (build-mingw.bat)
+
+```bat
+(line 17) cmake .. -G "MinGW Makefiles" -DUSE_CONAN=OFF -DCMAKE_BUILD_TYPE=%build_type% -DKORTEX_SUB_DIR=%kortex_api_folder% && mingw32-make
+```
+
+This will effectively revert to the old build method. It requires downloading the Kortex Api source from the Kinova website as described in [the next section](#download-and-set-up-kortex-c-api).
+
+
 <a id="markdown-install-cpp-kortex-api--the-needed-dependencies" name="install-cpp-kortex-api--the-needed-dependencies"></a>
 ## Download and set up Kortex C++ API
 
+<!--This link will need to change for the public download link-->
 Manual installation using downloaded archive:  
  + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.1.0/kortex_api_2.1.0.zip)
  + Uncompress the content of the archive and place the contents of the `cpp/{your_architecture}` folder in the sub-directory `kortex_api`.  
@@ -141,6 +192,9 @@ examples/kortex_api
 
 <a id="markdown-build-instruction" name="build-instruction"></a>
 # Build
+
+**Note**: The C++ examples use the Conan package manager by default.
+Refer to the [Conan](#conan) section on how to install Conan or revert to building without Conan.
 
 To build, you need change the current directory to the example directory. 
 The build instructions then depend on your OS and compiler (see below).
