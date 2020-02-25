@@ -43,7 +43,7 @@ Refer to the main README for Python installation details: [parent readme](../../
 
 Install what is needed to run the examples via a downloaded whl file (Python wheel package).
 
-The whl file can be downloaded via the Kinova Artifactory: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.1.0/kortex_api_2.1.0.zip)  
+The whl file can be downloaded via the Kinova Artifactory: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/API/2.2.0/kortex_api-2.2.0.post31-py3-none-any.whl)  
 
 On Linux:
 
