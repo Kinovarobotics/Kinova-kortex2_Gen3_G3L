@@ -138,8 +138,8 @@ The `KError` object holds an error code and a sub error code to identify the fau
 
 Here is a link to documentation explaining all of the error and sub error codes:
 
-- [Error code](https://github.com/Kinovarobotics/kortex/blob/master/api_cpp/doc/markdown/references/enm_Api_ErrorCodes.md)
-- [Sub error code](https://github.com/Kinovarobotics/kortex/blob/master/api_cpp/doc/markdown/references/enm_Api_SubErrorCodes.md#)
+- [Error code](https://github.com/Kinovarobotics/kortex/blob/master/api_cpp/doc/markdown/enums/Api/ErrorCodes.md)
+- [Sub error code](https://github.com/Kinovarobotics/kortex/blob/master/api_cpp/doc/markdown/enums/Api/SubErrorCodes.md)
 
 <a id="markdown-callback" name="callback"></a>
 ## Callback

@@ -100,6 +100,9 @@ Enumeration SubErrorCodes
 |NVRAM\_READ\_FAIL|133|Failed to read in NVRAM.|
 |NVRAM\_WRITE\_FAIL|134|Failed to write in NVRAM.|
 |NETWORK\_NO\_ADDRESS\_ASSIGNED|135|The specified interface has no assigned IP|
+|READ\_PERMISSION\_DENIED|136|Attempting read command on unreadable entity|
+|CONTROLLER\_INVALID\_MAPPING|137|Attempting to assign an unsuited mapping to controller|
+|ACTION\_IN\_USE|138|Attempting to delete an Action used by another entity|
 
 **Parent topic:** [Api \(Python\)](../../summary_pages/Api.md)
 

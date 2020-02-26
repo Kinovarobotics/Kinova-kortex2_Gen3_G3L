@@ -9,7 +9,6 @@ Enumeration ControlMode
 |UNSPECIFIED\_CONTROL\_MODE|0|Unspecified control mode|
 |ANGULAR\_JOYSTICK|1|Angular joystick mode|
 |CARTESIAN\_JOYSTICK|2|Cartesian joystick mode|
-|VISION\_JOYSTICK|3|Vision joystick mode|
 |ANGULAR\_TRAJECTORY|4|Angular trajectory mode|
 |CARTESIAN\_TRAJECTORY|5|Cartesian trajectory mode|
 |CARTESIAN\_ADMITTANCE|6|Cartesian admittance mode|

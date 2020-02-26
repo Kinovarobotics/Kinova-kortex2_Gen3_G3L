@@ -4,7 +4,7 @@
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|group\_identifier|uint32|Specifies the order in which this task must be executed|
+|group\_identifier|uint32|This field is deprecated and unused. Use task\_index in the SequenceTaskHandle instead.|
 |action| [Action](Action.md#)|Specifies the action to execute|
 |application\_data|string|Application data \(reserved for use by Web App\)|
 

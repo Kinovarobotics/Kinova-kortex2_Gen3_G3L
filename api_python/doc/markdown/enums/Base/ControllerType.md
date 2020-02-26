@@ -9,7 +9,8 @@ Enumeration ControllerType
 |UNSPECIFIED\_CONTROLLER\_TYPE|0|Unspecified controller device type|
 |XBOX\_CONTROLLER|1|Xbox gamepad|
 |WRIST\_CONTROLLER|2|Wrist buttons|
-|GPIO\_JOYSTICK|3|GPIO joystick connected to Kinova robot base|
+|BASIC\_JOYSTICK\_CONTROLLER|3|Simplified joystick connected to Kinova robot base|
+|BASE\_GPIO\_CONTROLLER|4|GPIO Controller \(not implemented yet\)|
 
 **Parent topic:** [Base \(Python\)](../../summary_pages/Base.md)
 

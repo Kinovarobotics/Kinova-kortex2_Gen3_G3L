@@ -5,7 +5,7 @@
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |controller\_state|oneof:state [ControllerState](ControllerState.md#)|Used to indicate if a controller connection or disconnection event occured|
-|controller\_element|oneof:state [ControllerElementState](ControllerElementState.md#)|Used to indicate if a specific button \(or axis\) was pressed \(or moved\) \(not implemented yet\)|
+|controller\_element|oneof:state [ControllerElementState](ControllerElementState.md#)|Used to indicate if a specific button \(or axis\) was pressed \(or moved\)|
 |timestamp| [Timestamp](../Common/Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](../Common/UserProfileHandle.md#)|User that caused the controller event|
 |connection| [Connection](../Common/Connection.md#)|Connection that caused the controller event|

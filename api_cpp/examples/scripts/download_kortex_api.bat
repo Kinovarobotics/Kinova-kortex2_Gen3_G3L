@@ -27,7 +27,8 @@ if exist ..\kortex_api\include\ (
 
 if /I "%return_code%" equ "1" (
     echo You need to download the Kortex API
-    echo Please download it here : https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.1.0/kortex_api_2.1.0.zip
+    echo Please download it here : https://artifactory.kinovaapps.com/artifactory/webapp/#/artifacts/browse/tree/General/generic-local-public/API/2.2.0/
+    echo Choose the proper archive for your target
     echo Unzip it in api_cpp\examples\kortex_api
 )
 

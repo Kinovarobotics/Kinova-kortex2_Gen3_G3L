@@ -9,6 +9,7 @@
 |timestamp| [Timestamp](../Common/Timestamp.md#)|Event timestamp|
 |user\_handle| [UserProfileHandle](../Common/UserProfileHandle.md#)|User that caused the mapping information event|
 |connection| [Connection](../Common/Connection.md#)|Connection that caused the mapping information event|
+|mapping\_handle| [MappingHandle](MappingHandle.md#)|Mapping for which the map was activated|
 
  **Member functions** 
 
@@ -41,6 +42,12 @@
 |clear\_connection\(\)|void|void|Clears the value of the field. After calling this, has\_connection\(\) will return false and connection\(\) will return the default value.|
 |set\_allocated\_connection\(\)|void| [Connection](../Common/Connection.md#) \*|Sets the [Connection](../Common/Connection.md#) object to the field and frees the previous field value if it exists. If the [Connection](../Common/Connection.md#) pointer is not NULL, the message takes ownership of the allocated [Connection](../Common/Connection.md#) object and has\_ [Connection](../Common/Connection.md#)\(\) will return true. Otherwise, if the connection is NULL, the behavior is the same as calling clear\_connection\(\).|
 |release\_connection\(\)| [Connection](../Common/Connection.md#) \*|void|Releases the ownership of the field and returns the pointer of the [Connection](../Common/Connection.md#) object. After calling this, caller takes the ownership of the allocated [Connection](../Common/Connection.md#) object, has\_connection\(\) will return false, and connection\(\) will return the default value.|
+|has\_mapping\_handle\(\) const|bool|void|Returns true if mapping\_handle is set.|
+|mapping\_handle\(\)|const [MappingHandle](MappingHandle.md#)&|void|Returns the current value of mapping\_handle. If mapping\_handle is not set, returns a [MappingHandle](MappingHandle.md#) with none of its fields set \(possibly mapping\_handle::default\_instance\(\)\).|
+|mutable\_mapping\_handle\(\)| [MappingHandle](MappingHandle.md#) \*|void|Returns a pointer to the mutable [MappingHandle](MappingHandle.md#) object that stores the field's value. If the field was not set prior to the call, then the returned [MappingHandle](MappingHandle.md#) will have none of its fields set \(i.e. it will be identical to a newly-allocated [MappingHandle](MappingHandle.md#)\). After calling this, has\_mapping\_handle\(\) will return true and mapping\_handle\(\) will return a reference to the same instance of [MappingHandle](MappingHandle.md#).|
+|clear\_mapping\_handle\(\)|void|void|Clears the value of the field. After calling this, has\_mapping\_handle\(\) will return false and mapping\_handle\(\) will return the default value.|
+|set\_allocated\_mapping\_handle\(\)|void| [MappingHandle](MappingHandle.md#) \*|Sets the [MappingHandle](MappingHandle.md#) object to the field and frees the previous field value if it exists. If the [MappingHandle](MappingHandle.md#) pointer is not NULL, the message takes ownership of the allocated [MappingHandle](MappingHandle.md#) object and has\_ [MappingHandle](MappingHandle.md#)\(\) will return true. Otherwise, if the mapping\_handle is NULL, the behavior is the same as calling clear\_mapping\_handle\(\).|
+|release\_mapping\_handle\(\)| [MappingHandle](MappingHandle.md#) \*|void|Releases the ownership of the field and returns the pointer of the [MappingHandle](MappingHandle.md#) object. After calling this, caller takes the ownership of the allocated [MappingHandle](MappingHandle.md#) object, has\_mapping\_handle\(\) will return false, and mapping\_handle\(\) will return the default value.|
 
 **Parent topic:** [Base \(C++\)](../../summary_pages/Base.md)
 

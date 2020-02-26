@@ -4,8 +4,8 @@
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|speed|oneof:type [CartesianSpeed](CartesianSpeed.md#)|Speed constraint \(in meters per second\)|
-|duration|oneof:type float32|Duration constraint \(in meters per second\) \(not implemented yet\)|
+|speed|oneof:type [CartesianSpeed](CartesianSpeed.md#)|Speed constraint|
+|duration|oneof:type float32|Duration constraint \(in seconds\) \(not implemented yet\)|
 
  **Member functions** 
 

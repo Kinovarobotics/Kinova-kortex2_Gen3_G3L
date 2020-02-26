@@ -13,6 +13,7 @@ Enumeration ActionType
 |REACH\_POSE|6|Reach a pose|
 |REACH\_JOINT\_ANGLES|7|Reach a series of joint angles|
 |TOGGLE\_ADMITTANCE\_MODE|13|Enable or disable the admittance mode|
+|SNAPSHOT|14|Take a snapshot of current robot position|
 |SWITCH\_CONTROL\_MAPPING|16|Switch the active controller map|
 |NAVIGATE\_JOINTS|17|Select the next actuator to control from control mapping|
 |NAVIGATE\_MAPPINGS|18|Select a different map|
