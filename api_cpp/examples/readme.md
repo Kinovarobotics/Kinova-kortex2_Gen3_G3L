@@ -62,7 +62,7 @@ On Windows, make sure you add CMake to your PATH variable
 
  ![CMake add to path](../..//linked_md/add_cmake_to_path.PNG)
 <a id="markdown-gcc-54-compiler-prefered" name="gcc-54-compiler-prefered"></a>
-### GCC 5.4 compiler (preferred)  
+### GCC compiler  
  
  To check which version of GCC is installed on Windows or Linux  
 **Note:** This procedure only works on Windows if you add the MinGW bin directory path to the PATH environment variable.
@@ -72,7 +72,7 @@ On Windows, make sure you add CMake to your PATH variable
  ```
 <a id="markdown-procedure-to-install-gcc-54-under-linux-ubuntu-1604" name="procedure-to-install-gcc-54-under-linux-ubuntu-1604"></a>
 
-#### Procedure to install GCC 5.4 under Linux (Ubuntu 16.04 and higher)
+#### Procedure to install GCC under Linux (GCC 5.4 on Ubuntu 16.04, GCC 7.4 on Ubuntu 18.04)
 ```sh
 sudo apt-get install build-essential
 ```
