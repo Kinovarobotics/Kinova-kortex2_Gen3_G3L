@@ -15,10 +15,8 @@
 <a id="markdown-description" name="description"></a>
 # Description
 
-The official repository contains documentation and examples explaining how to use the KINOVA<sup>®</sup> KORTEX™ API client with C++ or Python:  
-
-
-[https://github.com/Kinovarobotics/kortex](https://github.com/Kinovarobotics/kortex)  
+The official repository contains documentation and examples explaining how to use the KINOVA<sup>®</sup> KORTEX™ API client with C++ or Python.
+The repository has been tested on Windows 10, Ubuntu 16.04 and Ubuntu 18.04.
 
 <h1>Table of Contents</h1>
 
