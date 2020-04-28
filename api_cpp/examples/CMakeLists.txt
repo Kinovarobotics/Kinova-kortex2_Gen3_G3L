@@ -41,7 +41,7 @@ endif()
 
 
 option(USE_CONAN "Use the Conan package manager to automatically fetch the Kortex API" ON)
-
+option(DOWNLOAD_API "Automatically download the API if conan is not used" ON)
 
 # Activate C++ 11
 set (CMAKE_CXX_STANDARD 11)
@@ -179,26 +179,31 @@ else() # Not using Conan
   endif()
 
   # Download the API
+  if(DOWNLOAD_API)
+    if(UNIX)
+      execute_process(COMMAND ./download_kortex_api.sh
+        WORKING_DIRECTORY ../scripts
+        RESULT_VARIABLE DOWNLOAD_API_RESULT
+        OUTPUT_VARIABLE DOWNLOAD_API_OUTPUT)
+      if(NOT DOWNLOAD_API_RESULT EQUAL 0)
+        message("Kortex API was not downloaded prior to running CMake.")
+        message(FATAL_ERROR ${DOWNLOAD_API_OUTPUT})
+      endif()
+    elseif(WIN32)
+      execute_process(COMMAND download_kortex_api.bat
+        WORKING_DIRECTORY ../scripts
+        RESULT_VARIABLE DOWNLOAD_API_RESULT
+        OUTPUT_VARIABLE DOWNLOAD_API_OUTPUT)
+      if(NOT DOWNLOAD_API_RESULT EQUAL 0)
+        message("Kortex API was not downloaded prior to running CMake.")
+        message(FATAL_ERROR ${DOWNLOAD_API_OUTPUT})
+      endif()
+    endif()
+  endif()
   if(UNIX)
-    execute_process(COMMAND ./download_kortex_api.sh
-      WORKING_DIRECTORY ../scripts
-      RESULT_VARIABLE DOWNLOAD_API_RESULT
-      OUTPUT_VARIABLE DOWNLOAD_API_OUTPUT)
-    if(NOT DOWNLOAD_API_RESULT EQUAL 0)
-      message("Kortex API was not downloaded prior to running CMake.")
-      message(FATAL_ERROR ${DOWNLOAD_API_OUTPUT})
-    endif()
-    link_libraries(${KORTEX_DIR}lib/${KORTEX_LIB_SUBDIR}/libKortexApi.a)
+    link_libraries(${KORTEX_DIR}lib/${KORTEX_LIB_SUBDIR}/libKortexApiCpp.a)
   elseif(WIN32)
-    execute_process(COMMAND ./download_kortex_api.bat
-      WORKING_DIRECTORY ../scripts
-      RESULT_VARIABLE DOWNLOAD_API_RESULT
-      OUTPUT_VARIABLE DOWNLOAD_API_OUTPUT)
-    if(NOT DOWNLOAD_API_RESULT EQUAL 0)
-      message("Kortex API was not downloaded prior to running CMake.")
-      message(FATAL_ERROR ${DOWNLOAD_API_OUTPUT})
-    endif()
-    link_libraries(${KORTEX_DIR}lib/${KORTEX_LIB_SUBDIR}/KortexApi.lib)
+    link_libraries(${KORTEX_DIR}lib/${KORTEX_LIB_SUBDIR}/KortexApiCpp.lib)
   endif()
 
   # Add Include Directories
