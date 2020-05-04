@@ -2,8 +2,14 @@
 
 In order to receive notifications on a topic, a program must subscribe to it using the following syntax:
 
+C++
 ```
 service->OnNotification<$TopicName$>(callback, NotificationOptions)
+```
+
+Python
+```
+service.OnNotification<$TopicName$>(callback, NotificationOptions)
 ```
 
 Where:
