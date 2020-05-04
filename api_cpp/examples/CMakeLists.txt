@@ -225,6 +225,7 @@ else()
 endif()
 
 
+
 # Create executable for each example
 # Look for examples under folders
 file(GLOB EXE_LIST RELATIVE ${PROJECT_SOURCE_DIR} "[0-9]*-*/[0-9]*.cpp")
@@ -238,3 +239,7 @@ foreach ( SRC_FILE ${EXE_LIST} )
   add_executable(${TARGET_EXE_NAME} ${SRC_FILE})
   
 endforeach()
+
+include_directories("Classes/include")
+
+add_executable("ExampleIntegration" "Integration/FullExample.cpp" "Classes/src/KortexRobot.cpp")
