@@ -112,4 +112,9 @@ void KortexRobot::UnsubscribeToNotifications()
 
 }
 
+void KortexRobot::OnActionNotificationCallback(Kinova::Api::Base::ActionNotification &notif)
+{
+    std::cout<< "Notification received" << std::endl;
+}
+
 
