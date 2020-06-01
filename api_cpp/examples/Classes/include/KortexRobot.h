@@ -11,7 +11,6 @@
 
 #include <RouterClient.h>
 #include <TransportClientTcp.h>
-#include <google/protobuf/util/json_util.h>
 #include <vector>
 
 class KortexRobot

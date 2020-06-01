@@ -11,10 +11,9 @@ int main(int argc, char **argv)
         std::cout<< "Connection successful" << std::endl;
 
         robot.SubscribeToNotifications();
-        //Do Stuff
+        //Do stuff later
         robot.UnsubscribeToNotifications();
     }
-    std::cout << "End of example" << std::endl;
-
+    std::cout<< "End of example" <<std::endl;
 }
 
