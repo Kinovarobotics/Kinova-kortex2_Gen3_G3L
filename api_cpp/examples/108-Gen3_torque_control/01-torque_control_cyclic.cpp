@@ -196,8 +196,6 @@ bool example_cyclic_torque_control(k_api::Base::BaseClient* base, k_api::BaseCyc
     k_api::BaseCyclic::Feedback base_feedback;
     k_api::BaseCyclic::Command  base_command;
 
-    std::vector<float> commands;
-
     auto servoing_mode = k_api::Base::ServoingModeInformation();
 
     int timer_count = 0;
@@ -215,8 +213,6 @@ bool example_cyclic_torque_control(k_api::Base::BaseClient* base, k_api::BaseCyc
         // Initialize each actuator to their current position
         for (int i = 0; i < ACTUATOR_COUNT; i++)
         {
-            commands.push_back(base_feedback.actuators(i).position());
-
             // Save the current actuator position, to avoid a following error
             base_command.add_actuators()->set_position(base_feedback.actuators(i).position());
         }
