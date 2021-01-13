@@ -81,7 +81,7 @@ sudo apt-get install build-essential
 #### Procedure to install GCC 5.4 under Windows
 Because GCC is not coded for the Windows operating system, a GCC port of MinGW-w64 for Windows is required. The '-w64' suffix indicates that it can support a 32-bit or 64-bit environment. The 32-bit versions are still available and one of them will be used to compile the affected project.
 
-1. Go to  https://sourceforge.net/projects/mingw-w64
+1. [Download the installer](http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download)
 2. Start the installer and click `Next` until you reach the installation options page
 3. On the options page ensure that the options look exactly like this (all options are the default values, except for version, which is the version of GCC we want to install - 5.4 in this case)
  
