@@ -86,8 +86,8 @@ The latest download links for each arm type are reported in the table below:
 
 | Arm type       | Firmware     | Release notes      | API |
 | :------------- | :----------: | :-----------: | :-----------:
-|  Gen3 | [2.2.0](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.2.0/Gen3-2.2.0.swu)   | [2.2.0](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.2.0/RN-001_KINOVA_Gen3_Ultra_lightweight_robot-Release_Notes_EN_R06.pdf)    | [2.2.0](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public%2Fkortex%2FAPI%2F2.2.0)
-| Gen3 lite   | [2.1.1](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3Lite/2.1.1/Gen3Lite-2.1.1.swu) | [2.1.1](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3Lite/2.1.1/RN-002_Gen3_lite_robot_Release_Notes_EN_R01.pdf) | [2.1.0](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.1.0/kortex_api_2.1.0.zip)
+|  Gen3 | [2.2.1](https://artifactory.kinovaapps.com/ui/api/v1/download?repoKey=generic-local-public&path=kortex%2Fgen3%2F2.2.1%2FGen3-2.2.1.swu)   | [2.2.0](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.2.0/RN-001_KINOVA_Gen3_Ultra_lightweight_robot-Release_Notes_EN_R06.pdf)    | [2.2.0](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public%2Fkortex%2FAPI%2F2.2.0)
+| Gen3 lite   | [2.1.2](https://artifactory.kinovaapps.com/ui/api/v1/download?repoKey=generic-local-public&path=kortex%2Fgen3Lite%2F2.1.2%2FGen3Lite-2.1.2.swu) | [2.1.1](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3Lite/2.1.1/RN-002_Gen3_lite_robot_Release_Notes_EN_R01.pdf) | [2.1.0](https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.1.0/kortex_api_2.1.0.zip)
 
 When following the link to Artifactory, to download the correct C++ API, you have to select the package for your architecture on the left-hand side tree view and then click Download on the right-hand side:
 
