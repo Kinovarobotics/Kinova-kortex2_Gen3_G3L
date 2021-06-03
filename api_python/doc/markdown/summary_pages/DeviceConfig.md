@@ -2,50 +2,9 @@
 
 This page describes the Python DeviceConfig API.
 
-## Class reference
+## RPC reference
 
-This section describes the data classes used in this API, as well as their member values and member functions.
-
- **Messages** 
-
-|Class|Description|
-|-----|-----------|
-|[BootloaderVersion](../messages/DeviceConfig/BootloaderVersion.md#)|Bootloader version for the device|
-|[Calibration](../messages/DeviceConfig/Calibration.md#)|Calibration information to push to device|
-|[CalibrationElement](../messages/DeviceConfig/CalibrationElement.md#)|Calibration element|
-|[CalibrationParameter](../messages/DeviceConfig/CalibrationParameter.md#)|Single calibration parameter information|
-|[CalibrationResult](../messages/DeviceConfig/CalibrationResult.md#)|Result of a calibration|
-|[CapSenseConfig](../messages/DeviceConfig/CapSenseConfig.md#)|Capacitive sensor configuration message|
-|[CapSenseRegister](../messages/DeviceConfig/CapSenseRegister.md#)|Message used to address a register|
-|[DeviceType](../messages/DeviceConfig/DeviceType.md#)|Device type|
-|[FirmwareVersion](../messages/DeviceConfig/FirmwareVersion.md#)|Firmware version for the device|
-|[IPv4Settings](../messages/DeviceConfig/IPv4Settings.md#)|IPv4 settings for the device, including address, subnet mask, and default gateway|
-|[MACAddress](../messages/DeviceConfig/MACAddress.md#)|MAC address for the device|
-|[ModelNumber](../messages/DeviceConfig/ModelNumber.md#)|Model number for the device|
-|[PartNumber](../messages/DeviceConfig/PartNumber.md#)|Part number for the device|
-|[PartNumberRevision](../messages/DeviceConfig/PartNumberRevision.md#)|Part number revision for the device|
-|[PowerOnSelfTestResult](../messages/DeviceConfig/PowerOnSelfTestResult.md#)|Result of power on self test|
-|[RebootRqst](../messages/DeviceConfig/RebootRqst.md#)|Reboot request with bootloader delay|
-|[RunMode](../messages/DeviceConfig/RunMode.md#)|Run mode|
-|[SafetyConfiguration](../messages/DeviceConfig/SafetyConfiguration.md#)|Configuration for a safety|
-|[SafetyConfigurationList](../messages/DeviceConfig/SafetyConfigurationList.md#)|Array of safety configurations|
-|[SafetyEnable](../messages/DeviceConfig/SafetyEnable.md#)|Enable or disable a specific safety|
-|[SafetyInformation](../messages/DeviceConfig/SafetyInformation.md#)|Information about a specific safety|
-|[SafetyInformationList](../messages/DeviceConfig/SafetyInformationList.md#)|Array of safety information|
-|[SafetyStatus](../messages/DeviceConfig/SafetyStatus.md#)|Safety status|
-|[SafetyThreshold](../messages/DeviceConfig/SafetyThreshold.md#)|Configure threshold of a specific safety|
-|[SerialNumber](../messages/DeviceConfig/SerialNumber.md#)|Serial number for the device|
-
- **Enumerators** 
-
-|Enumerator|Description|
-|----------|-----------|
-|[CalibrationItem](../enums/DeviceConfig/CalibrationItem.md#)|Admissible calibration items|
-|[CalibrationStatus](../enums/DeviceConfig/CalibrationStatus.md#)|Admissible calibration status|
-|[CapSenseMode](../enums/DeviceConfig/CapSenseMode.md#)|Admissible capacitive sensor mode|
-|[RunModes](../enums/DeviceConfig/RunModes.md#)|Options for the run mode for the device|
-|[SafetyLimitType](../enums/DeviceConfig/SafetyLimitType.md#)|Types of safeties limits|
-|[ServiceVersion](../enums/DeviceConfig/ServiceVersion.md#)|Identifies DeviceConfig current version|
+This section describes the existing RPCs used in this API.
 
 Service to get and set device configuration information
 
@@ -87,4 +46,49 @@ Service to get and set device configuration information
 |GetCapSenseConfig|[CapSenseConfig](../messages/DeviceConfig/CapSenseConfig.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves the capacitive sensor calibration|
 |ReadCapSenseRegister|[CapSenseRegister](../messages/DeviceConfig/CapSenseRegister.md#)|[CapSenseRegister](../messages/DeviceConfig/CapSenseRegister.md#)|Reads low-level register from the capacitive sensor \(for Kinova internal use ony, not to be used in the field\)|
 |WriteCapSenseRegister|[Empty](../messages/Common/Empty.md#)|[CapSenseRegister](../messages/DeviceConfig/CapSenseRegister.md#)|Writes to low-level register of the capacitive sensor \(for Kinova internal use ony, not to be used in the field\)|
+
+## Class reference
+
+This section describes the data classes used in this API.
+
+ **Messages** 
+
+|Class|Description|
+|-----|-----------|
+|[BootloaderVersion](../messages/DeviceConfig/BootloaderVersion.md#)|Bootloader version for the device|
+|[Calibration](../messages/DeviceConfig/Calibration.md#)|Calibration information to push to device|
+|[CalibrationElement](../messages/DeviceConfig/CalibrationElement.md#)|Calibration element|
+|[CalibrationParameter](../messages/DeviceConfig/CalibrationParameter.md#)|Single calibration parameter information|
+|[CalibrationResult](../messages/DeviceConfig/CalibrationResult.md#)|Result of a calibration|
+|[CapSenseConfig](../messages/DeviceConfig/CapSenseConfig.md#)|Capacitive sensor configuration message|
+|[CapSenseRegister](../messages/DeviceConfig/CapSenseRegister.md#)|Message used to address a register|
+|[DeviceType](../messages/DeviceConfig/DeviceType.md#)|Device type|
+|[FirmwareVersion](../messages/DeviceConfig/FirmwareVersion.md#)|Firmware version for the device|
+|[IPv4Settings](../messages/DeviceConfig/IPv4Settings.md#)|IPv4 settings for the device, including address, subnet mask, and default gateway|
+|[MACAddress](../messages/DeviceConfig/MACAddress.md#)|MAC address for the device|
+|[ModelNumber](../messages/DeviceConfig/ModelNumber.md#)|Model number for the device|
+|[PartNumber](../messages/DeviceConfig/PartNumber.md#)|Part number for the device|
+|[PartNumberRevision](../messages/DeviceConfig/PartNumberRevision.md#)|Part number revision for the device|
+|[PowerOnSelfTestResult](../messages/DeviceConfig/PowerOnSelfTestResult.md#)|Result of power on self test|
+|[RebootRqst](../messages/DeviceConfig/RebootRqst.md#)|Reboot request with bootloader delay|
+|[RunMode](../messages/DeviceConfig/RunMode.md#)|Run mode|
+|[SafetyConfiguration](../messages/DeviceConfig/SafetyConfiguration.md#)|Configuration for a safety|
+|[SafetyConfigurationList](../messages/DeviceConfig/SafetyConfigurationList.md#)|Array of safety configurations|
+|[SafetyEnable](../messages/DeviceConfig/SafetyEnable.md#)|Enable or disable a specific safety|
+|[SafetyInformation](../messages/DeviceConfig/SafetyInformation.md#)|Information about a specific safety|
+|[SafetyInformationList](../messages/DeviceConfig/SafetyInformationList.md#)|Array of safety information|
+|[SafetyStatus](../messages/DeviceConfig/SafetyStatus.md#)|Safety status|
+|[SafetyThreshold](../messages/DeviceConfig/SafetyThreshold.md#)|Configure threshold of a specific safety|
+|[SerialNumber](../messages/DeviceConfig/SerialNumber.md#)|Serial number for the device|
+
+ **Enumerators** 
+
+|Enumerator|Description|
+|----------|-----------|
+|[CalibrationItem](../enums/DeviceConfig/CalibrationItem.md#)|Admissible calibration items|
+|[CalibrationStatus](../enums/DeviceConfig/CalibrationStatus.md#)|Admissible calibration status|
+|[CapSenseMode](../enums/DeviceConfig/CapSenseMode.md#)|Admissible capacitive sensor mode|
+|[RunModes](../enums/DeviceConfig/RunModes.md#)|Options for the run mode for the device|
+|[SafetyLimitType](../enums/DeviceConfig/SafetyLimitType.md#)|Types of safeties limits|
+|[ServiceVersion](../enums/DeviceConfig/ServiceVersion.md#)|Identifies DeviceConfig current version|
 

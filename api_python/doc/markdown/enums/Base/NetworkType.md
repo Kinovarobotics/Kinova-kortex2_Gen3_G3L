@@ -10,7 +10,7 @@ Enumeration NetworkType
 |WIFI|1|Wi-Fi network|
 |WIRED\_ETHERNET|2|Wired Ethernet network|
 |WIRED\_MICROUSB|3|Wired Ethernet over USB network \(RNDIS\)|
-|WIRED\_USB|4|Wired Ethernet over USB network|
+|WIRED\_USB|4|This enum value is deprecated and will be removed in a future release.|
 
 **Parent topic:** [Base \(Python\)](../../summary_pages/Base.md)
 

@@ -20,7 +20,7 @@ from kortex_api.RouterClient import RouterClientSendOptions
 from kortex_api.autogen.client_stubs.DeviceConfigClientRpc import DeviceConfigClient
 from kortex_api.autogen.client_stubs.BaseClientRpc import BaseClient
 
-from kortex_api.autogen.messages import DeviceConfig_pb2, Session_pb2, Base_pb2
+from kortex_api.autogen.messages import DeviceConfig_pb2, Session_pb2, Base_pb2, Common_pb2
 
 def example_call_rpc_using_options(base):
 
@@ -40,16 +40,24 @@ def example_call_rpc_using_options(base):
     # using router's default options
     
     try:
-        all_speed_hard_limits = base.GetAllJointsSpeedHardLimitation()
+        requested_action_type = Base_pb2.RequestedActionType()
+        # requested_action_type.action_type = Base_pb2.REACH_JOINT_ANGLES
+        all_actions = base.ReadAllActions(requested_action_type, options=router_options)
     except Exception as e:
         print(e)
-    
-    for speed_limit in all_speed_hard_limits.joints_limitations:
-        print("============================================")
-        print("Joint: {0}".format(speed_limit.joint_identifier))
-        print("Type of limitation: {0}".format(Base_pb2.LimitationType.Name(speed_limit.type)))
-        print("Value: {0}".format(speed_limit.value))
-        print("============================================")
+    else:
+        print ("List of all actions in the arm:")
+        for action in all_actions.action_list:
+            print("============================================")
+            print("Action name: {0}".format(action.name))
+            print("Action identifier: {0}".format(action.handle.identifier))
+            print("Action type: {0}".format(Base_pb2.ActionType.Name(action.handle.action_type)))
+            print("Action permissions: ")
+            if (action.handle.permission & Common_pb2.NO_PERMISSION): print("\t- {0}".format(Common_pb2.Permission.Name(Common_pb2.NO_PERMISSION)))
+            if (action.handle.permission & Common_pb2.READ_PERMISSION): print("\t- {0}".format(Common_pb2.Permission.Name(Common_pb2.READ_PERMISSION)))
+            if (action.handle.permission & Common_pb2.UPDATE_PERMISSION): print("\t- {0}".format(Common_pb2.Permission.Name(Common_pb2.UPDATE_PERMISSION)))
+            if (action.handle.permission & Common_pb2.DELETE_PERMISSION): print("\t- {0}".format(Common_pb2.Permission.Name(Common_pb2.DELETE_PERMISSION)))
+            print("============================================")
 
 def main():
     # Import the utilities helper module

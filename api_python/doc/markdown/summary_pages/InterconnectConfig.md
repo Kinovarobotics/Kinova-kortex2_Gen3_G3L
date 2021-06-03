@@ -2,9 +2,34 @@
 
 This page describes the Python InterconnectConfig API.
 
+## RPC reference
+
+This section describes the existing RPCs used in this API.
+
+Service to get and set interface module \(interconnect\) configuration information, including user expansion
+
+ **InterconnectConfigClient RPCs** 
+
+|Function name|Return type|Input type|Description|
+|-------------|-----------|----------|-----------|
+|GetUARTConfiguration|[UARTConfiguration](../messages/Common/UARTConfiguration.md#)|[UARTDeviceIdentification](../messages/Common/UARTDeviceIdentification.md#)|Retrieves user UART configuration|
+|SetUARTConfiguration|[Empty](../messages/Common/Empty.md#)|[UARTConfiguration](../messages/Common/UARTConfiguration.md#)|Configures user UART|
+|GetEthernetConfiguration|[EthernetConfiguration](../messages/InterconnectConfig/EthernetConfiguration.md#)|[EthernetDeviceIdentification](../messages/InterconnectConfig/EthernetDeviceIdentification.md#)|Retrieves user Ethernet configuration|
+|SetEthernetConfiguration|[Empty](../messages/Common/Empty.md#)|[EthernetConfiguration](../messages/InterconnectConfig/EthernetConfiguration.md#)|Configures user Ethernet port|
+|GetGPIOConfiguration|[GPIOConfiguration](../messages/InterconnectConfig/GPIOConfiguration.md#)|[GPIOIdentification](../messages/InterconnectConfig/GPIOIdentification.md#)|Retrieves user GPIO configuration|
+|SetGPIOConfiguration|[Empty](../messages/Common/Empty.md#)|[GPIOConfiguration](../messages/InterconnectConfig/GPIOConfiguration.md#)|Configures user GPIO|
+|GetGPIOState|[GPIOState](../messages/InterconnectConfig/GPIOState.md#)|[GPIOIdentification](../messages/InterconnectConfig/GPIOIdentification.md#)|Retrieves user GPIO state|
+|SetGPIOState|[Empty](../messages/Common/Empty.md#)|[GPIOState](../messages/InterconnectConfig/GPIOState.md#)|Configures user GPIO state|
+|GetI2CConfiguration|[I2CConfiguration](../messages/InterconnectConfig/I2CConfiguration.md#)|[I2CDeviceIdentification](../messages/InterconnectConfig/I2CDeviceIdentification.md#)|Retrieves user I2C configuration|
+|SetI2CConfiguration|[Empty](../messages/Common/Empty.md#)|[I2CConfiguration](../messages/InterconnectConfig/I2CConfiguration.md#)|Configures user I2C|
+|I2CRead|[I2CData](../messages/InterconnectConfig/I2CData.md#)|[I2CReadParameter](../messages/InterconnectConfig/I2CReadParameter.md#)|Performs an I2C read request|
+|I2CReadRegister|[I2CData](../messages/InterconnectConfig/I2CData.md#)|[I2CReadRegisterParameter](../messages/InterconnectConfig/I2CReadRegisterParameter.md#)|Performs an I2C read register request|
+|I2CWrite|[Empty](../messages/Common/Empty.md#)|[I2CWriteParameter](../messages/InterconnectConfig/I2CWriteParameter.md#)|Performs an I2C write request|
+|I2CWriteRegister|[Empty](../messages/Common/Empty.md#)|[I2CWriteRegisterParameter](../messages/InterconnectConfig/I2CWriteRegisterParameter.md#)|Performs an I2C write register request|
+
 ## Class reference
 
-This section describes the data classes used in this API, as well as their member values and member functions.
+This section describes the data classes used in this API.
 
  **Messages** 
 
@@ -41,25 +66,4 @@ This section describes the data classes used in this API, as well as their membe
 |[SafetyIdentifier](../enums/InterconnectConfig/SafetyIdentifier.md#)|Admissible interface module safeties|
 |[ServiceVersion](../enums/InterconnectConfig/ServiceVersion.md#)|Identifies InterconnectConfig current version|
 |[UARTPortId](../enums/InterconnectConfig/UARTPortId.md#)|Admissible UART port|
-
-Service to get and set interface module \(interconnect\) configuration information, including user expansion
-
- **InterconnectConfigClient RPCs** 
-
-|Function name|Return type|Input type|Description|
-|-------------|-----------|----------|-----------|
-|GetUARTConfiguration|[UARTConfiguration](../messages/Common/UARTConfiguration.md#)|[UARTDeviceIdentification](../messages/Common/UARTDeviceIdentification.md#)|Retrieves user UART configuration|
-|SetUARTConfiguration|[Empty](../messages/Common/Empty.md#)|[UARTConfiguration](../messages/Common/UARTConfiguration.md#)|Configures user UART|
-|GetEthernetConfiguration|[EthernetConfiguration](../messages/InterconnectConfig/EthernetConfiguration.md#)|[EthernetDeviceIdentification](../messages/InterconnectConfig/EthernetDeviceIdentification.md#)|Retrieves user Ethernet configuration|
-|SetEthernetConfiguration|[Empty](../messages/Common/Empty.md#)|[EthernetConfiguration](../messages/InterconnectConfig/EthernetConfiguration.md#)|Configures user Ethernet port|
-|GetGPIOConfiguration|[GPIOConfiguration](../messages/InterconnectConfig/GPIOConfiguration.md#)|[GPIOIdentification](../messages/InterconnectConfig/GPIOIdentification.md#)|Retrieves user GPIO configuration|
-|SetGPIOConfiguration|[Empty](../messages/Common/Empty.md#)|[GPIOConfiguration](../messages/InterconnectConfig/GPIOConfiguration.md#)|Configures user GPIO|
-|GetGPIOState|[GPIOState](../messages/InterconnectConfig/GPIOState.md#)|[GPIOIdentification](../messages/InterconnectConfig/GPIOIdentification.md#)|Retrieves user GPIO state|
-|SetGPIOState|[Empty](../messages/Common/Empty.md#)|[GPIOState](../messages/InterconnectConfig/GPIOState.md#)|Configures user GPIO state|
-|GetI2CConfiguration|[I2CConfiguration](../messages/InterconnectConfig/I2CConfiguration.md#)|[I2CDeviceIdentification](../messages/InterconnectConfig/I2CDeviceIdentification.md#)|Retrieves user I2C configuration|
-|SetI2CConfiguration|[Empty](../messages/Common/Empty.md#)|[I2CConfiguration](../messages/InterconnectConfig/I2CConfiguration.md#)|Configures user I2C|
-|I2CRead|[I2CData](../messages/InterconnectConfig/I2CData.md#)|[I2CReadParameter](../messages/InterconnectConfig/I2CReadParameter.md#)|Performs an I2C read request|
-|I2CReadRegister|[I2CData](../messages/InterconnectConfig/I2CData.md#)|[I2CReadRegisterParameter](../messages/InterconnectConfig/I2CReadRegisterParameter.md#)|Performs an I2C read register request|
-|I2CWrite|[Empty](../messages/Common/Empty.md#)|[I2CWriteParameter](../messages/InterconnectConfig/I2CWriteParameter.md#)|Performs an I2C write request|
-|I2CWriteRegister|[Empty](../messages/Common/Empty.md#)|[I2CWriteRegisterParameter](../messages/InterconnectConfig/I2CWriteRegisterParameter.md#)|Performs an I2C write register request|
 
