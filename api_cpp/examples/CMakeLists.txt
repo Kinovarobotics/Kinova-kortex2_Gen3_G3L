@@ -29,7 +29,7 @@
 # ----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.5)
 
-project(kortexApiCppExamples VERSION 2.2.0 LANGUAGES CXX)
+project(kortexApiCppExamples VERSION 2.3.0 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR   ON)
 set(CMAKE_VERBOSE_MAKEFILE      ON)
