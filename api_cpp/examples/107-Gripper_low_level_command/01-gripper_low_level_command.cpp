@@ -64,9 +64,10 @@
 #include <chrono>
 #include <future>
 
+#include "utilities.h"
+
 namespace k_api = Kinova::Api;
 
-#define IP_ADDRESS "192.168.1.10"
 #define PORT 10000
 #define PORT_REAL_TIME 10001
 
@@ -319,8 +320,10 @@ private:
 
 int main(int argc, char **argv)
 {
+    auto parsed_args = ParseExampleArguments(argc, argv);
+
     GripperLowLevel* gripper_low_level;
-    gripper_low_level = new GripperLowLevel(IP_ADDRESS, PORT_REAL_TIME, PORT,  "admin", "admin");
+    gripper_low_level = new GripperLowLevel(parsed_args.ip_address, PORT_REAL_TIME, PORT,  parsed_args.username, parsed_args.password);
     gripper_low_level->Init(PROPORTIONAL_GAIN);
 
     // Example core

@@ -13,6 +13,7 @@ Enumeration ControlLoopSelection
 |MOTOR\_VELOCITY|8|0x8 - Motor velocity control|
 |JOINT\_TORQUE|16|0x10 - Joint torque control|
 |MOTOR\_CURRENT|32|0x20 - Motor current control|
+|JOINT\_TORQUE\_HIGH\_VELOCITY|64|0x30 - High velocity joint torque control|
 
 **Parent topic:** [ActuatorConfig \(C++\)](../../summary_pages/ActuatorConfig.md)
 

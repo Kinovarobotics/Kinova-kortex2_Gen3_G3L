@@ -4,8 +4,8 @@
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|absolute\_offset|float32|Absolute offset value \(meters\)|
-|relative\_offset|float32|Relative offset value \(meters\)|
+|absolute\_offset|float32|Absolute offset value \(degrees\)|
+|relative\_offset|float32|Relative offset value \(degrees\)|
 
  **Member functions** 
 

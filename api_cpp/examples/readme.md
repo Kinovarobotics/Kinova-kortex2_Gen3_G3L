@@ -17,18 +17,20 @@
 <h2>Table of Contents</h2>
 
 - [Setup (C++ environment)](#setup-c-environment)
-  - [Setup PC environment](#set-up-pc-environment)
+  - [Set up PC environment](#set-up-pc-environment)
     - [CMake](#cmake)
-    - [GCC 5.4 compiler (preferred)](#gcc-54-compiler-prefered)
-      - [Install GCC 5.4 under Linux (Ubuntu 16.04 and higher)](#procedure-to-install-gcc-54-under-linux-ubuntu-1604)
-      - [Install GCC 5.4 under Windows](#procedure-to-install-gcc-54-under-windows)
+    - [GCC compiler](#gcc-compiler)
+      - [Procedure to install GCC under Linux (GCC 5.4 on Ubuntu 16.04, GCC 7.4 on Ubuntu 18.04)](#procedure-to-install-gcc-under-linux-gcc-54-on-ubuntu-1604-gcc-74-on-ubuntu-1804)
+      - [Procedure to install GCC 5.4 under Windows](#procedure-to-install-gcc-54-under-windows)
   - [Conan](#conan)
-- [Build](#build-instruction)
-- [Run](#how-to-use-examples-with-your-robot)
-- [C++ API documentation](#api-documentation)
+    - [Using Conan](#using-conan)
+    - [Not using Conan](#not-using-conan)
+- [Build](#build)
+- [Run](#run)
+- [C++ API documentation](#c-api-documentation)
 - [Reference](#reference)
-      - [Useful Links](#usefull-links)
-- [Back to root topic: **readme.md**](#back-to-root-topic-readmemd)
+      - [Useful Links](#useful-links)
+  - [Back to root topic: **readme.md**](#back-to-root-topic-readmemd)
 
 <!-- /TOC -->
 <!--   - [Docker environment](#docker-environment)
@@ -81,7 +83,7 @@ sudo apt-get install build-essential
 #### Procedure to install GCC 5.4 under Windows
 Because GCC is not coded for the Windows operating system, a GCC port of MinGW-w64 for Windows is required. The '-w64' suffix indicates that it can support a 32-bit or 64-bit environment. The 32-bit versions are still available and one of them will be used to compile the affected project.
 
-1. [Download the installer](http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download)
+1. Go to  https://sourceforge.net/projects/mingw-w64
 2. Start the installer and click `Next` until you reach the installation options page
 3. On the options page ensure that the options look exactly like this (all options are the default values, except for version, which is the version of GCC we want to install - 5.4 in this case)
  
@@ -155,7 +157,7 @@ Example (build-mingw.bat)
 ```
 
 This will effectively revert to the old build method. It requires downloading the Kortex Api library:
- + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/artifactory/webapp/#/artifacts/browse/tree/General/generic-public/kortex/API/2.2.0/linux_x86-64_x86_gcc.zip)
+ + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/artifactory/webapp/#/artifacts/browse/tree/General/generic-public/kortex/API/2.3.0/linux_x86-64_x86_gcc.zip)
  + Uncompress the content of the archive and place the contents of the `cpp/{your_architecture}` folder in the sub-directory `kortex_api`.  
 
 ```sh
@@ -312,6 +314,5 @@ Here is a link to the generated documentation:
 | Google Proto Buffer generated C++: | https://developers.google.com/protocol-buffers/docs/reference/cpp-generated |  
 
 __________________________
-<a id="markdown-back-to-root-topic-readmemdreadmemd" name="back-to-root-topic-readmemdreadmemd"></a>
+<a id="markdown-back-to-root-topic-readmemdreadmemd" name="back-to-root-topic-readmemd"></a>
 ## Back to root topic: **[readme.md](../../readme.md)**  
-

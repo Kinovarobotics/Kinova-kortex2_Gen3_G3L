@@ -2,9 +2,13 @@
 
 This page describes the C++ API error codes.
 
+## RPC reference
+
+This section describes the existing RPCs used in this API.
+
 ## Class reference
 
-This section describes the data classes used in this API, as well as their member values and member functions.
+This section describes the data classes used in this API.
 
  **Enumerators** 
 

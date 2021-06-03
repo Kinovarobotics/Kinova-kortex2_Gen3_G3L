@@ -19,9 +19,10 @@
 
 #include <google/protobuf/util/json_util.h>
 
+#include "utilities.h"
+
 namespace k_api = Kinova::Api;
 
-#define IP_ADDRESS "192.168.1.10"
 #define PORT 10000
 
 void example_notification(k_api::Base::BaseClient* base)
@@ -86,16 +87,18 @@ void example_notification(k_api::Base::BaseClient* base)
 
 int main(int argc, char **argv)
 {
+    auto parsed_args = ParseExampleArguments(argc, argv);
+
     // Create API objects
     auto error_callback = [](k_api::KError err){ cout << "_________ callback error _________" << err.toString(); };
     auto transport = new k_api::TransportClientTcp();
     auto router = new k_api::RouterClient(transport, error_callback);
-    transport->connect(IP_ADDRESS, PORT);
+    transport->connect(parsed_args.ip_address, PORT);
 
     // Set session data connection information
     auto create_session_info = k_api::Session::CreateSessionInfo();
-    create_session_info.set_username("admin");
-    create_session_info.set_password("admin");
+    create_session_info.set_username(parsed_args.username);
+    create_session_info.set_password(parsed_args.password);
     create_session_info.set_session_inactivity_timeout(60000);   // (milliseconds)
     create_session_info.set_connection_inactivity_timeout(2000); // (milliseconds)
 

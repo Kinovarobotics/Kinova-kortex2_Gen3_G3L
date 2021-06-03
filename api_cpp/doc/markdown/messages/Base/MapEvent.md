@@ -5,7 +5,7 @@
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |safety\_event|oneof:events [SafetyEvent](SafetyEvent.md#)|Mapped safety event \(not implemented yet\)|
-|gpio\_event|oneof:events [GpioEvent](GpioEvent.md#)|Mapped GPIO event \(not implemented yet\)|
+|gpio\_event|oneof:events [GpioEvent](GpioEvent.md#)|Mapped GPIO event|
 |controller\_event|oneof:events [ControllerEvent](ControllerEvent.md#)|Mapped controller event|
 |name|string|Map event friendly name|
 

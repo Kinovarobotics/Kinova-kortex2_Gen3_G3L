@@ -2,9 +2,24 @@
 
 This page describes the C++ BaseCyclic API.
 
+## RPC reference
+
+This section describes the existing RPCs used in this API.
+
+Service to exchange cyclic data with base
+
+ **BaseCyclicClient RPCs** 
+
+|Function name|Return type|Input type|Description|
+|-------------|-----------|----------|-----------|
+|Refresh|[Feedback](../messages/BaseCyclic/Feedback.md#)|[Command](../messages/BaseCyclic/Command.md#)|Sends a command to actuators and interface and returns feedback from base, actuators, and interface on actual status|
+|RefreshCommand|[Empty](../messages/Common/Empty.md#)|[Command](../messages/BaseCyclic/Command.md#)|Sends a command to actuators and interface without receiving feedback|
+|RefreshFeedback|[Feedback](../messages/BaseCyclic/Feedback.md#)|[Empty](../messages/Common/Empty.md#)|Obtains feedback from base, actuators, and interface on their status|
+|RefreshCustomData|[CustomData](../messages/BaseCyclic/CustomData.md#)|[CustomData](../messages/BaseCyclic/CustomData.md#)|Retrieves custom data|
+
 ## Class reference
 
-This section describes the data classes used in this API, as well as their member values and member functions.
+This section describes the data classes used in this API.
 
  **Messages** 
 
@@ -23,15 +38,4 @@ This section describes the data classes used in this API, as well as their membe
 |Enumerator|Description|
 |----------|-----------|
 |[ServiceVersion](../enums/BaseCyclic/ServiceVersion.md#)|Identifies BaseCyclic current version|
-
-Service to exchange cyclic data with base
-
- **BaseCyclicClient RPCs** 
-
-|Function name|Return type|Input type|Description|
-|-------------|-----------|----------|-----------|
-|Refresh|[Feedback](../messages/BaseCyclic/Feedback.md#)|[Command](../messages/BaseCyclic/Command.md#)|Sends a command to actuators and interface and returns feedback from base, actuators, and interface on actual status|
-|RefreshCommand|[Empty](../messages/Common/Empty.md#)|[Command](../messages/BaseCyclic/Command.md#)|Sends a command to actuators and interface without receiving feedback|
-|RefreshFeedback|[Feedback](../messages/BaseCyclic/Feedback.md#)|[Empty](../messages/Common/Empty.md#)|Obtains feedback from base, actuators, and interface on their status|
-|RefreshCustomData|[CustomData](../messages/BaseCyclic/CustomData.md#)|[CustomData](../messages/BaseCyclic/CustomData.md#)|Retrieves custom data|
 

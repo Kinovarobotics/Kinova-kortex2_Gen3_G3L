@@ -58,6 +58,8 @@
 #include <TransportClientUdp.h>
 #include <TransportClientTcp.h>
 
+#include "utilities.h"
+
 #include <google/protobuf/util/json_util.h>
 
 #if defined(_MSC_VER)
@@ -69,12 +71,8 @@
 
 namespace k_api = Kinova::Api;
 
-#define IP_ADDRESS "192.168.1.10"
-
 #define PORT 10000
 #define PORT_REAL_TIME 10001
-
-#define ACTUATOR_COUNT 7
 
 float TIME_DURATION = 30.0f; // Duration of the example (seconds)
 
@@ -125,7 +123,7 @@ std::function<void(k_api::Base::ActionNotification)>
 /**************************
  * Example core functions *
  **************************/
-void example_move_to_home_position(k_api::Base::BaseClient* base)
+bool example_move_to_home_position(k_api::Base::BaseClient* base)
 {
     // Make sure the arm is in Single Level Servoing before executing an Action
     auto servoingMode = k_api::Base::ServoingModeInformation();
@@ -151,6 +149,7 @@ void example_move_to_home_position(k_api::Base::BaseClient* base)
     if (action_handle.identifier() == 0) 
     {
         std::cout << "Can't reach safe position, exiting" << std::endl;
+        return false;
     } 
     else 
     {
@@ -172,8 +171,14 @@ void example_move_to_home_position(k_api::Base::BaseClient* base)
         if(status != std::future_status::ready)
         {
             std::cout << "Timeout on action notification wait" << std::endl;
+            return false;
         }
         const auto promise_event = finish_future.get();
+
+        std::cout << "Move to Home completed" << std::endl;
+        std::cout << "Promise value : " << k_api::Base::ActionEvent_Name(promise_event) << std::endl;
+
+        return true;
     }
 }
 
@@ -181,6 +186,9 @@ bool example_cyclic_torque_control(k_api::Base::BaseClient* base, k_api::BaseCyc
 {
     bool return_status = true;
 
+    // Get actuator count
+    unsigned int actuator_count = base->GetActuatorCount().count();
+    
     // Clearing faults
     try
     {
@@ -195,6 +203,8 @@ bool example_cyclic_torque_control(k_api::Base::BaseClient* base, k_api::BaseCyc
     
     k_api::BaseCyclic::Feedback base_feedback;
     k_api::BaseCyclic::Command  base_command;
+
+    std::vector<float> commands;
 
     auto servoing_mode = k_api::Base::ServoingModeInformation();
 
@@ -211,8 +221,10 @@ bool example_cyclic_torque_control(k_api::Base::BaseClient* base, k_api::BaseCyc
         base_feedback = base_cyclic->RefreshFeedback();
 
         // Initialize each actuator to their current position
-        for (int i = 0; i < ACTUATOR_COUNT; i++)
+        for (unsigned int i = 0; i < actuator_count; i++)
         {
+            commands.push_back(base_feedback.actuators(i).position());
+
             // Save the current actuator position, to avoid a following error
             base_command.add_actuators()->set_position(base_feedback.actuators(i).position());
         }
@@ -228,10 +240,10 @@ bool example_cyclic_torque_control(k_api::Base::BaseClient* base, k_api::BaseCyc
         actuator_config->SetControlMode(control_mode_message, first_actuator_device_id);
 
         // Initial delta between first and last actuator
-        float init_delta_position = base_feedback.actuators(0).position() - base_feedback.actuators(6).position();
+        float init_delta_position = base_feedback.actuators(0).position() - base_feedback.actuators(actuator_count - 1).position();
 
         // Initial first and last actuator torques; avoids unexpected movement due to torque offsets
-        float init_last_torque = base_feedback.actuators(6).torque();
+        float init_last_torque = base_feedback.actuators(actuator_count - 1).torque();
         float init_first_torque = -base_feedback.actuators(0).torque(); //Torque measure is reversed compared to actuator direction
         float torque_amplification = 2.0;
 
@@ -251,18 +263,18 @@ bool example_cyclic_torque_control(k_api::Base::BaseClient* base, k_api::BaseCyc
                 base_command.mutable_actuators(0)->set_position(base_feedback.actuators(0).position());
 
                 // First actuator torque command is set to last actuator torque measure times an amplification
-                base_command.mutable_actuators(0)->set_torque_joint(init_first_torque + (torque_amplification * (base_feedback.actuators(6).torque() - init_last_torque)));
+                base_command.mutable_actuators(0)->set_torque_joint(init_first_torque + (torque_amplification * (base_feedback.actuators(actuator_count - 1).torque() - init_last_torque)));
 
 
                 // First actuator position is sent as a command to last actuator
-                base_command.mutable_actuators(6)->set_position(base_feedback.actuators(0).position() - init_delta_position);
+                base_command.mutable_actuators(actuator_count - 1)->set_position(base_feedback.actuators(0).position() - init_delta_position);
 
                 // Incrementing identifier ensures actuators can reject out of time frames
                 base_command.set_frame_id(base_command.frame_id() + 1);
                 if (base_command.frame_id() > 65535)
                     base_command.set_frame_id(0);
 
-                for (int idx = 0; idx < ACTUATOR_COUNT; idx++)
+                for (int idx = 0; idx < actuator_count; idx++)
                 {
                     base_command.mutable_actuators(idx)->set_command_id(base_command.frame_id());
                 }
@@ -323,18 +335,20 @@ bool example_cyclic_torque_control(k_api::Base::BaseClient* base, k_api::BaseCyc
 
 int main(int argc, char **argv)
 {
+    auto parsed_args = ParseExampleArguments(argc, argv);
+
     // Create API objects
     auto error_callback = [](k_api::KError err){ cout << "_________ callback error _________" << err.toString(); };
     
     std::cout << "Creating transport objects" << std::endl;
     auto transport = new k_api::TransportClientTcp();
     auto router = new k_api::RouterClient(transport, error_callback);
-    transport->connect(IP_ADDRESS, PORT);
+    transport->connect(parsed_args.ip_address, PORT);
 
     std::cout << "Creating transport real time objects" << std::endl;
     auto transport_real_time = new k_api::TransportClientUdp();
     auto router_real_time = new k_api::RouterClient(transport_real_time, error_callback);
-    transport_real_time->connect(IP_ADDRESS, PORT_REAL_TIME);
+    transport_real_time->connect(parsed_args.ip_address, PORT_REAL_TIME);
 
     // Set session data connection information
     auto create_session_info = k_api::Session::CreateSessionInfo();
@@ -357,11 +371,12 @@ int main(int argc, char **argv)
     auto actuator_config = new k_api::ActuatorConfig::ActuatorConfigClient(router);
 
     // Example core
-    example_move_to_home_position(base);
-    auto isOk = example_cyclic_torque_control(base, base_cyclic, actuator_config);
-    if (!isOk)
+    bool success = true;
+    success &= example_move_to_home_position(base);
+    success &= example_cyclic_torque_control(base, base_cyclic, actuator_config);
+    if (!success)
     {
-        std::cout << "There has been an unexpected error in example_cyclic_torque_control() function." << endl;;
+        std::cout << "There has been an unexpected error." << endl;
     }
 
     // Close API session
@@ -384,4 +399,6 @@ int main(int argc, char **argv)
     delete router_real_time;
     delete transport;
     delete transport_real_time;
+
+    return success ? 0 : 1;
 }
