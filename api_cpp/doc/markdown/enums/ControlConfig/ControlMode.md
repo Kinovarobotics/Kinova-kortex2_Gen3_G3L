@@ -16,6 +16,7 @@ Enumeration ControlMode
 |NULL\_SPACE\_ADMITTANCE|8|Null space mode|
 |FORCE\_CONTROL|10|Force control mode|
 |FORCE\_CONTROL\_MOTION\_RESTRICTED|11|Force control motion restricted mode|
+|CARTESIAN\_WAYPOINT\_TRAJECTORY|12|Cartesian waypoint trajectory mode|
 |IDLE|13|Idle|
 
 **Parent topic:** [ControlConfig \(C++\)](../../summary_pages/ControlConfig.md)

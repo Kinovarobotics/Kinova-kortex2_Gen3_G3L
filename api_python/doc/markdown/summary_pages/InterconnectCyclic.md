@@ -2,9 +2,24 @@
 
 This page describes the Python InterconnectCyclic API.
 
+## RPC reference
+
+This section describes the existing RPCs used in this API.
+
+Service to exchange cyclic data with interface module
+
+ **InterconnectCyclicClient RPCs** 
+
+|Function name|Return type|Input type|Description|
+|-------------|-----------|----------|-----------|
+|Refresh|[Feedback](../messages/InterconnectCyclic/Feedback.md#)|[Command](../messages/InterconnectCyclic/Command.md#)|Sends a command to the interface module and receive feedback about the actual status|
+|RefreshCommand|[Empty](../messages/Common/Empty.md#)|[Command](../messages/InterconnectCyclic/Command.md#)|Sends a command to the interface module without receiving feedback|
+|RefreshFeedback|[Feedback](../messages/InterconnectCyclic/Feedback.md#)|[MessageId](../messages/InterconnectCyclic/MessageId.md#)|Obtains feedback from the interface module on its status|
+|RefreshCustomData|[CustomData](../messages/InterconnectCyclic/CustomData.md#)|[MessageId](../messages/InterconnectCyclic/MessageId.md#)|Obtains custom data from the interface module|
+
 ## Class reference
 
-This section describes the data classes used in this API, as well as their member values and member functions.
+This section describes the data classes used in this API.
 
  **Messages** 
 
@@ -20,15 +35,4 @@ This section describes the data classes used in this API, as well as their membe
 |Enumerator|Description|
 |----------|-----------|
 |[ServiceVersion](../enums/InterconnectCyclic/ServiceVersion.md#)|Identifies InterconnectCyclic service current version|
-
-Service to exchange cyclic data with interface module
-
- **InterconnectCyclicClient RPCs** 
-
-|Function name|Return type|Input type|Description|
-|-------------|-----------|----------|-----------|
-|Refresh|[Feedback](../messages/InterconnectCyclic/Feedback.md#)|[Command](../messages/InterconnectCyclic/Command.md#)|Sends a command to the interface module and receive feedback about the actual status|
-|RefreshCommand|[Empty](../messages/Common/Empty.md#)|[Command](../messages/InterconnectCyclic/Command.md#)|Sends a command to the interface module without receiving feedback|
-|RefreshFeedback|[Feedback](../messages/InterconnectCyclic/Feedback.md#)|[MessageId](../messages/InterconnectCyclic/MessageId.md#)|Obtains feedback from the interface module on its status|
-|RefreshCustomData|[CustomData](../messages/InterconnectCyclic/CustomData.md#)|[MessageId](../messages/InterconnectCyclic/MessageId.md#)|Obtains custom data from the interface module|
 

@@ -16,14 +16,14 @@
 
 <!-- TOC -->
 
-- [Setup (Python environment)](#setup-example-python-environment)
-  - [Python setup](#requested-basic-python--python-modules)
-  - [Install Kortex Python API and required dependencies](#install-python-kortex-api-and-required-dependencies)
-- [How to use the examples](#how-to-use-examples-with-your-robot)
-- [Python API documentation](#api-documentation)
+- [Setup (Python environment)](#setup-python-environment)
+  - [Required Python version and module](#required-python-version-and-module)
+  - [Install Kortex Python API and required dependencies](#install-kortex-python-api-and-required-dependencies)
+- [How to use the examples](#how-to-use-the-examples)
+- [Python API documentation](#python-api-documentation)
 - [Reference](#reference)
       - [useful links](#useful-links)
-- [Back to root topic: **readme.md**](#back-to-root-topic-readmemd)
+  - [Back to root topic: **readme.md**](#back-to-root-topic-readmemd)
 
 <!-- /TOC -->
 
@@ -43,7 +43,7 @@ Refer to the main README for Python installation details: [parent readme](../../
 
 Install what is needed to run the examples via a downloaded whl file (Python wheel package).
 
-The whl file can be downloaded via the Kinova Artifactory: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/API/2.2.0/kortex_api-2.2.0.post31-py3-none-any.whl)  
+The whl file can be downloaded via the Kinova Artifactory: [kortex_api](https://artifactory.kinovaapps.com/ui/api/v1/download?repoKey=generic-public&path=kortex%2FAPI%2F2.3.0%2Fkortex_api-2.3.0.post34-py3-none-any.whl)  
 
 On Linux:
 
@@ -94,5 +94,5 @@ Here's a link to the generated documentation
 | Google Proto Buffer generated Python: | [https://developers.google.com/protocol-buffers/docs/reference/python-generated](https://developers.google.com/protocol-buffers/docs/reference/python-generated) | 
 
 __________________________
-<a id="markdown-back-to-root-topic-readmemdreadmemd" name="back-to-root-topic-readmemdreadmemd"></a>
+<a id="markdown-back-to-root-topic-readmemd" name="back-to-root-topic-readmemd"></a>
 ## Back to root topic: **[readme.md](../../readme.md)**  

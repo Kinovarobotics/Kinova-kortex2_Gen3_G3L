@@ -2,9 +2,32 @@
 
 This page describes the C++ VisionConfig API.
 
+## RPC reference
+
+This section describes the existing RPCs used in this API.
+
+Service to configure the Vision Module
+
+ **VisionConfigClient RPCs** 
+
+|Function name|Return type|Input type|Description|
+|-------------|-----------|----------|-----------|
+|SetSensorSettings|[Empty](../messages/Common/Empty.md#)|[SensorSettings](../messages/VisionConfig/SensorSettings.md#)|Sets sensor settings \(resolution, frame rate, etc\)|
+|GetSensorSettings|[SensorSettings](../messages/VisionConfig/SensorSettings.md#)|[SensorIdentifier](../messages/VisionConfig/SensorIdentifier.md#)|Retrieves sensor settings \(resolution, frame rate, etc\)|
+|GetOptionValue|[OptionValue](../messages/VisionConfig/OptionValue.md#)|[OptionIdentifier](../messages/VisionConfig/OptionIdentifier.md#)|Retrieves option value from the sensor|
+|SetOptionValue|[Empty](../messages/Common/Empty.md#)|[OptionValue](../messages/VisionConfig/OptionValue.md#)|Writes new value to sensor option|
+|GetOptionInformation|[OptionInformation](../messages/VisionConfig/OptionInformation.md#)|[OptionIdentifier](../messages/VisionConfig/OptionIdentifier.md#)|Retrieves option information from the sensor|
+|OnNotificationVisionTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to Vision configuration notifications|
+|DoSensorFocusAction|[Empty](../messages/Common/Empty.md#)|[SensorFocusAction](../messages/VisionConfig/SensorFocusAction.md#)|Do a focus action|
+|GetIntrinsicParameters|[IntrinsicParameters](../messages/VisionConfig/IntrinsicParameters.md#)|[SensorIdentifier](../messages/VisionConfig/SensorIdentifier.md#)|Retrieves sensor intrinsic parameters|
+|GetIntrinsicParametersProfile|[IntrinsicParameters](../messages/VisionConfig/IntrinsicParameters.md#)|[IntrinsicProfileIdentifier](../messages/VisionConfig/IntrinsicProfileIdentifier.md#)|Retrieves sensor intrinsic parameters for a specific profile|
+|SetIntrinsicParameters|[Empty](../messages/Common/Empty.md#)|[IntrinsicParameters](../messages/VisionConfig/IntrinsicParameters.md#)|Sets sensor intrinsic parameters|
+|GetExtrinsicParameters|[ExtrinsicParameters](../messages/VisionConfig/ExtrinsicParameters.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves sensor extrinsic parameters|
+|SetExtrinsicParameters|[Empty](../messages/Common/Empty.md#)|[ExtrinsicParameters](../messages/VisionConfig/ExtrinsicParameters.md#)|Sets sensor extrinsic parameters|
+
 ## Class reference
 
-This section describes the data classes used in this API, as well as their member values and member functions.
+This section describes the data classes used in this API.
 
  **Messages** 
 
@@ -39,23 +62,4 @@ This section describes the data classes used in this API, as well as their membe
 |[Sensor](../enums/VisionConfig/Sensor.md#)|Vision module sensor to configure|
 |[ServiceVersion](../enums/VisionConfig/ServiceVersion.md#)|Identifies VisionConfig service current version|
 |[VisionEvent](../enums/VisionConfig/VisionEvent.md#)|Admissible Vision module events.|
-
-Service to configure the Vision Module
-
- **VisionConfigClient RPCs** 
-
-|Function name|Return type|Input type|Description|
-|-------------|-----------|----------|-----------|
-|SetSensorSettings|[Empty](../messages/Common/Empty.md#)|[SensorSettings](../messages/VisionConfig/SensorSettings.md#)|Sets sensor settings \(resolution, frame rate, etc\)|
-|GetSensorSettings|[SensorSettings](../messages/VisionConfig/SensorSettings.md#)|[SensorIdentifier](../messages/VisionConfig/SensorIdentifier.md#)|Retrieves sensor settings \(resolution, frame rate, etc\)|
-|GetOptionValue|[OptionValue](../messages/VisionConfig/OptionValue.md#)|[OptionIdentifier](../messages/VisionConfig/OptionIdentifier.md#)|Retrieves option value from the sensor|
-|SetOptionValue|[Empty](../messages/Common/Empty.md#)|[OptionValue](../messages/VisionConfig/OptionValue.md#)|Writes new value to sensor option|
-|GetOptionInformation|[OptionInformation](../messages/VisionConfig/OptionInformation.md#)|[OptionIdentifier](../messages/VisionConfig/OptionIdentifier.md#)|Retrieves option information from the sensor|
-|OnNotificationVisionTopic|[NotificationHandle](../messages/Common/NotificationHandle.md#)|[NotificationOptions](../messages/Common/NotificationOptions.md#)|Subscribes to Vision configuration notifications|
-|DoSensorFocusAction|[Empty](../messages/Common/Empty.md#)|[SensorFocusAction](../messages/VisionConfig/SensorFocusAction.md#)|Do a focus action|
-|GetIntrinsicParameters|[IntrinsicParameters](../messages/VisionConfig/IntrinsicParameters.md#)|[SensorIdentifier](../messages/VisionConfig/SensorIdentifier.md#)|Retrieves sensor intrinsic parameters|
-|GetIntrinsicParametersProfile|[IntrinsicParameters](../messages/VisionConfig/IntrinsicParameters.md#)|[IntrinsicProfileIdentifier](../messages/VisionConfig/IntrinsicProfileIdentifier.md#)|Retrieves sensor intrinsic parameters for a specific profile|
-|SetIntrinsicParameters|[Empty](../messages/Common/Empty.md#)|[IntrinsicParameters](../messages/VisionConfig/IntrinsicParameters.md#)|Sets sensor intrinsic parameters|
-|GetExtrinsicParameters|[ExtrinsicParameters](../messages/VisionConfig/ExtrinsicParameters.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves sensor extrinsic parameters|
-|SetExtrinsicParameters|[Empty](../messages/Common/Empty.md#)|[ExtrinsicParameters](../messages/VisionConfig/ExtrinsicParameters.md#)|Sets sensor extrinsic parameters|
 

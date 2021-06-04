@@ -2,45 +2,9 @@
 
 This page describes the C++ ActuatorConfig API.
 
-## Class reference
+## RPC reference
 
-This section describes the data classes used in this API, as well as their member values and member functions.
-
- **Messages** 
-
-|Class|Description|
-|-----|-----------|
-|[AxisOffsets](../messages/ActuatorConfig/AxisOffsets.md#)|Axis offsets|
-|[AxisPosition](../messages/ActuatorConfig/AxisPosition.md#)|Axis position|
-|[CoggingFeedforwardModeInformation](../messages/ActuatorConfig/CoggingFeedforwardModeInformation.md#)|Cogging feedforward mode|
-|[CommandModeInformation](../messages/ActuatorConfig/CommandModeInformation.md#)|Command mode|
-|[ControlLoop](../messages/ActuatorConfig/ControlLoop.md#)|Control loop|
-|[ControlLoopParameters](../messages/ActuatorConfig/ControlLoopParameters.md#)|Control loop parameters \(discrete transfer function\)|
-|[ControlModeInformation](../messages/ActuatorConfig/ControlModeInformation.md#)|Control mode information|
-|[CustomDataSelection](../messages/ActuatorConfig/CustomDataSelection.md#)|Selected custom data channels content|
-|[EncoderDerivativeParameters](../messages/ActuatorConfig/EncoderDerivativeParameters.md#)|Variable window derivative parameters|
-|[FrequencyResponse](../messages/ActuatorConfig/FrequencyResponse.md#)|Frequency response|
-|[LoopSelection](../messages/ActuatorConfig/LoopSelection.md#)|Defines the loop selection|
-|[PositionCommand](../messages/ActuatorConfig/PositionCommand.md#)|Angular position command for an actuator|
-|[RampResponse](../messages/ActuatorConfig/RampResponse.md#)|Ramp response|
-|[Servoing](../messages/ActuatorConfig/Servoing.md#)|Enables/disables servoing|
-|[StepResponse](../messages/ActuatorConfig/StepResponse.md#)|Step response|
-|[TorqueCalibration](../messages/ActuatorConfig/TorqueCalibration.md#)|Torque calibration settings|
-|[TorqueOffset](../messages/ActuatorConfig/TorqueOffset.md#)|Defines torque offset|
-|[VectorDriveParameters](../messages/ActuatorConfig/VectorDriveParameters.md#)|Field-oriented control PI controller gain values|
-
- **Enumerators** 
-
-|Enumerator|Description|
-|----------|-----------|
-|[CoggingFeedforwardMode](../enums/ActuatorConfig/CoggingFeedforwardMode.md#)|Admissable cogging feedforward modes|
-|[CommandMode](../enums/ActuatorConfig/CommandMode.md#)|Admissible command modes|
-|[ControlLoopSelection](../enums/ActuatorConfig/ControlLoopSelection.md#)|Admissible control loop selections|
-|[ControlMode](../enums/ActuatorConfig/ControlMode.md#)|Admissible control modes|
-|[CustomDataIndex](../enums/ActuatorConfig/CustomDataIndex.md#)|Custom data options|
-|[SafetyIdentifierBankA](../enums/ActuatorConfig/SafetyIdentifierBankA.md#)|Admissible bank A actuator safeties|
-|[SafetyLimitType](../enums/ActuatorConfig/SafetyLimitType.md#)|Admissible limit types|
-|[ServiceVersion](../enums/ActuatorConfig/ServiceVersion.md#)|Identifies ActuatorConfig service current version|
+This section describes the existing RPCs used in this API.
 
 Service to configure actuators
 
@@ -80,4 +44,44 @@ Service to configure actuators
 |GetTorqueOffset|[TorqueOffset](../messages/ActuatorConfig/TorqueOffset.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves torque offset calibration|
 |SetCoggingFeedforwardMode|[Empty](../messages/Common/Empty.md#)|[CoggingFeedforwardModeInformation](../messages/ActuatorConfig/CoggingFeedforwardModeInformation.md#)|Sets cogging feedforward mode|
 |GetCoggingFeedforwardMode|[CoggingFeedforwardModeInformation](../messages/ActuatorConfig/CoggingFeedforwardModeInformation.md#)|[Empty](../messages/Common/Empty.md#)|Retrieves cogging feedforward mode|
+
+## Class reference
+
+This section describes the data classes used in this API.
+
+ **Messages** 
+
+|Class|Description|
+|-----|-----------|
+|[AxisOffsets](../messages/ActuatorConfig/AxisOffsets.md#)|Axis offsets|
+|[AxisPosition](../messages/ActuatorConfig/AxisPosition.md#)|Axis position|
+|[CoggingFeedforwardModeInformation](../messages/ActuatorConfig/CoggingFeedforwardModeInformation.md#)|Cogging feedforward mode|
+|[CommandModeInformation](../messages/ActuatorConfig/CommandModeInformation.md#)|Command mode|
+|[ControlLoop](../messages/ActuatorConfig/ControlLoop.md#)|Control loop|
+|[ControlLoopParameters](../messages/ActuatorConfig/ControlLoopParameters.md#)|Control loop parameters \(discrete transfer function\)|
+|[ControlModeInformation](../messages/ActuatorConfig/ControlModeInformation.md#)|Control mode information|
+|[CustomDataSelection](../messages/ActuatorConfig/CustomDataSelection.md#)|Selected custom data channels content|
+|[EncoderDerivativeParameters](../messages/ActuatorConfig/EncoderDerivativeParameters.md#)|Variable window derivative parameters|
+|[FrequencyResponse](../messages/ActuatorConfig/FrequencyResponse.md#)|Frequency response|
+|[LoopSelection](../messages/ActuatorConfig/LoopSelection.md#)|Defines the loop selection|
+|[PositionCommand](../messages/ActuatorConfig/PositionCommand.md#)|Angular position command for an actuator|
+|[RampResponse](../messages/ActuatorConfig/RampResponse.md#)|Ramp response|
+|[Servoing](../messages/ActuatorConfig/Servoing.md#)|Enables/disables servoing|
+|[StepResponse](../messages/ActuatorConfig/StepResponse.md#)|Step response|
+|[TorqueCalibration](../messages/ActuatorConfig/TorqueCalibration.md#)|Torque calibration settings|
+|[TorqueOffset](../messages/ActuatorConfig/TorqueOffset.md#)|Defines torque offset|
+|[VectorDriveParameters](../messages/ActuatorConfig/VectorDriveParameters.md#)|Field-oriented control PI controller gain values|
+
+ **Enumerators** 
+
+|Enumerator|Description|
+|----------|-----------|
+|[CoggingFeedforwardMode](../enums/ActuatorConfig/CoggingFeedforwardMode.md#)|Admissable cogging feedforward modes|
+|[CommandMode](../enums/ActuatorConfig/CommandMode.md#)|Admissible command modes|
+|[ControlLoopSelection](../enums/ActuatorConfig/ControlLoopSelection.md#)|Admissible control loop selections|
+|[ControlMode](../enums/ActuatorConfig/ControlMode.md#)|Admissible control modes|
+|[CustomDataIndex](../enums/ActuatorConfig/CustomDataIndex.md#)|Custom data options|
+|[SafetyIdentifierBankA](../enums/ActuatorConfig/SafetyIdentifierBankA.md#)|Admissible bank A actuator safeties|
+|[SafetyLimitType](../enums/ActuatorConfig/SafetyLimitType.md#)|Admissible limit types|
+|[ServiceVersion](../enums/ActuatorConfig/ServiceVersion.md#)|Identifies ActuatorConfig service current version|
 

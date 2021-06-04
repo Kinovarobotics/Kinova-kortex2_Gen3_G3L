@@ -29,7 +29,7 @@
 # ----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.5)
 
-project(kortexApiCppExamples VERSION 2.2.0 LANGUAGES CXX)
+project(kortexApiCppExamples VERSION 2.3.0 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR   ON)
 set(CMAKE_VERBOSE_MAKEFILE      ON)
@@ -41,7 +41,7 @@ endif()
 
 
 option(USE_CONAN "Use the Conan package manager to automatically fetch the Kortex API" ON)
-option(DOWNLOAD_API "Automatically download the API if conan is not used" ON)
+
 
 # Activate C++ 11
 set (CMAKE_CXX_STANDARD 11)
@@ -120,7 +120,7 @@ if(USE_CONAN)
     URL https://artifactory.kinovaapps.com/artifactory/api/conan/conan-public)
 
   if(UNIX)
-    conan_cmake_run(REQUIRES kortex_api_cpp/2.2.0-r.31@kortex/stable
+    conan_cmake_run(REQUIRES kortex_api_cpp/2.3.0-r.34@kortex/stable
                     SETTINGS kortex_api_cpp:compiler=gcc
                     SETTINGS kortex_api_cpp:compiler.version=5
                     SETTINGS compiler.libcxx=libstdc++11
@@ -141,18 +141,16 @@ if(USE_CONAN)
         set(kortex_api_cpp_target "msvc-2019")
       endif()
 
-      conan_cmake_run(REQUIRES kortex_api_cpp/2.2.0-r.31@kortex/stable
-                      OPTIONS kortex_api_cpp:target=${kortex_api_cpp_target}
+      conan_cmake_run(REQUIRES kortex_api_cpp/2.3.0-r.34@kortex/stable
                       PROFILE_AUTO build_type
                       BASIC_SETUP
                       UPDATE)
       
     else()
-      conan_cmake_run(REQUIRES kortex_api_cpp/2.2.0-r.31@kortex/stable
+      conan_cmake_run(REQUIRES kortex_api_cpp/2.3.0-r.34@kortex/stable
                       SETTINGS kortex_api_cpp:compiler=gcc
                       SETTINGS kortex_api_cpp:compiler.version=5
                       SETTINGS compiler.libcxx=libstdc++11
-                      OPTIONS kortex_api_cpp:target=mingw
                       PROFILE_AUTO build_type
                       BASIC_SETUP
                       UPDATE)
@@ -179,31 +177,26 @@ else() # Not using Conan
   endif()
 
   # Download the API
-  if(DOWNLOAD_API)
-    if(UNIX)
-      execute_process(COMMAND ./download_kortex_api.sh
-        WORKING_DIRECTORY ../scripts
-        RESULT_VARIABLE DOWNLOAD_API_RESULT
-        OUTPUT_VARIABLE DOWNLOAD_API_OUTPUT)
-      if(NOT DOWNLOAD_API_RESULT EQUAL 0)
-        message("Kortex API was not downloaded prior to running CMake.")
-        message(FATAL_ERROR ${DOWNLOAD_API_OUTPUT})
-      endif()
-    elseif(WIN32)
-      execute_process(COMMAND download_kortex_api.bat
-        WORKING_DIRECTORY ../scripts
-        RESULT_VARIABLE DOWNLOAD_API_RESULT
-        OUTPUT_VARIABLE DOWNLOAD_API_OUTPUT)
-      if(NOT DOWNLOAD_API_RESULT EQUAL 0)
-        message("Kortex API was not downloaded prior to running CMake.")
-        message(FATAL_ERROR ${DOWNLOAD_API_OUTPUT})
-      endif()
-    endif()
-  endif()
   if(UNIX)
-    link_libraries(${KORTEX_DIR}lib/${KORTEX_LIB_SUBDIR}/libKortexApiCpp.a)
+    execute_process(COMMAND ./download_kortex_api.sh
+      WORKING_DIRECTORY ../scripts
+      RESULT_VARIABLE DOWNLOAD_API_RESULT
+      OUTPUT_VARIABLE DOWNLOAD_API_OUTPUT)
+    if(NOT DOWNLOAD_API_RESULT EQUAL 0)
+      message("Kortex API was not downloaded prior to running CMake.")
+      message(FATAL_ERROR ${DOWNLOAD_API_OUTPUT})
+    endif()
+    link_libraries(${KORTEX_DIR}lib/${KORTEX_LIB_SUBDIR}/libKortexApi.a)
   elseif(WIN32)
-    link_libraries(${KORTEX_DIR}lib/${KORTEX_LIB_SUBDIR}/KortexApiCpp.lib)
+    execute_process(COMMAND ./download_kortex_api.bat
+      WORKING_DIRECTORY ../scripts
+      RESULT_VARIABLE DOWNLOAD_API_RESULT
+      OUTPUT_VARIABLE DOWNLOAD_API_OUTPUT)
+    if(NOT DOWNLOAD_API_RESULT EQUAL 0)
+      message("Kortex API was not downloaded prior to running CMake.")
+      message(FATAL_ERROR ${DOWNLOAD_API_OUTPUT})
+    endif()
+    link_libraries(${KORTEX_DIR}lib/${KORTEX_LIB_SUBDIR}/KortexApi.lib)
   endif()
 
   # Add Include Directories
@@ -235,6 +228,6 @@ foreach ( SRC_FILE ${EXE_LIST} )
   
   MESSAGE("creating TARGET_EXE_NAME: '${TARGET_EXE_NAME}'")
 
-  add_executable(${TARGET_EXE_NAME} ${SRC_FILE})
+  add_executable(${TARGET_EXE_NAME} ${SRC_FILE} utilities.cpp)
   
 endforeach()

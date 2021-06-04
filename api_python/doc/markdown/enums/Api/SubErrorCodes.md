@@ -103,6 +103,9 @@ Enumeration SubErrorCodes
 |READ\_PERMISSION\_DENIED|136|Attempting read command on unreadable entity|
 |CONTROLLER\_INVALID\_MAPPING|137|Attempting to assign an unsuited mapping to controller|
 |ACTION\_IN\_USE|138|Attempting to delete an Action used by another entity|
+|SEND\_FAILED|139|An error occured when trying to send the message \(Transport error\)|
+|CONTROL\_WAYPOINT\_TRAJECTORY\_ABORTED|140|Waypoint trajectory sequence aborted by kontrol library|
+|CONTROL\_PERMISSION\_DENIED|141|Permission to execute a routine from the kontrol interface denied|
 
 **Parent topic:** [Api \(Python\)](../../summary_pages/Api.md)
 

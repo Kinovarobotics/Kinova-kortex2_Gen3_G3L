@@ -2,9 +2,24 @@
 
 This page describes the Python GripperCyclic API.
 
+## RPC reference
+
+This section describes the existing RPCs used in this API.
+
+Service to exchange cyclic data with gripper
+
+ **GripperCyclicClient RPCs** 
+
+|Function name|Return type|Input type|Description|
+|-------------|-----------|----------|-----------|
+|Refresh|[Feedback](../messages/GripperCyclic/Feedback.md#)|[Command](../messages/GripperCyclic/Command.md#)|Sends a command to the gripper and receives feedback about the actual status of the gripper|
+|RefreshCommand|[Empty](../messages/Common/Empty.md#)|[Command](../messages/GripperCyclic/Command.md#)|Sends a command to the gripper without receiving feedback|
+|RefreshFeedback|[Feedback](../messages/GripperCyclic/Feedback.md#)|[MessageId](../messages/GripperCyclic/MessageId.md#)|Obtains feedback from the gripper on its status|
+|RefreshCustomData|[CustomData](../messages/GripperCyclic/CustomData.md#)|[MessageId](../messages/GripperCyclic/MessageId.md#)|Obtains custom data from the gripper|
+
 ## Class reference
 
-This section describes the data classes used in this API, as well as their member values and member functions.
+This section describes the data classes used in this API.
 
  **Messages** 
 
@@ -23,15 +38,4 @@ This section describes the data classes used in this API, as well as their membe
 |Enumerator|Description|
 |----------|-----------|
 |[ServiceVersion](../enums/GripperCyclic/ServiceVersion.md#)| |
-
-Service to exchange cyclic data with gripper
-
- **GripperCyclicClient RPCs** 
-
-|Function name|Return type|Input type|Description|
-|-------------|-----------|----------|-----------|
-|Refresh|[Feedback](../messages/GripperCyclic/Feedback.md#)|[Command](../messages/GripperCyclic/Command.md#)|Sends a command to the gripper and receives feedback about the actual status of the gripper|
-|RefreshCommand|[Empty](../messages/Common/Empty.md#)|[Command](../messages/GripperCyclic/Command.md#)|Sends a command to the gripper without receiving feedback|
-|RefreshFeedback|[Feedback](../messages/GripperCyclic/Feedback.md#)|[MessageId](../messages/GripperCyclic/MessageId.md#)|Obtains feedback from the gripper on its status|
-|RefreshCustomData|[CustomData](../messages/GripperCyclic/CustomData.md#)|[MessageId](../messages/GripperCyclic/MessageId.md#)|Obtains custom data from the gripper|
 

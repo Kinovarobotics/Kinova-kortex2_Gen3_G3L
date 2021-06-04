@@ -62,8 +62,10 @@ import threading
 class TorqueExample:
     def __init__(self, router, router_real_time):
 
-        self.expected_number_of_actuators = 7  # example works for 7dof Gen3
-        self.torque_amplification = 2.0  # Torque measure on 7th actuator is sent as a command to first actuator
+        # Maximum allowed waiting time during actions (in seconds)
+        self.ACTION_TIMEOUT_DURATION = 20
+
+        self.torque_amplification = 2.0  # Torque measure on last actuator is sent as a command to first actuator
 
         # Create required services
         device_manager = DeviceManagerClient(router)
@@ -78,14 +80,13 @@ class TorqueExample:
 
         # Detect all devices
         device_handles = device_manager.ReadAllDevices()
-        self.actuator_count = 0
+        self.actuator_count = self.base.GetActuatorCount().count
 
         # Only actuators are relevant for this example
         for handle in device_handles.device_handle:
             if handle.device_type == Common_pb2.BIG_ACTUATOR or handle.device_type == Common_pb2.SMALL_ACTUATOR:
                 self.base_command.actuators.add()
                 self.base_feedback.actuators.add()
-                self.actuator_count += 1
 
         # Change send option to reduce max timeout at 3ms
         self.sendOption = RouterClientSendOptions()
@@ -99,6 +100,22 @@ class TorqueExample:
         self.kill_the_thread = False
         self.already_stopped = False
         self.cyclic_running = False
+
+    # Create closure to set an event after an END or an ABORT
+    def check_for_end_or_abort(self, e):
+        """Return a closure checking for END or ABORT notifications
+
+        Arguments:
+        e -- event to signal when the action is completed
+            (will be set when an END or ABORT occurs)
+        """
+        def check(notification, e = e):
+            print("EVENT : " + \
+                Base_pb2.ActionEvent.Name(notification.action_event))
+            if notification.action_event == Base_pb2.ACTION_END \
+            or notification.action_event == Base_pb2.ACTION_ABORT:
+                e.set()
+        return check
 
     def MoveToHomePosition(self):
         # Make sure the arm is in Single Level Servoing mode
@@ -120,8 +137,24 @@ class TorqueExample:
             print("Can't reach safe position. Exiting")
             return False
 
+        e = threading.Event()
+        notification_handle = self.base.OnNotificationActionTopic(
+            self.check_for_end_or_abort(e),
+            Base_pb2.NotificationOptions()
+        )
+
         self.base.ExecuteActionFromReference(action_handle)
-        time.sleep(20) # Leave time to action to complete
+
+        print("Waiting for movement to finish ...")
+        finished = e.wait(self.ACTION_TIMEOUT_DURATION)
+        self.base.Unsubscribe(notification_handle)
+
+        if finished:
+            print("Cartesian movement completed")
+        else:
+            print("Timeout on action notification wait")
+        return finished
+
         return True
 
     def InitCyclic(self, sampling_time_cyclic, t_end, print_stats):
@@ -139,41 +172,38 @@ class TorqueExample:
         base_feedback = self.SendCallWithRetry(self.base_cyclic.RefreshFeedback, 3)
         if base_feedback:
             self.base_feedback = base_feedback
-            if len(self.base_feedback.actuators) == self.expected_number_of_actuators:
 
-                # Init command frame
-                for x in range(self.actuator_count):
-                    self.base_command.actuators[x].flags = 1  # servoing
-                    self.base_command.actuators[x].position = self.base_feedback.actuators[x].position
+            # Init command frame
+            for x in range(self.actuator_count):
+                self.base_command.actuators[x].flags = 1  # servoing
+                self.base_command.actuators[x].position = self.base_feedback.actuators[x].position
 
-                # First actuator is going to be controlled in torque
-                # To ensure continuity, torque command is set to measure
-                self.base_command.actuators[0].torque_joint = self.base_feedback.actuators[0].torque
+            # First actuator is going to be controlled in torque
+            # To ensure continuity, torque command is set to measure
+            self.base_command.actuators[0].torque_joint = self.base_feedback.actuators[0].torque
 
-                # Set arm in LOW_LEVEL_SERVOING
-                base_servo_mode = Base_pb2.ServoingModeInformation()
-                base_servo_mode.servoing_mode = Base_pb2.LOW_LEVEL_SERVOING
-                self.base.SetServoingMode(base_servo_mode)
+            # Set arm in LOW_LEVEL_SERVOING
+            base_servo_mode = Base_pb2.ServoingModeInformation()
+            base_servo_mode.servoing_mode = Base_pb2.LOW_LEVEL_SERVOING
+            self.base.SetServoingMode(base_servo_mode)
 
-                # Send first frame
-                self.base_feedback = self.base_cyclic.Refresh(self.base_command, 0, self.sendOption)
+            # Send first frame
+            self.base_feedback = self.base_cyclic.Refresh(self.base_command, 0, self.sendOption)
 
-                # Set first actuator in torque mode now that the command is equal to measure
-                control_mode_message = ActuatorConfig_pb2.ControlModeInformation()
-                control_mode_message.control_mode = ActuatorConfig_pb2.ControlMode.Value('TORQUE')
-                device_id = 1  # first actuator as id = 1
+            # Set first actuator in torque mode now that the command is equal to measure
+            control_mode_message = ActuatorConfig_pb2.ControlModeInformation()
+            control_mode_message.control_mode = ActuatorConfig_pb2.ControlMode.Value('TORQUE')
+            device_id = 1  # first actuator as id = 1
 
-                self.SendCallWithRetry(self.actuator_config.SetControlMode, 3, control_mode_message, device_id)
+            self.SendCallWithRetry(self.actuator_config.SetControlMode, 3, control_mode_message, device_id)
 
-                # Init cyclic thread
-                self.cyclic_t_end = t_end
-                self.cyclic_thread = threading.Thread(target=self.RunCyclic, args=(sampling_time_cyclic, print_stats))
-                self.cyclic_thread.daemon = True
-                self.cyclic_thread.start()
-                return True
-            else:
-                print("InitCyclic: number of actuators in base_feedback does not match expected number")
-                return False
+            # Init cyclic thread
+            self.cyclic_t_end = t_end
+            self.cyclic_thread = threading.Thread(target=self.RunCyclic, args=(sampling_time_cyclic, print_stats))
+            self.cyclic_thread.daemon = True
+            self.cyclic_thread.start()
+            return True
+
         else:
             print("InitCyclic: failed to communicate")
             return False
@@ -187,10 +217,10 @@ class TorqueExample:
         failed_cyclic_count = 0  # Count communication timeouts
 
         # Initial delta between first and last actuator
-        init_delta_position = self.base_feedback.actuators[0].position - self.base_feedback.actuators[6].position
+        init_delta_position = self.base_feedback.actuators[0].position - self.base_feedback.actuators[self.actuator_count - 1].position
 
         # Initial first and last actuator torques; avoids unexpected movement due to torque offsets
-        init_last_torque = self.base_feedback.actuators[6].torque
+        init_last_torque = self.base_feedback.actuators[self.actuator_count - 1].torque
         init_first_torque = -self.base_feedback.actuators[0].torque  # Torque measure is reversed compared to actuator direction
 
         t_now = time.time()
@@ -214,16 +244,16 @@ class TorqueExample:
 
                 # First actuator torque command is set to last actuator torque measure times an amplification
                 self.base_command.actuators[0].torque_joint = init_first_torque + \
-                    self.torque_amplification * (self.base_feedback.actuators[6].torque - init_last_torque)
+                    self.torque_amplification * (self.base_feedback.actuators[self.actuator_count - 1].torque - init_last_torque)
 
                 # First actuator position is sent as a command to last actuator
-                self.base_command.actuators[6].position = self.base_feedback.actuators[0].position - init_delta_position
+                self.base_command.actuators[self.actuator_count - 1].position = self.base_feedback.actuators[0].position - init_delta_position
 
                 # Incrementing identifier ensure actuators can reject out of time frames
                 self.base_command.frame_id += 1
                 if self.base_command.frame_id > 65535:
                     self.base_command.frame_id = 0
-                for i in range(self.expected_number_of_actuators):
+                for i in range(self.actuator_count):
                     self.base_command.actuators[i].command_id = self.base_command.frame_id
 
                 # Frame is sent
@@ -321,7 +351,8 @@ def main():
             
                 example.StopCyclic()
 
+            return 0 if success else 1
 
 
 if __name__ == "__main__":
-    main()
+    exit(main())

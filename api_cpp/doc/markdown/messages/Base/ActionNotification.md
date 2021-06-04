@@ -10,6 +10,7 @@
 |user\_handle| [UserProfileHandle](../Common/UserProfileHandle.md#)|User that caused the action event|
 |abort\_details|uint32|Details if action\_event is equal to ACTION\_ABORT|
 |connection| [Connection](../Common/Connection.md#)|Connection that caused the action event|
+|trajectory\_info| [TrajectoryInfo](TrajectoryInfo.md#)|Additional information from the current action|
 
  **Member functions** 
 
@@ -45,6 +46,13 @@
 |clear\_connection\(\)|void|void|Clears the value of the field. After calling this, has\_connection\(\) will return false and connection\(\) will return the default value.|
 |set\_allocated\_connection\(\)|void| [Connection](../Common/Connection.md#) \*|Sets the [Connection](../Common/Connection.md#) object to the field and frees the previous field value if it exists. If the [Connection](../Common/Connection.md#) pointer is not NULL, the message takes ownership of the allocated [Connection](../Common/Connection.md#) object and has\_ [Connection](../Common/Connection.md#)\(\) will return true. Otherwise, if the connection is NULL, the behavior is the same as calling clear\_connection\(\).|
 |release\_connection\(\)| [Connection](../Common/Connection.md#) \*|void|Releases the ownership of the field and returns the pointer of the [Connection](../Common/Connection.md#) object. After calling this, caller takes the ownership of the allocated [Connection](../Common/Connection.md#) object, has\_connection\(\) will return false, and connection\(\) will return the default value.|
+|trajectory\_info\_size\(\) const|int|void|Returns the number of elements currently in the field.|
+|trajectory\_info\(\) const|const [TrajectoryInfo](TrajectoryInfo.md#)|int index|Returns the element at the given zero-based index. Calling this method with index outside of \[0, trajectory\_info\_size\(\)\) yields undefined behavior.|
+|mutable\_trajectory\_info\(\)| [TrajectoryInfo](TrajectoryInfo.md#)\*|int index|Returns a pointer to the mutable [TrajectoryInfo](TrajectoryInfo.md#) object that stores the value of the element at the given zero-based index. Calling this method with index outside of \[0, trajectory\_info\_size\(\)\) yields undefined behavior.|
+|add\_trajectory\_info\(\)| [TrajectoryInfo](TrajectoryInfo.md#)\*|void|Adds a new element and returns a pointer to it. The returned [TrajectoryInfo](TrajectoryInfo.md#) is mutable and will have none of its fields set \(i.e. it will be identical to a newly-allocated [TrajectoryInfo](TrajectoryInfo.md#)\).|
+|clear\_trajectory\_info\(\)|void|void|Removes all elements from the field. After calling this, trajectory\_info\_size\(\) will return zero.|
+|trajectory\_info\(\) const|const RepeatedPtrField< [TrajectoryInfo](TrajectoryInfo.md#)\>&|void|Returns the underlying RepeatedPtrField that stores the field's elements. This container class provides STL-like iterators and other methods.|
+|mutable\_trajectory\_info\(\)|RepeatedPtrField< [TrajectoryInfo](TrajectoryInfo.md#)\>\*|void|Returns a pointer to the underlying mutable RepeatedPtrField that stores the field's elements. This container class provides STL-like iterators and other methods.|
 
 **Parent topic:** [Base \(C++\)](../../summary_pages/Base.md)
 

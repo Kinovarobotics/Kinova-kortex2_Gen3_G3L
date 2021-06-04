@@ -20,9 +20,10 @@
 #include <iostream>
 #include <chrono>
 
+#include "utilities.h"
+
 namespace k_api = Kinova::Api;
 
-#define IP_ADDRESS "192.168.1.10"
 #define PORT 10000
 
 ///////////////////////////////////////////////////////////////////////
@@ -177,8 +178,10 @@ private:
 
 int main(int argc, char **argv)
 {
+    auto parsed_args = ParseExampleArguments(argc, argv);
+
     GripperCommandExample* gripper_command_example;
-    gripper_command_example = new GripperCommandExample(IP_ADDRESS, PORT);
+    gripper_command_example = new GripperCommandExample(parsed_args.ip_address, PORT, parsed_args.username, parsed_args.password);
     gripper_command_example->Init();
     gripper_command_example->Run();
     delete gripper_command_example;

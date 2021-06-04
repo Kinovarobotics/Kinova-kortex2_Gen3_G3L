@@ -12,6 +12,7 @@ Enumeration ControlMode
 |TORQUE|3|Torque mode|
 |CURRENT|4|Current mode|
 |CUSTOM|5|Custom mode|
+|TORQUE\_HIGH\_VELOCITY|6|High velocity torque mode|
 
 **Parent topic:** [ActuatorConfig \(Python\)](../../summary_pages/ActuatorConfig.md)
 

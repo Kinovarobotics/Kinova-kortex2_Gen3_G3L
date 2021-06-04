@@ -18,9 +18,10 @@
 #include <TransportClientTcp.h>
 #include <iostream>
 
+#include "utilities.h"
+
 namespace k_api = Kinova::Api;
 
-#define IP_ADDRESS "192.168.1.10"
 #define PORT 10000
 
 ///////////////////////////////////////////////////////////////////////
@@ -144,8 +145,10 @@ private:
 // Example core
 int main(int argc, char **argv)
 {
+    auto parsed_args = ParseExampleArguments(argc, argv);
+
     EthernetBridgeConfigurationExample* ethernet_bridge;
-    ethernet_bridge = new EthernetBridgeConfigurationExample(IP_ADDRESS , PORT, "admin", "admin");
+    ethernet_bridge = new EthernetBridgeConfigurationExample(parsed_args.ip_address , PORT, parsed_args.username, parsed_args.password);
     ethernet_bridge->Init();
 
     ethernet_bridge->EnableEthernetBridge();

@@ -4,7 +4,7 @@
 
 |Member name|Data type|Description|
 |-----------|---------|-----------|
-|position|float32|Axis position \(meters\)|
+|position|float32|Axis position \(degrees\)|
 
  **Member functions** 
 

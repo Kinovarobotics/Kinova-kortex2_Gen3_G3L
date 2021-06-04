@@ -17,6 +17,7 @@ Enumeration ActionEvent
 |ACTION\_POSTPROCESS\_START|8|Action post-process started|
 |ACTION\_POSTPROCESS\_ABORT|9|Action post-process aborted|
 |ACTION\_POSTPROCESS\_END|10|Action post-process ended|
+|ACTION\_FEEDBACK|11|Action feedback received|
 
 **Parent topic:** [Base \(C++\)](../../summary_pages/Base.md)
 

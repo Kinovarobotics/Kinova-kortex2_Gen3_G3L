@@ -25,8 +25,11 @@ Enumeration ActionType
 |TIME\_DELAY|31|Apply a delay|
 |EXECUTE\_ACTION|32|Execute an existing action|
 |SEND\_GRIPPER\_COMMAND|33|Send a gripper command|
+|SEND\_GPIO\_COMMAND|34|Send a gpio command \(not implemented yet\)|
 |STOP\_ACTION|35|Stop robot movement|
 |PLAY\_PRE\_COMPUTED\_TRAJECTORY|39|Play a pre-computed trajectory|
+|EXECUTE\_SEQUENCE|40|Execute an existing sequence|
+|EXECUTE\_WAYPOINT\_LIST|41|Execute a trajectory defined by a series of waypoints|
 
 **Parent topic:** [Base \(Python\)](../../summary_pages/Base.md)
 

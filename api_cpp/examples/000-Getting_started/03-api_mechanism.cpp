@@ -12,35 +12,43 @@
 
 #include <SessionManager.h>
 #include <BaseClientRpc.h>
+#include <Common.pb.h>
 #include <DeviceConfigClientRpc.h>
 
 #include <RouterClient.h>
 #include <TransportClientTcp.h>
 
+#include "utilities.h"
+
 namespace k_api = Kinova::Api;
 
-#define IP_ADDRESS "192.168.1.10"
 #define PORT 10000
 
 /*****************************
  * Example related functions *
  *****************************/
-void print_limitations(const k_api::Base::JointsLimitationsList& limitations)
+void print_action_list(const k_api::Base::ActionList& action_list)
 {
-    std::cout << "============================================" << std::endl;
-    for(auto limitation : limitations.joints_limitations())
+    std::cout << "List of all actions in the arm:" << std::endl;
+    for(auto action : action_list.action_list())
     {
-        std::cout << "Joint: " << limitation.joint_identifier() << std::endl;
-        std::cout << "Type of limitation: " << k_api::Base::LimitationType_Name(limitation.type()) << std::endl;
-        std::cout << "Value: " << limitation.value() << std::endl << std::endl;
+        std::cout << "============================================" << std::endl;
+        std::cout << "Action name : " << action.name() << std::endl;
+        std::cout << "Action identifier: " << action.handle().identifier() << std::endl;
+        std::cout << "Action type: " << Kinova::Api::Base::ActionType_Name(action.handle().action_type()) << std::endl;
+        std::cout << "Action permissions: " << std::endl;
+        if (action.handle().permission() & Kinova::Api::Common::NO_PERMISSION) std::cout << "\t- " << Kinova::Api::Common::Permission_Name(Kinova::Api::Common::NO_PERMISSION) << std::endl;
+        if (action.handle().permission() & Kinova::Api::Common::READ_PERMISSION) std::cout << "\t- " << Kinova::Api::Common::Permission_Name(Kinova::Api::Common::READ_PERMISSION) << std::endl;
+        if (action.handle().permission() & Kinova::Api::Common::UPDATE_PERMISSION) std::cout << "\t- " << Kinova::Api::Common::Permission_Name(Kinova::Api::Common::UPDATE_PERMISSION) << std::endl;
+        if (action.handle().permission() & Kinova::Api::Common::DELETE_PERMISSION) std::cout << "\t- " << Kinova::Api::Common::Permission_Name(Kinova::Api::Common::DELETE_PERMISSION) << std::endl;
+        std::cout << "============================================" << std::endl;
     }
-    std::cout << "============================================" << std::endl << std::endl;
 }
 
-void function_callback(const k_api::Error& err, const k_api::Base::JointsLimitationsList& limitations)
+void function_callback(const k_api::Error& err, const k_api::Base::ActionList& action_list)
 {
-    std::cout << "Callback function results: " << std::endl << std::endl;
-    print_limitations(limitations);
+    std::cout << "Callback function results: " << std::endl;
+    print_action_list(action_list);
 }
 
 /**************************
@@ -49,41 +57,45 @@ void function_callback(const k_api::Error& err, const k_api::Base::JointsLimitat
 void example_blocking_function_call(k_api::Base::BaseClient* base)
 {
     // Execution will be blocked until GetAvailableWifi has completed execution.
-    auto limitations = base->GetAllJointsSpeedHardLimitation();
+    k_api::Base::RequestedActionType requested_action_type;
+    auto action_list = base->ReadAllActions(requested_action_type);
     std::cout << "Blocking function results: " << std::endl << std::endl;
-    print_limitations(limitations);
+    print_action_list(action_list);
 }
 
 void example_callback_function_call(k_api::Base::BaseClient* base)
 {
     // Specify a callback to be executed when the method executes.
-    base->GetAllJointsSpeedHardLimitation_callback(function_callback);
+    // The callback is the argument after the input, if any
+    k_api::Base::RequestedActionType requested_action_type;
+    base->ReadAllActions_callback(requested_action_type, function_callback);
 
     // A lambda function can also be used as a callback function.
-    auto lambda_function_callback = [](const k_api::Error &err, const k_api::Base::JointsLimitationsList& limitations)
+    auto lambda_function_callback = [](const k_api::Error &err, const k_api::Base::ActionList& action_list)
     {
-        print_limitations(limitations);
+        print_action_list(action_list);
     };
-    base->GetAllJointsSpeedHardLimitation_callback(lambda_function_callback);
+    base->ReadAllActions_callback(requested_action_type, lambda_function_callback);
 }
 
 void example_future_function_call(k_api::Base::BaseClient* base)
 {
     // The function returns a future object, and not a workable object.
-    std::future<k_api::Base::JointsLimitationsList> limitations_future_async = base->GetAllJointsSpeedHardLimitation_async();
+    k_api::Base::RequestedActionType requested_action_type;
+    std::future<k_api::Base::ActionList> action_list_future_async = base->ReadAllActions_async(requested_action_type);
     
     // Waiting for the promise to be completed by the API.
     auto timeout_ms = std::chrono::milliseconds(10000);
-    std::future_status status = limitations_future_async.wait_for(timeout_ms);
+    std::future_status status = action_list_future_async.wait_for(timeout_ms);
     if(status != std::future_status::ready)
     {
         throw std::runtime_error("Timeout detected while waiting for function\n");
     }
     
     // Retrieve the workable object from the future object.
-    auto limitations_async = limitations_future_async.get();
+    auto action_list_async = action_list_future_async.get();
     std::cout << "Future function results: " << std::endl << std::endl;
-    print_limitations(limitations_async);
+    print_action_list(action_list_async);
 }
 
 
@@ -105,24 +117,27 @@ void example_router_option(k_api::Base::BaseClient* base)
     router_options.andForget = false;
     router_options.delay_ms = 0;       // (milliseconds)
 
-    auto limitations = base->GetAllJointsSpeedHardLimitation(device_id, router_options);
+    k_api::Base::RequestedActionType requested_action_type;
+    auto action_list = base->ReadAllActions(requested_action_type, device_id, router_options);
     std::cout << "Call with router option results: " << std::endl << std::endl;
-    print_limitations(limitations);
+    print_action_list(action_list);
 }
 
 
 int main(int argc, char **argv)
 {
+    auto parsed_args = ParseExampleArguments(argc, argv);
+
     // Create API objects
     auto error_callback = [](k_api::KError err){ cout << "_________ callback error _________" << err.toString(); };
     auto transport = new k_api::TransportClientTcp();
     auto router = new k_api::RouterClient(transport, error_callback);
-    transport->connect(IP_ADDRESS, PORT);
+    transport->connect(parsed_args.ip_address, PORT);
 
     // Set session data connection information
     auto create_session_info = k_api::Session::CreateSessionInfo();
-    create_session_info.set_username("admin");
-    create_session_info.set_password("admin");
+    create_session_info.set_username(parsed_args.username);
+    create_session_info.set_password(parsed_args.password);
     create_session_info.set_session_inactivity_timeout(60000);   // (milliseconds)
     create_session_info.set_connection_inactivity_timeout(2000); // (milliseconds)
 

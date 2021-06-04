@@ -7,7 +7,7 @@
 |motor\_id|uint32|Motor ID \(1, nb\_motor\)|
 |position|float32|Desired position of the gripper fingers in percentage \(0-100%\)|
 |velocity|float32|Desired velocity in percentage \(0-100%\) with which position will be set|
-|force|float32|Desired force limit of the gripper fingers in percentage \(0-100%\)|
+|force|float32|This field is deprecated and unused. It will be removed in a future release.|
 
  **Member functions** 
 
