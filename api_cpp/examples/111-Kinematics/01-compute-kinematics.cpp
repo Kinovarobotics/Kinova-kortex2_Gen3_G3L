@@ -50,7 +50,6 @@ bool example_inverse_kinematics(k_api::Base::BaseClient* base)
 {
     // get robot's pose (by using forward kinematics)
     k_api::Base::JointAngles input_joint_angles = base->GetMeasuredJointAngles();
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
     k_api::Base::Pose pose = base->ComputeForwardKinematics(input_joint_angles);
 
     // Object containing cartesian coordinates and Angle Guess
