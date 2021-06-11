@@ -22,11 +22,38 @@
 
 namespace k_api = Kinova::Api;
 
+void printException(k_api::KDetailedException& ex)
+{
+    // You can print the error informations and error codes
+    auto error_info = ex.getErrorInfo().getError();
+    std::cout << "KDetailedoption detected what:  " << ex.what() << std::endl;
+    
+    std::cout << "KError error_code: " << error_info.error_code() << std::endl;
+    std::cout << "KError sub_code: " << error_info.error_sub_code() << std::endl;
+    std::cout << "KError sub_string: " << error_info.error_sub_string() << std::endl;
+
+    // Error codes by themselves are not very verbose if you don't see their corresponding enum value
+    // You can use google::protobuf helpers to get the string enum element for every error code and sub-code 
+    std::cout << "Error code string equivalent: " << k_api::ErrorCodes_Name(k_api::ErrorCodes(error_info.error_code())) << std::endl;
+    std::cout << "Error sub-code string equivalent: " << k_api::SubErrorCodes_Name(k_api::SubErrorCodes(error_info.error_sub_code())) << std::endl;
+}
+
 bool example_forward_kinematics(k_api::Base::BaseClient* base)
 {
     // Current arm's joint angles
-    std::cout << "Getting Angles for every joint..." << std::endl;
-    k_api::Base::JointAngles input_joint_angles = base->GetMeasuredJointAngles();
+    k_api::Base::JointAngles input_joint_angles;
+    try
+    {
+        std::cout << "Getting Angles for every joint..." << std::endl;
+        input_joint_angles = base->GetMeasuredJointAngles();
+    }
+    catch (k_api::KDetailedException& ex)
+    {
+        std::cout << "Unable to get joint angles" << std::endl;
+        printException(ex);
+        return false;
+    }
+
     std::cout << "Joint ID : Joint Angle" << std::endl;
     for (auto joint_angle : input_joint_angles.joint_angles()) 
     {
@@ -35,8 +62,18 @@ bool example_forward_kinematics(k_api::Base::BaseClient* base)
     std::cout << std::endl;
 
     // Computing Foward Kinematics (Angle -> cartesian convert) from arm's current joint angles
-    std::cout << "Computing Foward Kinematics using joint angles..." << std::endl;
-    k_api::Base::Pose pose = base->ComputeForwardKinematics(input_joint_angles);
+    k_api::Base::Pose pose;
+    try
+    {
+        std::cout << "Computing Foward Kinematics using joint angles..." << std::endl;
+        pose = base->ComputeForwardKinematics(input_joint_angles);
+    }
+    catch (k_api::KDetailedException& ex)
+    {
+        std::cout << "Unable to compute forward kinematics" << std::endl;
+        printException(ex);
+        return false;
+    }
 
     std::cout << "Pose calculated : " << std::endl;
     std::cout << "Coordinate (x, y, z)  : (" << pose.x() << ", " << pose.y() << ", " << pose.z() << ")" << std::endl;
@@ -49,8 +86,19 @@ bool example_forward_kinematics(k_api::Base::BaseClient* base)
 bool example_inverse_kinematics(k_api::Base::BaseClient* base)
 {
     // get robot's pose (by using forward kinematics)
-    k_api::Base::JointAngles input_joint_angles = base->GetMeasuredJointAngles();
-    k_api::Base::Pose pose = base->ComputeForwardKinematics(input_joint_angles);
+    k_api::Base::JointAngles input_joint_angles;
+    k_api::Base::Pose pose;
+    try
+    {
+        input_joint_angles = base->GetMeasuredJointAngles();
+        pose = base->ComputeForwardKinematics(input_joint_angles);
+    }
+    catch (k_api::KDetailedException& ex)
+    {
+        std::cout << "Unable to get current robot pose" << std::endl;
+        printException(ex);
+        return false;
+    }
 
     // Object containing cartesian coordinates and Angle Guess
     k_api::Base::IKData input_IkData; 
@@ -73,8 +121,19 @@ bool example_inverse_kinematics(k_api::Base::BaseClient* base)
     }
 
     // Computing Inverse Kinematics (cartesian -> Angle convert) from arm's current pose and joint angles guess
-    std::cout << "Computing Inverse Kinematics using joint angles and pose..." << std::endl;
-    k_api::Base::JointAngles computed_joint_angles = base->ComputeInverseKinematics(input_IkData);
+    k_api::Base::JointAngles computed_joint_angles;
+    try
+    {
+        std::cout << "Computing Inverse Kinematics using joint angles and pose..." << std::endl;
+        computed_joint_angles = base->ComputeInverseKinematics(input_IkData);
+    }
+    catch (k_api::KDetailedException& ex)
+    {
+        std::cout << "Unable to compute inverse kinematics" << std::endl;
+        printException(ex);
+        return false;
+    }
+
     std::cout << "Joint ID : Joint Angle" << std::endl;
     for (auto joint_angle : computed_joint_angles.joint_angles()) 
     {
@@ -114,7 +173,7 @@ int main(int argc, char **argv)
     // example core
     bool success = true;
     success &= example_forward_kinematics(base);
-    success &= example_inverse_kinematics(base);
+    if(success) success &= example_inverse_kinematics(base);
 
     // Close API session
     session_manager->CloseSession();

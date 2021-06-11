@@ -18,6 +18,7 @@ import os
 from kortex_api.autogen.client_stubs.BaseClientRpc import BaseClient
 
 from kortex_api.autogen.messages import Base_pb2
+from kortex_api.Exceptions.KServerException import KServerException
 
 #
 #
@@ -26,27 +27,46 @@ from kortex_api.autogen.messages import Base_pb2
 
 def example_forward_kinematics(base):
     # Current arm's joint angles (in home position)
-    print("Getting Angles for every joint...")
-    input_joint_angles = base.GetMeasuredJointAngles()
-    print("Joint ID : Joint Angle")
+    try:
+        print("Getting Angles for every joint...")
+        input_joint_angles = base.GetMeasuredJointAngles()
+    except KServerException as ex:
+        print("Unable to get joint angles")
+        print("Error_code:{} , Sub_error_code:{} ".format(ex.get_error_code(), ex.get_error_sub_code()))
+        print("Caught expected error: {}".format(ex))
+        return False
 
+    print("Joint ID : Joint Angle")
     for joint_angle in input_joint_angles.joint_angles:
         print(joint_angle.joint_identifier, " : ", joint_angle.value)
     print()
     
     # Computing Foward Kinematics (Angle -> cartesian convert) from arm's current joint angles
-    print("Computing Foward Kinematics using joint angles...")
-    pose = base.ComputeForwardKinematics(input_joint_angles)
+    try:
+        print("Computing Foward Kinematics using joint angles...")
+        pose = base.ComputeForwardKinematics(input_joint_angles)
+    except KServerException as ex:
+        print("Unable to compute forward kinematics")
+        print("Error_code:{} , Sub_error_code:{} ".format(ex.get_error_code(), ex.get_error_sub_code()))
+        print("Caught expected error: {}".format(ex))
+        return False
+
     print("Pose calculated : ")
-    print("Coordinate (x, y, z)  : (", pose.x, ", ", pose.y, ", ", pose.z, ")")
-    print("Theta (theta_x, theta_y, theta_z)  : (", pose.theta_x, ", ", pose.theta_y, ", ", pose.theta_z, ")")
+    print("Coordinate (x, y, z)  : ({}, {}, {})".format(pose.x, pose.y, pose.z))
+    print("Theta (theta_x, theta_y, theta_z)  : ({}, {}, {})".format(pose.theta_x, pose.theta_y, pose.theta_z))
     print()
     return True
 
 def example_inverse_kinematics(base):
     # get robot's pose (by using forward kinematics)
-    input_joint_angles = base.GetMeasuredJointAngles()
-    pose = base.ComputeForwardKinematics(input_joint_angles)
+    try:
+        input_joint_angles = base.GetMeasuredJointAngles()
+        pose = base.ComputeForwardKinematics(input_joint_angles)
+    except KServerException as ex:
+        print("Unable to get current robot pose")
+        print("Error_code:{} , Sub_error_code:{} ".format(ex.get_error_code(), ex.get_error_sub_code()))
+        print("Caught expected error: {}".format(ex))
+        return False
 
     # Object containing cartesian coordinates and Angle Guess
     input_IkData = Base_pb2.IKData()
@@ -65,10 +85,16 @@ def example_inverse_kinematics(base):
         # '- 1' to generate an actual "guess" for current joint angles
         jAngle.value = joint_angle.value - 1
     
-    print("Computing Inverse Kinematics using joint angles and pose...")
-    computed_joint_angles = base.ComputeInverseKinematics(input_IkData)
-    print("Joint ID : Joint Angle")
+    try:
+        print("Computing Inverse Kinematics using joint angles and pose...")
+        computed_joint_angles = base.ComputeInverseKinematics(input_IkData)
+    except KServerException as ex:
+        print("Unable to compute inverse kinematics")
+        print("Error_code:{} , Sub_error_code:{} ".format(ex.get_error_code(), ex.get_error_sub_code()))
+        print("Caught expected error: {}".format(ex))
+        return False
 
+    print("Joint ID : Joint Angle")
     for joint_angle in computed_joint_angles.joint_angles :
         print(joint_angle.joint_identifier, " : ", joint_angle.value)
 
@@ -91,7 +117,7 @@ def main():
         # Example core
         success = True
         success &= example_forward_kinematics(base)
-        success &= example_inverse_kinematics(base)
+        if success : success &= example_inverse_kinematics(base)
         
         return 0 if success else 1
 
