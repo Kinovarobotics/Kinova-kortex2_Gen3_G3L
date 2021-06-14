@@ -117,7 +117,7 @@ def main():
         # Example core
         success = True
         success &= example_forward_kinematics(base)
-        if success : success &= example_inverse_kinematics(base)
+        success &= example_inverse_kinematics(base)
         
         return 0 if success else 1
 

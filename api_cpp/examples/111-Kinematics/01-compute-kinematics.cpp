@@ -173,7 +173,7 @@ int main(int argc, char **argv)
     // example core
     bool success = true;
     success &= example_forward_kinematics(base);
-    if(success) success &= example_inverse_kinematics(base);
+    success &= example_inverse_kinematics(base);
 
     // Close API session
     session_manager->CloseSession();
