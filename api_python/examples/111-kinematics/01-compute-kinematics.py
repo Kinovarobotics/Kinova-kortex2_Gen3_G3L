@@ -95,8 +95,10 @@ def example_inverse_kinematics(base):
         return False
 
     print("Joint ID : Joint Angle")
+    joint_identifier = 0
     for joint_angle in computed_joint_angles.joint_angles :
-        print(joint_angle.joint_identifier, " : ", joint_angle.value)
+        print(joint_identifier, " : ", joint_angle.value)
+        joint_identifier += 1
 
     return True
 

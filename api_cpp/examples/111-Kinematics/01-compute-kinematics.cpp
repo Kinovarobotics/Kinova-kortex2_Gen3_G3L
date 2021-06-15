@@ -135,9 +135,11 @@ bool example_inverse_kinematics(k_api::Base::BaseClient* base)
     }
 
     std::cout << "Joint ID : Joint Angle" << std::endl;
+    int joint_identifier = 0;
     for (auto joint_angle : computed_joint_angles.joint_angles()) 
     {
-        std::cout << joint_angle.joint_identifier() << " : " << joint_angle.value() << std::endl;
+        std::cout << joint_identifier << " : " << joint_angle.value() << std::endl;
+        joint_identifier++;
     }
 
     return true;
