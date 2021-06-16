@@ -144,7 +144,7 @@ Example (Linux):
 ```sh
  mkdir build  
  cd build  
- cmake .. -DUSE_CONAN=OFF -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<OS_Compiler_Architecture dir name>]
+ cmake .. -DUSE_CONAN=OFF -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<kortex_api_sub_folder dir name>]
  make  
  ```
 
@@ -153,12 +153,12 @@ This applies to all the manual build commands. The build scripts can also be mod
 Example (build-mingw.bat)
 
 ```bat
-(line 17) cmake .. -G "MinGW Makefiles" -DUSE_CONAN=OFF -DCMAKE_BUILD_TYPE=%build_type% -DKORTEX_SUB_DIR=%kortex_api_folder% && mingw32-make
+(line 17) cmake .. -G "MinGW Makefiles" -DUSE_CONAN=OFF -DCMAKE_BUILD_TYPE=%build_type% -DKORTEX_SUB_DIR=%kortex_api_sub_folder% && mingw32-make
 ```
 
 This will effectively revert to the old build method. It requires downloading the Kortex Api library:
- + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/artifactory/webapp/#/artifacts/browse/tree/General/generic-public/kortex/API/2.3.0/linux_x86-64_x86_gcc.zip)
- + Uncompress the content of the archive and place the contents of the `cpp/{your_architecture}` folder in the sub-directory `kortex_api`.  
+ + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/API/2.3.0/)
+ + Uncompress the content of the archive and place it in the directory `kortex_api`.  
 
 ```sh
 examples/kortex_api  
@@ -170,12 +170,12 @@ examples/kortex_api
     └ release/
 ```
 
-You can also uncompress the contents of the `cpp/` folder in the sub-directory `kortex_api`. You will then have to use the `KORTEX_SUB_DIR` CMake argument to specify the Kortex API OS_Compiler_Architecture.
+You can also uncompress the content of the archive in a sub-directory `kortex_api/<Something>`. You will then have to use the `KORTEX_SUB_DIR` CMake argument to specify the Kortex API sub-directory.
 
 ```sh
 examples/kortex_api  
 ┬  
-├ OS_Compiler_Architecture/ [e.g. linux_gcc_x86-64]
+├ Something/ [e.g. linux_gcc_x86-64]
 └   ┬  
     ├ include/
     ├ lib/  
@@ -214,7 +214,7 @@ my_example_repo
  ```sh
  mkdir build  
  cd build  
- cmake .. -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<OS_Compiler_Architecture dir name>]
+ cmake .. -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<kortex_api_sub_folder dir name>]
  make  
  ```
 
@@ -237,7 +237,7 @@ my_example_repo
  ```bat
  mkdir build  
  cd build  
- cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<os_arch dir name>]  
+ cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<kortex_api_sub_folder dir name>]  
  mingw32-make  
  ```
 
@@ -249,7 +249,7 @@ my_example_repo
  ```sh
  mkdir build  
  cd build  
- cmake .. -G "Visual Studio 15 2017 [arch]" -DCMAKE_SH=CMAKE_SH-NOTFOUND -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<os_arch dir name>]  
+ cmake .. -G "Visual Studio 15 2017 [arch]" -DCMAKE_SH=CMAKE_SH-NOTFOUND -DCMAKE_BUILD_TYPE=release [-DKORTEX_SUB_DIR=<kortex_api_sub_folder dir name>]  
  ```
 
  </details></p> 
@@ -271,7 +271,7 @@ my_example_repo
  You can also build manually:
  ```bat
  mkdir build  
- cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release [-DKORTEX_SUB_DIR=<os_arch dir name>]
+ cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release [-DKORTEX_SUB_DIR=<kortex_api_sub_folder dir name>]
  nmake
  ```
 
