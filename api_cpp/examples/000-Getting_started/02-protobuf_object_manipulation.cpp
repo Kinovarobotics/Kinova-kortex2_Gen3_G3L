@@ -157,7 +157,7 @@ void example_manipulation_protobuf_list()
     k_api::Base::ConstrainedJointAngles constrained_joint_angles = k_api::Base::ConstrainedJointAngles();
     auto joint_angles = constrained_joint_angles.mutable_joint_angles(); // Returns a pointer to the joint_angles message
 
-    for (auto i = 0; i > 7; i++)
+    for (auto i = 0; i < 7; i++)
     {
         auto joint_angle = joint_angles->add_joint_angles(); // This will create and return a repeated element pointer
         joint_angle->set_joint_identifier(i);
