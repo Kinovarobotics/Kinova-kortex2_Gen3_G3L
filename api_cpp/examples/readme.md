@@ -121,6 +121,8 @@ This is done by default and requires Conan to be installed.
 You can refer to the [Conan Installation Tutorial](https://docs.conan.io/en/latest/installation.html) for installing Conan.
 **Note**: It is recommended to install Python3 for Conan. You can download and install Python3 from https://www.python.org/  
 
+When installing `conan` via `pip` the new directory might not be appended to the PATH. This can be solved on Ubuntu by restarting the terminal or by using `source ~/.profile` or by adding the installed PATH (that you can find with `pip show conan`) to your PATH environnement variable in Windows.
+
 Next, enable the revision feature for Artifactory plugin
 ```sh
 conan config set general.revisions_enabled=1
