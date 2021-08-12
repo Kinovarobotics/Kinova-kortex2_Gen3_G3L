@@ -60,4 +60,4 @@ Low-level servoing allows clients to control each actuator individually by sendi
 
 > **Note**  
 > This servoing mode is not meant to be run under Python. C++ is a much more suitable language for low-level control. 
-> Python is >an interpreted language. By extension, low-level control using Python will be much more sensitive to jitter and will not guarantee a 1 kHz refresh rate.
+> Python is an interpreted language. By extension, low-level control using Python will be much more sensitive to jitter and will not guarantee a 1 kHz refresh rate.
