@@ -57,4 +57,4 @@ The base ensures device routing and internal communications with the actuators a
 
 Low-level servoing allows clients to control each actuator individually by sending small position increments at a 1 kHz frequency (bypassing the kinematic control library).
 
-You can have a look at the [actuator low-level cyclic example](../api_cpp/examples/200-BaseGen3_actuator_low_level/01-actuator_low_level_velocity_control.cpp) for a code example.
+You can have a look at the [actuator low-level cyclic example](../api_cpp/examples/200-Actuator_low_level_control/01-actuator_low_level_velocity_control.cpp) for a code example.
