@@ -18,7 +18,6 @@ import sys
 import os
 import threading
 
-
 from kortex_api.TCPTransport import TCPTransport
 from kortex_api.RouterClient import RouterClient
 from kortex_api.SessionManager import SessionManager

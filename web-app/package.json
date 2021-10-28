@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-api": "cd ../api_python/examples && python3 server.py",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -36,5 +37,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+
+  "proxy": "http://localhost:5000"
 }
