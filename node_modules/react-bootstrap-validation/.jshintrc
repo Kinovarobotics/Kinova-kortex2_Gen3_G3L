@@ -1,0 +1,15 @@
+{
+    "camelcase"     : true,
+    "newcap"        : true,
+    "quotmark"      : "single",
+    "strict"        : false,
+    "varstmt"       : true,
+    "esnext"        : true,
+    "globalstrict"  : true,
+    "browser"       : true,
+    "browserify"    : true,
+    "node"          : true,
+    "globals"       : {
+        "console"   : true
+    }
+}
