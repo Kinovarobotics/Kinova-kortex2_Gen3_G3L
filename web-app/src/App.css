@@ -89,7 +89,44 @@
   line-height: 1.3;
 }
 
-#root::before{
+.cyberpunk-bg{
+  margin-top: -31%;
+  width: 95%;
+  opacity: 0.1;
+  padding-left: 5%;
+}
+
+#top-cyberpunk-img{
+  margin-top: -15%;
+}
+
+#bottom-cyberpunk-img{
+  margin-bottom: -12%;
+}
+
+#bg-img-main{
+  margin-top: -71%;
+  opacity: unset;
+  width: 105%;
+  margin-left: -4%;
+  filter: brightness(1.1);
+  animation: blink 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  0% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.5;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+/*#root::before{
   content: "";
   background-image: url(./robotic-arm.png);
       background-size: cover;
@@ -100,7 +137,7 @@
       left: -10%;
       z-index: -1;
       height: 99%;
-}
+}*/
 
 #root{
   background: #c9e7facb;

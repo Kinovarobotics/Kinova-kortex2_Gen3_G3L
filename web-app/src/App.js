@@ -7,6 +7,33 @@ import { Button } from 'react-bootstrap';
 function App() {
   return (
     <div className="App" id="main-bg">
+      <div class="container logo-spread">
+        <div class="row">
+          <div class="col">
+            <img src={cpLogo} class="cyberpunk-bg" id="top-cyberpunk-img" alt="Cyberpunk Logo"></img>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <img src={cpLogo} class="cyberpunk-bg" alt="Cyberpunk Logo"></img>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <img src={cpLogo} class="cyberpunk-bg" alt="Cyberpunk Logo"></img>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <img src={cpLogo} class="cyberpunk-bg" id="bottom-cyberpunk-img" alt="Cyberpunk Logo"></img>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <img src={cpLogo} class="cyberpunk-bg" id="bg-img-main" alt="Cyberpunk Logo"></img>
+          </div>
+        </div>
+      </div>
       <div class="container">
         <div class="row">
           <div class="col"></div>
@@ -52,7 +79,7 @@ function App() {
         <div class="row">
           <div class="col-5" id="start-button-col">
             <h2 class="header">Click Start to Begin</h2>
-            <button type="button" class="btn btn-light bouncy">Start</button>
+            <button type="button" class="btn btn-light">Start</button>
           </div>
         </div>
       </div>
