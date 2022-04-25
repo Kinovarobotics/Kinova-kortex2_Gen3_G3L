@@ -253,6 +253,9 @@ int main(int argc, char **argv)
     success &= example_move_to_home_position(base);
     success &= example_create_sequence(base, base_cyclic);
 
+    // You can also refer to the 110-Waypoints examples for an alternate way to execute
+    // a trajectory defined by a series of waypoints in joint space or in Cartesian space
+
     // Close API session
     session_manager->CloseSession();
 

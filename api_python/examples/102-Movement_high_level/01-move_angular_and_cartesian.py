@@ -148,72 +148,6 @@ def example_cartesian_action_movement(base, base_cyclic):
         print("Timeout on action notification wait")
     return finished
 
-def example_angular_trajectory_movement(base):
-    
-    constrained_joint_angles = Base_pb2.ConstrainedJointAngles()
-
-    actuator_count = base.GetActuatorCount()
-
-    # Place arm straight up
-    for joint_id in range(actuator_count.count):
-        joint_angle = constrained_joint_angles.joint_angles.joint_angles.add()
-        joint_angle.joint_identifier = joint_id
-        joint_angle.value = 0
-
-    e = threading.Event()
-    notification_handle = base.OnNotificationActionTopic(
-        check_for_end_or_abort(e),
-        Base_pb2.NotificationOptions()
-    )
-
-    print("Reaching joint angles...")
-    base.PlayJointTrajectory(constrained_joint_angles)
-
-
-    print("Waiting for movement to finish ...")
-    finished = e.wait(TIMEOUT_DURATION)
-    base.Unsubscribe(notification_handle)
-
-    if finished:
-        print("Joint angles reached")
-    else:
-        print("Timeout on action notification wait")
-    return finished
-
-
-def example_cartesian_trajectory_movement(base, base_cyclic):
-    
-    constrained_pose = Base_pb2.ConstrainedPose()
-
-    feedback = base_cyclic.RefreshFeedback()
-
-    cartesian_pose = constrained_pose.target_pose
-    cartesian_pose.x = feedback.base.tool_pose_x          # (meters)
-    cartesian_pose.y = feedback.base.tool_pose_y - 0.1    # (meters)
-    cartesian_pose.z = feedback.base.tool_pose_z - 0.2    # (meters)
-    cartesian_pose.theta_x = feedback.base.tool_pose_theta_x # (degrees)
-    cartesian_pose.theta_y = feedback.base.tool_pose_theta_y # (degrees)
-    cartesian_pose.theta_z = feedback.base.tool_pose_theta_z # (degrees)
-
-    e = threading.Event()
-    notification_handle = base.OnNotificationActionTopic(
-        check_for_end_or_abort(e),
-        Base_pb2.NotificationOptions()
-    )
-
-    print("Reaching cartesian pose...")
-    base.PlayCartesianTrajectory(constrained_pose)
-
-    print("Waiting for movement to finish ...")
-    finished = e.wait(TIMEOUT_DURATION)
-    base.Unsubscribe(notification_handle)
-
-    if finished:
-        print("Angular movement completed")
-    else:
-        print("Timeout on action notification wait")
-    return finished
-
 def main():
     
     # Import the utilities helper module
@@ -237,9 +171,8 @@ def main():
         success &= example_cartesian_action_movement(base, base_cyclic)
         success &= example_angular_action_movement(base)
 
-        success &= example_move_to_home_position(base)
-        success &= example_cartesian_trajectory_movement(base, base_cyclic)
-        success &= example_angular_trajectory_movement(base)
+        # You can also refer to the 110-Waypoints examples if you want to execute
+        # a trajectory defined by a series of waypoints in joint space or in Cartesian space
 
         return 0 if success else 1
 

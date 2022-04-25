@@ -201,6 +201,9 @@ def main():
         success &= example_move_to_home_position(base)
         success &= example_create_sequence(base, base_cyclic)
         
+        # You can also refer to the 110-Waypoints examples for an alternate way to execute
+        # a trajectory defined by a series of waypoints in joint space or in Cartesian space
+
         return 0 if success else 1
 
 if __name__ == "__main__":
