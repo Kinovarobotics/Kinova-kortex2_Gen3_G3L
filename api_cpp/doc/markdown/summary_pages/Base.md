@@ -269,10 +269,10 @@ This section describes the data classes used in this API.
 |[OperatingModeInformation](../messages/Base/OperatingModeInformation.md#)|Information about the operating mode|
 |[OperatingModeNotification](../messages/Base/OperatingModeNotification.md#)|Notification about a single operating mode event|
 |[OperatingModeNotificationList](../messages/Base/OperatingModeNotificationList.md#)|Array of operating mode notifications|
-|[Orientation](../messages/Base/Orientation.md#)|A Cartesian tool orientation. Defines orientation as sequence of three Euler angles using z-y-x Tait-Bryan extrinsic convention. That is, rotation around fixed X-axis, then rotation around fixed Y-axis, then rotation around fixed Z-axis.|
+|[Orientation](../messages/Base/Orientation.md#)|A Cartesian tool orientation. Defines orientation as sequence of three Euler angles using x-y-z Tait-Bryan extrinsic convention. That is, rotation around fixed X-axis, then rotation around fixed Y-axis, then rotation around fixed Z-axis.|
 |[PasswordChange](../messages/Base/PasswordChange.md#)|Information required to change user password|
 |[Point](../messages/Base/Point.md#)|Coordinates of a Cartesian point|
-|[Pose](../messages/Base/Pose.md#)|A Cartesian tool pose \(position and orientation\). Orientation is defined as a sequence of three Euler angles using z-y-x Tait-Bryan extrinsic convention. That is, rotation around fixed X-axis, then rotation around fixed Y-axis, then rotation around fixed Z-axis.|
+|[Pose](../messages/Base/Pose.md#)|A Cartesian tool pose \(position and orientation\). Orientation is defined as a sequence of three Euler angles using x-y-z Tait-Bryan extrinsic convention. That is, rotation around fixed X-axis, then rotation around fixed Y-axis, then rotation around fixed Z-axis.|
 |[Position](../messages/Base/Position.md#)|A Cartesian tool position|
 |[PreComputedJointTrajectory](../messages/Base/PreComputedJointTrajectory.md#)|Pre-computed joint trajectory subject to specified continuity constraints. The starting point of the trajectory must have an elapsed time of 0 ms and the angular values must reflect the current state of the robot. The robot control libraries will validate the trajectory fulfills the specified continuity constraints before playing the trajectory.|
 |[PreComputedJointTrajectoryElement](../messages/Base/PreComputedJointTrajectoryElement.md#)|Set of angle, speed, acceleration, and elapsed time values for each joint for a given 1 ms interval. A PreComputedJointTrajectory is made up of a series of these elements.|
