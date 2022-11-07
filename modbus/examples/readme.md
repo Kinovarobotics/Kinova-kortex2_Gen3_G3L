@@ -6,6 +6,8 @@
   Refer to the LICENSE file for details.
 *-->
 
+## This MODBUS stack is only used with the Gen3 and Gen3 lite robots. Refer to [Link 6 documentation](https://www.kinovarobotics.com/product/link-6-cobot) for details on how to setup MODBUS communication with a Link 6 robot.
+
 # Modbus example
 
 <!-- TOC -->
