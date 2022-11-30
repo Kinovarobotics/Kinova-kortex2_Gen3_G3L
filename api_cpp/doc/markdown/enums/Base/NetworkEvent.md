@@ -17,6 +17,10 @@ Enumeration NetworkEvent
 |WIFI\_AUTH\_WRONG\_KEY|8|Wi-Fi wrong PSK supplied|
 |WIFI\_AUTH\_CONN\_FAILED|9|Wi-Fi connection failure during auth|
 |WIFI\_AUTH\_FAILED|10|Wi-Fi authentication failure|
+|WIFI\_ENABLED|11|Wi-Fi has been enabled|
+|WIFI\_DISABLED|12|Wi-Fi has been disabled|
+|BLUETOOTH\_ENABLED|13|Bluetooth has been enabled|
+|BLUETOOTH\_DISABLED|14|Bluetooth has been disabled|
 
 **Parent topic:** [Base \(C++\)](../../summary_pages/Base.md)
 

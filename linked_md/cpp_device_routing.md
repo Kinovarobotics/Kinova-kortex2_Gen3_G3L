@@ -33,7 +33,7 @@
 ## Overview
 Device routing is a mechanism that allows users to send commands to specific devices using the connection with the base.  This is done by specifying a *device_identifier* when sending a command through a service. This service doesn't need to be implemented by the base.
 
-In other words, you can send a command to a sub device with a service known only by the sub device (e.g.: ``ActuatorConfigClient)`` as long as the *device_identifier* is specified as an additional command parameter.
+In other words, you can send a command to a sub device with a service known only by the sub device (e.g.: ``ActuatorConfigClient``) as long as the *device_identifier* is specified as an additional command parameter.
 
 The **Device Manager** service is used to obtain the *device_identifier*.
 
