@@ -74,7 +74,7 @@ On Windows, make sure you add CMake to your PATH variable
  ```
 <a id="markdown-procedure-to-install-gcc-54-under-linux-ubuntu-1604" name="procedure-to-install-gcc-54-under-linux-ubuntu-1604"></a>
 
-#### Procedure to install GCC under Linux (GCC 5.4 on Ubuntu 16.04, GCC 7.4 on Ubuntu 18.04)
+#### Procedure to install GCC under Linux (GCC 5.4 on Ubuntu 16.04, GCC 7.4 on Ubuntu 18.04, GCC 9.4 on Ubuntu 20.04)
 ```sh
 sudo apt-get install build-essential
 ```
@@ -159,7 +159,7 @@ Example (build-mingw.bat)
 ```
 
 This will effectively revert to the old build method. It requires downloading the Kortex Api library:
- + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/API/2.3.0/)
+ + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.5.0/)
  + Uncompress the content of the archive and place it in the directory `kortex_api`.  
 
 ```sh

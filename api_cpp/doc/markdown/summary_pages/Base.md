@@ -161,6 +161,10 @@ Base service. Broadly useful service. Provides functions for configuring a range
 |ComputeForwardKinematics|[Pose](../messages/Base/Pose.md#)|[JointAngles](../messages/Base/JointAngles.md#)|Get the forward kinematics given specified angular positions of actuators|
 |ComputeInverseKinematics|[JointAngles](../messages/Base/JointAngles.md#)|[IKData](../messages/Base/IKData.md#)|Get the inverse kinematics given a specified cartesian pose and guess of joint angles|
 |ValidateWaypointList|[WaypointValidationReport](../messages/Base/WaypointValidationReport.md#)|[WaypointList](../messages/Base/WaypointList.md#)|Validate a waypoint list, returns an empty trajectory error report list if the waypoint list is valid. If the use\_optimal\_blending option is true, a waypoint list with optimal blending will be return.|
+|SetWifiEnableState|[Empty](../messages/Common/Empty.md#)|[WifiEnableState](../messages/Base/WifiEnableState.md#)|Enable or disable the wifi capabilities on the arm|
+|GetWifiEnableState|[WifiEnableState](../messages/Base/WifiEnableState.md#)|[Empty](../messages/Common/Empty.md#)|Get the wifi capabilities state \(enabled or disabled\)|
+|SetBluetoothEnableState|[Empty](../messages/Common/Empty.md#)|[BluetoothEnableState](../messages/Base/BluetoothEnableState.md#)|Enable or disable the Bluetooth capabilities on the arm|
+|GetBluetoothEnableState|[BluetoothEnableState](../messages/Base/BluetoothEnableState.md#)|[Empty](../messages/Common/Empty.md#)|Get the Bluetooth capabilities state \(enabled or disabled\)|
 
 ## Class reference
 
@@ -184,6 +188,7 @@ This section describes the data classes used in this API.
 |[AppendActionInformation](../messages/Base/AppendActionInformation.md#)|Representation of the result of appending \(adding at the end\) an action to an existing sequence \(not implemented yet\)|
 |[ArmStateInformation](../messages/Base/ArmStateInformation.md#)|Information about the arm state|
 |[ArmStateNotification](../messages/Base/ArmStateNotification.md#)|Notification about a single arm state event|
+|[BluetoothEnableState](../messages/Base/BluetoothEnableState.md#)| |
 |[BridgeConfig](../messages/Base/BridgeConfig.md#)|Bridge configuration information. It is used to either create a bridge or to retrieve information about an existing bridge|
 |[BridgeIdentifier](../messages/Base/BridgeIdentifier.md#)|Bridge identifier|
 |[BridgeList](../messages/Base/BridgeList.md#)|An array of configuration information for different bridges.|
@@ -283,6 +288,7 @@ This section describes the data classes used in this API.
 |[ProtectionZoneNotification](../messages/Base/ProtectionZoneNotification.md#)|Notification about a single protection zone event|
 |[ProtectionZoneNotificationList](../messages/Base/ProtectionZoneNotificationList.md#)|Array of protection zone notifications|
 |[Query](../messages/Base/Query.md#)|Parameters of an event log query \(not implemented yet\)|
+|[RFConfiguration](../messages/Base/RFConfiguration.md#)| |
 |[RequestedActionType](../messages/Base/RequestedActionType.md#)|Message used for requesting all action instances of a specific action type|
 |[RobotEventNotification](../messages/Base/RobotEventNotification.md#)|Notification about a single robot event|
 |[RobotEventNotificationList](../messages/Base/RobotEventNotificationList.md#)|Array of robot event notifications|
@@ -330,6 +336,7 @@ This section describes the data classes used in this API.
 |[WaypointValidationReport](../messages/Base/WaypointValidationReport.md#)|Waypoint Validation results|
 |[WifiConfiguration](../messages/Base/WifiConfiguration.md#)|Wi-Fi connection configuration|
 |[WifiConfigurationList](../messages/Base/WifiConfigurationList.md#)|Array of Wi-Fi connection configuration for different networks|
+|[WifiEnableState](../messages/Base/WifiEnableState.md#)| |
 |[WifiInformation](../messages/Base/WifiInformation.md#)|Information about a specific Wi-Fi network|
 |[WifiInformationList](../messages/Base/WifiInformationList.md#)|Array of information about different Wi-Fi networks|
 |[Wrench](../messages/Base/Wrench.md#)|A wrench \(force and torque\)|
