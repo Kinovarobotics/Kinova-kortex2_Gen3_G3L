@@ -115,10 +115,12 @@ Because GCC is not coded for the Windows operating system, a GCC port of MinGW-w
 
 ### Using Conan
 
-The C++ examples use the Conan package manager for fetching its dependencies. 
+The C++ examples use the Conan (V1.X) package manager for fetching its dependencies. 
 This is done by default and requires Conan to be installed.
+> Instructions are for conan V1.X only and it won't work for versions >=2.0.0
 
 You can refer to the [Conan Installation Tutorial](https://docs.conan.io/en/latest/installation.html) for installing Conan.
+
 **Note**: It is recommended to install Python3 for Conan. You can download and install Python3 from https://www.python.org/  
 
 When installing `conan` via `pip` the new directory might not be appended to the PATH. This can be solved on Ubuntu by restarting the terminal or by using `source ~/.profile` or by adding the installed PATH (that you can find with `pip show conan`) to your PATH environnement variable in Windows.
