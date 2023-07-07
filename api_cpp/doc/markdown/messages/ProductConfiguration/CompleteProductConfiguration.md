@@ -16,6 +16,7 @@
 |interface\_module\_type|uint32|Interface module type of the device|
 |arm\_laterality|uint32|Arm laterality of the device|
 |wrist\_type|uint32|Wrist type of the device|
+|brake\_type|uint32|Brake type of the device|
 
  **Member functions** 
 
@@ -75,6 +76,9 @@
 |wrist\_type\(\) const|uint32|void|Returns the current value of wrist\_type. If the wrist\_type is not set, returns 0.|
 |set\_wrist\_type\(\)|void|uint32|Sets the value of wrist\_type. After calling this, wrist\_type\(\) will return value.|
 |clear\_wrist\_type\(\)|void|void|Clears the value of wrist\_type. After calling this, wrist\_type\(\) will return the empty string/empty bytes.|
+|brake\_type\(\) const|uint32|void|Returns the current value of brake\_type. If the brake\_type is not set, returns 0.|
+|set\_brake\_type\(\)|void|uint32|Sets the value of brake\_type. After calling this, brake\_type\(\) will return value.|
+|clear\_brake\_type\(\)|void|void|Clears the value of brake\_type. After calling this, brake\_type\(\) will return the empty string/empty bytes.|
 
 **Parent topic:** [ProductConfiguration \(C++\)](../../summary_pages/ProductConfiguration.md)
 

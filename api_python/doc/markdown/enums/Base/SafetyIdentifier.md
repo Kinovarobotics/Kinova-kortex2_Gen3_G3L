@@ -15,7 +15,7 @@ Enumeration SafetyIdentifier
 |CYCLIC\_DATA\_JITTER|32|0x20 - Cyclic data jitter \(not implemented yet\)|
 |REACHED\_MAXIMUM\_EVENT\_LOGS|64|0x40 - Reached Maximum number of event log entries \(not implemented yet\)|
 |NO\_KINEMATICS\_SUPPORT|128|0x80 - No kinematics support \(not implemented yet\)|
-|ABOVE\_MAXIMUM\_DOF|256|0x100 - Above maximum DoF|
+|BRAKE\_REMOVAL\_FAILURE|256|0x100 - Based failed to remove brakes from the axis|
 |NETWORK\_ERROR|512|0x200 - Network error \(not implemented yet\)|
 |UNABLE\_TO\_REACH\_POSE|1024|0x400 - Unable to reach pose|
 |JOINT\_DETECTION\_ERROR|2048|0x800 - Joint detection error|

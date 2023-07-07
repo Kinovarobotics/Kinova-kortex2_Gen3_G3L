@@ -34,6 +34,8 @@ Enumeration SafetyIdentifierBankA
 |UNRELIABLE\_CAPACITIVE\_SENSOR|16777216|0x1000000 - Capacitive sensor is unreliable|
 |UNEXPECTED\_GEAR\_RATIO|33554432|0x2000000 - Incorrect gear ratio for detected configuration|
 |HALL\_MAGNETIC\_MISMATCH|67108864|0x4000000 - Position mismatch between hall and magnetic sensors|
+|BRAKE\_DRIVE\_FAULT|134217728|0x8000000 - Brake driver fault|
+|BRAKE\_RELEASE\_MOTION\_OUT\_OF\_RANGE|268435456|0x10000000 - Brake release motion goes out of allowed range|
 
 **Parent topic:** [ActuatorConfig \(Python\)](../../summary_pages/ActuatorConfig.md)
 

@@ -16,6 +16,7 @@
 |interface\_module\_type|int|Interface module type of the device|You can manipulate the field interface\_module\_type as if it were a regular field. To clear the value of interface\_module\_type and reset it to the default value for its type, you call the ClearField\(\) method of the Message interface.|
 |arm\_laterality|int|Arm laterality of the device|You can manipulate the field arm\_laterality as if it were a regular field. To clear the value of arm\_laterality and reset it to the default value for its type, you call the ClearField\(\) method of the Message interface.|
 |wrist\_type|int|Wrist type of the device|You can manipulate the field wrist\_type as if it were a regular field. To clear the value of wrist\_type and reset it to the default value for its type, you call the ClearField\(\) method of the Message interface.|
+|brake\_type|int|Brake type of the device|You can manipulate the field brake\_type as if it were a regular field. To clear the value of brake\_type and reset it to the default value for its type, you call the ClearField\(\) method of the Message interface.|
 
 **Parent topic:** [ProductConfiguration \(Python\)](../../summary_pages/ProductConfiguration.md)
 
