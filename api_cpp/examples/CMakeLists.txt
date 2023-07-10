@@ -29,7 +29,7 @@
 # ----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.5)
 
-project(kortexApiCppExamples VERSION 2.3.0 LANGUAGES CXX)
+project(kortexApiCppExamples VERSION 2.6.0 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR   ON)
 set(CMAKE_VERBOSE_MAKEFILE      ON)
@@ -120,7 +120,7 @@ if(USE_CONAN)
     URL https://artifactory.kinovaapps.com/artifactory/api/conan/conan-public)
 
   if(UNIX)
-    conan_cmake_run(REQUIRES kortex_api_cpp/2.3.0-r.34@kortex/stable
+    conan_cmake_run(REQUIRES kortex_api_cpp/2.6.0-r.3@kortex/stable
                     SETTINGS kortex_api_cpp:compiler=gcc
                     SETTINGS kortex_api_cpp:compiler.version=5
                     SETTINGS compiler.libcxx=libstdc++11
@@ -141,13 +141,13 @@ if(USE_CONAN)
         set(kortex_api_cpp_target "msvc-2019")
       endif()
 
-      conan_cmake_run(REQUIRES kortex_api_cpp/2.3.0-r.34@kortex/stable
+      conan_cmake_run(REQUIRES kortex_api_cpp/2.6.0-r.3@kortex/stable
                       PROFILE_AUTO build_type
                       BASIC_SETUP
                       UPDATE)
       
     else()
-      conan_cmake_run(REQUIRES kortex_api_cpp/2.3.0-r.34@kortex/stable
+      conan_cmake_run(REQUIRES kortex_api_cpp/2.6.0-r.3@kortex/stable
                       SETTINGS kortex_api_cpp:compiler=gcc
                       SETTINGS kortex_api_cpp:compiler.version=5
                       SETTINGS compiler.libcxx=libstdc++11

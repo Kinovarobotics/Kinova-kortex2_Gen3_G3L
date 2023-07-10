@@ -161,7 +161,7 @@ Example (build-mingw.bat)
 ```
 
 This will effectively revert to the old build method. It requires downloading the Kortex Api library:
- + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.5.0/)
+ + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.6.0/)
  + Uncompress the content of the archive and place it in the directory `kortex_api`.  
 
 ```sh

@@ -23,6 +23,7 @@ This section describes the data classes used in this API.
 |----------|-----------|
 |[ArmLaterality](../enums/ProductConfiguration/ArmLaterality.md#)|Admissible arm laterality|
 |[BaseType](../enums/ProductConfiguration/BaseType.md#)|Admissible base types|
+|[BrakeType](../enums/ProductConfiguration/BrakeType.md#)|Admissible brake types|
 |[EndEffectorType](../enums/ProductConfiguration/EndEffectorType.md#)|Admissible end-effector modules|
 |[InterfaceModuleType](../enums/ProductConfiguration/InterfaceModuleType.md#)|Admissible interface modules|
 |[ModelId](../enums/ProductConfiguration/ModelId.md#)|Admissible model identification|

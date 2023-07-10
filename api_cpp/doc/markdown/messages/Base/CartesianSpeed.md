@@ -5,7 +5,7 @@
 |Member name|Data type|Description|
 |-----------|---------|-----------|
 |translation|float32|Translation speed \(in meters per second\)|
-|orientation|float32|Orientation speed \(in degrees per second\)|
+|orientation|float32|Orientation speed \(in degrees per second\) \(not implemented yet\)|
 
  **Member functions** 
 

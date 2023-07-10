@@ -399,6 +399,7 @@
     -   [class ProductConfigurationEndEffectorType](messages/ProductConfiguration/ProductConfigurationEndEffectorType.md)
     -   [Enum ArmLaterality](enums/ProductConfiguration/ArmLaterality.md)
     -   [Enum BaseType](enums/ProductConfiguration/BaseType.md)
+    -   [Enum BrakeType](enums/ProductConfiguration/BrakeType.md)
     -   [Enum EndEffectorType](enums/ProductConfiguration/EndEffectorType.md)
     -   [Enum InterfaceModuleType](enums/ProductConfiguration/InterfaceModuleType.md)
     -   [Enum ModelId](enums/ProductConfiguration/ModelId.md)

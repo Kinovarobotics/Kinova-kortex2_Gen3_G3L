@@ -101,8 +101,8 @@ The latest download links for each arm type are reported in the table below:
 
 | Arm type       | Firmware     | Release notes      | API |
 | :------------- | :----------: | :-----------: | :-----------:|
-|  Gen3 | [2.4.0](https://artifactory.kinovaapps.com/ui/api/v1/download?repoKey=generic-public&path=kortex%2Fgen3%2F2.4.0%2FGen3-2.4.0.swu)   | [2.5.0](https://artifactory.kinovaapps.com/ui/api/v1/download?repoKey=generic-public&path=Documentation%2FGen3%2FTechnical%20documentation%2FRelease%20notes%2FEN-eRN-001-Gen3-Ultralight-release-notes.pdf)    | [2.5.0](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.5.0/)|
-| Gen3 lite   | [2.3.2](https://artifactory.kinovaapps.com/ui/api/v1/download?repoKey=generic-public&path=kortex%2Fgen3Lite%2F2.3.2%2FGen3-lite-2.3.2.swu) | [2.3.2](https://artifactory.kinovaapps.com/ui/api/v1/download?repoKey=generic-public&path=Documentation%2FGen3%20lite%2FTechnical%20documentation%2FRelease%20Notes%2FGen3_lite_Release_Notes_2_3_2%20-%20R01.pdf) | [2.3.0](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public%2Fkortex%2FAPI%2F2.3.0)|
+| Gen3 | [2.5.2](https://artifactory.kinovaapps.com:443/artifactory/generic-public/kortex/gen3/2.5.2/Gen3-2.5.2.swu) | [2.5.2](https://artifactory.kinovaapps.com:443/artifactory/generic-public/Documentation/Gen3/Technical%20documentation/Release%20notes/EN-eRN-001-Gen3-Ultralight-release-notes.pdf)    | [2.6.0](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.6.0)|
+| Gen3 lite   | [2.3.2](https://artifactory.kinovaapps.com:443/artifactory/generic-public/kortex/gen3Lite/2.3.2/Gen3-lite-2.3.2.swu) | [2.3.2](https://artifactory.kinovaapps.com:443/artifactory/generic-public/Documentation/Gen3%20lite/Technical%20documentation/Release%20Notes/Gen3_lite_Release_Notes_2_3_2%20-%20R01.pdf) | [2.3.0](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.3.0)|
 
 When following the link to Artifactory, to download the correct C++ API, you have to select the package for your architecture on the left-hand side tree view and then click Download on the right-hand side:
 
@@ -112,16 +112,28 @@ When following the link to Artifactory, to download the correct C++ API, you hav
 <p>
 <ul>
 <li>
-Release 2.2.0 for Gen3: <a href="https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.2.0/Gen3-2.2.0.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.2.0/RN-001_KINOVA_Gen3_Ultra_lightweight_robot-Release_Notes_EN_R06.pdf">Release Notes</a>, <a href="https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public%2Fkortex%2FAPI%2F2.2.0">Kortex API</a>
+Release 2.5.0 for Gen3: <a href="https://artifactory.kinovaapps.com:443/artifactory/generic-public/kortex/gen3/2.4.0/Gen3-2.4.0.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.5.0">Kortex API</a>
 </li>
 <li>
-Release 2.1.1 for Gen3 lite: <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3Lite/2.1.1/Gen3Lite-2.1.1.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3Lite/2.1.1/RN-002_Gen3_lite_robot_Release_Notes_EN_R01.pdf">Release Notes</a>, <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.1.0/kortex_api_2.1.0.zip">Kortex API</a>
+Release 2.3.2 for Gen3 lite: <a href="https://artifactory.kinovaapps.com:443/artifactory/generic-public/kortex/gen3Lite/2.3.2/Gen3-lite-2.3.2.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.3.0">Kortex API</a>
 </li>
 <li>
-Release 2.0.1 for Gen3: <a href="https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.0.1/Gen3-2.0.1.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.0.1/RN-001_KINOVA_Gen3_Ultra_lightweight_robot-Release_Notes_EN_R05%20(1).pdf">Release Notes</a>, <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip">Kortex API</a>
+Release 2.3.1 for Gen3 lite: <a href="https://artifactory.kinovaapps.com:443/artifactory/generic-public/kortex/gen3Lite/2.3.1/Gen3-lite-2.3.1.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.3.0">Kortex API</a>
 </li>
 <li>
-Release 2.0.0 for Gen3: <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3/2.0.0/Gen3-2.0.0.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3/2.0.0/RN-001_KINOVA_Gen3_Ultra_lightweight_robot-Release_Notes_EN_R04.pdf">Release Notes</a>, <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip">Kortex API</a>
+Release 2.3.0 for Gen3: <a href="https://artifactory.kinovaapps.com:443/artifactory/generic-public/kortex/gen3/2.3.0/Gen3-2.3.0.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.3.0">Kortex API</a>
+</li>
+<li>
+Release 2.2.0 for Gen3: <a href="https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.2.0/Gen3-2.2.0.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public%2Fkortex%2FAPI%2F2.2.0">Kortex API</a>
+</li>
+<li>
+Release 2.1.1 for Gen3 lite: <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3Lite/2.1.1/Gen3Lite-2.1.1.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.1.0/kortex_api_2.1.0.zip">Kortex API</a>
+</li>
+<li>
+Release 2.0.1 for Gen3: <a href="https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/gen3/2.0.1/Gen3-2.0.1.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip">Kortex API</a>
+</li>
+<li>
+Release 2.0.0 for Gen3: <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/gen3/2.0.0/Gen3-2.0.0.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.0.0/kortex_api_2.0.0.zip">Kortex API</a>
 </li>
 </ul>
 </p>

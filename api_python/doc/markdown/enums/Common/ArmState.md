@@ -16,6 +16,7 @@ Enumeration ArmState
 |ARMSTATE\_SERVOING\_READY|7|Arm is ready to be controlled|
 |ARMSTATE\_SERVOING\_PLAYING\_SEQUENCE|8|Arm is currently being controlled via a sequence|
 |ARMSTATE\_SERVOING\_MANUALLY\_CONTROLLED|9|Arm is currently being controlled manually|
+|ARMSTATE\_BRAKE\_RELEASING|10|Arm brakes are being released|
 |ARMSTATE\_RESERVED|255|For debugging, this state must never be reported outside the base. this means that a state is not mapped correctly|
 
 **Parent topic:** [Common \(Python\)](../../summary_pages/Common.md)
