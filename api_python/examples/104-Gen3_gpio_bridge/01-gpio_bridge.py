@@ -59,6 +59,11 @@ import sys
 import os
 import time
 
+if sys.version_info.major == 3 and sys.version_info.minor >= 10:  
+    import collections
+    setattr(collections, "MutableMapping", collections.abc.MutableMapping)
+    setattr(collections,"MutableSequence", collections.abc.MutableSequence)
+
 from kortex_api.autogen.client_stubs.DeviceManagerClientRpc import DeviceManagerClient
 from kortex_api.autogen.client_stubs.InterconnectConfigClientRpc import InterconnectConfigClient
 

@@ -46,6 +46,11 @@
 import sys
 import os
 
+if sys.version_info.major == 3 and sys.version_info.minor >= 10:  
+    import collections
+    setattr(collections, "MutableMapping", collections.abc.MutableMapping)
+    setattr(collections,"MutableSequence", collections.abc.MutableSequence)
+
 from kortex_api.autogen.client_stubs.ActuatorConfigClientRpc import ActuatorConfigClient
 from kortex_api.autogen.client_stubs.ActuatorCyclicClientRpc import ActuatorCyclicClient
 from kortex_api.autogen.client_stubs.BaseClientRpc import BaseClient

@@ -17,6 +17,11 @@ import sys
 import os
 import threading
 
+if sys.version_info.major == 3 and sys.version_info.minor >= 10:  
+    import collections
+    setattr(collections, "MutableMapping", collections.abc.MutableMapping)
+    setattr(collections,"MutableSequence", collections.abc.MutableSequence)
+
 from kortex_api.TCPTransport import TCPTransport
 from kortex_api.RouterClient import RouterClient
 from kortex_api.SessionManager import SessionManager
