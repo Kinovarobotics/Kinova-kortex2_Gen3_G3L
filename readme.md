@@ -102,7 +102,7 @@ The latest download links for each arm type are reported in the table below:
 | Arm type       | Firmware     | Release notes      | API |
 | :------------- | :----------: | :-----------: | :-----------:|
 | Gen3 | [2.5.2](https://artifactory.kinovaapps.com:443/artifactory/generic-public/kortex/gen3/2.5.2/Gen3-2.5.2.swu) | [2.5.2](https://artifactory.kinovaapps.com:443/artifactory/generic-public/Documentation/Gen3/Technical%20documentation/Release%20notes/EN-eRN-001-Gen3-Ultralight-release-notes.pdf)    | [2.6.0](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.6.0)|
-| Gen3 lite   | [2.3.3](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-local-public/kortex/gen3Lite/2.3.3/Gen3-lite-2.3.3.swu) | [2.3.3](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-documentation-public/Documentation/Gen3%20lite/Technical%20documentation/Release%20Notes/Gen3_lite_Release_Notes_2_3_3%20-%20R01.pdf) | [2.3.0](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.3.0)|
+| Gen3 lite   | [2.3.2](https://artifactory.kinovaapps.com:443/artifactory/generic-public/kortex/gen3Lite/2.3.2/Gen3-lite-2.3.2.swu) | [2.3.2](https://artifactory.kinovaapps.com:443/artifactory/generic-public/Documentation/Gen3%20lite/Technical%20documentation/Release%20Notes/Gen3_lite_Release_Notes_2_3_2%20-%20R01.pdf) | [2.3.0](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.3.0)|
 
 When following the link to Artifactory, to download the correct C++ API, you have to select the package for your architecture on the left-hand side tree view and then click Download on the right-hand side:
 
