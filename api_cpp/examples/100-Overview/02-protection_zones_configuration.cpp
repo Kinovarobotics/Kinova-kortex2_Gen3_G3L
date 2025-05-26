@@ -126,7 +126,6 @@ void move_to_protection_zone(k_api::Base::BaseClient* base)
 {
     auto command = k_api::Base::TwistCommand();
     command.set_reference_frame(k_api::Common::CARTESIAN_REFERENCE_FRAME_BASE);
-    //command.set_duration(0);  // Unlimited time to execute
 
     std::cout << "Moving towards the protection zone for 4 seconds..." << std::endl;
 

@@ -105,7 +105,6 @@ bool example_twist_command(k_api::Base::BaseClient* base)
 {
     auto command = k_api::Base::TwistCommand();
     command.set_reference_frame(k_api::Common::CARTESIAN_REFERENCE_FRAME_TOOL);
-    //command.set_duration(0);  // Unlimited time to execute
 
     std::cout << "Sending twist command for 5 seconds..." << std::endl;
 

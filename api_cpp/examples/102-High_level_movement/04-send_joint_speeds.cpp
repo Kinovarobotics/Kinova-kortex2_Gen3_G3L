@@ -115,7 +115,6 @@ bool example_send_joint_speeds(k_api::Base::BaseClient* base)
             auto joint_speed = joint_speeds.add_joint_speeds();
             joint_speed->set_joint_identifier(i);
             joint_speed->set_value(speeds.at(i));
-            //joint_speed->set_duration(1);
         }
         base->SendJointSpeedsCommand(joint_speeds);
 
@@ -143,7 +142,6 @@ bool example_send_joint_speeds(k_api::Base::BaseClient* base)
                 auto joint_speed = joint_speeds.add_joint_speeds();
                 joint_speed->set_joint_identifier(i);
                 joint_speed->set_value(speeds.at(i));
-                //joint_speed->set_duration(1);
             }
             base->SendJointSpeedsCommand(joint_speeds);
 
