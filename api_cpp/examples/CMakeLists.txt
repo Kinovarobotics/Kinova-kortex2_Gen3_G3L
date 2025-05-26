@@ -117,10 +117,10 @@ if(USE_CONAN)
   conan_check(REQUIRED)
   conan_add_remote(
     NAME kinova_public 
-    URL https://artifactory.kinovaapps.com/artifactory/api/conan/conan-public)
+    URL https://artifactory.kinovaapps.com/artifactory/api/conan/conan-local-public)
 
   if(UNIX)
-    conan_cmake_run(REQUIRES kortex_api_cpp/2.6.0-r.3@kortex/stable
+    conan_cmake_run(REQUIRES kortex_api_cpp/2.7.0-r.5@kortex/stable
                     SETTINGS kortex_api_cpp:compiler=gcc
                     SETTINGS kortex_api_cpp:compiler.version=5
                     SETTINGS compiler.libcxx=libstdc++11
