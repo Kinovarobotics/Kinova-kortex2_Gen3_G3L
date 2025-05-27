@@ -112,6 +112,9 @@ When following the link to Artifactory, to download the correct C++ API, you hav
 <p>
 <ul>
 <li>
+Release 2.5.2 for Gen3: <a href="https://artifactory.kinovaapps.com:443/artifactory/generic-public/kortex/gen3/2.5.2/Gen3-2.5.2.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.6.0">Kortex API</a>
+</li>
+<li>
 Release 2.5.0 for Gen3: <a href="https://artifactory.kinovaapps.com:443/artifactory/generic-public/kortex/gen3/2.4.0/Gen3-2.4.0.swu">Firmware</a>, <a href="https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.5.0">Kortex API</a>
 </li>
 <li>
