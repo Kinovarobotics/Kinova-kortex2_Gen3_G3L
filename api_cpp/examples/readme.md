@@ -99,7 +99,7 @@ Because GCC is not coded for the Windows operating system, a GCC port of MinGW-w
     - Click variable called `Path` and click `Edit…`
     - Click `New`
     - Enter the path to the folder containing the binary you want on your `PATH` (e.g. `C:\Program Files (x86)\mingw-w64\i686-5.4.0-posix-dwarf-rt_v5-rev0\mingw32\bin`)
-
+6. **NOTE**: If you face issues with starting the installer, download one of the available zip documents listed on https://sourceforge.net/projects/mingw-w64/files/, extract the compressed document and move its content to the C:\ drive directory then add the directory to the system's path
 <!-- omit in toc 
 <a id="markdown-windows-msvc-2017-compiler-for-" name="windows-msvc-2017-compiler-for-"></a>
 ### Windows MSVC 2017 Compiler (for)  
