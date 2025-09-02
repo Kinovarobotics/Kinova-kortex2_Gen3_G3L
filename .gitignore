@@ -3,3 +3,5 @@ kortex_api*.zip
 api_cpp/examples/build*
 .vscode/
 __pycache__/
+api_cpp/gen3_lite_leader_follower_example/build/
+api_cpp/gen3_lite_leader_follower_example/kortex_api/

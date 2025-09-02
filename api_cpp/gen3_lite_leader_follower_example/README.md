@@ -43,15 +43,14 @@ If you wish to use different IP addresses for your robots, you must change the I
 ```
 Verify that your computer connects to both robots by running ping "your.ip.address.here"
 
-3. Download the API Kortex from Artifactory : https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-local-public/kortex/API/2.7.0
-4. Copy the include and lib folders of the API into the kortex_api folder
+3. Download the API Kortex from Artifactory : https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.7.0/ (Make sure to download the file that matches your operating system, only `linux_x86-64_gcc_5.4.zip` was tested)
+4. Extract the .zip content and copy the include and lib folders of the API into the kortex_api folder
 
 ## Building
 
-1. Clone the repository
-2. Ensure the Kortex API is properly installed and paths are configured in `CMakeLists.txt`
-3. Build the project:
+Build the project:
 
+Open a terminal window in the path containing this README file and run the following:
 ```bash
 mkdir build
 cd build
