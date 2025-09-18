@@ -32,8 +32,8 @@ This leader-follower system serves as a foundation for various dual arm control 
 
 By default, this application assumes that your robots have the following IP addresses.
 
-    Leader: 192.168.1.10
-    Follower: 192.168.2.10
+    Leader: 192.168.2.10
+    Follower: 192.168.3.10
 
 If you wish to use different IP addresses for your robots, you must change the IP addresses of the robot constructor in the main of leader.cpp
 
@@ -118,10 +118,10 @@ Robot(std::string ip_address, std::string username, std::string password)
 **Example Usage:**
 ```cpp
 // Create connection to leader robot
-Robot leader_robot("192.168.1.10", "admin", "admin");
+Robot leader_robot("192.168.2.10", "admin", "admin");
 
 // Create connection to follower robot  
-Robot follower_robot("192.168.2.10", "admin", "admin");
+Robot follower_robot("192.168.3.10", "admin", "admin");
 ```
 
 ### What the API Setup Does

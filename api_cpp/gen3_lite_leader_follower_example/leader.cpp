@@ -294,8 +294,8 @@ bool read_buttons_blocking(Robot& robot, Robot& robot2){
 
 int main(int argc, char const *argv[])
 {
-    Robot leader = Robot("192.168.1.10","admin","admin");
-    Robot follower = Robot("192.168.2.10","admin","admin");
+    Robot leader = Robot("192.168.2.10","admin","admin");
+    Robot follower = Robot("192.168.3.10","admin","admin");
     move_to_home_position(leader.getBaseClient());
     move_to_home_position(follower.getBaseClient());
     read_buttons_blocking(leader,follower);
