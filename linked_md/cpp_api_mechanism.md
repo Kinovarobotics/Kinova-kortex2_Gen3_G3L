@@ -28,7 +28,7 @@
 
 <a id="markdown-overview" name="overview"></a>
 ## Overview
-The C++ Kortex API offers three mechanisms to call a method, one blocking, and two non-blocking: 
+The C++ KINOVA KORTEX™ API offers three mechanisms to call a method, one blocking, and two non-blocking: 
 
 1. standard **blocking** method
 2. **callback** function version, and 
@@ -37,7 +37,7 @@ The C++ Kortex API offers three mechanisms to call a method, one blocking, and t
 
 <a id="markdown-blocking-function" name="blocking-function"></a>
 ## Blocking method
-The first mechanism offered by the Kortex API is to use a **blocking** method (blocking call). If a procedural approach suffices, this is the easiest option. The method is called and execution is blocked until the result is returned by the server side.
+The first mechanism offered by the KINOVA KORTEX™ API is to use a **blocking** method (blocking call). If a procedural approach suffices, this is the easiest option. The method is called and execution is blocked until the result is returned by the server side.
 
 
 ```cpp
@@ -98,7 +98,7 @@ void example_function_call()
 
 <a id="markdown-async-function" name="async-function"></a>
 ## Async method
-The last mechanism offered by the Kortex API is an async function that uses the **future/promise** process. The user calls the async version of the method and then waits until the **promise** is completed and the **future** object is returned. 
+The last mechanism offered by the KINOVA KORTEX™ API is an async function that uses the **future/promise** process. The user calls the async version of the method and then waits until the **promise** is completed and the **future** object is returned. 
 
 The name of the async version method is that used in the blocking call version, but with '_async' appended to the name, i.e. `MethodName_async()`.
 

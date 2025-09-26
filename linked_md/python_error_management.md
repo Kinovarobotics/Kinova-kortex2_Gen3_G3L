@@ -25,7 +25,7 @@
 
 <a id="markdown-overview" name="overview"></a>
 ## Overview
-The Python Kortex API currently has only one mechanism to manage errors: surrounding the code block with a **try/except** statement pair and reacting to the exception.
+The Python KINOVA KORTEX™ API currently has only one mechanism to manage errors: surrounding the code block with a **try/except** statement pair and reacting to the exception.
 
 
 Note that there are [special cases](#special-cases) explained at the end of this document.

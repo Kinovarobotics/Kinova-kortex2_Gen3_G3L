@@ -35,12 +35,12 @@
 <a id="markdown-overview" name="overview"></a>
 ## Overview
 
-There are three mechanisms available to manage errors triggered by the C++ Kortex API: 
+There are three mechanisms available to manage errors triggered by the C++ KINOVA KORTEX™ API: 
 - standard `Exception`
 - accessing the `Error` object returned by the callback function, and 
 - catching the exception thrown by a `std::future`. 
 
-When you use the Kortex API, the mechanism to be used depends on the type of called method:
+When you use the KINOVA KORTEX™ API, the mechanism to be used depends on the type of called method:
   
 - With the blocking method, use standard `Exception`.
 - With the callback version of a method, use the `Error` object provided in the callback header.
@@ -50,7 +50,7 @@ Note that there is a [special case](#special-cases) explained at the end of this
 
 <a id="markdown-blocking-function" name="blocking-function"></a>
 ## Blocking method
-Exceptions are only used if a blocking or async function is used. The code is surrounded with a **try/catch** statement pair and to catch any exceptions. The Kortex API offers its own exception object: ``Kinova::Api::KDetailedException``.
+Exceptions are only used if a blocking or async function is used. The code is surrounded with a **try/catch** statement pair and to catch any exceptions. The KINOVA KORTEX™ API offers its own exception object: ``Kinova::Api::KDetailedException``.
 
 
 <a id="markdown-exception-example" name="exception-example"></a>
@@ -78,7 +78,7 @@ catch(k_api::KDetailedException& ex)
 }
 ```
 
-Here are the details of the object `Kinova::Api::KDetailedException` thrown by the Kortex API.
+Here are the details of the object `Kinova::Api::KDetailedException` thrown by the KINOVA KORTEX™ API.
 
 <a id="markdown-kdetailed-exception" name="kdetailed-exception"></a>
 #### KDetailedException
@@ -182,7 +182,7 @@ void example_function_call()
 <a id="markdown-async-function" name="async-function"></a>
 
 ## Async method
-If an async function is used, exceptions must be used to catch any error triggered by the Kortex API. The exception is thrown during the execution of the ``get()`` function.
+If an async function is used, exceptions must be used to catch any error triggered by the KINOVA KORTEX™ API. The exception is thrown during the execution of the ``get()`` function.
 
 <a id="markdown-example-async" name="async-example"></a>
 #### Async example 

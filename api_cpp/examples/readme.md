@@ -160,7 +160,7 @@ Example (build-mingw.bat)
 (line 17) cmake .. -G "MinGW Makefiles" -DUSE_CONAN=OFF -DCMAKE_BUILD_TYPE=%build_type% -DKORTEX_SUB_DIR=%kortex_api_sub_folder% && mingw32-make
 ```
 
-This will effectively revert to the old build method. It requires downloading the Kortex Api library:
+This will effectively revert to the old build method. It requires downloading the KINOVA KORTEX™ API library:
  + Download the archive via Kinova's Artifactory server: [kortex_api](https://artifactory.kinovaapps.com/ui/repos/tree/General/generic-public/kortex/API/2.6.0/)
  + Uncompress the content of the archive and place it in the directory `kortex_api`.  
 
@@ -174,7 +174,7 @@ examples/kortex_api
     └ release/
 ```
 
-You can also uncompress the content of the archive in a sub-directory `kortex_api/<Something>`. You will then have to use the `KORTEX_SUB_DIR` CMake argument to specify the Kortex API sub-directory.
+You can also uncompress the content of the archive in a sub-directory `kortex_api/<Something>`. You will then have to use the `KORTEX_SUB_DIR` CMake argument to specify the KINOVA KORTEX™ API sub-directory.
 
 ```sh
 examples/kortex_api  

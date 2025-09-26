@@ -1,6 +1,6 @@
 # Kinova Robot Leader-Follower System
 
-A C++ application that implements a leader-follower robot control system using the Kinova Kortex API. This system allows one robot to mimic the movements of another robot in real-time.
+A C++ application that implements a leader-follower robot control system using the Kinova KINOVA KORTEX™ API. This system allows one robot to mimic the movements of another robot in real-time.
 
 ## Overview
 
@@ -19,7 +19,7 @@ This leader-follower system serves as a foundation for various dual arm control 
 
 ## Requirements
 
-- Kinova Kortex API
+- Kinova KINOVA KORTEX™ API
 - CMake 3.10 or higher
 - C++14 compatible compiler
 - Two Kinova Gen3Lite arms
@@ -43,7 +43,7 @@ If you wish to use different IP addresses for your robots, you must change the I
 ```
 Verify that your computer connects to both robots by running ping "your.ip.address.here"
 
-3. Download the API Kortex from Artifactory : https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.7.0/ (Make sure to download the file that matches your operating system, only `linux_x86-64_gcc_5.4.zip` was tested)
+3. Download the KINOVA KORTEX™ API from Artifactory : https://artifactory.kinovaapps.com/artifactory/generic-local-public/kortex/API/2.7.0/ (Make sure to download the file that matches your operating system, only `linux_x86-64_gcc_5.4.zip` was tested)
 4. Extract the .zip content and copy the include and lib folders of the API into the kortex_api folder
 
 ## Building
@@ -93,14 +93,14 @@ The system will:
 ## File Structure
 
 - `leader.cpp` - Main application logic and robot control
-- `api_setup.cpp` - Kortex API initialization and setup
+- `api_setup.cpp` - KINOVA KORTEX™ API initialization and setup
 - `arm_core_functions.cpp` - Core robot movement functions
 - `include/` - Header files for the project
-- `kortex_api/` - Kinova Kortex API libraries and headers
+- `kortex_api/` - Kinova KINOVA KORTEX™ API libraries and headers
 
 ## API Setup (`api_setup.cpp`)
 
-The `api_setup.cpp` file handles the initialization and management of the Kinova Kortex API connection. It provides a `Robot` class that encapsulates all the necessary API components for communicating with a Kinova Gen3Lite robot.
+The `api_setup.cpp` file handles the initialization and management of the Kinova KINOVA KORTEX™ API connection. It provides a `Robot` class that encapsulates all the necessary API components for communicating with a Kinova Gen3Lite robot.
 
 ### Robot Class Constructor
 
@@ -161,4 +161,4 @@ Both robots should be accessible on your network with the IP addresses configure
 
 ## License
 
-This project uses the Kinova Kortex API. Please refer to Kinova's licensing terms for usage restrictions.
+This project uses the Kinova KINOVA KORTEX™ API. Please refer to Kinova's licensing terms for usage restrictions.
