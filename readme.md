@@ -24,7 +24,7 @@ The repository has been tested on Windows 10, Ubuntu 16.04, Ubuntu 18.04 and Ubu
 
 - [Description](#description)
 - [Licensing](#licensing)
-- [Role of Google Protocol Buffer in Kortex API](#role-of-google-protocol-buffer-in-kortex-api)
+- [Role of Google Protocol Buffer in KINOVA KORTEX™ API](#role-of-google-protocol-buffer-in-kinova-kortex-api)
   - [Quick Start for C++ users](#quick-start-for-c-users)
   - [Quick Start for Python users](#quick-start-for-python-users)
   - [Quick Start for modbus users](#quick-start-for-modbus-users)
@@ -39,10 +39,10 @@ The repository has been tested on Windows 10, Ubuntu 16.04, Ubuntu 18.04 and Ubu
 # Licensing 
 This repository is licenced under the [BSD 3-Clause "Revised" License](./LICENSE) 
 
-<a id="markdown-role-of-google-protobuf-in-kortex-api" name="role-of-google-protobuf-in-kortex-api"></a>
-# Role of Google Protocol Buffer in Kortex API 
+<a id="markdown-role-of-google-protobuf-in-kinova-kortex-api" name="role-of-google-protobuf-in-kinova-kortex-api"></a>
+# Role of Google Protocol Buffer in KINOVA KORTEX™ API 
 
-The Kortex API uses Google Protocol Buffer message objects<sup>**[1](#useful-links)**</sup> to exchange data between client and server.  
+The KINOVA KORTEX™ API uses Google Protocol Buffer message objects<sup>**[1](#useful-links)**</sup> to exchange data between client and server.  
 
 Google Protocol Buffer offers structured data objects with standard methods for each member field:  
 + structured, nested objects
@@ -52,11 +52,11 @@ Google Protocol Buffer offers structured data objects with standard methods for 
 + many helpers (e.g. serialize/deserialize, I/O functions)
   
 
-When using the Kortex API a developer will need to understand the Google Protocol Buffer feature set to maximize their efficiency.  
+When using the KINOVA KORTEX™ API a developer will need to understand the Google Protocol Buffer feature set to maximize their efficiency.  
 
 <a id="markdown-quick-start-howto-cpp" name="quick-start-howto-cpp"></a>
 ## Quick Start for C++ users
-  The following links provide some helpful guidance for C++ developer. You will find information about Kortex mechanism and some code examples.
+  The following links provide some helpful guidance for C++ developer. You will find information about KINOVA KORTEX™ mechanism and some code examples.
 
 + [API mechanism](./linked_md/cpp_api_mechanism.md)
 + [Transport / Router / Session / Notification](./linked_md/cpp_transport_router_session_notif.md)
@@ -70,7 +70,7 @@ When using the Kortex API a developer will need to understand the Google Protoco
 
   To run the Python examples you will need to install the Python interpreter and the pip installation module.
 
-  Note that for C++ developers it could be useful to install the Python Kortex API to allow for quick tests and validations.
+  Note that for C++ developers it could be useful to install the Python KINOVA KORTEX™ API to allow for quick tests and validations.
 
   Here is some general information about the Python interpreter and the pip module manager.  
   - [Python General Information](./linked_md/python_quick_start.md)
@@ -83,7 +83,7 @@ When using the Kortex API a developer will need to understand the Google Protoco
 
 <a id="markdown-quick-start-howto-modbus" name="quick-start-howto-modbus"></a>
 ## Quick Start for modbus users
-Since release 2.3.0, the Kortex API offers a modbus interface to communicate with the robot.
+Since release 2.3.0, the KINOVA KORTEX™ API offers a modbus interface to communicate with the robot.
 
 All the data is formatted according to this:
 - byte order: Big endian

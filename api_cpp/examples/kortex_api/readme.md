@@ -1,2 +1,2 @@
 # Description
-C++ Kortex Api directory
+C++ KINOVA KORTEX™ API directory
