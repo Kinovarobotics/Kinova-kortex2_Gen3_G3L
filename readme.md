@@ -10,7 +10,7 @@
 *
 -->
 
-<h1>KINOVA<sup>®</sup> KORTEX™ API Reference</h1>
+<h1>KINOVA KORTEX™ API Reference</h1>
 
 <a id="markdown-description" name="description"></a>
 # Description
