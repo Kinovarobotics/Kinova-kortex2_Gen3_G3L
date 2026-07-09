@@ -33,7 +33,7 @@
 <a id="markdown-requested-basic-python--python-modules" name="requested-basic-python--python-modules"></a>
 ## Required Python version and module
 
-- Python >= 3.5
+- Python >= 3.5 & <=3.9
 - pip
 
 Refer to the main README for Python installation details: [parent readme](../../readme.md)
