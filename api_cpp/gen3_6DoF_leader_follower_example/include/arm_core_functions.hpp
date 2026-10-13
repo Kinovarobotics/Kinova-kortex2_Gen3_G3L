@@ -22,7 +22,10 @@ const auto ACTION_WAITING_TIME = std::chrono::seconds(1);
 std::function<void(k_api::Base::ActionNotification)> check_for_end_or_abort(bool& finished);
 int64_t GetTickUs();
 void move_to_home_position(k_api::Base::BaseClient* base);
+void move_to_named_position(k_api::Base::BaseClient* base, const std::string& position_name);
 k_api::BaseCyclic::Command setup_actuators_low_level(k_api::Base::BaseClient* base, k_api::BaseCyclic::BaseCyclicClient* base_cyclic, int actuator_count);
+float wrap_angle_180(float angle);
+float wrap_angle_360(float angle);
 
 
 #endif 

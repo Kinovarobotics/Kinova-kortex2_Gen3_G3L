@@ -5,3 +5,5 @@ api_cpp/examples/build*
 __pycache__/
 api_cpp/gen3_lite_leader_follower_example/build/
 api_cpp/gen3_lite_leader_follower_example/kortex_api/
+api_cpp/gen3_6DoF_leader_follower_example/build/
+api_cpp/gen3_6DoF_leader_follower_example/build.log

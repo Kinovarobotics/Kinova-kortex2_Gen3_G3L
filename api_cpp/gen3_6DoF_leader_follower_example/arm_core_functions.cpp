@@ -44,6 +44,12 @@ int64_t GetTickUs()
  **************************/
 void move_to_home_position(k_api::Base::BaseClient* base)
 {
+    move_to_named_position(base, "Home");
+}
+
+// Moves the arm to one of its predefined joint angle actions (e.g. "Home", "Retract")
+void move_to_named_position(k_api::Base::BaseClient* base, const std::string& position_name)
+{
     // Make sure the arm is in Single Level Servoing before executing an Action
     auto servoingMode = k_api::Base::ServoingModeInformation();
     servoingMode.set_servoing_mode(k_api::Base::ServoingMode::SINGLE_LEVEL_SERVOING);
@@ -51,7 +57,7 @@ void move_to_home_position(k_api::Base::BaseClient* base)
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
     // Move arm to ready position
-    std::cout << "Moving the arm to a safe position" << std::endl;
+    std::cout << "Moving the arm to the \"" << position_name << "\" position" << std::endl;
     auto action_type = k_api::Base::RequestedActionType();
     action_type.set_action_type(k_api::Base::REACH_JOINT_ANGLES);
     auto action_list = base->ReadAllActions(action_type);
@@ -59,7 +65,7 @@ void move_to_home_position(k_api::Base::BaseClient* base)
     action_handle.set_identifier(0);
     for (auto action : action_list.action_list()) 
     {
-        if (action.name() == "Home") 
+        if (action.name() == position_name) 
         {
             action_handle = action.handle();
         }
@@ -67,7 +73,7 @@ void move_to_home_position(k_api::Base::BaseClient* base)
 
     if (action_handle.identifier() == 0) 
     {
-        std::cout << "Can't reach safe position, exiting" << std::endl;
+        std::cout << "Can't find the \"" << position_name << "\" position, exiting" << std::endl;
     } 
     else 
     {
@@ -113,4 +119,22 @@ k_api::BaseCyclic::Command setup_actuators_low_level(k_api::Base::BaseClient* ba
     // Send a first frame
     return base_command;
 
+}
+
+// Wraps an angle difference (degrees) to [-180, 180) so that 359.9 - 0.1 gives -0.2 and not 359.8
+float wrap_angle_180(float angle)
+{
+    angle = fmod(angle + 180.0f, 360.0f);
+    if (angle < 0.0f)
+        angle += 360.0f;
+    return angle - 180.0f;
+}
+
+// Wraps an angle (degrees) to [0, 360), the range expected by the actuator position command
+float wrap_angle_360(float angle)
+{
+    angle = fmod(angle, 360.0f);
+    if (angle < 0.0f)
+        angle += 360.0f;
+    return angle;
 }
