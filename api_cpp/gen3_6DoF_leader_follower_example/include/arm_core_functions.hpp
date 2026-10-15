@@ -15,6 +15,8 @@
 #include <unistd.h>
 #endif
 #include <time.h>
+#include <functional>
+#include <algorithm>
 
 // Waiting time during actions
 const auto ACTION_WAITING_TIME = std::chrono::seconds(1);
@@ -26,6 +28,8 @@ void move_to_named_position(k_api::Base::BaseClient* base, const std::string& po
 k_api::BaseCyclic::Command setup_actuators_low_level(k_api::Base::BaseClient* base, k_api::BaseCyclic::BaseCyclicClient* base_cyclic, int actuator_count);
 float wrap_angle_180(float angle);
 float wrap_angle_360(float angle);
+float step_towards_angle(float current, float target, float max_step);
+bool try_cyclic_call(const char* arm_name, const std::function<void()>& call);
 
 
 #endif 

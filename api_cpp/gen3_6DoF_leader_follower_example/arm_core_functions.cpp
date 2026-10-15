@@ -138,3 +138,36 @@ float wrap_angle_360(float angle)
         angle += 360.0f;
     return angle;
 }
+
+// Moves the angle current (degrees) towards target by at most max_step, through the shortest way around the circle
+float step_towards_angle(float current, float target, float max_step)
+{
+    float delta = wrap_angle_180(target - current);
+    delta = std::max(-max_step, std::min(max_step, delta));
+    return wrap_angle_360(current + delta);
+}
+
+// Runs one cyclic Refresh call of the real-time loop. Errors (e.g. a lost UDP packet) are printed instead of thrown
+// so the loop keeps going. Returns false if the call failed
+bool try_cyclic_call(const char* arm_name, const std::function<void()>& call)
+{
+    try
+    {
+        call();
+        return true;
+    }
+    catch (k_api::KDetailedException& ex)
+    {
+        std::cout << arm_name << " Kortex exception: " << ex.what() << std::endl;
+        std::cout << "Error sub-code: " << k_api::SubErrorCodes_Name(k_api::SubErrorCodes((ex.getErrorInfo().getError().error_sub_code()))) << std::endl;
+    }
+    catch (std::runtime_error& ex2)
+    {
+        std::cout << arm_name << " runtime error: " << ex2.what() << std::endl;
+    }
+    catch(...)
+    {
+        std::cout << arm_name << " unknown error." << std::endl;
+    }
+    return false;
+}

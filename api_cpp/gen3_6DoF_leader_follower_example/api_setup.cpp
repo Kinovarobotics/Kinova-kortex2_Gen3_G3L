@@ -80,24 +80,26 @@
         session_manager_->CloseSession();
         session_manager_real_time_->CloseSession();
 
-        // Deactivate the router and cleanly disconnect from the transport object
+        // Deactivate both routers and cleanly disconnect from both transport objects
         router_->SetActivationStatus(false);
         transport_->disconnect();
+        router_real_time_->SetActivationStatus(false);
+        transport_real_time_->disconnect();
 
-        // Destroy the API
+        // Destroy the API: clients and session managers first, then the routers and transports they use
         delete base_;
         delete device_config_;
-        delete session_manager_;
-        delete router_;
-        delete transport_;
         delete base_cyclic_;
-        delete router_real_time_;
-        delete transport_real_time_;
-        delete session_manager_real_time_;
         delete actuator_config_;
-        delete m_gripper_motor_command;
         delete interconnect_config_;
         delete device_manager_;
+        delete m_gripper_motor_command;
+        delete session_manager_;
+        delete session_manager_real_time_;
+        delete router_;
+        delete router_real_time_;
+        delete transport_;
+        delete transport_real_time_;
 
     }
 

@@ -38,6 +38,15 @@ float time_duration = DURATION; // Duration of the example (seconds)
 const float GRIPPER_PROPORTIONAL_GAIN = 5.0f;      // Gripper velocity (%) per % of position error
 const float GRIPPER_MINIMAL_POSITION_ERROR = 1.5f; // Position error (%) under which the gripper stops
 
+// Real-time loop period (microseconds)
+const int64_t LOOP_PERIOD_US = 1000;
+// Cyclic calls give up after 20 ms instead of the API default of 3 s, so a single lost UDP packet costs one cycle
+// instead of freezing the loop (and the follower) for 3 seconds
+const k_api::RouterClientSendOptions CYCLIC_SEND_OPTIONS = {false, 0, 20};
+// Maximal speed (degrees per second) of the follower joint commands. After a communication hiccup the follower
+// catches up with the leader at this speed instead of receiving a position jump that would put it in fault
+const float MAX_FOLLOWER_JOINT_SPEED = 60.0f;
+
 // Set by Ctrl+C so the loop exits and the actuators are put back in position mode
 volatile std::sig_atomic_t stop_requested = 0;
 
@@ -111,6 +120,9 @@ bool lead(Robot& leader, Robot& follower, unsigned int dof)
     int timer_count = 0;
     int64_t now = 0;
     int64_t last = 0;
+    int64_t next_cycle = 0;
+    int leader_failed_calls = 0;
+    int follower_failed_calls = 0;
     int64_t start_time = GetTickUs();
 
     std::cout << "Initializing the arms for leader-follower example" << std::endl;
@@ -197,12 +209,23 @@ bool lead(Robot& leader, Robot& follower, unsigned int dof)
         {
             now = GetTickUs();
 
-            if (now - last > 1000)
+            if (now >= next_cycle)
             {
+                // Fixed schedule that does not drift with the duration of the Refresh calls. If the loop fell behind, restart from now
+                next_cycle += LOOP_PERIOD_US;
+                if (next_cycle < now)
+                    next_cycle = now + LOOP_PERIOD_US;
+
+                // Limit the step of each follower command. The time step is capped so a stall never allows a big jump
+                float max_step = MAX_FOLLOWER_JOINT_SPEED * std::min(now - last, 2 * LOOP_PERIOD_US) / 1000000.0f;
+                last = now;
+
                 for(int i=0;i<moveable_actuators_idx.size();i++){
                     int idx = moveable_actuators_idx.at(i);
 
-                    base_command_follower.mutable_actuators(idx)->set_position(wrap_angle_360(base_feedback_leader.actuators(idx).position()-delta_position_leader_follower.at(i)));
+                    float target_position = wrap_angle_360(base_feedback_leader.actuators(idx).position()-delta_position_leader_follower.at(i));
+                    float previous_command = base_command_follower.actuators(idx).position();
+                    base_command_follower.mutable_actuators(idx)->set_position(step_towards_angle(previous_command, target_position, max_step));
                 }
 
                 if (mirror_gripper)
@@ -232,25 +255,12 @@ bool lead(Robot& leader, Robot& follower, unsigned int dof)
                 }
 
 
-                try
-                {
-                    base_feedback_leader = base_cyclic_leader->RefreshFeedback();
-                    base_feedback_follower = base_cyclic_follower->Refresh(base_command_follower, 0);
-                }
-                catch (k_api::KDetailedException& ex)
-                {
-                    std::cout << "Kortex exception: " << ex.what() << std::endl;
-
-                    std::cout << "Error sub-code: " << k_api::SubErrorCodes_Name(k_api::SubErrorCodes((ex.getErrorInfo().getError().error_sub_code()))) << std::endl;
-                }
-                catch (std::runtime_error& ex2)
-                {
-                    std::cout << "runtime error: " << ex2.what() << std::endl;
-                }
-                catch(...)
-                {
-                    std::cout << "Unknown error." << std::endl;
-                }
+                // Each arm in its own call so a lost leader packet does not also skip the follower command.
+                // On failure the previous feedback is kept and used for the next cycle
+                if (!try_cyclic_call("Leader", [&]{ base_feedback_leader = base_cyclic_leader->RefreshFeedback(0, CYCLIC_SEND_OPTIONS); }))
+                    leader_failed_calls++;
+                if (!try_cyclic_call("Follower", [&]{ base_feedback_follower = base_cyclic_follower->Refresh(base_command_follower, 0, CYCLIC_SEND_OPTIONS); }))
+                    follower_failed_calls++;
 
                 float elapsed_s = (GetTickUs() - start_time) / 1000000.0f;
                 k_api::Common::ArmState leader_state = base_feedback_leader.base().active_state();
@@ -279,6 +289,7 @@ bool lead(Robot& leader, Robot& follower, unsigned int dof)
                                   << "/" << base_command_follower.actuators(idx).position();
                     }
                     std::cout << std::endl;
+                    std::cout << "  Failed calls since start, leader: " << leader_failed_calls << ", follower: " << follower_failed_calls << std::endl;
 
                     for (int idx : moveable_actuators_idx)
                     {
@@ -290,7 +301,6 @@ bool lead(Robot& leader, Robot& follower, unsigned int dof)
                 }
 
                 timer_count++;
-                last = GetTickUs();
             }
         }
 
